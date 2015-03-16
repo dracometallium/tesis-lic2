@@ -1,0 +1,195 @@
+% vim: set spell:
+\documentclass[a4paper]{article}
+
+\usepackage[spanish]{babel}
+
+\usepackage[utf8]{inputenc}
+
+\title{Propuesta de tesis:\\ Implementación paralela de un sistema de visión global
+por computadora}
+
+%\author{Rodrigo S. Cañibano \emph{(rcanibano@fi.uncoma.edu.ar)}}
+
+\author{}
+
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section{Datos generales}
+
+\begin{itemize}
+
+	\item{Tema del proyecto: Implementación paralela de un sistema de visión
+		global por computadora}
+
+	\item{Tipo de tesis: Experimental}
+
+	\item{Nombre del alumno: Rodrigo S. Cañibano}
+
+	\item{Director de tesis: Eduardo Grosclaude}
+
+	\item{Codirector de tesis: Javier Balladini}
+
+	\item{Fecha de presentación de la propuesta: 2 Febrero 2015}
+
+\end{itemize}
+
+\section{Motivación y marco de trabajo}
+
+El fútbol de robots de la liga de tamaño pequeño (\emph{SSL}, del ingles
+\emph{Small Size League})\cite{sslrules2014} es una competencia en la que se
+enfrentan dos equipos de robots controlados cada uno por una computadora, que
+perciben el ambiente a través de un sistema de visión global centralizado. Este
+sistema de visión consta de un conjunto de cámaras montadas sobre distintas
+áreas del campo de juego conectadas a una computadora donde se ejecuta el
+sistema de visión. El sistema detecta la posición y orientación de cada uno de
+los robots, y la posición de la pelota, y reporta esta información a las
+computadoras que controlan los equipos. El uso de este sistema centralizado
+permite a los participantes abstraerse de los problemas de la visión por
+computadora y enfocarse en la estrategia del juego. Además, permite que las
+tareas de calibración y montaje de las cámaras se realicen una sola vez para
+cada campo de juego en vez de para cada partido.
+
+Consideramos que el juego de fútbol de robots puede ser utilizado 
+como marco para la enseñanza y aprendizaje del área de conocimiento de visión por 
+computadoras en instituciones educativas. Actualmente, las competencias de 
+la \emph{SSL} utilizan el sistema de visión
+global SSL-Vision\cite{sslvision}, un framework basado en plugins
+desarrollado en C++. Sin embargo, su uso es complejo para ser utilizado 
+como herramienta educativa. En respuesta a esta problemática, en
+\cite{torres2014}, Guillermo Torres propone un nuevo framework, también basado en plugins
+y desarrollado en C++, destinado al uso educativo y de producción. El trabajo aquí
+propuesto consiste en ofrecer mejoras de rendimiento a este sistema.
+
+\section{Antecedentes y objetivo}
+
+Un sistema de visión global (SVG) reporta a cada equipo la
+posición y orientación de cada uno de los jugadores, y la posición de la pelota,
+y para ser de utilidad se requiere que los reportes sean precisos, rápidos y
+frecuentes.
+
+Originalmente el tamaño de la cancha era de 4,9$m$x3,4$m$, lo que permitía que
+todo el campo de juego fuera observado con una sola cámara. Actualmente, existen
+dos tipos de canchas en los partidos de la \emph{SSL}: las canchas de tamaño
+simple, con un tamaño de 6,05$m$x4,05$m$ para las cuales se utilizan dos
+cámaras, una sobre cada media cancha, y las de tamaño doble, con un tamaño de
+8,09$m$x6,05$m$, que utilizan cuatro cámaras, una por cada mitad de cada media
+cancha. Se espera que para el 2015 las canchas de tamaño doble sean las
+utilizadas de forma predeterminada. Con este cambio se espera permitir la
+exploración de nuevas tácticas por parte de los equipos, ya que mayor área
+permitirá mayor movilidad. Sin embargo, esto trae aparejado el problema de que
+en las canchas de tamaño doble se deben procesar cuatro veces la información que
+en las canchas originales, con una resolución total levemente inferior a 800x600
+píxeles.
+
+De esta forma definimos el objetivo (general) de este trabajo que es la
+propuesta de un SVG paralelo, destinado al uso educativo y de producción, que
+soporte el procesamiento de una entrada de vídeo con una resolución de 800x600
+píxeles y 28 cuadros por segundo. La propuesta involucra tanto el diseño como la
+implementación del sistema de visión.
+
+
+
+\section{Metodología, objetivos específicos y plan de actividades}
+
+La metodología consta en el desarrollo de un SVG paralelo basado en el SVG propuesto en
+\cite{torres2014}, buscando mejorar su rendimiento mientras se intenta preservar
+sus características educativas.
+
+Para llevar a cabo la propuesta se deberán lograr los siguientes objetivos
+específicos:
+
+\begin{enumerate}
+
+	\item{Identificar las oportunidades e inhibidores de paralelismo en el
+		sistema de \cite{torres2014}.}
+
+	\item{Encontrar una estrategia de paralelización que pueda explotar las
+		oportunidades de paralelización encontradas en el punto 1.} 
+
+	\item{Realizar la implementación del sistema de visión paralelo.}
+
+	\item{Contrastar el comportamiento del sistema desarrollado con los
+		requerimientos definidos en el objetivo general.}
+
+\end{enumerate}
+
+Estos objetivos intentaran ser alcanzados mediantes las siguientes actividades:
+
+\begin{enumerate}
+
+	\item{Leer la tesis y otras publicaciones relacionadas al sistema
+		desarrollado en \cite{torres2014} (objetivo 1).}
+		
+	\item{Rever conceptos de la computación paralela (objetivo 1).}
+
+	\item{Diseñar una solución paralela del SVG (objetivo 2).}
+
+	\item{Seleccionar el o los modelos de programación paralela adecuados
+		para implementar la solución (objetivo 3).}
+
+	\item{Escritura del código paralelo de la aplicación (objetivo 3).}
+
+	\item{Realizar experimentaciones para obtener datos de rendimiento
+		(objetivo 4).}
+
+	\item{Analizar los resultados (objetivo 4).}
+
+	\item{Escribir la tesis}
+
+\end{enumerate}
+
+El cronograma pretendido es el siguiente:
+
+
+\begin{tabular}{ | c |c |c |c |c |c |c | }
+	
+	\hline \hline
+
+	& Mes 1 & Mes 2 & Mes 3 & Mes 4 & Mes 5 & Mes 6 \\
+	
+	\hline
+	
+	Actividad 1 & X & X & & & & \\
+	
+	\hline
+	
+	Actividad 2 & X & X & & & & \\
+
+	\hline
+	
+	Actividad 3 & & X & & & & \\
+
+	\hline
+	
+	Actividad 4 & & X & & & & \\
+
+	\hline
+	
+	Actividad 5 & & & X & X & & \\
+
+	\hline
+	
+	Actividad 6 & & & & & X & \\
+
+	\hline
+	
+	Actividad 7 & & & & & X & \\
+
+	\hline
+	
+	Actividad 8 & & X & X & X & X & X\\
+	
+	\hline \hline
+
+\end{tabular}
+
+
+\bibliographystyle{plain}
+
+\bibliography{biblio}
+
+\end{document}
