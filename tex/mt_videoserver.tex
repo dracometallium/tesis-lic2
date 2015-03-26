@@ -7,7 +7,7 @@ el \emph{SSL-Vision}. Este es un sistema programado en \emph{C++} basado en
 \emph{plugins}, lo que le permite ser extendido mediante estos. Lamentablemente
 posee algunas desventajas. En primer lugar, el sistema de captura de cuadros y
 el de procesamiento de estos están fuertemente acoplados y forman parte del
-mismo hilo de ejecución, esto impide hacer uso de las capacidades de
+mismo hilo de ejecución, lo que impide hacer uso de las capacidades de
 paralelización que ofrece el hardware actual. En segundo lugar, la complejidad
 del sistema entorpece su uso como herramienta didáctica para la introducción a
 la visión por computadora.
@@ -31,7 +31,7 @@ Los componentes principales del framework son los siguientes:
 	\item[TrackingStrategy:] Es una interfaz para definir la clase que
 		definirá la estrategia de búsqueda, es decir, define que pila de
 		plugins debe crearse y de que manera se le entregaran los
-		cuadros a estas.
+		cuadros a esta.
 
 		% **NOTA** Lo que hizo guille es una pila por
 		% 'TrackingStrategy'. Se podrían poner mas.
@@ -51,8 +51,8 @@ En la solución especifica para fútbol de robots se implementaron dos métodos 
 captura (desde un archivo y desde la cámara). Se definió una clase llamada
 \emph{GlobalTracking} de la que se crean dos instancias. En una se crea una pila
 de \emph{plugins} para detectar los robots y en la otra una pila para encontrar
-la pelota. Cada instancia de \emph{GlobalTracking} solo un nuevo cuadro del
-\emph{RingBufer} cuando su pila de plugins haya terminado de procesar el
+la pelota. Cada instancia de \emph{GlobalTracking} solo tomara un nuevo cuadro
+del \emph{RingBufer} cuando su pila de plugins haya terminado de procesar el
 anterior.
 
 %**NOTA** Pensar si seria mejor que cada 'GlobalTracking' tengaas dos pilas.
@@ -60,8 +60,8 @@ anterior.
 El programa consta de cuatro hilos. Uno para la interfaz, uno por cada
 \emph{GlobalTracking} y el ultimo para la captura de los cuadros. Esto le
 permite un mejor aprovechamiento de los recursos de hardware que
-\emph{SSL-Vision}, pero en equipos de mas de cuatro procesadores, se
-desperdician recursos de hardware.
+\emph{SSL-Vision}, pero en equipos de mas de cuatro procesadores, estos se ven
+desaprovechados.
 
 %**NOTA** Realizar experimento para medir cuantos cuadros tardan mas de 33 ms.
 
