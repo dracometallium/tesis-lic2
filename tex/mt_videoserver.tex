@@ -1,0 +1,67 @@
+% vim: set spell spelllang=es syntax=tex :
+
+\section{Sistema de visión global para fútbol de robots físicos}
+
+El software de visión global utilizado en la \emph{SSL} de la \emph{Robocup} es
+el \emph{SSL-Vision}. Este es un sistema programado en \emph{C++} basado en
+\emph{plugins}, lo que le permite ser extendido mediante estos. Lamentablemente
+posee algunas desventajas. En primer lugar, el sistema de captura de cuadros y
+el de procesamiento de estos están fuertemente acoplados y forman parte del
+mismo hilo de ejecución, esto impide hacer uso de las capacidades de
+paralelización que ofrece el hardware actual. En segundo lugar, la complejidad
+del sistema entorpece su uso como herramienta didáctica para la introducción a
+la visión por computadora.
+
+En respuesta a estos problemas, Guillermo Torres\cite{torres2014} diseño un
+nuevo framework, también programado en \emph{C++} y orientado a \emph{plugins}
+destinado al uso educativo y de producción. El framework es general, pero se
+provee una implementación de un sistema de visión de fútbol de robots.
+
+Los componentes principales del framework son los siguientes:
+
+\begin{description}
+
+	\item[CaptureInterface:] Es interfaz para definir la clase que se
+		encarga de obtener los cuadros del vídeo, ya sea de un archivo,
+		cámara u otra fuente.
+
+	\item[RingBuffer:] Un buffer circular donde se coloca cada uno de los
+		cuadros obtenidos.
+
+	\item[TrackingStrategy:] Es una interfaz para definir la clase que
+		definirá la estrategia de búsqueda, es decir, define que pila de
+		plugins debe crearse y de que manera se le entregaran los
+		cuadros a estas.
+
+		% **NOTA** Lo que hizo guille es una pila por
+		% 'TrackingStrategy'. Se podrían poner mas.
+	
+	\item[VisionStack:] Pila de plugins. Define el método \emph{process} que
+		recibe una imagen como parámetro. En su creación se le definen
+		los \emph{plugins} que deben procesar la imagen y en que orden.
+		La imagen se procesara de forma secuencial.
+
+	\item[VisionPlugin:] Interfaz para definir las clases de los plugins.
+		Define el método \emph{process} que recibe como parámetro una
+		imagen.
+
+\end{description}
+
+En la solución especifica para fútbol de robots se implementaron dos métodos de
+captura (desde un archivo y desde la cámara). Se definió una clase llamada
+\emph{GlobalTracking} de la que se crean dos instancias. En una se crea una pila
+de \emph{plugins} para detectar los robots y en la otra una pila para encontrar
+la pelota. Cada instancia de \emph{GlobalTracking} solo un nuevo cuadro del
+\emph{RingBufer} cuando su pila de plugins haya terminado de procesar el
+anterior.
+
+%**NOTA** Pensar si seria mejor que cada 'GlobalTracking' tengaas dos pilas.
+
+El programa consta de cuatro hilos. Uno para la interfaz, uno por cada
+\emph{GlobalTracking} y el ultimo para la captura de los cuadros. Esto le
+permite un mejor aprovechamiento de los recursos de hardware que
+\emph{SSL-Vision}, pero en equipos de mas de cuatro procesadores, se
+desperdician recursos de hardware.
+
+%**NOTA** Realizar experimento para medir cuantos cuadros tardan mas de 33 ms.
+
