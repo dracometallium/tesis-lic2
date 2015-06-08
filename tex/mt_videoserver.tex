@@ -21,7 +21,7 @@ Los componentes principales del framework son los siguientes:
 
 \begin{description}
 
-	\item[CaptureInterface:] Es interfaz para definir la clase que se
+	\item[CaptureInterface:] Interfaz para definir la clase que se
 		encarga de obtener los cuadros del vídeo, ya sea de un archivo,
 		cámara u otra fuente.
 
@@ -29,12 +29,11 @@ Los componentes principales del framework son los siguientes:
 		cuadros obtenidos.
 
 	\item[TrackingStrategy:] Es una interfaz para definir la clase que
-		definirá la estrategia de búsqueda, es decir, define que pila de
-		plugins debe crearse y de que manera se le entregaran los
-		cuadros a esta.
-
-		% **NOTA** Lo que hizo guille es una pila por
-		% 'TrackingStrategy'. Se podrían poner mas.
+		especificara la estrategia de búsqueda, es decir, es la clase
+		encargada de controlar de que manera se entregan los cuadros a
+		la pila de plugins(comúnmente verificando de no entregar dos
+		veces el mismo cuadro a la pila). Cada \emph{TrackingStrategy}
+		tiene una sola pila de plugins.
 	
 	\item[VisionStack:] Pila de plugins. Define el método \emph{process} que
 		recibe una imagen como parámetro. En su creación se le definen
@@ -54,8 +53,6 @@ de \emph{plugins} para detectar los robots y en la otra una pila para encontrar
 la pelota. Cada instancia de \emph{GlobalTracking} solo tomara un nuevo cuadro
 del \emph{RingBufer} cuando su pila de plugins haya terminado de procesar el
 anterior.
-
-%**NOTA** Pensar si seria mejor que cada 'GlobalTracking' tengaas dos pilas.
 
 El programa consta de cuatro hilos. Uno para la interfaz, uno por cada
 \emph{GlobalTracking} y el ultimo para la captura de los cuadros. Esto le
