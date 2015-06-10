@@ -52,7 +52,10 @@ captura (desde un archivo y desde la cámara). Se definió una clase llamada
 de \emph{plugins} para detectar los robots y en la otra una pila para encontrar
 la pelota. Cada instancia de \emph{GlobalTracking} solo tomara un nuevo cuadro
 del \emph{RingBufer} cuando su pila de plugins haya terminado de procesar el
-anterior.
+anterior. El hecho de que solo haya dos instancias de \emph{GlobalTracking}, una
+realizando la búsqueda de los robots y la otra la búsqueda de la pelota, genera
+una limitación artificial, ya que cada cuadro es independiente. Esto permitiría
+que se realicen las búsquedas en varios cuadros al mismo tiempo.
 
 El programa consta de cuatro hilos. Uno para la interfaz, uno por cada
 \emph{GlobalTracking} y el ultimo para la captura de los cuadros. Esto le
@@ -60,5 +63,12 @@ permite un mejor aprovechamiento de los recursos de hardware que
 \emph{SSL-Vision}, pero en equipos de mas de cuatro procesadores, estos se ven
 desaprovechados.
 
-%**NOTA** Realizar experimento para medir cuantos cuadros tardan mas de 33 ms.
+Bajo las condiciones para las que fue pensado este \emph{framework}, el
+desaprovechamiento de los recursos de hardware no es un problema, ya que el
+sistema puede procesar un vídeo de 352x228 píxeles a una taza de 45 cuadros por
+segundo. Sin embargo, actualmente se utiliza
+como fuente cuatro cámaras, en lugar de la cámaras única para la cual el sistema
+fue pensado. Cuando se probó el \emph{framework} con un vídeo con una resolución
+de 1080x758 píxeles el número de cuadros por segundos procesados cayo a 16
+cuadros\footnote{Los detalles de este experimento se detallaran mas adelante}.
 
