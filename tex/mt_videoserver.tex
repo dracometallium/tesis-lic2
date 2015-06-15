@@ -21,9 +21,9 @@ Los componentes principales del framework son los siguientes:
 
 \begin{description}
 
-	\item[CaptureInterface:] Interfaz para definir la clase que se
-		encarga de obtener los cuadros del vídeo, ya sea de un archivo,
-		cámara u otra fuente.
+	\item[CaptureInterface:] Interfaz para definir la clase que se encarga
+		de obtener los cuadros del vídeo, ya sea de un archivo, cámara u
+		otra fuente.
 
 	\item[RingBuffer:] Un buffer circular donde se coloca cada uno de los
 		cuadros obtenidos.
@@ -65,10 +65,10 @@ desaprovechados.
 
 Bajo las condiciones para las que fue pensado este \emph{framework}, el
 desaprovechamiento de los recursos de hardware no es un problema, ya que el
-sistema puede procesar un vídeo de 352x228 píxeles a una taza de 45 cuadros por
-segundo. Sin embargo, actualmente se utiliza
-como fuente cuatro cámaras, en lugar de la cámaras única para la cual el sistema
-fue pensado. Cuando se probó el \emph{framework} con un vídeo con una resolución
-de 1080x758 píxeles el número de cuadros por segundos procesados cayo a 16
-cuadros\footnote{Los detalles de este experimento se detallaran mas adelante}.
+sistema puede procesar un vídeo de 352x228 píxeles a una taza de 60 cuadros por
+segundo. Sin embargo, actualmente se utiliza como fuente cuatro cámaras, en
+lugar de la cámara única para la cual el sistema fue pensado. Cuando se probó el
+\emph{framework} con un vídeo con una resolución de 1080x758 píxeles el número
+de cuadros por segundos procesados cayo a 16 cuadros\footnote{Los detalles de
+este experimento se detallaran mas adelante}.
 

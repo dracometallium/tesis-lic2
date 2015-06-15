@@ -1,0 +1,54 @@
+% vim: set spell spelllang=es syntax=tex :
+
+\section{Metodologia}
+
+Para comprobar la adaptavilidad del software desarrollado por Guillermo Torres
+se grabo un nuevo vídeo. De este se crearon tres versiones con distintas
+resoluciones, 1280x720 píxeles, 800x600 píxeles, 352x224 píxeles, cada uno con
+una taza de 60 cuadros por segundo. Se realizaron corridas con cada uno de estos
+vídeos en una computadora con un procesador Intel Xeon E5-2630. Este es un
+procesador de 12 núcleos y con un reloj de 2,30GHz. El equipo cuenta ademas con
+16GiB de memoria ram.
+
+Durante la prueba con el vídeo de resolución 352x224 el sistema pudo procesar
+todos los cuadros del vídeo a tiempo (60 cuadros por segundo). Esto era de
+esperarse, ya que el sistema fue pensado con tal resolución en mente. Sin
+embargo a pesar de la velocidad y cantidad de los núcleos, con el vídeo de
+resolución 800x600 píxeles la cantidad de cuadros por segundo cayo a 45. Para el
+vídeo de resolución 1280x720, la reducción del rendimiento fue mas brusca,
+decayendo a 14 cuadros por segundo.
+
+Para resolver este problema se pueden aplicar tres enfoques distintos:
+
+\begin{itemize}
+
+\item	Se pude resolver el problema optimizando cada uno de los \emph{plugins}
+	del framework, esperando de esta manera que el tiempo de procesamiento
+	de cada cuadro se reduzca lo suficiente como para que el sistema pueda
+	procesar la mayoría de los cuadros a tiempo.
+
+\item	Se puede hacer provecho de que los mecanismos para obtener la
+	información de los cuadros no mantienen información entre ellos (es
+	decir, para el sistema los cuadros son independientes). Dada la
+	disponibilidad de recursos, se pueden procesar múltiples cuadros al
+	mismo tiempo sin que esto genere diferencias en la información obtenida
+	(salvo por el orden). Esto permitiría aumentar la cantidad de cuadros
+	por segundo obtenidos, aunque el tiempo de procesamiento de cada uno se
+	mantenga igual.
+
+\item	Para realizar la búsqueda de los objetos, el cuadro puede ser dividido.
+	Esto permitirá realizar la búsqueda en cada zona en paralelo. Para el
+	correcto funcionamiento, las zonas deberán tener partes en común que
+	dependerán del tamaño de los objetos, ya que no debe suceder que un
+	objeto no aparezca completo en ninguna de las zonas.
+
+\end{itemize}
+
+Lamentablemente el primer enfoque es muy especifico de la solución para que se
+la aplique en el \emph{framework}. Ademas no fomenta la experimentación, ya que cada
+\emph{plugin} que se agregue o modifique deberá ser optimizado. El segundo y
+tercer enfoque son suficientemente generales como para ser aplicados como parte
+del \emph{framework}, permite agregar y modificar los \emph{plugins} sin mayores
+dificultades, y en el caso en el cual una solución especifica no cumpla con las
+condiciones que permitan aplicar alguna de las soluciones se puede limitar el
+paralelismo (ya sea no dividiendo el cuadro o procesando solo uno por vez).
