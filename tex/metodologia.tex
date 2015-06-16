@@ -40,15 +40,17 @@ Para resolver este problema se pueden aplicar tres enfoques distintos:
 	Esto permitirá realizar la búsqueda en cada zona en paralelo. Para el
 	correcto funcionamiento, las zonas deberán tener partes en común que
 	dependerán del tamaño de los objetos, ya que no debe suceder que un
-	objeto no aparezca completo en ninguna de las zonas.
+	objeto no aparezca completo en ninguna de las zonas. Esto permitiría
+	reducir el tiempo de procesamiento de cada cuadro.
 
 \end{itemize}
 
-Lamentablemente el primer enfoque es muy especifico de la solución para que se
-la aplique en el \emph{framework}. Ademas no fomenta la experimentación, ya que cada
-\emph{plugin} que se agregue o modifique deberá ser optimizado. El segundo y
-tercer enfoque son suficientemente generales como para ser aplicados como parte
-del \emph{framework}, permite agregar y modificar los \emph{plugins} sin mayores
-dificultades, y en el caso en el cual una solución especifica no cumpla con las
-condiciones que permitan aplicar alguna de las soluciones se puede limitar el
-paralelismo (ya sea no dividiendo el cuadro o procesando solo uno por vez).
+Lamentablemente el primer enfoque es muy especifico de la solución para ser
+aplicada en el \emph{framework}. Ademas no fomenta la experimentación, ya que
+cada \emph{plugin} que se agregue o modifique deberá ser optimizado. El segundo
+y tercer enfoque son suficientemente generales como para ser aplicados como
+parte del \emph{framework}, permite agregar y modificar los \emph{plugins} sin
+mayores dificultades, y en el caso en el cual una solución especifica no cumpla
+con las condiciones que permitan aplicar alguna de las soluciones se puede
+limitar el paralelismo (ya sea no dividiendo el cuadro o procesando solo uno por
+vez).

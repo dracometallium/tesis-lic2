@@ -54,8 +54,8 @@ la pelota. Cada instancia de \emph{GlobalTracking} solo tomara un nuevo cuadro
 del \emph{RingBufer} cuando su pila de plugins haya terminado de procesar el
 anterior. El hecho de que solo haya dos instancias de \emph{GlobalTracking}, una
 realizando la búsqueda de los robots y la otra la búsqueda de la pelota, genera
-una limitación artificial, ya que cada cuadro es independiente. Esto permitiría
-que se realicen las búsquedas en varios cuadros al mismo tiempo.
+una limitación artificial, ya que los cuadros son independientes entre si. Esto
+permitiría que se realicen las búsquedas en varios cuadros al mismo tiempo.
 
 El programa consta de cuatro hilos. Uno para la interfaz, uno por cada
 \emph{GlobalTracking} y el ultimo para la captura de los cuadros. Esto le
