@@ -48,7 +48,7 @@ Las clases del framework básico son las siguientes:
 	método \emph{process} que tiene como único parámetro un puntero a un
 	objeto de la clase \emph{Item}.
 
-\item[PluginStack] Esta es la clase que tomara el ítem y se encarga de
+\item[PluginStack]: Esta es la clase que tomara el ítem y se encarga de
 	entregarlo a cada uno de los plugins. Tiene solo dos métodos,
 	\emph{addPlugin}, para agregar un plugin, y \emph{process} que tiene
 	como parámetro un ítem, para procesar un ítem.
@@ -58,5 +58,43 @@ Las clases del framework básico son las siguientes:
 	\emph{ItemSlicer} y entregar cada parte a las pilas de plugins. La
 	cantidad de cuadros que tomara cada ves y la cantidad de partes en las
 	cuales dividirá el ítem se definirán durante su creación.
+
+\end{description}
+
+Para adaptar el framework para utilizarlo como un sistema de visión por
+computadora para el fútbol de robots se incorporaron las siguientes clases, las
+cuales fueron tomadas y modificadas del sistema de visión presentado en
+\cite{torres2014}:
+
+
+\begin{description}
+
+\item[Frame]: Subclase de \emph{Item}. Contiene una imagen que representa un
+	cuadro y una estructura auxiliar que contiene la información necesaria
+	para el funcionamiento de los plugins.
+
+\item[CaptureFromFile]: Subclase de \emph{Input}. Es la clase encargada de crear
+	el flujo de objetos \emph{Frame}, tomando cada cuadro desde un archivo
+	de vídeo.
+
+\item[FrameSlicer]: Subclase de \emph{ItemSlicer}. En este caso lo que se divide
+	es la imagen del cuadro. Cada sub cuadro tendrá un solapamiento con los
+	adyacente ya que se debe evitar que un robots o la pelota no este
+	totalmente contenido dentro de por lo menos un sub cuadro. Para
+	minimizar el área solapada las particiones se realizan de manera tal que
+	se minimice el perímetro pero ocupen la mayor área posible. Para lograr
+	esto se busca la partición que mantenga el ancho y alto en los valores
+	mas similares posibles.
+
+\item[Subclases de \emph{Plugin}]: \emph{PluginBlur},
+	\emph{PluginColorConversions}, \emph{PluginColorSegmentation},
+	\emph{PluginDetectBalls}, \emph{PluginFindBlobs},
+	\emph{PluginFindSecondariesBlobs}, \emph{PluginMorphology} y
+	\emph{PluginNetworking}.
+
+\item[Clases auxiliares]: \emph{ball}, \emph{colorspace}, \emph{datastruct},
+	\emph{homography}, \emph{marker}, \emph{pattern},
+	\emph{pattern\_matching}, \emph{practicalsocket}, \emph{segmentation},
+	\emph{team}, \emph{timer}.
 
 \end{description}
