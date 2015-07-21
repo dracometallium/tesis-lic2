@@ -1,0 +1,62 @@
+% vim: set spell spelllang=es syntax=tex :
+
+\section{Descripción del framework}
+
+Para aumentar el throughput del sistema se aplicaran dos técnicas. En primer
+lugar el sistema no estará limitado a tomar solo un cuadro por ves. La segunda
+optimización consta en dividir cada cuadro para que cada parte pueda ser
+procesada por un thread distinto.
+
+Las clases del framework básico son las siguientes:
+
+\begin{description}
+
+\item[Item]: Esta clase define un tipo genérico de los ítems que serán tratados
+	por el sistema.
+
+\item[RingBuffer]: Este es el buffer donde se guardan los ítems generados
+	mientras esperan ser procesados. El buffer guarda solo punteros a
+	objetos de la clase \emph{Item} y no tiene mecanismos de control que
+	permitan acceder la estructura desde múltiples threads al mismo tiempo.
+	Cuando se solicita un ítem, se devuelve el puntero a el mas
+	recientemente agregado o \textbf{NULL} en caso de que la estructura este
+	vacía. Cuando se intenta agregar un nuevo ítem pero la estructura esta
+	llena se coloca este en lugar del ítem mas viejo en la estructura y se
+	retorna el puntero a este al llamador, delegándole su destrucción. La
+	destrucción del ítem se delega al llamador por dos motivos. El primero
+	es que el buffer desconoce el tipo real del ítem. La segunda razón es
+	que para poder ser utilizado de forma segura, las llamadas a los métodos
+	del buffer deben estar dentro de secciones criticas y realizar las
+	eliminaciones dentro de estas podría ser muy lento.
+
+\item[Input]: Se trata de una clase que funciona como definición de la interfaz
+	de las clases que generan los ítems. Sus métodos principales son
+	\emph{run} y \emph{generate}. El método \emph{generate} debe ser re
+	implementado por las clases hijas para generar el tipo de ítem
+	especifico del sistema. El método \emph{run} es el encargado de generar
+	los ítems llamando a \emph{generate} y colocarlos en el
+	\emph{RingBuffer}. Este último método puede ser redefinido si la
+	aplicación así lo requiere.
+
+\item[ItemSlicer]: Es la clase que define la interfaz de las clases encargadas
+	de dividir los ítems. Solo define un método \emph{slice} que recibe como
+	parámetro ítem y la cantidad de partes en la que este debe ser dividido.
+	Retorna un arreglo de ítems.
+
+\item[Plugin]: Esta clase define una interfaz para los plugins que realizaran
+	las distintas partes del procesamiento de la imagen. Solo se define el
+	método \emph{process} que tiene como único parámetro un puntero a un
+	objeto de la clase \emph{Item}.
+
+\item[PluginStack] Esta es la clase que tomara el ítem y se encarga de
+	entregarlo a cada uno de los plugins. Tiene solo dos métodos,
+	\emph{addPlugin}, para agregar un plugin, y \emph{process} que tiene
+	como parámetro un ítem, para procesar un ítem.
+
+\item[ItemSwitch]: Es la clase encargada de tomar los cuadros del buffer, crear
+	dos conjuntos de particiones utilizando la clase descendiente de
+	\emph{ItemSlicer} y entregar cada parte a las pilas de plugins. La
+	cantidad de cuadros que tomara cada ves y la cantidad de partes en las
+	cuales dividirá el ítem se definirán durante su creación.
+
+\end{description}
