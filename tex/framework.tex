@@ -12,21 +12,23 @@ Las clases del framework básico son las siguientes:
 \begin{description}
 
 \item[Item]: Esta clase define un tipo genérico de los ítems que serán tratados
-	por el sistema.
+	por el sistema. Se define un método \emph{delPart}, que sera especifico
+	para borrar los ítems que sean partes, ya que podrían tener una
+	estructura diferente por cuestiones de eficiencia.
 
 \item[RingBuffer]: Este es el buffer donde se guardan los ítems generados
 	mientras esperan ser procesados. El buffer guarda solo punteros a
 	objetos de la clase \emph{Item} y no tiene mecanismos de control que
 	permitan acceder la estructura desde múltiples threads al mismo tiempo.
-	Cuando se solicita un ítem, se devuelve el puntero a el mas
-	recientemente agregado o \textbf{NULL} en caso de que la estructura este
-	vacía. Cuando se intenta agregar un nuevo ítem pero la estructura esta
-	llena se coloca este en lugar del ítem mas viejo en la estructura y se
-	retorna el puntero a este al llamador, delegándole su destrucción. La
-	destrucción del ítem se delega al llamador por dos motivos. El primero
-	es que el buffer desconoce el tipo real del ítem. La segunda razón es
-	que para poder ser utilizado de forma segura, las llamadas a los métodos
-	del buffer deben estar dentro de secciones criticas y realizar las
+	Cuando se solicita un ítem, se devuelve el puntero al mas recientemente
+	agregado o \textbf{NULL} en caso de que la estructura este vacía. Cuando
+	se intenta agregar un nuevo ítem pero la estructura esta llena se coloca
+	este en lugar del ítem mas viejo en la estructura y se retorna el
+	puntero a este al llamador, delegándole su destrucción. La destrucción
+	del ítem se delega al llamador por dos motivos. El primero es que el
+	buffer desconoce el tipo real del ítem. La segunda razón es que para
+	poder ser utilizado de forma segura, las llamadas a los métodos del
+	buffer deben estar dentro de secciones criticas y realizar las
 	eliminaciones dentro de estas podría ser muy lento.
 
 \item[Input]: Se trata de una clase que funciona como definición de la interfaz
@@ -54,10 +56,11 @@ Las clases del framework básico son las siguientes:
 	como parámetro un ítem, para procesar un ítem.
 
 \item[ItemSwitch]: Es la clase encargada de tomar los cuadros del buffer, crear
-	dos conjuntos de particiones utilizando la clase descendiente de
-	\emph{ItemSlicer} y entregar cada parte a las pilas de plugins. La
-	cantidad de cuadros que tomara cada ves y la cantidad de partes en las
-	cuales dividirá el ítem se definirán durante su creación.
+	la partición utilizando la clase descendiente de \emph{ItemSlicer},
+	crear las tareas para que las partes sean procesadas por las pilas de
+	plugins y crear los hilos que ejecutaran las tareas. La cantidad hilos
+	y la cantidad de partes en las cuales dividirá el ítem se definirán
+	durante su creación.
 
 \end{description}
 
@@ -83,8 +86,8 @@ cuales fueron tomadas y modificadas del sistema de visión presentado en
 	totalmente contenido dentro de por lo menos un sub cuadro. Para
 	minimizar el área solapada las particiones se realizan de manera tal que
 	se minimice el perímetro pero ocupen la mayor área posible. Para lograr
-	esto se busca la partición que mantenga el ancho y alto en los valores
-	mas similares posibles.
+	esto se busca la partición que haga que la relación entre el alto y el
+	ancho sea lo mas cercana a uno.
 
 \item[Subclases de \emph{Plugin}]: \emph{PluginBlur},
 	\emph{PluginColorConversions}, \emph{PluginColorSegmentation},
@@ -99,7 +102,6 @@ cuales fueron tomadas y modificadas del sistema de visión presentado en
 
 \end{description}
 
-Existen dos parámetros ajustables. El primero es la cantidad de ítems que pueden
-ser tomados al mismo tiempo. Dado que este parámetro define la cantidad de hilos
-de \emph{ItemSwitch}, a este parámetro lo llamaremos de esa forma. El segundo
-parámetro es la cantidad de partes en las cuales se dividirá el cuadro.
+Existen dos parámetros ajustables. El primero es la cantidad de hilos que
+ejecutaran las tareas de búsqueda. El segundo parámetro es la cantidad de partes
+en las cuales se dividirá el cuadro.
