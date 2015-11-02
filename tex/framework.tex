@@ -12,9 +12,7 @@ Las clases del framework básico son las siguientes:
 \begin{description}
 
 \item[Item]: Esta clase define un tipo genérico de los ítems que serán tratados
-	por el sistema. Se define un método \emph{delPart}, que sera especifico
-	para borrar los ítems que sean partes, ya que podrían tener una
-	estructura diferente por cuestiones de eficiencia.
+	por el sistema.
 
 \item[RingBuffer]: Este es el buffer donde se guardan los ítems generados
 	mientras esperan ser procesados. El buffer guarda solo punteros a
@@ -41,9 +39,11 @@ Las clases del framework básico son las siguientes:
 	aplicación así lo requiere.
 
 \item[ItemSlicer]: Es la clase que define la interfaz de las clases encargadas
-	de dividir los ítems. Solo define un método \emph{slice} que recibe como
-	parámetro ítem y la cantidad de partes en la que este debe ser dividido.
-	Retorna un arreglo de ítems.
+	de dividir los ítems. Se definen dos métodos. El primero es \emph{slice}
+	que recibe como parámetro ítem y la cantidad de partes en la que este
+	debe ser dividido y retorna un arreglo de ítems. El segundo método es
+	\emph{delPart} que recibe como parámetro una de las partes creadas por
+	el método \emph{slice} y la elimina.
 
 \item[Plugin]: Esta clase define una interfaz para los plugins que realizaran
 	las distintas partes del procesamiento de la imagen. Solo se define el
@@ -58,8 +58,8 @@ Las clases del framework básico son las siguientes:
 \item[ItemSwitch]: Es la clase encargada de tomar los cuadros del buffer, crear
 	la partición utilizando la clase descendiente de \emph{ItemSlicer},
 	crear las tareas para que las partes sean procesadas por las pilas de
-	plugins y crear los hilos que ejecutaran las tareas. La cantidad hilos
-	y la cantidad de partes en las cuales dividirá el ítem se definirán
+	plugins y crear los hilos que ejecutaran las tareas. La cantidad hilos y
+	la cantidad de partes en las cuales dividirá el ítem se definirán
 	durante su creación.
 
 \end{description}
