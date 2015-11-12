@@ -25,8 +25,8 @@ propuesta:
 	pdflatex $(PROPUESTA)
 	pdflatex $(PROPUESTA)
 
-$(FIGURAS_PDF): $(@:.pdf=.svg)
-	inkscape $(@:.pdf=.svg) -z -A $@	
+%.pdf: %.svg
+	inkscape $< -z -A $@	
 
 clean: 
 	rm -f $(GARBAGE)
