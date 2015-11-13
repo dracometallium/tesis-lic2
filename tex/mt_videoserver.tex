@@ -3,14 +3,14 @@
 \section{Sistema de visión global para fútbol de robots físicos}
 
 El software de visión global utilizado en la \emph{SSL} de la \emph{Robocup} es
-el \emph{SSL-Vision}. Este es un sistema programado en \emph{C++} basado en
-\emph{plugins}, lo que le permite ser extendido mediante estos. Lamentablemente
-posee algunas desventajas. En primer lugar, el sistema de captura de cuadros y
-el de procesamiento de estos están fuertemente acoplados y forman parte del
-mismo hilo de ejecución, lo que impide hacer uso de las capacidades de
-paralelización que ofrece el hardware actual. En segundo lugar, la complejidad
-del sistema entorpece su uso como herramienta didáctica para la introducción a
-la visión por computadora.
+el \emph{SSL-Vision}\cite{sslvision}. Este es un sistema programado en
+\emph{C++} basado en \emph{plugins}, lo que le permite ser extendido mediante
+estos. Lamentablemente posee algunas desventajas. En primer lugar, el sistema de
+captura de cuadros y el de procesamiento de estos están fuertemente acoplados y
+forman parte del mismo hilo de ejecución, lo que impide hacer uso de las
+capacidades de paralelización que ofrece el hardware actual. En segundo lugar,
+la complejidad del sistema entorpece su uso como herramienta didáctica para la
+introducción a la visión por computadora.
 
 En respuesta a estos problemas, Guillermo Torres\cite{torres2014} diseñó un
 nuevo framework, también programado en \emph{C++} y orientado a \emph{plugins}

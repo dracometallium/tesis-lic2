@@ -5,10 +5,11 @@
 Para comprobar la adaptabilidad del software desarrollado por Guillermo Torres
 se grabó un nuevo vídeo. De este se crearon tres versiones con distintas
 resoluciones, 1280x720 píxeles, 800x600 píxeles, 352x224 píxeles, cada uno con
-una taza de 60 cuadros por segundo. Se realizaron corridas con cada uno de estos
-vídeos en una computadora con un procesador Intel Xeon E5-2630. Este es un
-procesador de 12 núcleos y con un reloj de 2,30GHz. El equipo cuenta ademas con
-16GiB de memoria ram.
+una taza de 60 cuadros por segundo. Se realizaron ejecuciones con cada uno de
+estos vídeos en una computadora con un procesador Intel Xeon E5-2630. Este es un
+procesador de 6 núcleos cada uno de dos subprocesos simultáneos a través de la
+técnica de \emph{simultaneus multithreading} y con un reloj de 2,30GHz. El
+equipo cuenta ademas con 16GiB de memoria ram.
 
 Durante la prueba con el vídeo de resolución 352x224 el sistema pudo procesar
 todos los cuadros del vídeo a tiempo (60 cuadros por segundo). Esto era de
@@ -22,18 +23,12 @@ Para resolver este problema se pueden aplicar tres enfoques distintos:
 
 \begin{itemize}
 
-\item	Se puede resolver el problema optimizando cada uno de los \emph{plugins}
-	del framework, esperando de esta manera que el tiempo de procesamiento
-	de cada cuadro se reduzca lo suficiente como para que el sistema pueda
-	procesar la mayoría de los cuadros a tiempo.
-
-\item	Se puede hacer provecho de que los mecanismos para obtener la
-	información de los cuadros no mantienen información entre ellos (es
-	decir, para el sistema los cuadros son independientes). Dada la
-	disponibilidad de recursos, se pueden procesar múltiples cuadros al
-	mismo tiempo sin que esto genere diferencias en la información obtenida
-	(salvo por el orden). Esto permitiría aumentar la cantidad de cuadros
-	por segundo obtenidos, aunque el tiempo de procesamiento de cada uno se
+\item 	Dado que en un vídeo ya decodificado el procesamiento de cada cuadro es
+	independiente del procesamiento de los demás, y dada la disponibilidad
+	de recursos de computo, se pueden procesar múltiples cuadros al mismo
+	tiempo sin que esto genere diferencias en la información obtenida (salvo
+	por el orden). Esto permitiría aumentar la cantidad de cuadros por
+	segundo obtenidos, aunque el tiempo de procesamiento de cada uno se
 	mantenga igual.
 
 \item	Para realizar la búsqueda de los objetos, el cuadro puede ser dividido.
@@ -42,6 +37,11 @@ Para resolver este problema se pueden aplicar tres enfoques distintos:
 	dependerán del tamaño de los objetos, ya que no debe suceder que un
 	objeto no aparezca completo en ninguna de las zonas. Esto permitiría
 	reducir el tiempo de procesamiento de cada cuadro.
+
+\item	Se puede resolver el problema optimizando cada uno de los \emph{plugins}
+	del framework, esperando de esta manera que el tiempo de procesamiento
+	de cada cuadro se reduzca lo suficiente como para que el sistema pueda
+	procesar la mayoría de los cuadros a tiempo.
 
 \end{itemize}
 
