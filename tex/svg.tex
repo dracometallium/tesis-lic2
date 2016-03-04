@@ -22,10 +22,10 @@ provee una implementación de un sistema de visión de fútbol de robots. La
 diferencia principal de este framework es el desacoplamiento del hilo de captura
 y los hilos de búsqueda. En el caso del fútbol de robots, el framework tiene dos
 hilos de búsqueda, uno para encontrar la pelota y otro para encontrar los
-robots, un hilo de captura (un video pre grabado o una captura desde una camara)
-y un hilo para la interfaz. Dividir el costo de procesamiento le permite un
-mejor aprovechamiento de los recursos de hardware que \emph{SSL-Vision}, pero en
-equipos de mas de cuatro procesadores estos se ven desaprovechados.
+robots, un hilo de captura (desde un video pre grabado o una captura desde una
+cámara) y un hilo para la interfaz. Dividir el costo de procesamiento le permite
+un mejor aprovechamiento de los recursos de hardware que \emph{SSL-Vision}, pero
+en equipos de mas de cuatro procesadores estos se ven desaprovechados.
 
 Bajo las condiciones para las que fue pensado este \emph{framework}, el
 desaprovechamiento de los recursos de hardware no es un problema, ya que el
