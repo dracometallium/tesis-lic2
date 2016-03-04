@@ -1,16 +1,7 @@
 % vim: set spell spelllang=es syntax=tex :
 
-\section{Sistema de visión global para fútbol de robots físicos}
-
-El software de visión global utilizado en la \emph{SSL} de la \emph{Robocup} es
-el \emph{SSL-Vision}\cite{sslvision}. Este es un sistema programado en
-\emph{C++} basado en \emph{plugins}, lo que le permite ser extendido mediante
-estos. Lamentablemente posee algunas desventajas. En primer lugar, el sistema de
-captura de cuadros y el de procesamiento de estos están fuertemente acoplados y
-forman parte del mismo hilo de ejecución, lo que impide hacer uso de las
-capacidades de paralelización que ofrece el hardware actual. En segundo lugar,
-la complejidad del sistema entorpece su uso como herramienta didáctica para la
-introducción a la visión por computadora.
+\section{Detalles del sistema de visión global para fútbol de robots físicos por
+Guillermo Torres}
 
 En respuesta a estos problemas, Guillermo Torres\cite{torres2014} diseñó un
 nuevo framework, también programado en \emph{C++} y orientado a \emph{plugins}
@@ -56,19 +47,3 @@ anterior. El hecho de que solo haya dos instancias de \emph{GlobalTracking}, una
 realizando la búsqueda de los robots y la otra la búsqueda de la pelota, genera
 una limitación artificial, ya que los cuadros son independientes entre si. Esto
 permitiría que se realicen las búsquedas en varios cuadros al mismo tiempo.
-
-El programa consta de cuatro hilos. Uno para la interfaz, uno por cada
-\emph{GlobalTracking} y el ultimo para la captura de los cuadros. Esto le
-permite un mejor aprovechamiento de los recursos de hardware que
-\emph{SSL-Vision}, pero en equipos de mas de cuatro procesadores, estos se ven
-desaprovechados.
-
-Bajo las condiciones para las que fue pensado este \emph{framework}, el
-desaprovechamiento de los recursos de hardware no es un problema, ya que el
-sistema puede procesar un vídeo de 352x228 píxeles a una taza de 60 cuadros por
-segundo. Sin embargo, actualmente se utiliza como fuente cuatro cámaras, en
-lugar de la cámara única para la cual el sistema fue pensado. Cuando se probó el
-\emph{framework} con un vídeo con una resolución de 1080x758 píxeles el número
-de cuadros por segundos procesados cayo a 16 cuadros\footnote{Los detalles de
-este experimento se detallaran mas adelante}.
-
