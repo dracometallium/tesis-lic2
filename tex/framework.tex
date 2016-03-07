@@ -2,10 +2,37 @@
 
 \section{Descripción del framework}
 
-Para aumentar el throughput del sistema se aplicaran dos técnicas. En primer
-lugar el sistema no estará limitado a tomar solo un cuadro por ves. La segunda
-optimización consta en dividir cada cuadro para que cada parte pueda ser
-procesada por un thread distinto.
+Para aumentar el throughput del sistema se aplicaran las dos técnicas discutidas
+con anterioridad. En primer lugar el sistema no estará limitado a tomar solo un
+cuadro por ves. La segunda optimización consta en dividir cada cuadro para que
+cada parte pueda ser procesada por un thread distinto.
+
+Para esto se propone la siguiente secuencia de procesamiento para cada ítem(un
+cuadro en el caso de la solución especifica para fútbol de robots):
+
+\begin{enumerate}
+
+\item	El hilo de captura genera o captura un ítem y lo deposita en el buffer
+	circular.
+
+\item	Existen múltiples instancias de hilos de búsqueda. Estas toman y
+	remueven los ítems del buffer circular. Cada uno solo puede
+	procesar un ítem a la vez, y cada ítem sera procesado por solo un hilo
+	de búsqueda.
+
+\item	Cada hilo de búsqueda se divide en tantos hilos como pilas de
+	\emph{plugins} tenga definidas.
+
+\item	Cada pila de \emph{plugins} partición el ítem y se divide en tantos
+	hilos como fragmentos del ítem se hallan creado.
+
+\item 	Cada hilo de pila procesa su fragmento con cada uno de sus plugins de
+	forma secuencial.
+
+\item	Cuando todas las pilas terminan el hilo de captura es libre de tomar
+	otro ítem.
+
+\end{enumerate}
 
 Las clases del framework básico son las siguientes:
 
