@@ -3,47 +3,85 @@
 \section{Detalles del sistema de visión global para fútbol de robots físicos por
 Guillermo Torres}
 
-En respuesta a estos problemas, Guillermo Torres\cite{torres2014} diseñó un
-nuevo framework, también programado en \emph{C++} y orientado a \emph{plugins}
-destinado al uso educativo y de producción. El framework es general, pero se
-provee una implementación de un sistema de visión de fútbol de robots.
+Como se dijo con anterioridad, el objetivo principal de un sistema de visión por
+computadora es el de definir un modelo a partir de una escena. En el fútbol de
+robots el modelo que se intenta definir es la ubicación y orientación de los
+robots y pelota con respecto a la cancha.
 
-Los componentes principales del framework son los siguientes:
+Como ya se explico, físicamente, el sistema de visión global para fútbol de
+robots consta de un conjunto de cámaras posicionadas sobre la cancha, una
+computadora sobre la que corre el software de visión global y la conexión de red
+hacia las computadoras de los equipos. Lo que aun no hemos explicado es la
+estructura interna del software.
+
+Si bien pueden existir variantes entre los distintos sistemas de visión que se
+han propuesto para el fútbol de robots, la mayoría de las soluciones convergen a
+un sistema de pila de \emph{plugins}. Incluso los \emph{plugins} utilizados
+suelen ser similares. Esto no debería ser sorpresivo, ya que el dominio es muy
+especifico y el ambiente esta preparado para facilitar la extracción de la
+información por el sistema.
+
+El sistema desarrollado por Torres tiene cuatro componentes principales:
 
 \begin{description}
 
-	\item[CaptureInterface:] Interfaz para definir la clase que se encarga
-		de obtener los cuadros del vídeo, ya sea de un archivo, cámara u
-		otra fuente.
+	\item[Interfaz de captura:] Interfaz para definir la clase que se
+		encarga de obtener los cuadros del vídeo, ya sea de un archivo,
+		cámara u otra fuente.
 
-	\item[RingBuffer:] Un buffer circular donde se coloca cada uno de los
-		cuadros obtenidos.
+	\item[Buffer circular:] Un buffer circular donde se coloca cada uno de
+		los cuadros obtenidos.
 
-	\item[TrackingStrategy:] Es una interfaz para definir la clase que
-		especificara la estrategia de búsqueda, es decir, es la clase
-		encargada de controlar de que manera se entregan los cuadros a
-		la pila de plugins(comúnmente verificando de no entregar dos
-		veces el mismo cuadro a la pila). Cada \emph{TrackingStrategy}
-		tiene una sola pila de plugins.
+	\item[Estrategia de búsqueda:] Es una interfaz para definir la clase que
+		especificara la estrategia de búsqueda, es decir, es el
+		componente encargado de controlar de que manera se entregan los
+		cuadros a la pila de \emph{plugins} (comúnmente verificando de
+		no entregar dos veces el mismo cuadro a la pila). Cada instancia
+		tiene una sola pila de \emph{plugins}.
 	
-	\item[VisionStack:] Pila de plugins. Define el método \emph{process} que
-		recibe una imagen como parámetro. En su creación se le definen
-		los \emph{plugins} que deben procesar la imagen y en que orden.
-		La imagen se procesara de forma secuencial.
+	\item[Pila de plugins:] Define el método \emph{process} que recibe una
+		imagen como parámetro. En su creación se le definen los
+		\emph{plugins} que deben procesar la imagen y en que orden. La
+		imagen se procesara de forma secuencial.
 
-	\item[VisionPlugin:] Interfaz para definir las clases de los plugins.
-		Define el método \emph{process} que recibe como parámetro una
-		imagen.
+	\item[Plugin:] Interfaz para definir las clases de los \emph{plugins}
+		que procesaran la imagen. Define el método \emph{process} que
+		recibe como parámetro una imagen.
 
 \end{description}
 
-En la solución especifica para fútbol de robots se implementaron dos métodos de
-captura (desde un archivo y desde la cámara). Se definió una clase llamada
-\emph{GlobalTracking} de la que se crean dos instancias. En una se crea una pila
-de \emph{plugins} para detectar los robots y en la otra una pila para encontrar
-la pelota. Cada instancia de \emph{GlobalTracking} solo tomara un nuevo cuadro
-del \emph{RingBufer} cuando su pila de plugins haya terminado de procesar el
-anterior. El hecho de que solo haya dos instancias de \emph{GlobalTracking}, una
-realizando la búsqueda de los robots y la otra la búsqueda de la pelota, genera
-una limitación artificial, ya que los cuadros son independientes entre si. Esto
-permitiría que se realicen las búsquedas en varios cuadros al mismo tiempo.
+En la implementación de la solución especifica, se crean dos estrategias de
+búsqueda, una para la búsqueda de los robots y la otra para la búsqueda de la
+pelota. Las primeras etapas de procesamiento son iguales en ambas estrategias de
+búsqueda. Los primeros \emph{plugins} son los de calibración, conversión de
+color y morfología. La estrategia de búsqueda de pelota continua con el
+\emph{plugin} de búsqueda de pelota, mientras que la búsqueda de robots continua
+con los \emph{plugins} de detección de regiones principales y detección de
+detecciones secundarias. Ambas terminan con el \emph{plugin} de difusión.
+
+TODO: Conectar de alguna manera!!!
+
+Los \emph{plugins} pueden ser agrupados de acuerdo con las etapas de la visión
+por computadora discutidos en la sección anterior:
+
+\begin{description}
+
+	\item[Adquisicion de la imagen:] Esta etapa esta a cargo de la interfaz
+		de captura.
+
+	\item[Pre procesamiento:] \emph{Plugins} de calibración y conversión de
+		color.
+
+	\item[Extraccion de características, Detección y Segmentación:]
+		\emph{Plugins} de segmentación de color, de morfología y de
+		detección de regiones principales.
+
+	\item[Procesamiento de alto nivel:] \emph{Plugins} de detección de
+		pelota y de detección de regiones secundarias.
+
+	\item[Toma de decisiones:] Dado que el sistema de visión para fútbol de
+		robots no realiza toma de decisiones, el estado de la cancha es
+		comunicado a las computadoras de los equipos a través del
+		\emph{plugin} de difusión.
+
+\end{description}
