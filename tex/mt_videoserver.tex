@@ -25,28 +25,28 @@ El sistema desarrollado por Torres tiene cuatro componentes principales:
 
 \begin{description}
 
-	\item[Interfaz de captura:] Interfaz para definir la clase que se
-		encarga de obtener los cuadros del vídeo, ya sea de un archivo,
-		cámara u otra fuente.
+\item[Interfaz de captura:] Interfaz para definir la clase que se encarga de
+	obtener los cuadros del vídeo, ya sea de un archivo, cámara u otra
+	fuente.
 
-	\item[Buffer circular:] Un buffer circular donde se coloca cada uno de
-		los cuadros obtenidos.
+\item[Buffer circular:] Un buffer circular donde se coloca cada uno de los
+	cuadros obtenidos.
 
-	\item[Estrategia de búsqueda:] Es una interfaz para definir la clase que
-		especificara la estrategia de búsqueda, es decir, es el
-		componente encargado de controlar de que manera se entregan los
-		cuadros a la pila de \emph{plugins} (comúnmente verificando de
-		no entregar dos veces el mismo cuadro a la pila). Cada instancia
-		tiene una sola pila de \emph{plugins}.
+\item[Estrategia de búsqueda:] Es una interfaz para definir la clase que
+	especificara la estrategia de búsqueda, es decir, es el componente
+	encargado de controlar de que manera se entregan los cuadros a la pila
+	de \emph{plugins} (comúnmente verificando de no entregar dos veces el
+	mismo cuadro a la pila). Cada instancia tiene una sola pila de
+	\emph{plugins}.
 	
-	\item[Pila de plugins:] Define el método \emph{process} que recibe una
-		imagen como parámetro. En su creación se le definen los
-		\emph{plugins} que deben procesar la imagen y en que orden. La
-		imagen se procesara de forma secuencial.
+\item[Pila de plugins:] Define el método \emph{process} que recibe una imagen
+	como parámetro. En su creación se le definen los \emph{plugins} que
+	deben procesar la imagen y en que orden. La imagen se procesara de forma
+	secuencial.
 
-	\item[Plugin:] Interfaz para definir las clases de los \emph{plugins}
-		que procesaran la imagen. Define el método \emph{process} que
-		recibe como parámetro una imagen.
+\item[Plugin:] Interfaz para definir las clases de los \emph{plugins} que
+	procesaran la imagen. Define el método \emph{process} que recibe como
+	parámetro una imagen.
 
 \end{description}
 
@@ -66,22 +66,20 @@ por computadora discutidos en la sección anterior:
 
 \begin{description}
 
-	\item[Adquisicion de la imagen:] Esta etapa esta a cargo de la interfaz
-		de captura.
+\item[Adquisicion de la imagen:] Esta etapa esta a cargo de la interfaz de
+	captura.
 
-	\item[Pre procesamiento:] \emph{Plugins} de calibración y conversión de
-		color.
+\item[Pre procesamiento:] \emph{Plugins} de calibración y conversión de color.
 
-	\item[Extraccion de características, Detección y Segmentación:]
-		\emph{Plugins} de segmentación de color, de morfología y de
-		detección de regiones principales.
+\item[Extraccion de características, Detección y Segmentación:] \emph{Plugins}
+	de segmentación de color, de morfología y de detección de regiones
+	principales.
 
-	\item[Procesamiento de alto nivel:] \emph{Plugins} de detección de
-		pelota y de detección de regiones secundarias.
+\item[Procesamiento de alto nivel:] \emph{Plugins} de detección de pelota y de
+	detección de regiones secundarias.
 
-	\item[Toma de decisiones:] Dado que el sistema de visión para fútbol de
-		robots no realiza toma de decisiones, el estado de la cancha es
-		comunicado a las computadoras de los equipos a través del
-		\emph{plugin} de difusión.
+\item[Toma de decisiones:] Dado que el sistema de visión para fútbol de robots
+	no realiza toma de decisiones, el estado de la cancha es comunicado a
+	las computadoras de los equipos a través del \emph{plugin} de difusión.
 
 \end{description}
