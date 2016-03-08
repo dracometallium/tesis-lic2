@@ -5,34 +5,58 @@
 Para aumentar el throughput del sistema se aplicaran las dos técnicas discutidas
 con anterioridad. En primer lugar el sistema no estará limitado a tomar solo un
 cuadro por ves. La segunda optimización consta en dividir cada cuadro para que
-cada parte pueda ser procesada por un thread distinto.
+cada parte pueda ser procesada por un thread distinto. También debe mantenerse
+que las distintas pilas de plugins ejecuten de forma independiente una de la
+otra.
 
-Para esto se propone la siguiente secuencia de procesamiento para cada ítem(un
+Para esto se propone la siguiente secuencia de procesamiento para cada ítem (un
 cuadro en el caso de la solución especifica para fútbol de robots):
 
 \begin{enumerate}
 
-\item	El hilo de captura genera o captura un ítem y lo deposita en el buffer
-	circular.
+\setcounter{enumi}{-1}
 
-\item	Existen múltiples instancias de hilos de búsqueda. Estas toman y
-	remueven los ítems del buffer circular. Cada uno solo puede
-	procesar un ítem a la vez, y cada ítem sera procesado por solo un hilo
-	de búsqueda.
+\item	Antes de la ejecución el usuario establece una cantidad máxima de tareas
+	en ejecución simultanea.
 
-\item	Cada hilo de búsqueda se divide en tantos hilos como pilas de
-	\emph{plugins} tenga definidas.
+\item	El hilo de captura genera o captura un ítem y lo deposita en el buffer.
 
-\item	Cada pila de \emph{plugins} partición el ítem y se divide en tantos
-	hilos como fragmentos del ítem se hallan creado.
+\item	Una tarea maestra consume el ítem mas reciente del buffer y crea una
+	tarea de búsqueda para su procesamiento. Si hay mas tareas que las
+	permitidas o no hay ítems en el buffer, espera.
 
-\item 	Cada hilo de pila procesa su fragmento con cada uno de sus plugins de
-	forma secuencial.
+\item	Cada tarea de búsqueda crea tantas tareas por cada una de sus pilas de
+	\emph{plugins}. Mientras espera a que estas taras terminen no debe ser
+	contada para el limite de tareas en ejecución.
 
-\item	Cuando todas las pilas terminan el hilo de captura es libre de tomar
-	otro ítem.
+\item	Cada tarea fracciona el ítem y crea tantas tareas como fragmentos del
+	ítem se hallan creado. Esta tarea terminara tan pronto como sus tareas
+	hijas terminen. Mientras espera no contribuirá al limite de tareas en
+	ejecución.
+
+\item	Las tareas procesaran cada fragmento utilizando la pila de
+	\emph{plugins}. Antes de terminar eliminara el fragmento del ítem.
+
+\item	Cuando terminan todas las tareas de las pilas de plugins, la tarea de
+	búsqueda resume la ejecución para eliminar el ítem de la memoria y
+	posiblemente realizar tareas conteo.
 
 \end{enumerate}
+
+Algo que no queda especificado en la descripción anterior, es la naturaleza de
+las tareas. Por un lado, las tareas pueden comenzar su ejecución al momento de
+ser creadas o pueden esperar a que la cantidad de tareas en ejecución sea menor
+que el máximo establecido. La primera opción tiene como desventaja que dado que
+el único control sobre la cantidad de tareas se realiza al consumir un ítem, la
+cantidad de tareas en ejecución sea mayor al máximo establecido durante una
+porción significativa de la duración del programa. La segunda opción solo
+funcionara satisfactoriamente si se asegura que la próxima tarea a ejecutar sea
+la mas antigua.
+
+El establecer un máximo de hilos en ejecución nos permite asegurarnos de que los
+hilos no compitan por la CPU y que esta se mantenga ocupada siempre que haya
+tareas a realizar, simplemente estableciendo tal máximo como el números de
+procesadores disponibles. Es por esto que la segunda opción es la mas deseable.
 
 Las clases del framework básico son las siguientes:
 
