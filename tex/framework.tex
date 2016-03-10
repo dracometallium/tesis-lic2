@@ -58,29 +58,50 @@ hilos no compitan por la CPU y que esta se mantenga ocupada siempre que haya
 tareas a realizar, simplemente estableciendo tal máximo como el números de
 procesadores disponibles. Es por esto que la segunda opción es la mas deseable.
 
+TODO: Diagrama del framework
+
+\section{Implementación del framework}
+
+El framework fue implementado en \emph{C++} utilizando \emph{OpenMP}. La,
+elección del lenguaje principalmente se debe al deseo de trabajar tomando como
+base el desarrollo realizado por Torres en \cite{torres2014}, en especial se
+espero hacer uso de los \emph{plugins}. Por su parte, el autor original del
+software eligió este lenguaje debido a su eficiencia y paradigma. Dado que el
+sistema debe procesar las cuadros en tiempos acotados, la eficiencia es es
+crucial, mientras que el paradigma orientado a objetos permite establecer
+fácilmente la interfaz de los plugins. Por otra parte, utilizar \emph{OpenMP} es
+una desviación del software original.
+
+\emph{OpenMP} es una API de bibliotecas y directivas al compilador para la
+definición de paralelismo de alto nivel para sistemas de memoria compartida en
+\emph{C}, \emph{C++} y \emph{Fortran}\cite{ompWeb}. La ventaja de \emph{OpenMP}
+es que permite la creación de regiones paralelas, secciones criticas, tareas y
+puntos de sincronización, simplemente marcando un bloque de código con unas
+pocas directivas al compilador.
+
 Las clases del framework básico son las siguientes:
 
 \begin{description}
 
-\item[Item]: Esta clase define un tipo genérico de los ítems que serán tratados
+\item[Item:] Esta clase define un tipo genérico de los ítems que serán tratados
 	por el sistema.
 
-\item[RingBuffer]: Este es el buffer donde se guardan los ítems generados
+\item[RingBuffer:] Este es el buffer donde se guardan los ítems generados
 	mientras esperan ser procesados. El buffer guarda solo punteros a
 	objetos de la clase \emph{Item} y no tiene mecanismos de control que
 	permitan acceder la estructura desde múltiples threads al mismo tiempo.
 	Cuando se solicita un ítem, se devuelve el puntero al mas recientemente
 	agregado o \textbf{NULL} en caso de que la estructura este vacía. Cuando
 	se intenta agregar un nuevo ítem pero la estructura esta llena se coloca
-	este en lugar del ítem mas viejo en la estructura y se retorna el
-	puntero a este al llamador, delegándole su destrucción. La destrucción
+	este en espacio del ítem mas viejo en la estructura y se retorna el
+	puntero de este al llamador, delegándole su destrucción. La destrucción
 	del ítem se delega al llamador por dos motivos. El primero es que el
 	buffer desconoce el tipo real del ítem. La segunda razón es que para
 	poder ser utilizado de forma segura, las llamadas a los métodos del
 	buffer deben estar dentro de secciones criticas y realizar las
 	eliminaciones dentro de estas podría ser muy lento.
 
-\item[Input]: Se trata de una clase que funciona como definición de la interfaz
+\item[Input:] Se trata de una clase que funciona como definición de la interfaz
 	de las clases que generan los ítems. Sus métodos principales son
 	\emph{run} y \emph{generate}. El método \emph{generate} debe ser re
 	implementado por las clases hijas para generar el tipo de ítem
@@ -89,29 +110,29 @@ Las clases del framework básico son las siguientes:
 	\emph{RingBuffer}. Este último método puede ser redefinido si la
 	aplicación así lo requiere.
 
-\item[ItemSlicer]: Es la clase que define la interfaz de las clases encargadas
+\item[ItemSlicer:] Es la clase que define la interfaz de las clases encargadas
 	de dividir los ítems. Se definen dos métodos. El primero es \emph{slice}
 	que recibe como parámetro ítem y la cantidad de partes en la que este
 	debe ser dividido y retorna un arreglo de ítems. El segundo método es
 	\emph{delPart} que recibe como parámetro una de las partes creadas por
 	el método \emph{slice} y la elimina.
 
-\item[Plugin]: Esta clase define una interfaz para los plugins que realizaran
+\item[Plugin:] Esta clase define una interfaz para los plugins que realizaran
 	las distintas partes del procesamiento de la imagen. Solo se define el
 	método \emph{process} que tiene como único parámetro un puntero a un
 	objeto de la clase \emph{Item}.
 
-\item[PluginStack]: Esta es la clase que tomara el ítem y se encarga de
+\item[PluginStack:] Esta es la clase que tomara el ítem y se encarga de
 	entregarlo a cada uno de los plugins. Tiene solo dos métodos,
 	\emph{addPlugin}, para agregar un plugin, y \emph{process} que tiene
 	como parámetro un ítem, para procesar un ítem.
 
-\item[ItemSwitch]: Es la clase encargada de tomar los cuadros del buffer, crear
-	la partición utilizando la clase descendiente de \emph{ItemSlicer},
-	crear las tareas para que las partes sean procesadas por las pilas de
-	plugins y crear los hilos que ejecutaran las tareas. La cantidad hilos y
-	la cantidad de partes en las cuales dividirá el ítem se definirán
-	durante su creación.
+\item[ItemSwitch:] Esta es la clase mas compleja del framework básico, ya que
+	es la que crea las múltiples tareas. La primera tarea que crea es la
+	encargada de consumir los ítems del buffer y crear las tareas de
+	búsqueda. Cada tarea de búsqueda crea una nueva tarea por cada pila de
+	plugins. Cada tarea de pila divide el ítem utilizando el
+	\emph{ItemSlicer} y crea una nueva tarea por cada fragmento.
 
 \end{description}
 
@@ -128,33 +149,39 @@ computadora para el fútbol de robots se incorporaron las siguientes clases, las
 cuales fueron tomadas y modificadas del sistema de visión presentado en
 \cite{torres2014}:
 
-
 \begin{description}
 
-\item[Frame]: Subclase de \emph{Item}. Contiene una imagen que representa un
+\item[Frame:] Subclase de \emph{Item}. Contiene una imagen que representa un
 	cuadro y una estructura auxiliar que contiene la información necesaria
 	para el funcionamiento de los plugins.
 
-\item[CaptureFromFile]: Subclase de \emph{Input}. Es la clase encargada de crear
+\item[CaptureFromFile:] Subclase de \emph{Input}. Es la clase encargada de crear
 	el flujo de objetos \emph{Frame}, tomando cada cuadro desde un archivo
 	de vídeo.
 
-\item[FrameSlicer]: Subclase de \emph{ItemSlicer}. En este caso lo que se divide
+\item[FastCaptureFromFile:] Subclase de \emph{Input}. Muy similar a
+	\emph{CaptureFromFile}, con la diferencia de que carga los cuadros a
+	memoria antes de que comience el sistema a capturar los cuadros. Esta
+	clase fue creada para la experimentación, ya que leer el vídeo desde el
+	disco en tiempo real introducía un retraso que no estaría presente si el
+	vídeo se capturase de una cámara.
+
+\item[FrameSlicer:] Subclase de \emph{ItemSlicer}. En este caso lo que se divide
 	es la imagen del cuadro. Cada sub cuadro tendrá un solapamiento con los
 	adyacente ya que se debe evitar que un robots o la pelota no este
 	totalmente contenido dentro de por lo menos un sub cuadro. Para
-	minimizar el área solapada las particiones se realizan de manera tal que
-	se minimice el perímetro pero ocupen la mayor área posible. Para lograr
-	esto se busca la partición que haga que la relación entre el alto y el
-	ancho sea lo mas cercana a uno.
+	minimizar el área solapada, las particiones se realizan de manera tal
+	que se minimice el perímetro pero ocupen la mayor área posible. Para
+	lograr esto se busca la partición que haga que la relación entre el alto
+	y el ancho sea lo mas cercana a uno.
 
-\item[Subclases de \emph{Plugin}]: \emph{PluginBlur},
+\item[Subclases de \emph{Plugin}:] \emph{PluginBlur},
 	\emph{PluginColorConversions}, \emph{PluginColorSegmentation},
 	\emph{PluginDetectBalls}, \emph{PluginFindBlobs},
 	\emph{PluginFindSecondariesBlobs}, \emph{PluginMorphology} y
 	\emph{PluginNetworking}.
 
-\item[Clases auxiliares]: \emph{ball}, \emph{colorspace}, \emph{datastruct},
+\item[Clases auxiliares:] \emph{ball}, \emph{colorspace}, \emph{datastruct},
 	\emph{homography}, \emph{marker}, \emph{pattern},
 	\emph{pattern\_matching}, \emph{practicalsocket}, \emph{segmentation},
 	\emph{team}, \emph{timer}.
