@@ -1,19 +1,26 @@
 % vim: set spell spelllang=es syntax=tex :
 
-\section{Resultados}
+\section{Metodología experimental}
 
 Para comprobar el funcionamiento del nuevo framework se utilizaron los vídeos de
 resolución 640x480, 800x600 y 1280x720, en el equipo con procesador Intel Xeon
 E5-2630 con 16GiB de memoria ram.
 
 Se realizaron pruebas con cada vídeo, variando la cantidad de partes en las que
-fueron divididos los cuadros y la cantidad de cuadros procesados al mismo tiempo
-entre uno y doce. Se ejecuto el programa durante 10 segundos. Se contó la
-cantidad de cuadros procesados en ese tiempo y el retardo máximo la creación de
-un cuadro y la finalización de su procesamiento. Cable aclarar que estas
-estadísticas tienen solo en cuenta el procesamiento de los cuadros, no si se
-encontraron los robots o pelota en ellos. Los resultados finales pueden verse
-en las siguientes tablas.
+fueron divididos los cuadros y la cantidad de procesadores disponibles a la
+aplicación. Para cada caso, se estableció la cantidad máxima de tareas en
+ejecución simultanea como la cantidad de procesadores menos uno. El procesador
+no usado por las tareas de búsqueda se dejo para ser compartido entre el hilo
+de captura y el hilo que crea las tareas de búsqueda.
+
+En cada test se ejecuto el programa durante 15 segundos. Durante los
+últimos 10 segundo se contó la cantidad de cuadros procesados, y de cada uno de
+estos se registro el retardo entre su creación su procesamiento. Los primeros 5
+segundos se ignoraron con el fin de permitir que la ejecución se estabilizara.
+Cada test se realizo 10 veces. Para eliminar valores atípicos se elimino el
+mínimo y el máximo, y sobre los restantes se calculo el promedió.
+
+\section{Resultados}
 
 //tablas de tiempo y retardo.
 
