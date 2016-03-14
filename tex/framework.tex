@@ -13,9 +13,8 @@ por el incremento en la cantidad de tareas afecta de forma notable el
 rendimiento de la aplicación, por lo cual se opto que las pilas ejecuten de
 forma secuencial.
 
-Para esto se propone en primera instancia la siguiente secuencia de
-procesamiento para cada ítem (un cuadro en el caso de la solución especifica
-para fútbol de robots):
+Para esto se propone en la siguiente secuencia de procesamiento para cada ítem
+(un cuadro en el caso de la solución especifica para fútbol de robots):
 
 \begin{enumerate}
 
@@ -77,7 +76,11 @@ definición de paralelismo de alto nivel para sistemas de memoria compartida en
 \emph{C}, \emph{C++} y \emph{Fortran}\cite{ompWeb}. La ventaja de \emph{OpenMP}
 es que permite la creación de regiones paralelas, secciones criticas, tareas y
 puntos de sincronización, simplemente marcando un bloque de código con unas
-pocas directivas al compilador.
+pocas directivas al compilador. \emph{OpenMP} ademas provee la facilidad de que
+se puede establecer la cantidad de hilos que irán ejecutando las tareas, y que
+el orden de la cola de espera es \emph{frist-come/first-served}. Aun así se
+mantiene un control del numero de tareas para no crear mas de las que pueden ser
+procesadas, y no retrasar al sistema con tareas viejas.
 
 Las clases del framework básico son las siguientes:
 
