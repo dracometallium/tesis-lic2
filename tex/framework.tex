@@ -5,11 +5,15 @@
 Para aumentar el throughput del sistema se aplicaran las dos técnicas discutidas
 con anterioridad. En primer lugar el sistema no estará limitado a tomar solo un
 cuadro por ves. La segunda optimización consta en dividir cada cuadro para que
-cada parte pueda ser procesada por un thread distinto. También debe mantenerse
+cada parte pueda ser procesada por un thread distinto. También seria deseable
 que las distintas pilas de plugins ejecuten de forma independiente una de la
-otra.
+otra para que el retardo de procesamiento de cada cuadro sea menor.  Sin
+embargo, en los experimentos realizados se comprobó que el overhead introducido
+por el incremento en la cantidad de tareas afecta de forma notable el
+rendimiento de la aplicación, por lo cual se opto que las pilas ejecuten de
+forma secuencial.
 
-Para esto se propone la siguiente secuencia de procesamiento para cada ítem (un
+Para esto se propone en primera instancia la siguiente secuencia de procesamiento para cada ítem (un
 cuadro en el caso de la solución especifica para fútbol de robots):
 
 \begin{enumerate}
@@ -25,19 +29,14 @@ cuadro en el caso de la solución especifica para fútbol de robots):
 	tarea de búsqueda para su procesamiento. Si hay mas tareas que las
 	permitidas o no hay ítems en el buffer, espera.
 
-\item	Cada tarea de búsqueda crea tantas tareas por cada una de sus pilas de
-	\emph{plugins}. Mientras espera a que estas taras terminen no debe ser
-	contada para el limite de tareas en ejecución.
-
-\item	Cada tarea fracciona el ítem y crea tantas tareas como fragmentos del
-	ítem se hallan creado. Esta tarea terminara tan pronto como sus tareas
-	hijas terminen. Mientras espera no contribuirá al limite de tareas en
+\item	La tarea de búsqueda fracciona el ítem y crea una tarea por cada
+	fragmentos creado. Mientras espera no contribuirá al limite de tareas en
 	ejecución.
 
-\item	Las tareas procesaran cada fragmento utilizando la pila de
-	\emph{plugins}. Antes de terminar eliminara el fragmento del ítem.
+\item	Las tareas procesaran cada fragmento con cada pila de \emph{plugins}.
+	Cuando la ultima pila termine de procesar el fragmento, lo eliminara.
 
-\item	Cuando terminan todas las tareas de las pilas de plugins, la tarea de
+\item	Cuando se terminan de procesar todos los fragmentos, la tarea de
 	búsqueda resume la ejecución para eliminar el ítem de la memoria y
 	posiblemente realizar tareas conteo.
 
@@ -127,12 +126,13 @@ Las clases del framework básico son las siguientes:
 	\emph{addPlugin}, para agregar un plugin, y \emph{process} que tiene
 	como parámetro un ítem, para procesar un ítem.
 
-\item[ItemSwitch:] Esta es la clase mas compleja del framework básico, ya que
-	es la que crea las múltiples tareas. La primera tarea que crea es la
+\item[ItemSwitch:] Esta es la clase mas compleja del framework básico, ya que es
+	la que crea las múltiples tareas. La primera tarea que crea es la
 	encargada de consumir los ítems del buffer y crear las tareas de
-	búsqueda. Cada tarea de búsqueda crea una nueva tarea por cada pila de
-	plugins. Cada tarea de pila divide el ítem utilizando el
-	\emph{ItemSlicer} y crea una nueva tarea por cada fragmento.
+	búsqueda. Cada tarea de búsqueda divide el ítem utilizando el
+	\emph{ItemSlicer} y crea una nueva tarea por cada fragmento. Por último,
+	las tarea de fragmento procesara cada fragmento con todas las pilas de
+	plugins de forma secuencial.
 
 \end{description}
 
