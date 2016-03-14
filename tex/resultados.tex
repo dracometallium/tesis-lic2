@@ -4,8 +4,8 @@
 
 Como se menciono con anterioridad, para comprobar el funcionamiento del nuevo
 framework se procesaron los vídeos de resolución 640x480, 800x600 y 1280x720, en
-una computadora con un procesador Intel Xeon E5-2630. Este es un procesador de
-6 núcleos, cada uno de dos subprocesos simultáneos a través de la técnica de
+una computadora con un procesador Intel Xeon E5-2630. Este es un procesador de 6
+núcleos, cada uno de dos subprocesos simultáneos a través de la técnica de
 \emph{simultaneus multithreading} y con un reloj de 2,30GHz. El equipo cuenta
 ademas con 16GiB de memoria RAM.
 
@@ -13,15 +13,23 @@ Se realizaron pruebas con cada vídeo, variando la cantidad de partes en las que
 fueron divididos los cuadros y la cantidad de procesadores disponibles a la
 aplicación. Para cada caso, se estableció la cantidad máxima de tareas en
 ejecución simultanea como la cantidad de procesadores menos uno. El procesador
-no usado por las tareas de búsqueda se dejo para ser compartido entre el hilo
-de captura y el hilo que crea las tareas de búsqueda.
+no usado por las tareas de búsqueda se dejo para ser compartido entre el hilo de
+captura y el hilo que crea las tareas de búsqueda.
 
-En cada test se ejecuto el programa durante 15 segundos. Durante los
-últimos 10 segundo se contó la cantidad de cuadros procesados, y de cada uno de
-estos se registro el retardo entre su creación su procesamiento. Los primeros 5
-segundos se ignoraron con el fin de permitir que la ejecución se estabilizara.
-Cada test se realizo 10 veces. Para eliminar valores atípicos se elimino el
-mínimo y el máximo, y sobre los restantes se calculo el promedió.
+En cada test se ejecuto el programa durante 15 segundos. Durante los últimos 10
+segundo se contó la cantidad de cuadros procesados, y de cada uno de estos se
+registro el retardo entre su creación su procesamiento. Los primeros 5 segundos
+se ignoraron con el fin de permitir que la ejecución se estabilizara.  Cada test
+se realizo 10 veces. Para eliminar valores atípicos se elimino el mínimo y el
+máximo, y sobre los restantes se calculo el promedió.
+
+Durante el desarrollo de la aplicación se probaron tres distintas
+implementaciones. En la primera implementación, el framework ejecutaba las
+distintas pilas de plugins en tareas separadas. En la segunda implementación el
+framework fue modificado para que una sola tarea ejecutara todas las pilas de
+plugins sobre un mismo fragmento. Para la tercera implementación se trabajo
+sobre el mismo framework que la segunda, pero se unieron las pilas de búsquedas
+de robots y la de búsqueda de pelota.
 
 \section{Resultados}
 
