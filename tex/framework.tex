@@ -145,6 +145,10 @@ Las clases del framework básico son las siguientes:
 
 \end{figure}
 
+Existen dos parámetros ajustables. El primero es la cantidad de hilos que
+ejecutaran las tareas de búsqueda. El segundo parámetro es la cantidad de partes
+en las cuales se dividirá el cuadro.
+
 Para adaptar el framework para utilizarlo como un sistema de visión por
 computadora para el fútbol de robots se incorporaron las siguientes clases, las
 cuales fueron tomadas y modificadas del sistema de visión presentado en
@@ -198,6 +202,10 @@ cuales fueron tomadas y modificadas del sistema de visión presentado en
 
 \end{figure}
 
-Existen dos parámetros ajustables. El primero es la cantidad de hilos que
-ejecutaran las tareas de búsqueda. El segundo parámetro es la cantidad de partes
-en las cuales se dividirá el cuadro.
+Conceptualmente, la implementación para fútbol de robots tiene dos pilas, una
+para búsqueda de robots y la otra para búsqueda de la pelota. Sin embargo, ambas
+pilas para la etapa de pre procesamiento de la imagen utilizan los mismos
+plugins con la misma configuración, ademas, los plugins que no tienen en común
+solo modifican datos propios de cada pila. Esto permite que ambas pilas puedan
+ser unidas en una sola, lo que trae como ventaja que la etapa de pre
+procesamiento se realice solo una ves por cuadro.
