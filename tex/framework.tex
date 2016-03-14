@@ -13,8 +13,9 @@ por el incremento en la cantidad de tareas afecta de forma notable el
 rendimiento de la aplicación, por lo cual se opto que las pilas ejecuten de
 forma secuencial.
 
-Para esto se propone en primera instancia la siguiente secuencia de procesamiento para cada ítem (un
-cuadro en el caso de la solución especifica para fútbol de robots):
+Para esto se propone en primera instancia la siguiente secuencia de
+procesamiento para cada ítem (un cuadro en el caso de la solución especifica
+para fútbol de robots):
 
 \begin{enumerate}
 
@@ -33,8 +34,8 @@ cuadro en el caso de la solución especifica para fútbol de robots):
 	fragmentos creado. Mientras espera no contribuirá al limite de tareas en
 	ejecución.
 
-\item	Las tareas procesaran cada fragmento con cada pila de \emph{plugins}.
-	Cuando la ultima pila termine de procesar el fragmento, lo eliminara.
+\item	Las tareas procesaran cada fragmento con cada pila de plugins.  Cuando
+	la ultima pila termine de procesar el fragmento, lo eliminara.
 
 \item	Cuando se terminan de procesar todos los fragmentos, la tarea de
 	búsqueda resume la ejecución para eliminar el ítem de la memoria y
@@ -64,12 +65,12 @@ TODO: Diagrama del framework
 El framework fue implementado en \emph{C++} utilizando \emph{OpenMP}. La,
 elección del lenguaje principalmente se debe al deseo de trabajar tomando como
 base el desarrollo realizado por Torres en \cite{torres2014}, en especial se
-espero hacer uso de los \emph{plugins}. Por su parte, el autor original del
-software eligió este lenguaje debido a su eficiencia y paradigma. Dado que el
-sistema debe procesar las cuadros en tiempos acotados, la eficiencia es es
-crucial, mientras que el paradigma orientado a objetos permite establecer
-fácilmente la interfaz de los plugins. Por otra parte, utilizar \emph{OpenMP} es
-una desviación del software original.
+espero hacer uso de los plugins. Por su parte, el autor original del software
+eligió este lenguaje debido a su eficiencia y paradigma. Dado que el sistema
+debe procesar las cuadros en tiempos acotados, la eficiencia es es crucial,
+mientras que el paradigma orientado a objetos permite establecer fácilmente la
+interfaz de los plugins. Por otra parte, utilizar \emph{OpenMP} es una
+desviación del software original.
 
 \emph{OpenMP} es una API de bibliotecas y directivas al compilador para la
 definición de paralelismo de alto nivel para sistemas de memoria compartida en

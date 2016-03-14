@@ -16,7 +16,7 @@ estructura interna del software.
 
 Si bien pueden existir variantes entre los distintos sistemas de visión que se
 han propuesto para el fútbol de robots, la mayoría de las soluciones convergen a
-un sistema de pila de \emph{plugins}. Incluso los \emph{plugins} utilizados
+un sistema de pila de plugins. Incluso los plugins utilizados
 suelen ser similares. Esto no debería ser sorpresivo, ya que el dominio es muy
 especifico y el ambiente esta preparado para facilitar la extracción de la
 información por el sistema.
@@ -35,16 +35,16 @@ El sistema desarrollado por Torres tiene cuatro componentes principales:
 \item[Estrategia de búsqueda:] Es una interfaz para definir la clase que
 	especificara la estrategia de búsqueda, es decir, es el componente
 	encargado de controlar de que manera se entregan los cuadros a la pila
-	de \emph{plugins} (comúnmente verificando de no entregar dos veces el
+	de plugins (comúnmente verificando de no entregar dos veces el
 	mismo cuadro a la pila). Cada instancia tiene una sola pila de
-	\emph{plugins}.
+	plugins.
 	
 \item[Pila de plugins:] Define el método \emph{process} que recibe una imagen
-	como parámetro. En su creación se le definen los \emph{plugins} que
+	como parámetro. En su creación se le definen los plugins que
 	deben procesar la imagen y en que orden. La imagen se procesara de forma
 	secuencial.
 
-\item[Plugin:] Interfaz para definir las clases de los \emph{plugins} que
+\item[Plugin:] Interfaz para definir las clases de los plugins que
 	procesaran la imagen. Define el método \emph{process} que recibe como
 	parámetro una imagen.
 
@@ -53,15 +53,15 @@ El sistema desarrollado por Torres tiene cuatro componentes principales:
 En la implementación de la solución especifica, se crean dos estrategias de
 búsqueda, una para la búsqueda de los robots y la otra para la búsqueda de la
 pelota. Las primeras etapas de procesamiento son iguales en ambas estrategias de
-búsqueda. Los primeros \emph{plugins} son los de calibración, conversión de
+búsqueda. Los primeros plugins son los de calibración, conversión de
 color y morfología. La estrategia de búsqueda de pelota continua con el
-\emph{plugin} de búsqueda de pelota, mientras que la búsqueda de robots continua
-con los \emph{plugins} de detección de regiones principales y detección de
-detecciones secundarias. Ambas terminan con el \emph{plugin} de difusión.
+plugin de búsqueda de pelota, mientras que la búsqueda de robots continua
+con los plugins de detección de regiones principales y detección de
+detecciones secundarias. Ambas terminan con el plugin de difusión.
 
 TODO: Conectar de alguna manera!!!
 
-Los \emph{plugins} pueden ser agrupados de acuerdo con las etapas de la visión
+Los plugins pueden ser agrupados de acuerdo con las etapas de la visión
 por computadora discutidos en la sección anterior:
 
 \begin{description}
@@ -69,17 +69,17 @@ por computadora discutidos en la sección anterior:
 \item[Adquisicion de la imagen:] Esta etapa esta a cargo de la interfaz de
 	captura.
 
-\item[Pre procesamiento:] \emph{Plugins} de calibración y conversión de color.
+\item[Pre procesamiento:] plugins de calibración y conversión de color.
 
-\item[Extraccion de características, Detección y Segmentación:] \emph{Plugins}
+\item[Extraccion de características, Detección y Segmentación:] plugins
 	de segmentación de color, de morfología y de detección de regiones
 	principales.
 
-\item[Procesamiento de alto nivel:] \emph{Plugins} de detección de pelota y de
+\item[Procesamiento de alto nivel:] plugins de detección de pelota y de
 	detección de regiones secundarias.
 
 \item[Toma de decisiones:] Dado que el sistema de visión para fútbol de robots
 	no realiza toma de decisiones, el estado de la cancha es comunicado a
-	las computadoras de los equipos a través del \emph{plugin} de difusión.
+	las computadoras de los equipos a través del plugin de difusión.
 
 \end{description}

@@ -38,18 +38,18 @@ Para resolver este problema se pueden aplicar tres enfoques distintos:
 	objeto no aparezca completo en ninguna de las zonas. Esto permitiría
 	reducir el tiempo de procesamiento de cada cuadro.
 
-\item	Se puede resolver el problema optimizando cada uno de los \emph{plugins}
-	del framework, esperando de esta manera que el tiempo de procesamiento
-	de cada cuadro se reduzca lo suficiente como para que el sistema pueda
+\item	Se puede resolver el problema optimizando cada uno de los plugins del
+	framework, esperando de esta manera que el tiempo de procesamiento de
+	cada cuadro se reduzca lo suficiente como para que el sistema pueda
 	procesar la mayoría de los cuadros a tiempo.
 
 \end{itemize}
 
 Lamentablemente este último enfoque es muy especifico de la solución para ser
 aplicada en el \emph{framework}. Ademas no fomenta la experimentación, ya que
-cada \emph{plugin} que se agregue o modifique deberá ser optimizado. El primer y
+cada plugin que se agregue o modifique deberá ser optimizado. El primer y
 segundo enfoque son suficientemente generales como para ser aplicados como parte
-del \emph{framework}, permite agregar y modificar los \emph{plugins} sin mayores
+del \emph{framework}, permite agregar y modificar los plugins sin mayores
 dificultades, y en el caso en el cual una solución especifica no cumpla con las
 condiciones que permitan aplicar alguna de las soluciones se puede limitar el
 paralelismo (ya sea no dividiendo el cuadro o procesando solo uno por vez).
