@@ -165,14 +165,17 @@ cuales fueron tomadas y modificadas del sistema de visión presentado en
 
 \item[CaptureFromFile:] Subclase de \emph{Input}. Es la clase encargada de crear
 	el flujo de objetos \emph{Frame}, tomando cada cuadro desde un archivo
-	de vídeo.
+	de vídeo. También debe respetar la taza de cuadros por segundo del
+	vídeo.
 
 \item[FastCaptureFromFile:] Subclase de \emph{Input}. Muy similar a
 	\emph{CaptureFromFile}, con la diferencia de que carga los cuadros a
 	memoria antes de que comience el sistema a capturar los cuadros. Esta
 	clase fue creada para la experimentación, ya que leer el vídeo desde el
 	disco en tiempo real introducía un retraso que no estaría presente si el
-	vídeo se capturase de una cámara.
+	vídeo se capturase de una cámara. También, para comprobar la capacidad
+	máxima del sistema, si la cola de cuadros a procesar esta vacía,
+	adelantara la creación del próximo cuadro.
 
 \item[FrameSlicer:] Subclase de \emph{ItemSlicer}. En este caso lo que se divide
 	es la imagen del cuadro. Cada sub cuadro tendrá un solapamiento con los
