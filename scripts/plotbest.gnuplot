@@ -6,7 +6,7 @@
 set term pdfcairo font "Arial,10"
 
 set xrange [0.5:13.5]
-set yrange [0:65]
+set yrange [0:60 < *]
 set xlabel "Nº Procesadores\n(Nº threads búsqueda + 1)"
 set xtics 2, 2
 #set style line 1 lt 1 lw 10
