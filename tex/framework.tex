@@ -7,11 +7,10 @@ con anterioridad. En primer lugar el sistema no estará limitado a tomar solo un
 cuadro por ves. La segunda optimización consta en dividir cada cuadro para que
 cada parte pueda ser procesada por un thread distinto. También seria deseable
 que las distintas pilas de plugins ejecuten de forma independiente una de la
-otra para que el retardo de procesamiento de cada cuadro sea menor.  Sin
-embargo, en los experimentos realizados se comprobó que el overhead introducido
-por el incremento en la cantidad de tareas afecta de forma notable el
-rendimiento de la aplicación, por lo cual se opto que las pilas ejecuten de
-forma secuencial.
+otra para que el retardo de procesamiento de cada cuadro sea menor. Sin embargo,
+en los experimentos realizados se comprobó que el overhead introducido por el
+incremento en la cantidad de tareas afecta de forma notable el rendimiento de la
+aplicación, por lo cual se opto que las pilas ejecuten de forma secuencial.
 
 Para esto se propone en la siguiente secuencia de procesamiento para cada ítem
 (un cuadro en el caso de la solución especifica para fútbol de robots):
@@ -33,8 +32,8 @@ Para esto se propone en la siguiente secuencia de procesamiento para cada ítem
 	fragmentos creado. Mientras espera no contribuirá al limite de tareas en
 	ejecución.
 
-\item	Las tareas procesaran cada fragmento con cada pila de plugins.  Cuando
-	la ultima pila termine de procesar el fragmento, lo eliminara.
+\item	Las tareas procesaran cada fragmento con cada pila de plugins. Cuando la
+	ultima pila termine de procesar el fragmento, lo eliminara.
 
 \item	Cuando se terminan de procesar todos los fragmentos, la tarea de
 	búsqueda resume la ejecución para eliminar el ítem de la memoria y
