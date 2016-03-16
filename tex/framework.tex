@@ -8,9 +8,10 @@ cuadro por ves. La segunda optimización consta en dividir cada cuadro para que
 cada parte pueda ser procesada por un thread distinto. También seria deseable
 que las distintas pilas de plugins ejecuten de forma independiente una de la
 otra para que el retardo de procesamiento de cada cuadro sea menor. Sin embargo,
-en los experimentos realizados se comprobó que el overhead introducido por el
-incremento en la cantidad de tareas afecta de forma notable el rendimiento de la
-aplicación, por lo cual se opto que las pilas ejecuten de forma secuencial.
+en los experimentos realizados se comprobó que el overhead y la competencia de
+recursos introducidos por el incremento en la cantidad de tareas afecta de forma
+notable el rendimiento de la aplicación, por lo cual se opto que las pilas
+ejecuten de forma secuencial.
 
 Para esto se propone en la siguiente secuencia de procesamiento para cada ítem
 (un cuadro en el caso de la solución especifica para fútbol de robots):
@@ -20,7 +21,8 @@ Para esto se propone en la siguiente secuencia de procesamiento para cada ítem
 \setcounter{enumi}{-1}
 
 \item	Antes de la ejecución el usuario establece una cantidad máxima de tareas
-	en ejecución simultanea.
+	en ejecución simultanea y la cantidad de partes en las que se divide el
+	ítem.
 
 \item	El hilo de captura genera o captura un ítem y lo deposita en el buffer.
 
@@ -65,7 +67,7 @@ elección del lenguaje principalmente se debe al deseo de trabajar tomando como
 base el desarrollo realizado por Torres en \cite{torres2014}, en especial se
 espero hacer uso de los plugins. Por su parte, el autor original del software
 eligió este lenguaje debido a su eficiencia y paradigma. Dado que el sistema
-debe procesar las cuadros en tiempos acotados, la eficiencia es es crucial,
+debe procesar los cuadros en tiempos acotados, la eficiencia es es crucial,
 mientras que el paradigma orientado a objetos permite establecer fácilmente la
 interfaz de los plugins. Por otra parte, utilizar \emph{OpenMP} es una
 desviación del software original.
@@ -91,17 +93,17 @@ Las clases del framework básico son las siguientes:
 \item[RingBuffer:] Este es el buffer donde se guardan los ítems generados
 	mientras esperan ser procesados. El buffer guarda solo punteros a
 	objetos de la clase \emph{Item} y no tiene mecanismos de control que
-	permitan acceder la estructura desde múltiples threads al mismo tiempo.
-	Cuando se solicita un ítem, se devuelve el puntero al mas recientemente
-	agregado o \textbf{NULL} en caso de que la estructura este vacía. Cuando
-	se intenta agregar un nuevo ítem pero la estructura esta llena se coloca
-	este en espacio del ítem mas viejo en la estructura y se retorna el
-	puntero de este al llamador, delegándole su destrucción. La destrucción
-	del ítem se delega al llamador por dos motivos. El primero es que el
-	buffer desconoce el tipo real del ítem. La segunda razón es que para
-	poder ser utilizado de forma segura, las llamadas a los métodos del
-	buffer deben estar dentro de secciones criticas y realizar las
-	eliminaciones dentro de estas podría ser muy lento.
+	permitan acceder la estructura desde múltiples threads al mismo tiempo
+	de forma segura. Cuando se solicita un ítem, se devuelve el puntero al
+	mas recientemente agregado o \textbf{NULL} en caso de que la estructura
+	este vacía. Cuando se intenta agregar un nuevo ítem pero la estructura
+	esta llena se coloca este en espacio del ítem mas viejo en la estructura
+	y se retorna el puntero de este al llamador, delegándole su destrucción.
+	La destrucción del ítem se delega al llamador por dos motivos. El
+	primero es que el buffer desconoce el tipo real del ítem. La segunda
+	razón es que para poder ser utilizado de forma segura, las llamadas a
+	los métodos del buffer deben estar dentro de secciones criticas y
+	realizar las eliminaciones dentro de estas podría ser muy lento.
 
 \item[Input:] Se trata de una clase que funciona como definición de la interfaz
 	de las clases que generan los ítems. Sus métodos principales son
@@ -113,11 +115,15 @@ Las clases del framework básico son las siguientes:
 	aplicación así lo requiere.
 
 \item[ItemSlicer:] Es la clase que define la interfaz de las clases encargadas
-	de dividir los ítems. Se definen dos métodos. El primero es \emph{slice}
-	que recibe como parámetro ítem y la cantidad de partes en la que este
-	debe ser dividido y retorna un arreglo de ítems. El segundo método es
-	\emph{delPart} que recibe como parámetro una de las partes creadas por
-	el método \emph{slice} y la elimina.
+	de dividir los ítems. Se definen tres métodos. El primero es
+	\emph{slice} que recibe como parámetro ítem y la cantidad de partes en
+	la que este debe ser dividido y retorna un arreglo de ítems. El segundo
+	método es \emph{resetItem} que recibe como parámetro una de las partes
+	creadas por el método \emph{slice} luego de que fue procesada por una
+	pila de plugins y la configura al estado para que el funcionamiento de
+	la próxima pila no se vea interferido. El tercer método es
+	\emph{delPart} que recibe como parámetro un fragmento de ítem y lo
+	elimina.
 
 \item[Plugin:] Esta clase define una interfaz para los plugins que realizaran
 	las distintas partes del procesamiento de la imagen. Solo se define el
@@ -127,7 +133,7 @@ Las clases del framework básico son las siguientes:
 \item[PluginStack:] Esta es la clase que tomara el ítem y se encarga de
 	entregarlo a cada uno de los plugins. Tiene solo dos métodos,
 	\emph{addPlugin}, para agregar un plugin, y \emph{process} que tiene
-	como parámetro un ítem, para procesar un ítem.
+	como parámetro un ítem, para procesarlo.
 
 \item[ItemSwitch:] Esta es la clase mas compleja del framework básico, ya que es
 	la que crea las múltiples tareas. La primera tarea que crea es la
@@ -168,13 +174,12 @@ cuales fueron tomadas y modificadas del sistema de visión presentado en
 	vídeo.
 
 \item[FastCaptureFromFile:] Subclase de \emph{Input}. Muy similar a
-	\emph{CaptureFromFile}, con la diferencia de que carga los cuadros a
-	memoria antes de que comience el sistema a capturar los cuadros. Esta
-	clase fue creada para la experimentación, ya que leer el vídeo desde el
-	disco en tiempo real introducía un retraso que no estaría presente si el
-	vídeo se capturase de una cámara. También, para comprobar la capacidad
-	máxima del sistema, si la cola de cuadros a procesar esta vacía,
-	adelantara la creación del próximo cuadro.
+	\emph{CaptureFromFile}, con las diferencias de que carga los cuadros a
+	memoria antes de que comience el sistema a capturar los cuadros (para
+	evitar los retardos de la lectura de disco y decodificación), y si la
+	cola de cuadros a procesar esta vacía, adelantara la creación del
+	próximo cuadro. Esta clase es útil para comprobar la capacidad máxima
+	del sistema.
 
 \item[FrameSlicer:] Subclase de \emph{ItemSlicer}. En este caso lo que se divide
 	es la imagen del cuadro. Cada sub cuadro tendrá un solapamiento con los

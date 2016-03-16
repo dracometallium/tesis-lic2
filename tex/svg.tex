@@ -5,15 +5,15 @@
 
 El software de visión global utilizado en la \emph{SSL} de la \emph{Robocup} es
 el \emph{SSL-Vision}\cite{sslvision}. Este es un sistema programado en
-\emph{C++} basado en plugins, lo que le permite ser extendido mediante estos.
-Lamentablemente posee algunas desventajas. En primer lugar, el sistema de
-captura de cuadros y el de procesamiento de estos están fuertemente acoplados y
-forman parte del mismo hilo de ejecución, lo que impide hacer uso de las
-capacidades de paralelización que ofrece el hardware actual. Por esto, para
-poder lograr un desempeño aceptable es necesario que cada plugin este altamente
-optimizado, lo que no favorece la experimentación. Por último, la complejidad
-del sistema entorpece su uso como herramienta didáctica para la introducción a
-la visión por computadora.
+\emph{C++} basado en plugins, lo que le permite ser extendido fácilmente
+mediante estos. Lamentablemente posee algunas desventajas. En primer lugar, el
+sistema de captura de cuadros y el de procesamiento están fuertemente
+acoplados formando parte del mismo hilo de ejecución. Esto impide hacer uso de
+las capacidades de paralelización que ofrece el hardware actual. Como
+consecuencia, para poder lograr un desempeño aceptable es necesario que cada
+plugin este altamente optimizado, lo que no favorece la experimentación. Por
+último, la complejidad del sistema entorpece su uso como herramienta didáctica
+para la introducción a la visión por computadora.
 
 En respuesta a estos problemas, Guillermo Torres\cite{torres2014} diseñó un
 nuevo framework, también programado en \emph{C++} y orientado a plugins
@@ -21,8 +21,8 @@ destinado al uso educativo y de producción. El framework es general, pero se
 provee una implementación de un sistema de visión de fútbol de robots. La
 diferencia principal de este framework es el desacoplamiento del hilo de captura
 y los hilos de búsqueda. En el caso del fútbol de robots, el framework tiene dos
-hilos de búsqueda, uno para encontrar la pelota y otro para encontrar los
-robots, un hilo de captura (desde un video pre grabado o una captura desde una
+hilos de búsqueda (uno para encontrar la pelota y otro para encontrar los
+robots) un hilo de captura (desde un video pre grabado o una captura desde una
 cámara) y un hilo para la interfaz. Dividir el costo de procesamiento le permite
 un mejor aprovechamiento de los recursos de hardware que \emph{SSL-Vision}, pero
 en equipos de mas de cuatro procesadores estos se ven desaprovechados.
@@ -32,6 +32,5 @@ desaprovechamiento de los recursos de hardware no es un problema, ya que el
 sistema puede procesar un vídeo de 352x228 píxeles a una taza de 60 cuadros por
 segundo. Sin embargo, actualmente se utiliza como fuente cuatro cámaras, en
 lugar de la cámara única para la cual el sistema fue pensado. Cuando se probó el
-framework con un vídeo con una resolución de 1080x758 píxeles el número de
-cuadros por segundos procesados cayo a 16 cuadros\footnote{Los detalles de este
-experimento se detallaran mas adelante}.
+framework con un vídeo con una resolución de 800x600 píxeles el número de
+cuadros por segundos procesados cayo a 45 cuadros por segundo.

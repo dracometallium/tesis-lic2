@@ -21,7 +21,7 @@ suelen ser similares. Esto no debería ser sorpresivo, ya que el dominio es muy
 especifico y el ambiente esta preparado para facilitar la extracción de la
 información por el sistema.
 
-El sistema desarrollado por Torres tiene cuatro componentes principales:
+El sistema desarrollado por Torres tiene cinco componentes principales:
 
 \begin{description}
 
@@ -53,27 +53,27 @@ El sistema desarrollado por Torres tiene cuatro componentes principales:
 En la implementación de la solución especifica, se crean dos estrategias de
 búsqueda, una para la búsqueda de los robots y la otra para la búsqueda de la
 pelota. Las primeras etapas de procesamiento son iguales en ambas estrategias de
-búsqueda. Los primeros plugins son los de calibración, conversión de
-color y morfología. La estrategia de búsqueda de pelota continua con el
-plugin de búsqueda de pelota, mientras que la búsqueda de robots continua
-con los plugins de detección de regiones principales y detección de
-detecciones secundarias. Ambas terminan con el plugin de difusión.
+búsqueda. Los primeros plugins son los de conversión de color, segmentación de
+color y morfología. La estrategia de búsqueda de pelota continua con el plugin
+de búsqueda de pelota, mientras que la búsqueda de robots continua con los
+plugins de detección de regiones principales y detección de detecciones
+secundarias. Ambas terminan con el plugin de difusión.
 
 TODO: Conectar de alguna manera!!!
 
-Los plugins pueden ser agrupados de acuerdo con las etapas de la visión
-por computadora discutidos en la sección anterior:
+De acuerdo a su función, los plugins pueden ser agrupados por las etapas de la
+visión por computadora discutidos en la sección anterior:
 
 \begin{description}
 
 \item[Adquisicion de la imagen:] Esta etapa esta a cargo de la interfaz de
 	captura.
 
-\item[Pre procesamiento:] plugins de calibración y conversión de color.
+\item[Pre procesamiento:] plugins de conversión de color, de segmentación de
+	color y de morfología.
 
-\item[Extraccion de características, Detección y Segmentación:] plugins
-	de segmentación de color, de morfología y de detección de regiones
-	principales.
+\item[Extraccion de características, Detección y Segmentación:] plugins de
+	detección de regiones principales.
 
 \item[Procesamiento de alto nivel:] plugins de detección de pelota y de
 	detección de regiones secundarias.

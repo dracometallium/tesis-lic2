@@ -2,16 +2,18 @@
 
 \section{Metodología}
 
-Para comprobar la adaptavilidad del sistema desarrollado por Guillermo Torres en
+Para comprobar la adaptabilidad del sistema desarrollado por Guillermo Torres en
 \cite{torres2014} se grabó un vídeo del que se crearon tres versiones con
-distintas resoluciones, 1280x720 píxeles, 800x600 píxeles, 352x224 píxeles, cada
-uno con una taza de 60 cuadros por segundo. Se realizaron ejecuciones con cada
-uno de estos vídeos en una computadora con un procesador Intel Xeon E5-2630.
-Este es un procesador de 6 núcleos, cada uno de dos subprocesos simultáneos a
-través de la técnica de \emph{simultaneus multithreading} y con un reloj de
-2,30GHz. El equipo cuenta ademas con 16GiB de memoria RAM.
+resoluciones de 352x228, 800x600 y 1280x720 pixeles, cada uno con una taza de 60
+cuadros por segundo. El segundo nos permite verificar el sistema contra los
+requerimientos actuales, mientras que el tercero nos permitirá vislumbrar si el
+sistema puede adaptarle a una mayor exigencia. Las ejecuciones con cada uno de
+estos vídeos en una computadora con un procesador Intel Xeon E5-2630. Este es un
+procesador de 6 núcleos, cada uno de dos subprocesos simultáneos a través de la
+técnica de \emph{simultaneus multithreading} y con un reloj de 2,30GHz. El
+equipo cuenta ademas con 16GiB de memoria RAM.
 
-Durante la prueba con el vídeo de resolución 352x224 el sistema pudo procesar
+Durante la prueba con el vídeo de resolución 352x228 el sistema pudo procesar
 todos los cuadros del vídeo a tiempo (60 cuadros por segundo). Esto era de
 esperarse, ya que el sistema fue desarrollado con el objetivo de procesar vídeos
 de esa resolución. Sin embargo a pesar de la velocidad y cantidad de los
