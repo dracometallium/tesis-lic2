@@ -5,7 +5,8 @@ BIB=biblio.bib
 AUX=$(TEX:.tex=.aux)
 INCTEX=$(shell ls tex/*.tex)
 FIGURAS=$(shell ls img/*.svg)
-DATOS=$(shell ls img/*.dat)
+RES=$(shell ls img/*.res)
+DATOS=$(RES:.res=.dat)
 DATOS_PDF=$(DATOS:.dat=_fps.pdf) $(DATOS:.dat=_maxTurnArround.pdf) $(DATOS:.dat=_turnArround.pdf) $(DATOS:.dat=_bestfps.pdf)
 FIGURAS_PDF=$(FIGURAS:.svg=.pdf)
 GARBAGE=*.aux *.bbl *.blg *.log *.pdf *.toc
@@ -27,9 +28,12 @@ propuesta:
 $(FIGURAS_PDF): $(FIGURAS)
 	inkscape $(@:.pdf=.svg) -z -A $@
 
-$(DATOS_PDF): $(DATOS) scripts/plot.gnuplot
+$(DATOS_PDF): $(DATOS)
 	cd img && ../scripts/plot.sh
 	cd img && ../scripts/plotbest.sh
+
+$(DATOS): $(RES)
+	cd img && ../scripts/mdat.sh
 
 clean:
 	rm -f $(GARBAGE)
