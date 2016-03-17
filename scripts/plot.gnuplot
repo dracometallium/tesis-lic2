@@ -18,20 +18,21 @@ set ylabel 'Nº particiones'
 set view map
 
 set palette defined (300 '#0000ff', 600 'white')
-set cbrange [0:60]
+set cbrange [ 0 : 60 < * ]
+
 set output resolution.'_fps.pdf'
 set title "Cuadros por segundo\n".resolution." pixeles"
 plot arch using ($1+1):2:($4/10) with image title '', \
  arch using ($1+1):2:(sprintf('%.1f', ($4/10.0))) with labels font ',10' title ''
-set cbrange [ * : * ]
 
 set palette defined (0 'white', 300 '#0000ff')
+set cbrange [ * : * ]
+
 set output resolution.'_maxTurnArround.pdf'
 set title "Tiempo máximo de espera\n".resolution." pixeles"
 plot arch using ($1 + 1):2:5 with image title '', \
  arch using ($1 + 1):2:(sprintf('%.2f', $5)) with labels font ',10' title '' 
 
-set palette defined (0 'white', 300 '#0000ff')
 set output resolution.'_turnArround.pdf'
 set title "Tiempo de espera promedio\n".resolution." pixeles"
 plot arch using ($1+1):2:($6/$4) with image title '', \
