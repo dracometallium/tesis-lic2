@@ -37,4 +37,4 @@ $(DATOS): $(RES)
 
 clean:
 	rm -f $(GARBAGE)
-	rm -f $(FIGURAS_PDF) $(DATOS_PDF)
+	rm -f $(FIGURAS_PDF) $(DATOS_PDF) $(DATOS)
