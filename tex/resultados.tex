@@ -7,21 +7,29 @@ framework se procesaron los vídeos de resolución 352x228, 800x600 y 1280x720, 
 una computadora con un procesador Intel Xeon E5-2630. Este es un procesador de 6
 núcleos, cada uno de dos subprocesos simultáneos a través de la técnica de
 \emph{simultaneus multithreading} y con un reloj de 2,30GHz. El equipo cuenta
-ademas con 16GiB de memoria RAM.
+ademas con 16GiB de memoria RAM. Los resultados del vídeo de resolución 352x228
+píxeles no serán tratados mas adelante debido a que la carga al sistema es
+reducida y no aporta información que no aporten los otros dos vídeos.
 
 Se realizaron pruebas con cada vídeo, variando la cantidad de partes en las que
-fueron divididos los cuadros y la cantidad de procesadores disponibles a la
-aplicación. Para cada caso, se estableció la cantidad máxima de tareas en
-ejecución simultanea como la cantidad de procesadores menos uno. El procesador
-no usado por las tareas de búsqueda se dejo para ser compartido entre el hilo de
-captura y el hilo que crea las tareas de búsqueda.
+fueron divididos los cuadros de 1 a 24, y la cantidad de hilos de búsqueda entre
+1 y 11. De la primera variable se tomaron todos los valores enteros dentro del
+rango ya que el área del fragmento varia de forma irregular entre valores
+adyacentes. De la segunda variable solo se tomaron los valores impares, ya que
+el cambio de esta es mas gradual, haciendo innecesario tomar todo el conjunto
+para analizar las tendencias.
 
-En cada test se ejecuto el programa durante 15 segundos. Durante los últimos 10
-segundo se contó la cantidad de cuadros procesados, y de cada uno de estos se
-registro el retardo entre su creación su procesamiento. Los primeros 5 segundos
+En cada test se ejecuto el programa durante 13 segundos. Durante los últimos 10
+segundos se contó la cantidad de cuadros procesados, y de cada uno de estos se
+registro el retardo entre su creación su procesamiento. Los primeros 3 segundos
 se ignoraron con el fin de permitir que la ejecución se estabilizara. Cada test
-se realizo 10 veces. Para eliminar valores atípicos se elimino el mínimo y el
-máximo, y sobre los restantes se calculo el promedió.
+se realizo 10 veces.
+
+Cada prueba se ejecuto dos veces, la primera buscando el mínimo de la cantidad
+máxima de cuadros por segundo que soporta el sistema bajo cada configuración. En
+la segunda se limito la cantidad de cuadros por segundo de cada configuración,
+según lo encontrado en la prueba anterior, y se registro el tiempo re
+procesamiento máximo para cada de estas.
 
 Durante el desarrollo de la aplicación se probaron tres distintas
 implementaciones. En la primera implementación, el framework ejecutaba las
@@ -29,7 +37,9 @@ distintas pilas de plugins en tareas separadas. En la segunda implementación el
 framework fue modificado para que una sola tarea ejecutara todas las pilas de
 plugins sobre un mismo fragmento. Para la tercera implementación se trabajo
 sobre el mismo framework que la segunda, pero se unieron las pilas de búsquedas
-de robots y la de búsqueda de pelota.
+de robots y la de búsqueda de pelota. De estas la última fue la que produjo
+resultados mas satisfactorios, por lo que sera sobre los resultados de esta que
+trabajaremos a continuación.
 
 \section{Resultados}
 
