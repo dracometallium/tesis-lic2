@@ -5,10 +5,10 @@
 Para aumentar el throughput del sistema se aplicaran las dos técnicas discutidas
 con anterioridad. En primer lugar el sistema no estará limitado a tomar solo un
 cuadro por ves. La segunda optimización consta en dividir cada cuadro para que
-cada parte pueda ser procesada por un thread distinto. También seria deseable
-que las distintas pilas de plugins ejecuten de forma independiente una de la
-otra para que el retardo de procesamiento de cada cuadro sea menor. Sin embargo,
-en los experimentos realizados se comprobó que el overhead y la competencia de
+cada parte pueda ser procesada por un hilo distinto. También seria deseable que
+las distintas pilas de plugins ejecuten de forma independiente una de la otra
+para que el retardo de procesamiento de cada cuadro sea menor. Sin embargo, en
+los experimentos realizados se comprobó que el overhead y la competencia de
 recursos introducidos por el incremento en la cantidad de tareas afecta de forma
 notable el rendimiento de la aplicación, por lo cual se opto que las pilas
 ejecuten de forma secuencial.

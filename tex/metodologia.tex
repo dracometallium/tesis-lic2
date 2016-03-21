@@ -8,10 +8,10 @@ resoluciones de 352x228, 800x600 y 1280x720 pixeles, cada uno con una taza de 60
 cuadros por segundo. El segundo nos permite verificar el sistema contra los
 requerimientos actuales, mientras que el tercero nos permitirá vislumbrar si el
 sistema puede adaptarle a una mayor exigencia. Las ejecuciones con cada uno de
-estos vídeos en una computadora con un procesador Intel Xeon E5-2630. Este es un
-procesador de 6 núcleos, cada uno de dos subprocesos simultáneos a través de la
-técnica de \emph{simultaneus multithreading} y con un reloj de 2,30GHz. El
-equipo cuenta ademas con 16GiB de memoria RAM.
+estos vídeos se realizaron en una computadora con un procesador Intel Xeon
+E5-2630. Este es un procesador de 6 núcleos, cada uno de dos subprocesos
+simultáneos a través de la técnica de \emph{simultaneus multithreading} y con un
+reloj de 2,30GHz. El equipo cuenta ademas con 16GiB de memoria RAM.
 
 Durante la prueba con el vídeo de resolución 352x228 el sistema pudo procesar
 todos los cuadros del vídeo a tiempo (60 cuadros por segundo). Esto era de
@@ -48,10 +48,10 @@ Para resolver este problema se pueden aplicar tres enfoques distintos:
 \end{itemize}
 
 Lamentablemente este último enfoque es muy especifico de la solución para ser
-aplicada en el \emph{framework}. Ademas no fomenta la experimentación, ya que
-cada plugin que se agregue o modifique deberá ser optimizado. El primer y
-segundo enfoque son suficientemente generales como para ser aplicados como parte
-del \emph{framework}, permite agregar y modificar los plugins sin mayores
-dificultades, y en el caso en el cual una solución especifica no cumpla con las
-condiciones que permitan aplicar alguna de las soluciones se puede limitar el
-paralelismo (ya sea no dividiendo el cuadro o procesando solo uno por vez).
+aplicada en el framework. Ademas no fomenta la experimentación, ya que cada
+plugin que se agregue o modifique deberá ser optimizado. El primer y segundo
+enfoque son suficientemente generales como para ser aplicados como parte del
+framework, permite agregar y modificar los plugins sin mayores dificultades, y
+en el caso en el cual una solución especifica no cumpla con las condiciones que
+permitan aplicar alguna de las soluciones se puede limitar el paralelismo (ya
+sea no dividiendo el cuadro o procesando solo uno por vez).
