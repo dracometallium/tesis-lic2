@@ -3,60 +3,51 @@
 \section{Descripción del framework}
 
 Para aumentar el throughput del sistema se aplicaran las dos técnicas discutidas
-con anterioridad. En primer lugar el sistema no estará limitado a tomar solo un
-cuadro por ves. La segunda optimización consta en dividir cada cuadro para que
-cada parte pueda ser procesada por un hilo distinto. También seria deseable que
-las distintas pilas de plugins ejecuten de forma independiente una de la otra
-para que el retardo de procesamiento de cada cuadro sea menor. Sin embargo, en
-los experimentos realizados se comprobó que el overhead y la competencia de
-recursos introducidos por el incremento en la cantidad de tareas afecta de forma
-notable el rendimiento de la aplicación, por lo cual se opto que las pilas
-ejecuten de forma secuencial.
+con anterioridad. La primer optimización consta en dividir cada cuadro para que
+cada parte pueda ser procesada por un hilo distinto. La segunda optimización
+sera que el sistema no estará limitado a tomar solo un cuadro por ves. Para
+controlar estas dos optimizaciones debemos definir dos parámetros. Para la
+primera establecemos la cantidad de partes en las cuales se dividirá cada ítem,
+mientras que para la segunda establecemos la cantidad máxima de tareas de
+búsqueda en ejecución.
 
-Para esto se propone en la siguiente secuencia de procesamiento para cada ítem
-(un cuadro en el caso de la solución especifica para fútbol de robots):
+También seria deseable que las distintas pilas de plugins ejecuten de forma
+independiente una de la otra para que el retardo de procesamiento de cada cuadro
+sea menor. Sin embargo, en los experimentos realizados se comprobó que el
+overhead y la competencia de recursos introducidos por el incremento en la
+cantidad de tareas afecta de forma notable el rendimiento de la aplicación, por
+lo cual se opto que las pilas ejecuten de forma secuencial.
 
-\begin{enumerate}
+Conceptualmente el framework ejecutara cuatro tipos de tareas distintos, que a
+su ves pueden ser divididos en tareas persistentes y tareas de búsqueda. Las
+primeras son aquellas de las cuales solo habrá una instancia y permanecerán
+durante la ejecución la mayor parte del programa, mientra que definimos a las
+tareas de búsqueda a aquellas creadas con el objetivo de procesar un único
+cuadro (o un fragmento de uno), y que terminaran cuando terminen de procesar
+este. Las tareas persistentes son generación de ítems y generación de tareas de
+búsqueda, mientras que las tareas de búsqueda son fractura de ítems y
+procesamiento de fragmentos.
 
-\setcounter{enumi}{-1}
+\begin{description}
 
-\item	Antes de la ejecución el usuario establece una cantidad máxima de tareas
-	en ejecución simultanea y la cantidad de partes en las que se divide el
-	ítem.
+\item[Generación de ítems:] Sera la encargada de la generación o captura de los
+	ítems y colocarlos en la pila de ítems a procesar. Solo habrá una
+	instancia de esta tarea.
 
-\item	El hilo de captura genera o captura un ítem y lo deposita en el buffer.
+\item[Generación de tareas de búsqueda:] Esta tarea sera la encargada de tomar
+	un ítem de la pila de ítems a procesar cuando la cantidad de tareas en
+	ejecución sea menor que el máximo establecido, y crear una tarea de
+	fractura para este. Solo habrá una instancia de esta tarea.
 
-\item	Una tarea maestra consume el ítem mas reciente del buffer y crea una
-	tarea de búsqueda para su procesamiento. Si hay mas tareas que las
-	permitidas o no hay ítems en el buffer, espera.
+\item[Fractura de ítems:] Cada una de estas tareas dividirá el ítem en tantas
+	partes como se haya definido al comienzo de la ejecución y por cada
+	fragmento creara una tarea de procesamiento de fragmentos asociada a
+	este.
 
-\item	La tarea de búsqueda fracciona el ítem y crea una tarea por cada
-	fragmentos creado. Mientras espera no contribuirá al limite de tareas en
-	ejecución.
+\item[Procesamiento de fragmentos:] Cada una de estas tareas tomara su fragmento
+	asociado y lo procesara utilizando cada una de las pilas de plugins.
 
-\item	Las tareas procesaran cada fragmento con cada pila de plugins. Cuando la
-	ultima pila termine de procesar el fragmento, lo eliminara.
-
-\item	Cuando se terminan de procesar todos los fragmentos, la tarea de
-	búsqueda resume la ejecución para eliminar el ítem de la memoria y
-	posiblemente realizar tareas conteo.
-
-\end{enumerate}
-
-Algo que no queda especificado en la descripción anterior, es la naturaleza de
-las tareas. Por un lado, las tareas pueden comenzar su ejecución al momento de
-ser creadas o pueden esperar a que la cantidad de tareas en ejecución sea menor
-que el máximo establecido. La primera opción tiene como desventaja que dado que
-el único control sobre la cantidad de tareas se realiza al consumir un ítem, la
-cantidad de tareas en ejecución sea mayor al máximo establecido durante una
-porción significativa de la duración del programa. La segunda opción solo
-funcionara satisfactoriamente si se asegura que la próxima tarea a ejecutar sea
-la mas antigua.
-
-El establecer un máximo de hilos en ejecución nos permite asegurarnos de que los
-hilos no compitan por la CPU y que esta se mantenga ocupada siempre que haya
-tareas a realizar, simplemente estableciendo tal máximo como el números de
-procesadores disponibles. Es por esto que la segunda opción es la mas deseable.
+\end{description}
 
 TODO: Diagrama del framework
 
