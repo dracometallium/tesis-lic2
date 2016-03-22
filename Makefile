@@ -6,8 +6,9 @@ AUX=$(TEX:.tex=.aux)
 INCTEX=$(shell ls tex/*.tex)
 FIGURAS=$(shell ls img/*.svg)
 RES=$(shell ls img/*.res)
+BRES=$(RES:.res=.bres)
 DATOS=$(RES:.res=.dat)
-DATOS_PDF=$(DATOS:.dat=_fps.pdf) $(DATOS:.dat=_maxTurnArround.pdf) $(DATOS:.dat=_turnArround.pdf) $(DATOS:.dat=_bestfps.pdf)
+DATOS_PDF=$(DATOS:.dat=_fps.pdf) $(DATOS:.dat=_maxTurnArround.pdf) $(DATOS:.dat=_maxBestTurnArround.pdf) $(DATOS:.dat=_bestfps.pdf)
 FIGURAS_PDF=$(FIGURAS:.svg=.pdf)
 GARBAGE=*.aux *.bbl *.blg *.log *.pdf *.toc
 
@@ -32,7 +33,7 @@ $(DATOS_PDF): $(DATOS)
 	cd img && ../scripts/plot.sh
 	cd img && ../scripts/plotbest.sh
 
-$(DATOS): $(RES)
+$(DATOS): $(RES) $(BRES)
 	cd img && ../scripts/mdat.sh
 
 clean:
