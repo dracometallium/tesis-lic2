@@ -18,5 +18,5 @@ set grid
 set output resolution.'_bestfps.pdf'
 set title "Cuadros por segundo\n".resolution." pixeles"
 set ylabel 'Cuadros por segundo'
-plot arch using 1:($4/10) with boxes ls 1 title '', \
- arch using 1:($4/10)+2:(sprintf('%.1f', ($4/10.0))) with labels font ',10' title ''
+plot arch using 1:($3/10) with boxes ls 1 title '', \
+ arch using 1:($3/10)+2:(sprintf('%.1f', ($3/10.0))) with labels font ',10' title ''

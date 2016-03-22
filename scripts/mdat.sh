@@ -2,38 +2,31 @@
 
 for arch in *.res; do
 	dir=$(dirname $0)
-	rFile=$(basename -s .res $arch).dat
-	rm $rFile
+	base=$(basename -s .res $arch)
+	rFile=${base}.dat
 	echo -n > $rFile
 	tFile=$(mktemp)
 	for t in $(seq 1 2 11); do
 		for p in $(seq 1 24); do
 			echo -n > $tFile
 			grep $arch -e "^$t $p " > $tFile
-			nItems=$(
-				cut -f 3 -d ' ' $tFile |
-				sort -n |
-				sed -e "1d;9q" |
-				awk '{s+=$1}END{print s/8}'
-				)
 			fps=$(
 				cut -f 4 -d ' ' $tFile |
 				sort -n |
-				sed -e "1d;9q" |
-				awk '{s+=$1}END{print s/8}'
+				sed -e "1q"
 			)
 			mWait=$(
 				cut -f 5 -d ' ' $tFile |
-				sort -n |
-				sed -e "1,+7d;9q"
+				sort -nr |
+				sed -e "1q"
 				)
-			tWait=$(
-				cut -f 6 -d ' ' $tFile |
-				sort -n |
-				sed -e "1d;9q" |
-				awk '{s+=$1}END{print s/8}'
+			grep ${base}.bres -e "^$t $p " > $tFile
+			mbWait=$(
+				cut -f 5 -d ' ' $tFile |
+				sort -nr |
+				sed -e "1q"
 				)
-			echo $t $p $nItems $fps $mWait $tWait >> $rFile
+			echo $t $p $fps $mWait $mbWait >> $rFile
 		done
 	done
 	rm $tFile
