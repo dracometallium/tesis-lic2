@@ -20,13 +20,51 @@ for arch in *.res; do
 				sort -nr |
 				sed -e "1q"
 				)
+			mstd=$(
+				awk '
+				BEGIN{
+					n = 0;
+					m = 0;
+					sqr = 0;
+				}
+				{
+					m += $5;
+					sqr += $5^2;
+					n++;
+				}
+				END{
+					m = m / n;
+					std = sqrt( (sqr / n) - m^2);
+					print m, " ", std
+				}
+				' $tFile
+				)
 			grep ${base}.bres -e "^$t $p " > $tFile
 			mbWait=$(
 				cut -f 5 -d ' ' $tFile |
 				sort -nr |
 				sed -e "1q"
 				)
-			echo $t $p $fps $mWait $mbWait >> $rFile
+			mbstd=$(
+				awk '
+				BEGIN{
+					n = 0;
+					m = 0;
+					sqr = 0;
+				}
+				{
+					m += $5;
+					sqr += $5^2;
+					n++;
+				}
+				END{
+					m = m / n;
+					std = sqrt( (sqr / n) - m^2);
+					print m, " ", std
+				}
+				' $tFile
+				)
+			echo $t $p $fps $mWait $mbWait $mstd $mbstd >> $rFile
 		done
 	done
 	rm $tFile
