@@ -37,3 +37,13 @@ set output resolution.'_maxBestTurnArround.pdf'
 set title "Tiempo máximo de espera, FSP limitados.\n".resolution." pixeles"
 plot arch using 1:2:5 with image title '', \
  arch using 1:2:(sprintf('%.2f', $5)) with labels font ',10' title '' 
+
+set output resolution.'_maxWaitProb.pdf'
+set title "Tiempo máximo de espera,\ncon probabilidad del 95%\n".resolution." pixeles"
+plot arch using 1:2:6 with image title '', \
+ arch using 1:2:(sprintf('%.2f', $6)) with labels font ',10' title ''
+
+set output resolution.'_maxBestWaitProb.pdf'
+set title "Tiempo máximo de espera, FSP limitados,\ncon probabilidad del 95%\n".resolution." pixeles"
+plot arch using 1:2:7 with image title '', \
+ arch using 1:2:(sprintf('%.2f', $7)) with labels font ',10' title '' 
