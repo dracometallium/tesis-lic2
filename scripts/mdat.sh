@@ -13,8 +13,9 @@ awkProg='
 	}
 	END{
 		m = m / n;
-		std = sqrt( (sqr / n) - m^2);
-		l = m + sqrt( (std / err) - std );
+		var = ((sqr / n) - m^2);
+		std = sqrt(var);
+		l = m + sqrt( (var / err) - var );
 		print l
 	}
 '
