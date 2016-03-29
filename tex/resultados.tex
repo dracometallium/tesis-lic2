@@ -28,7 +28,7 @@ se realizo 10 veces.
 Cada prueba se ejecuto dos veces, la primera buscando el mínimo de la cantidad
 máxima de cuadros por segundo que soporta el sistema bajo cada configuración. En
 la segunda se limito la cantidad de cuadros por segundo de cada configuración,
-según lo encontrado en la prueba anterior, y se registro el tiempo re
+según lo encontrado en la prueba anterior, y se registro el tiempo de
 procesamiento máximo para cada de estas.
 
 Durante el desarrollo de la aplicación se probaron tres distintas
@@ -42,6 +42,13 @@ resultados mas satisfactorios, por lo que sera sobre los resultados de esta que
 trabajaremos a continuación.
 
 \section{Resultados}
+
+Como se pueden ver en los siguientes gráficos, se cumplió satisfactoriamente con
+el objetivo crear un sistema capas de procesar un vídeo de 800x600 píxeles a 60
+cuadros por segundo, llegando casi a triplicar la cantidad de cuadros por
+segundos buscados. También se logro superar esta taza en el vídeo de 1280x720
+píxeles de resolución, indicando que el sistema podría ser usando bajo estas
+condiciones.
 
 \begin{figure}[h]
 
@@ -63,6 +70,20 @@ trabajaremos a continuación.
 	\caption{}
 
 \end{figure}
+
+En ambos gráficos surgen tres patrones no inmediatamente obvios. Por un lado, se
+puede ver que existen particiones que tienen una caída en los FPS con respecto a
+las particiones inmediatas. Esto se debe a que estos son números primos, lo que
+lleva a que las particiones sean franjas del cuadro, incrementando el área
+compartida. Otra peculiaridad que se puede notar, es que los FPS tienden a
+incrementarse con el numero de particiones, aun cuando el numero de hilos de
+búsqueda sea menor que este, forzando a que haya tareas que no estén ejecutando.
+Esto puede ser explicado por dos factores. El primero es que al reducir el
+tamaño del fragmento se aumenta la localidad espacial. El segundo es que varios
+de los plugins tienen un orden de ejecución superior al lineal, por lo que
+reducir el tamaño linealmente, reduce el tiempo en forma no lineal. El último
+patrón que se puede observar es una caída en el rendimiento cuando la cantidad
+de partes es menor la mitad que la cantidad de hilos.
 
 \begin{figure}[h]
 
