@@ -48,12 +48,14 @@ el objetivo crear un sistema capas de procesar un vídeo de 800x600 píxeles a 6
 cuadros por segundo, llegando casi a triplicar la cantidad de cuadros por
 segundos buscados. También se logro superar esta taza en el vídeo de 1280x720
 píxeles de resolución, indicando que el sistema podría ser usando bajo estas
-condiciones.
+condiciones. Los resultados finales pueden ser observados en las figuras
+\ref{800fps} y \ref{1280fps}.
 
 \begin{figure}[h]
 
 	\includegraphics[width=\textwidth]{img/800x600_fps.pdf}
 	\caption{}
+	\label{800fps}
 
 \end{figure}
 
@@ -61,8 +63,62 @@ condiciones.
 
 	\includegraphics[width=\textwidth]{img/1280x720_fps.pdf}
 	\caption{}
+	\label{1280fps}
 
 \end{figure}
+
+En las figuras \ref{800fps} y \ref{1280fps} se pueden observar tres patrones
+cuya causa puede ser no inmediatamente obvia. Por un lado, se puede ver que
+existen particiones que tienen una caída en los FPS con respecto a las
+particiones inmediatas. Esto se debe a que estos son números primos, lo que
+lleva a que las particiones sean franjas del cuadro, incrementando el área
+compartida.
+
+Otra peculiaridad que se puede notar, es que los FPS tienden a incrementarse con
+el numero de particiones, aun cuando el numero de hilos de búsqueda sea menor
+que este, forzando a que haya tareas que no estén ejecutando. Esto puede ser
+explicado por dos factores. El primero es que al reducir el tamaño del fragmento
+se aumenta la localidad espacial. El segundo es que varios de los plugins tienen
+un orden de ejecución superior al lineal, por lo que reducir el tamaño
+linealmente, reduce el tiempo en forma no lineal.
+
+El último patrón que se puede observar es una caída en el rendimiento cuando la
+cantidad de partes es menor la mitad que la cantidad de hilos. Dado que no se
+contaba con una herramienta para encontrar el bloque donde se estaba produciendo
+el retardo\footnote{Las herramientas de \emph{profiling} para programas
+secuenciales no funcionan en programas paralelos y las herramientas que soportan
+programas paralelos creados con \emph{openMP} no suelen ser proveidas en los
+gestores de paquetes de las distribuciones, y en algunos casos se necesita
+modificar el código del programa. Se considero mas sencillo buscar
+manualmente.}, se opto por una búsqueda manual. Se empezó removiendo los
+plugins hasta que se encontró aquel que producía el retraso en estos casos.
+Luego, sobre este, se fueron eliminando bloques de código hasta que se encontró
+que la fuente es una llamada a una función de una librería externa. Examinando
+el código de la función se observo que esta toma una imagen del mismo tamaño que
+el fragmento del cuadro y lo pinta de un color, lo que implica escribir sobre
+todos los píxeles de la imagen. Si la imagen es chica (por que el fragmento lo
+es) se puede hacer mejor provecho de la memoria cache, ya que las escrituras se
+realizaran sobre esta y el hilo puede continuar su ejecución mientras los
+cambios se propagan a la memoria RAM. Si la imagen es muy grande, la ráfaga de
+escritura es más larga, lo que lleva a que los hilos compitan por la memoria
+cache. Es por esto que la cantidad de cuadros se ve empobrecida cuando la
+cantidad de hilos aumenta.
+
+Para comprobar que esta explicación es correcta se realizaron dos experimentos.
+El primero consto en establecer el llamado a la función como sección critica,
+impidiendo que dos hilos puedan ejecutarla al mismo tiempo. Si bien esto
+introduce un retraso, para los casos donde la cantidad de particiones es
+reducida, se observo una mejora, sin embargo para el resto de los casos produjo
+una reducción. Es por eso que en el framework final se opto por no
+establecer la función como sección critica.
+
+El segundo experimento fue simplemente utilizar la herramienta \texttt{perf},
+para comparar los accesos y fallos de cache con 1 y 10 particiones, y probando
+con de 1 a 11 hilos de búsqueda. En todos los resultados se observo que la
+cantidad de fallos de cache en las ejecuciones de 10 particiones siempre fue
+menor que la cantidad de fallos que la ejecución de 1 partición y misma cantidad
+de hilos de búsqueda, variando desde un 37\% a un 74\%. Por otro lado, la
+cantidad de accesos a cache se vio duplicada en los casos de 3 a 11 hilos.
 
 \begin{figure}[h]
 
@@ -70,20 +126,6 @@ condiciones.
 	\caption{}
 
 \end{figure}
-
-En ambos gráficos surgen tres patrones no inmediatamente obvios. Por un lado, se
-puede ver que existen particiones que tienen una caída en los FPS con respecto a
-las particiones inmediatas. Esto se debe a que estos son números primos, lo que
-lleva a que las particiones sean franjas del cuadro, incrementando el área
-compartida. Otra peculiaridad que se puede notar, es que los FPS tienden a
-incrementarse con el numero de particiones, aun cuando el numero de hilos de
-búsqueda sea menor que este, forzando a que haya tareas que no estén ejecutando.
-Esto puede ser explicado por dos factores. El primero es que al reducir el
-tamaño del fragmento se aumenta la localidad espacial. El segundo es que varios
-de los plugins tienen un orden de ejecución superior al lineal, por lo que
-reducir el tamaño linealmente, reduce el tiempo en forma no lineal. El último
-patrón que se puede observar es una caída en el rendimiento cuando la cantidad
-de partes es menor la mitad que la cantidad de hilos.
 
 \begin{figure}[h]
 
