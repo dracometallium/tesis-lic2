@@ -43,13 +43,12 @@ trabajaremos a continuación.
 
 \section{Resultados}
 
-Como se pueden ver en los siguientes gráficos, se cumplió satisfactoriamente con
-el objetivo crear un sistema capas de procesar un vídeo de 800x600 píxeles a 60
-cuadros por segundo, llegando casi a triplicar la cantidad de cuadros por
-segundos buscados. También se logro superar esta taza en el vídeo de 1280x720
-píxeles de resolución, indicando que el sistema podría ser usando bajo estas
-condiciones. Los resultados finales pueden ser observados en las figuras
-\ref{800fps} y \ref{1280fps}.
+Como se pueden ver en las figuras \ref{800fps} y \ref{1280fps}, se cumplió
+satisfactoriamente con el objetivo crear un sistema capas de procesar un vídeo
+de 800x600 píxeles a 60 cuadros por segundo, llegando casi a triplicar la
+cantidad de cuadros por segundos buscados. También se logro superar esta taza en
+el vídeo de 1280x720 píxeles de resolución, indicando que el sistema podría ser
+usando bajo estas condiciones.
 
 \begin{figure}[h]
 
@@ -116,9 +115,9 @@ El segundo experimento fue simplemente utilizar la herramienta \texttt{perf},
 para comparar los accesos y fallos de cache con 1 y 10 particiones, y probando
 con de 1 a 11 hilos de búsqueda. En todos los resultados se observo que la
 cantidad de fallos de cache en las ejecuciones de 10 particiones siempre fue
-menor que la cantidad de fallos que la ejecución de 1 partición y misma cantidad
-de hilos de búsqueda, variando desde un 37\% a un 74\%. Por otro lado, la
-cantidad de accesos a cache se vio duplicada en los casos de 3 a 11 hilos.
+menor que la cantidad de fallos que en la ejecución de 1 partición y misma
+cantidad de hilos de búsqueda, variando desde un 37\% a un 74\%. Por otro lado,
+la cantidad de accesos a cache se vio duplicada en los casos de 3 a 11 hilos.
 
 \begin{figure}[h]
 
