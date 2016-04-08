@@ -31,11 +31,11 @@ procesamiento de fragmentos.
 \begin{description}
 
 \item[Generación de ítems:] Sera la encargada de la generación o captura de los
-	ítems y colocarlos en la pila de ítems a procesar. Solo habrá una
+	ítems y colocarlos en la cola de ítems a procesar. Solo habrá una
 	instancia de esta tarea.
 
 \item[Generación de tareas de búsqueda:] Esta tarea sera la encargada de tomar
-	un ítem de la pila de ítems a procesar cuando la cantidad de tareas en
+	un ítem de la cola de ítems a procesar cuando la cantidad de tareas en
 	ejecución sea menor que el máximo establecido, y crear una tarea de
 	fractura para este. Solo habrá una instancia de esta tarea.
 
@@ -86,15 +86,17 @@ Las clases del framework básico son las siguientes:
 	objetos de la clase \emph{Item} y no tiene mecanismos de control que
 	permitan acceder la estructura desde múltiples threads al mismo tiempo
 	de forma segura. Cuando se solicita un ítem, se devuelve el puntero al
-	mas recientemente agregado o \textbf{NULL} en caso de que la estructura
-	este vacía. Cuando se intenta agregar un nuevo ítem pero la estructura
-	esta llena se coloca este en espacio del ítem mas viejo en la estructura
-	y se retorna el puntero de este al llamador, delegándole su destrucción.
-	La destrucción del ítem se delega al llamador por dos motivos. El
-	primero es que el buffer desconoce el tipo real del ítem. La segunda
-	razón es que para poder ser utilizado de forma segura, las llamadas a
-	los métodos del buffer deben estar dentro de secciones criticas y
-	realizar las eliminaciones dentro de estas podría ser muy lento.
+	mas antiguo o \textbf{NULL} en caso de que la estructura este vacía.
+	Cuando se intenta agregar un nuevo ítem pero la estructura esta llena se
+	coloca este en espacio del ítem mas viejo en la estructura y se retorna
+	el puntero de este al llamador, delegándole su destrucción.  La
+	destrucción del ítem se delega al llamador por dos motivos. El primero
+	es que el buffer desconoce el tipo real del ítem. La segunda razón es
+	que para poder ser utilizado de forma segura, las llamadas a los métodos
+	del buffer deben estar dentro de secciones criticas y realizar las
+	eliminaciones dentro de estas podría ser muy lento. Si el dominio así lo
+	requiere, se puede cambiar el comportamiento de esta clase para que
+	funcione como una pila en lugar de una cola.
 
 \item[Input:] Se trata de una clase que funciona como definición de la interfaz
 	de las clases que generan los ítems. Sus métodos principales son
