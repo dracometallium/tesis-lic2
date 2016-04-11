@@ -19,17 +19,21 @@ adyacentes. De la segunda variable solo se tomaron los valores impares, ya que
 el cambio de esta es mas gradual, haciendo innecesario tomar todo el conjunto
 para analizar las tendencias.
 
-En cada test se ejecuto el programa durante 13 segundos. Durante los últimos 10
-segundos se contó la cantidad de cuadros procesados, y de cada uno de estos se
-registro el retardo entre su creación su procesamiento. Los primeros 3 segundos
-se ignoraron con el fin de permitir que la ejecución se estabilizara. Cada test
-se realizo 10 veces.
-
 Cada prueba se ejecuto dos veces, la primera buscando el mínimo de la cantidad
 máxima de cuadros por segundo que soporta el sistema bajo cada configuración. En
 la segunda se limito la cantidad de cuadros por segundo de cada configuración,
 según lo encontrado en la prueba anterior, y se registro el tiempo de
-procesamiento máximo para cada de estas.
+procesamiento máximo para cada de estas. Cada prueba consto de 10 ejecuciones
+distintas de las que solo se registro el peor valor obtenido.
+
+Dada la gran cantidad de ejecuciones se busco el tiempo mínimo necesario para
+que estas fueran representativas de una ejecución prolongada. Se realizaron 3
+ejecuciones con 11 hilos y 12 fragmentos, durante 11 minutos. El primer minuto
+no se contabilizo con el fin de permitir que la ejecución se estabilizara.
+Estas se compararon con ejecuciones bajo la misma configuración, pero ejecutando
+de 10 a 20 segundos, y contabilizando solo los últimos 10. Con esta prueba se
+pudo comprobar que las pruebas de 16 segundos son representativas de ejecuciones
+mas largas.
 
 Durante el desarrollo de la aplicación se probaron tres distintas
 implementaciones. En la primera implementación, el framework ejecutaba las
