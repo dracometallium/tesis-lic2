@@ -90,7 +90,8 @@ fragmentos, la cantidad procesada con $n+1$ fragmentos, y la proporción que
 representan los cuadros por segundo cuando se divide el cuadro en $n$ partes en
 contraste de $n-1$ y $n+1$ partes. Los valores de $n$ menores de 24 fueron
 obtenidos de los resultados utilizados para la construcción de la figura
-\ref{1280fps}.
+\ref{1280fps}. En el recuadro \ref{tabArea} se comparan el área de los
+fragmentos.
 
 \begin{table}[!h]
 \begin{tabular}{l|c|c|c|c|c}
@@ -130,6 +131,44 @@ obtenidos de los resultados utilizados para la construcción de la figura
 	denota la cantidad de cuadros por segundo procesados al dividir el
 	cuadro en $x$ partes, con 11 hilos de búsqueda.}
 \label{tabPrimos}
+\end{table}
+
+\begin{table}[!h]
+\begin{tabular}{l|c|c|c|c|c}
+	$n$ & $A(n)$ & $A(n-1)$ & $A(n+1)$ &
+	$\frac{A(n)}{A(n-1)}$ &
+	$\frac{A(n)}{A(n+1)}$ \\
+	2 & 531300 & 921600 & 366520 & 1.734 & 0.689 \\
+	3 & 366520 & 531300 & 284900 & 1.449 & 0.777 \\
+	5 & 235620 & 284900 & 202510 & 1.209 & 0.859 \\
+	7 & 202160 & 202510 & 151700 & 1.001 & 0.750 \\
+	11 & 152950 & 125460 & 107830 & 0.820 & 0.705 \\
+	13 & 139650 & 107830 & 95120 & 0.772 & 0.681 \\
+	17 & 122360 & 86100 & 76270 & 0.703 & 0.623 \\
+	19 & 115710 & 76270 & 72980 & 0.659 & 0.630 \\
+	23 & 107730 & 68060 & 60900 & 0.631 & 0.565 \\
+	29 & 98420 & 57810 & 51620 & 0.587 & 0.524 \\
+	31 & 97090 & 51620 & 48300 & 0.531 & 0.497 \\
+	37 & 91770 & 45240 & 60030 & 0.492 & 0.654 \\
+	41 & 89110 & 40940 & 40890 & 0.459 & 0.458 \\
+	43 & 87780 & 40890 & 38180 & 0.465 & 0.434 \\
+	47 & 86450 & 55890 & 35880 & 0.646 & 0.415 \\
+	53 & 83790 & 34040 & 35090 & 0.406 & 0.418 \\
+	59 & 82460 & 51060 & 31050 & 0.619 & 0.376 \\
+	61 & 81130 & 31050 & 50370 & 0.382 & 0.620 \\
+	67 & 79800 & 28220 & 28750 & 0.353 & 0.360 \\
+	71 & 79800 & 27354 & 27830 & 0.342 & 0.348 \\
+	73 & 78470 & 27830 & 47610 & 0.354 & 0.606 \\
+	79 & 78470 & 25160 & 25220 & 0.320 & 0.321 \\
+	83 & 77140 & 46230 & 23970 & 0.599 & 0.310 \\
+	89 & 77140 & 24840 & 23474 & 0.322 & 0.304 \\
+	97 & 75810 & 22100 & 21432 & 0.291 & 0.282 \\
+\end{tabular}
+
+\caption{Comparación de dividir el cuadro en un número primo de partes y los
+números inmediatamente anteriores y posteriores. La función $A(x)$ el área de
+los fragmento al dividir el cuadro en $x$ partes.}
+\label{tabArea}
 \end{table}
 
 Otra peculiaridad que se puede notar, es que los FPS tienden a incrementarse con
