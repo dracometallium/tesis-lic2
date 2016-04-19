@@ -28,22 +28,7 @@ plot arch using 1:2:($3/10) with image title '', \
 set palette defined (0 'white', 300 '#0000ff')
 set cbrange [ * : * ]
 
-set output resolution.'_maxTurnArround.pdf'
-set title "Tiempo máximo de espera\n".resolution." pixeles"
-plot arch using 1:2:4 with image title '', \
- arch using 1:2:(sprintf('%.2f', $4)) with labels font ',10' title ''
-
-set output resolution.'_maxBestTurnArround.pdf'
+set output resolution.'_turnArround.pdf'
 set title "Tiempo máximo de espera, FSP limitados.\n".resolution." pixeles"
 plot arch using 1:2:5 with image title '', \
  arch using 1:2:(sprintf('%.2f', $5)) with labels font ',10' title '' 
-
-set output resolution.'_maxWaitProb.pdf'
-set title "Tiempo máximo de espera,\ncon probabilidad del 95%\n".resolution." pixeles"
-plot arch using 1:2:6 with image title '', \
- arch using 1:2:(sprintf('%.2f', $6)) with labels font ',10' title ''
-
-set output resolution.'_maxBestWaitProb.pdf'
-set title "Tiempo máximo de espera, FSP limitados,\ncon probabilidad del 95%\n".resolution." pixeles"
-plot arch using 1:2:7 with image title '', \
- arch using 1:2:(sprintf('%.2f', $7)) with labels font ',10' title '' 

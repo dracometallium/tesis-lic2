@@ -8,7 +8,7 @@ FIGURAS=$(shell ls img/*.svg)
 RES=$(shell ls img/*.res)
 BRES=$(RES:.res=.bres)
 DATOS=$(RES:.res=.dat)
-DATOS_PDF=$(DATOS:.dat=_fps.pdf) $(DATOS:.dat=_maxTurnArround.pdf) $(DATOS:.dat=_maxBestTurnArround.pdf) $(DATOS:.dat=_bestfps.pdf) $(DATOS:.dat=_maxWaitProb.pdf) $(DATOS:.dat=_maxBestWaitProb.pdf)
+DATOS_PDF=$(DATOS:.dat=_fps.pdf) $(DATOS:.dat=_turnArround.pdf) $(DATOS:.dat=_bestfps.pdf)
 FIGURAS_PDF=$(FIGURAS:.svg=.pdf)
 GARBAGE=*.aux *.bbl *.blg *.log *.pdf *.toc
 
