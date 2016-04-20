@@ -19,6 +19,7 @@ plot arch using 1:7 with linespoints lt 1 title 'N', \
 
 set ylabel "Mega Píxeles"
 set output 'img/primos_area.pdf'
+set key left top
 set title "Área total de la imagen para números primos y sus inmediatos"
 plot arch using 1:($2*$1)/1000000 with linespoints lt 1 title 'N', \
  arch using ($1-1):($3*($1-1))/1000000 with linespoints lt 2 title 'N-1', \
