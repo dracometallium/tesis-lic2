@@ -8,7 +8,8 @@ FIGURAS=$(shell ls img/*.svg)
 RES=$(shell ls img/*.res)
 BRES=$(RES:.res=.bres)
 DATOS=$(RES:.res=.dat)
-PRIMOS=$(shell ls img/*.pdat)
+PRIMOS=img/primos.pdat
+AREAS=img/areas.pdat
 PRIMOS_PDF=$(PRIMOS:.pdat=_fps.pdf) $(PRIMOS:.pdat=_area.pdf)
 DATOS_PDF=$(DATOS:.dat=_fps.pdf) $(DATOS:.dat=_turnArround.pdf) $(DATOS:.dat=_bestfps.pdf)
 FIGURAS_PDF=$(FIGURAS:.svg=.pdf)
@@ -38,7 +39,7 @@ $(DATOS_PDF): $(DATOS)
 $(DATOS): $(RES) $(BRES)
 	cd img && ../scripts/mdat.sh
 
-$(PRIMOS_PDF): $(PRIMOS)
+$(PRIMOS_PDF): $(PRIMOS) $(AREAS)
 	gnuplot ./scripts/primos.gnuplot
 
 clean:
