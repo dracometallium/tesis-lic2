@@ -22,7 +22,7 @@ para analizar las tendencias.
 Cada prueba se ejecuto dos veces, la primera buscando el mínimo de la cantidad
 máxima de cuadros por segundo que soporta el sistema bajo cada configuración. En
 la segunda se limito la cantidad de cuadros por segundo de cada configuración,
-según lo encontrado en la prueba anterior, y se registro el tiempo de
+según lo encontrado en la primer prueba, y se registro el tiempo de
 procesamiento máximo para cada de estas. Cada prueba consto de 10 ejecuciones
 distintas de las que solo se registro el peor valor obtenido.
 
@@ -41,7 +41,7 @@ distintas pilas de plugins en tareas separadas. En la segunda implementación el
 framework fue modificado para que una sola tarea ejecutara todas las pilas de
 plugins sobre un mismo fragmento. Para la tercera implementación se trabajo
 sobre el mismo framework que la segunda, pero se unieron las pilas de búsquedas
-de robots y la de búsqueda de pelota. De estas la última fue la que produjo
+de robots y la de búsqueda de pelota. De estas, la última fue la que produjo
 resultados mas satisfactorios, por lo que sera sobre los resultados de esta que
 trabajaremos a continuación.
 
@@ -49,10 +49,10 @@ trabajaremos a continuación.
 
 Como se pueden ver en las figuras \ref{800fps} y \ref{1280fps}, se cumplió
 satisfactoriamente con el objetivo crear un sistema capas de procesar un vídeo
-de 800x600 píxeles a 60 cuadros por segundo, llegando casi a triplicar la
-cantidad de cuadros por segundos buscados. También se logro superar esta taza en
-el vídeo de 1280x720 píxeles de resolución, indicando que el sistema podría ser
-usando bajo estas condiciones.
+de 800x600 píxeles a 60 cuadros por segundo, llegando a triplicar la cantidad de
+cuadros por segundos buscados. También se logro superar esta taza en el vídeo de
+1280x720 píxeles de resolución, indicando que el sistema podría ser usando bajo
+estas condiciones.
 
 \begin{figure}[!h]
 
@@ -74,102 +74,51 @@ En las figuras \ref{800fps} y \ref{1280fps} se pueden observar dos patrones que
 ocurren en ambos vídeos y cuyas causas pueden se no inmediatamente obvias. El
 primero es que si los cuadros se dividen en 7, 11, 17, 19 y 23 fragmentos, se
 produce una notable reducción en la cantidad de cuadros por segundo con respecto
-a las divisiones adyacentes. El segundo patrón puede observar es una reducción
-en la cantidad de cuadros por segundo cuando la cantidad de fragmentos es
-reducida y la cantidad de hilos de búsqueda alta.
+a las divisiones adyacentes. El segundo patrón que se puede observar es una
+reducción en la cantidad de cuadros por segundo cuando la cantidad de fragmentos
+es reducida y la cantidad de hilos de búsqueda alta.
 
-El primer patrón se debe a que el número de fragmentos es primo, lo que obliga a
-dividir el cuadro en franjas, aumentando el área compartida. Para comprobar esta
-hipótesis se realizaron nuevas ejecuciones del programa con el vídeo de 1280x720
-pixels re resolución, 11 hilos de búsqueda y variando la cantidad de fragmentos
-entre los números primos mayores a 24 y menores a 100, y los números
-inmediatamente anteriores y posteriores a cada uno de ellos. En el cuadro
-\ref{tabPrimos} se muestra la cantidad de cuadros procesados con un numero primo
-$n$ de fragmentos, la cantidad de cuadros por segundo procesados con $n-1$
-fragmentos, la cantidad procesada con $n+1$ fragmentos, y la proporción que
-representan los cuadros por segundo cuando se divide el cuadro en $n$ partes en
-contraste de $n-1$ y $n+1$ partes. Los valores de $n$ menores de 24 fueron
-obtenidos de los resultados utilizados para la construcción de la figura
-\ref{1280fps}. En el recuadro \ref{tabArea} se comparan el área de los
-fragmentos.
+Dado que el orden de ejecución de la pila de plugins es del orden de la suma del
+área de los fragmentos, es de esperar que a mayor área total, menor sea la
+cantidad de cuadros por segundo, por lo cual mayor cantidad de fragmentos,
+implicaría una reducción en la cantidad de cuadros procesados. Pero al mismo
+tiempo, mayor cantidad de fragmentos permite aprovechar el paralelismo de mejor
+manera. Sin embargo, la relación entre cantidad de fragmentos y el área es
+irregular. Si se divide el cuadro en un número primo de fragmentos, el área
+total se incrementa de forma significativa con respecto a los valores
+circundantes. En la figura \ref{primosArea} se muestra la fluctuación del área
+para cada cantidad de particiones desde 1 hasta 100, resaltando el crecimiento
+para valores primos y para los valores inmediatamente inferiores y superiores.
 
-\begin{table}[!h]
-\begin{tabular}{l|c|c|c|c|c}
-	$n$ & $fps(n)$ & $fps(n-1)$ & $fps(n+1)$ &
-	$\frac{fps(n)}{fps(n-1)}$ &
-	$\frac{fps(n)}{fps(n+1)}$ \\
-	2 & 57 & 43 & 89 & 1.325 & 0.640 \\
-	3 & 89 & 57 & 149 & 1.561 & 0.597 \\
-	5 & 326 & 149 & 667 & 2.187 & 0.488 \\
-	7 & 369 & 667 & 802 & 0.553 & 0.460 \\
-	11 & 542 & 838 & 862 & 0.646 & 0.628 \\
-	13 & 534 & 862 & 855 & 0.619 & 0.624 \\
-	17 & 496 & 834 & 912 & 0.594 & 0.543 \\
-	19 & 480 & 912 & 827 & 0.526 & 0.580 \\
-	23 & 438 & 831 & 891 & 0.527 & 0.491 \\
-	29 & 388 & 820 & 930 & 0.473 & 0.417 \\
-	31 & 375 & 930 & 952 & 0.403 & 0.393 \\
-	37 & 335 & 962 & 551 & 0.348 & 0.607 \\
-	41 & 314 & 969 & 923 & 0.324 & 0.340 \\
-	43 & 301 & 923 & 958 & 0.326 & 0.314 \\
-	47 & 283 & 508 & 968 & 0.557 & 0.292 \\
-	53 & 262 & 937 & 854 & 0.279 & 0.306 \\
-	59 & 242 & 463 & 866 & 0.522 & 0.279 \\
-	61 & 237 & 866 & 453 & 0.273 & 0.523 \\
-	67 & 221 & 897 & 827 & 0.246 & 0.267 \\
-	71 & 211 & 849 & 799 & 0.248 & 0.264 \\
-	73 & 212 & 799 & 414 & 0.265 & 0.512 \\
-	79 & 194 & 847 & 797 & 0.229 & 0.243 \\
-	83 & 189 & 393 & 803 & 0.480 & 0.235 \\
-	89 & 177 & 743 & 746 & 0.238 & 0.237 \\
-	97 & 164 & 753 & 734 & 0.217 & 0.223 \\
+\begin{figure}[!h]
 
-\end{tabular}
+	\includegraphics[width=\textwidth]{img/primos_area.pdf}
+	\caption{}
+	\label{primosArea}
 
-\caption{Comparación de dividir el cuadro en un número primo de partes y los
-	números inmediatamente anteriores y posteriores. La función $fps(x)$
-	denota la cantidad de cuadros por segundo procesados al dividir el
-	cuadro en $x$ partes, con 11 hilos de búsqueda.}
-\label{tabPrimos}
-\end{table}
+\end{figure}
 
-\begin{table}[!h]
-\begin{tabular}{l|c|c|c|c|c}
-	$n$ & $A(n)$ & $A(n-1)$ & $A(n+1)$ &
-	$\frac{A(n)}{A(n-1)}$ &
-	$\frac{A(n)}{A(n+1)}$ \\
-	2 & 531300 & 921600 & 366520 & 1.734 & 0.689 \\
-	3 & 366520 & 531300 & 284900 & 1.449 & 0.777 \\
-	5 & 235620 & 284900 & 202510 & 1.209 & 0.859 \\
-	7 & 202160 & 202510 & 151700 & 1.001 & 0.750 \\
-	11 & 152950 & 125460 & 107830 & 0.820 & 0.705 \\
-	13 & 139650 & 107830 & 95120 & 0.772 & 0.681 \\
-	17 & 122360 & 86100 & 76270 & 0.703 & 0.623 \\
-	19 & 115710 & 76270 & 72980 & 0.659 & 0.630 \\
-	23 & 107730 & 68060 & 60900 & 0.631 & 0.565 \\
-	29 & 98420 & 57810 & 51620 & 0.587 & 0.524 \\
-	31 & 97090 & 51620 & 48300 & 0.531 & 0.497 \\
-	37 & 91770 & 45240 & 60030 & 0.492 & 0.654 \\
-	41 & 89110 & 40940 & 40890 & 0.459 & 0.458 \\
-	43 & 87780 & 40890 & 38180 & 0.465 & 0.434 \\
-	47 & 86450 & 55890 & 35880 & 0.646 & 0.415 \\
-	53 & 83790 & 34040 & 35090 & 0.406 & 0.418 \\
-	59 & 82460 & 51060 & 31050 & 0.619 & 0.376 \\
-	61 & 81130 & 31050 & 50370 & 0.382 & 0.620 \\
-	67 & 79800 & 28220 & 28750 & 0.353 & 0.360 \\
-	71 & 79800 & 27354 & 27830 & 0.342 & 0.348 \\
-	73 & 78470 & 27830 & 47610 & 0.354 & 0.606 \\
-	79 & 78470 & 25160 & 25220 & 0.320 & 0.321 \\
-	83 & 77140 & 46230 & 23970 & 0.599 & 0.310 \\
-	89 & 77140 & 24840 & 23474 & 0.322 & 0.304 \\
-	97 & 75810 & 22100 & 21432 & 0.291 & 0.282 \\
-\end{tabular}
+Como puede observarse en la figura \ref{primosArea}, a partir de 7 fragmentos el
+área total se incrementa de forma significativa cuando el número es primo con
+respecto a los valores cercanos no primos.
 
-\caption{Comparación de dividir el cuadro en un número primo de partes y los
-números inmediatamente anteriores y posteriores. La función $A(x)$ el área de
-los fragmento al dividir el cuadro en $x$ partes.}
-\label{tabArea}
-\end{table}
+Para comprobar como esta variación de volumen de datos a procesar afecta la
+cantidad de cuadros por segundo procesados, se realizaron nuevas pruebas sobre
+el video de 1280x720 píxeles de resolución, con 11 hilos de búsqueda y variando
+la cantidad de fragmentos entre los números primos mayores a 24 y menores a 100,
+y sus inmediatos. Los valores para números primos e inmediatos inferiores a 24
+fueron tomados de los experimentos anteriores. Los resultados pueden ser
+observados en la figura \ref{primosFPS}. Como se puede observar en la figura,
+para una cantidad de fragmentos menor a 7, el aumento en el área es subsumido
+por el beneficio aportado por el incremento en el paralelismo.
+
+\begin{figure}[!h]
+
+	\includegraphics[width=\textwidth]{img/primos_fps.pdf}
+	\caption{}
+	\label{primosFPS}
+
+\end{figure}
 
 Otra peculiaridad que se puede notar, es que los FPS tienden a incrementarse con
 el numero de particiones, aun cuando el numero de hilos de búsqueda sea menor
