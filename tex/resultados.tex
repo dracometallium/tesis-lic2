@@ -87,8 +87,11 @@ manera. Sin embargo, la relación entre cantidad de fragmentos y el área es
 irregular. Si se divide el cuadro en un número primo de fragmentos, el área
 total se incrementa de forma significativa con respecto a los valores
 circundantes. En la figura \ref{primosArea} se muestra la fluctuación del área
-para cada cantidad de particiones desde 1 hasta 100, resaltando el crecimiento
-para valores primos y para los valores inmediatamente inferiores y superiores.
+para cada cantidad de particiones desde 1 hasta 100 para un vídeo de 1280x720
+píxeles de resolución, resaltando el crecimiento para valores primos y para los
+valores inmediatamente inferiores y superiores. Como puede observarse, a partir
+de 7 fragmentos el área total se incrementa de forma significativa cuando el
+número es primo con respecto a los valores cercanos no primos.
 
 \begin{figure}[!h]
 
@@ -98,19 +101,13 @@ para valores primos y para los valores inmediatamente inferiores y superiores.
 
 \end{figure}
 
-Como puede observarse en la figura \ref{primosArea}, a partir de 7 fragmentos el
-área total se incrementa de forma significativa cuando el número es primo con
-respecto a los valores cercanos no primos.
-
-Para comprobar como esta variación de volumen de datos a procesar afecta la
-cantidad de cuadros por segundo procesados, se realizaron nuevas pruebas sobre
-el video de 1280x720 píxeles de resolución, con 11 hilos de búsqueda y variando
-la cantidad de fragmentos entre los números primos mayores a 24 y menores a 100,
-y sus inmediatos. Los valores para números primos e inmediatos inferiores a 24
-fueron tomados de los experimentos anteriores. Los resultados pueden ser
-observados en la figura \ref{primosFPS}. Como se puede observar en la figura,
-para una cantidad de fragmentos menor a 7, el aumento en el área es subsumido
-por el beneficio aportado por el incremento en el paralelismo.
+Para comprobar como esta variación de volumen de datos afecta la cantidad de
+cuadros por segundo procesados, se realizaron nuevas pruebas sobre el vídeo de
+1280x720 píxeles de resolución, con 11 hilos de búsqueda y variando la cantidad
+de fragmentos entre los números primos mayores a 24 y menores a 100, y sus
+inmediatos superior e inferior. Los valores para números primos e inmediatos
+inferiores a 24 fueron tomados de los experimentos anteriores. Los resultados
+pueden ser observados en la figura \ref{primosFPS}.
 
 \begin{figure}[!h]
 
@@ -119,6 +116,15 @@ por el beneficio aportado por el incremento en el paralelismo.
 	\label{primosFPS}
 
 \end{figure}
+
+Como se puede observar en la figura, para una cantidad de fragmentos menor a 7,
+el perjuicio por aumento en el área es menor que el beneficio aportado por el
+incremento en el paralelismo. Esto coincide con el incremento observado en la
+figura \ref{areaPrimos}. También se pueden apreciar que los incrementos
+repentinos en el área total coinciden con disminuciones repentinas en los
+cuadros por segundo procesados.
+
+TODO: ¿Falta aclarar algo al respecto?
 
 Otra peculiaridad que se puede notar, es que los FPS tienden a incrementarse con
 el numero de particiones, aun cuando el numero de hilos de búsqueda sea menor
