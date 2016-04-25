@@ -50,4 +50,4 @@ $(CACHE_PDF): $(CACHE)
 
 clean:
 	rm -f $(GARBAGE)
-	rm -f $(FIGURAS_PDF) $(DATOS_PDF) $(DATOS)
+	rm -f $(PDF) $(DATOS)
