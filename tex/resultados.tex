@@ -3,28 +3,21 @@
 \section{Metodología experimental}
 
 Como se menciono con anterioridad, para comprobar el funcionamiento del nuevo
-framework se procesaron los vídeos de resolución 352x228, 800x600 y 1280x720, en
+framework se procesaron los vídeos de resolución 800x600 y 1280x720, en
 una computadora con un procesador Intel Xeon E5-2630. Este es un procesador de 6
 núcleos, cada uno de dos subprocesos simultáneos a través de la técnica de
 \emph{simultaneus multithreading} y con un reloj de 2,30GHz. El equipo cuenta
-ademas con 16GiB de memoria RAM. Los resultados del vídeo de resolución 352x228
-píxeles no serán tratados mas adelante debido a que la carga al sistema es
-reducida y no aporta información que no aporten los otros dos vídeos.
+ademas con 16GiB de memoria RAM.
 
 Se realizaron pruebas con cada vídeo, variando la cantidad de partes en las que
 fueron divididos los cuadros de 1 a 24, y la cantidad de hilos de búsqueda entre
-1 y 11. De la primera variable se tomaron todos los valores enteros dentro del
-rango ya que el área del fragmento varia de forma irregular entre valores
-adyacentes. De la segunda variable solo se tomaron los valores impares, ya que
-el cambio de esta es mas gradual, haciendo innecesario tomar todo el conjunto
-para analizar las tendencias.
-
-Cada prueba se ejecuto dos veces, la primera buscando el mínimo de la cantidad
-máxima de cuadros por segundo que soporta el sistema bajo cada configuración. En
-la segunda se limito la cantidad de cuadros por segundo de cada configuración,
-según lo encontrado en la primer prueba, y se registro el tiempo de
-procesamiento máximo para cada de estas. Cada prueba consto de 10 ejecuciones
-distintas de las que solo se registro el peor valor obtenido.
+1 y 12. Cada prueba se ejecuto dos veces, la primera buscando el mínimo de la
+cantidad máxima de cuadros por segundo que soporta el sistema bajo cada
+configuración. En la segunda se limito la cantidad de cuadros por segundo de
+cada configuración, según lo encontrado en la primer prueba, y se registró el
+tiempo de procesamiento de los cuadros máximo para cada de estas. Cada prueba
+consto de 10 ejecuciones distintas de las que solo se registró el peor valor
+obtenido.
 
 Dada la gran cantidad de ejecuciones se busco el tiempo mínimo necesario para
 que estas fueran representativas de una ejecución prolongada. Se realizaron 3
@@ -71,7 +64,7 @@ estas condiciones.
 \end{figure}
 
 En las figuras \ref{800fps} y \ref{1280fps} se pueden observar dos patrones que
-ocurren en ambos vídeos y cuyas causas pueden se no inmediatamente obvias. El
+ocurren en ambos vídeos y cuyas causas pueden ser no inmediatamente obvias. El
 primero es que si los cuadros se dividen en 7, 11, 17, 19 y 23 fragmentos, se
 produce una notable reducción en la cantidad de cuadros por segundo con respecto
 a las divisiones adyacentes. El segundo patrón que se puede observar es una
@@ -119,69 +112,76 @@ pueden ser observados en la figura \ref{primosFPS}.
 
 Como se puede observar en la figura, para una cantidad de fragmentos menor a 7,
 el perjuicio por aumento en el área es menor que el beneficio aportado por el
-incremento en el paralelismo. Esto coincide con el incremento observado en la
-figura \ref{areaPrimos}. También se pueden apreciar que los incrementos
-repentinos en el área total coinciden con disminuciones repentinas en los
-cuadros por segundo procesados.
+incremento en el paralelismo. Si se observa la figura \ref{primosArea}, dividir
+el cuadro en 7 fragmentos resulta en el primer incremento notable de área con
+respecto tanto a un fragmento menos como un fragmento más. También se pueden
+apreciar que los incrementos repentinos en el área total coinciden con
+disminuciones repentinas en los cuadros por segundo procesados.
 
 TODO: ¿Falta aclarar algo al respecto?
 
-Otra peculiaridad que se puede notar, es que los FPS tienden a incrementarse con
-el numero de particiones, aun cuando el numero de hilos de búsqueda sea menor
-que este, forzando a que haya tareas que no estén ejecutando. Esto puede ser
-explicado por dos factores. El primero es que al reducir el tamaño del fragmento
-se aumenta la localidad espacial. El segundo es que varios de los plugins tienen
-un orden de ejecución superior al lineal, por lo que reducir el tamaño
-linealmente, reduce el tiempo en forma no lineal.
+Para encontrar las cusas del segundo patrón (la reducción en cuadros por
+segundos procesados cuando la cantidad de hilos de búsqueda es alta, y la
+cantidad de fragmentos baja) se realizo una búsqueda manual del fragmento de
+código donde se producía el retardo. Finalmente se pudo comprobar que la causa
+principal de este retardo se produce en una función de una librería externa.
+Analizando el código de esta se encontró que la fuente principal del retardo se
+trata de un segmento de código que accede a todos los píxeles de una imagen
+auxiliar y lo colorea de negro. Por cada fragmento se crea una de estas imágenes
+auxiliares y su tamaño es igual al tamaño del fragmentos del cuadro.
 
-El último patrón que se puede observar es una caída en el rendimiento cuando la
-cantidad de partes es menor la mitad que la cantidad de hilos. Dado que no se
-contaba con una herramienta para encontrar el bloque donde se estaba produciendo
-el retardo\footnote{Las herramientas de \emph{profiling} para programas
-secuenciales no funcionan en programas paralelos y las herramientas que soportan
-programas paralelos creados con \emph{openMP} no suelen ser proveidas en los
-gestores de paquetes de las distribuciones, y en algunos casos se necesita
-modificar el código del programa. Se considero mas sencillo buscar
-manualmente.}, se opto por una búsqueda manual. Se empezó removiendo los
-plugins hasta que se encontró aquel que producía el retraso en estos casos.
-Luego, sobre este, se fueron eliminando bloques de código hasta que se encontró
-que la fuente es una llamada a una función de una librería externa. Examinando
-el código de la función se observo que esta toma una imagen del mismo tamaño que
-el fragmento del cuadro y lo pinta de un color, lo que implica escribir sobre
-todos los píxeles de la imagen. Si la imagen es chica (por que el fragmento lo
-es) se puede hacer mejor provecho de la memoria cache, ya que las escrituras se
-realizaran sobre esta y el hilo puede continuar su ejecución mientras los
-cambios se propagan a la memoria RAM. Si la imagen es muy grande, la ráfaga de
-escritura es más larga, lo que lleva a que los hilos compitan por la memoria
-cache. Es por esto que la cantidad de cuadros se ve empobrecida cuando la
-cantidad de hilos aumenta.
+Dado que la causa del retardo se trata de una operación intensiva en memoria, y
+que su efecto se observa cuando el tamaño del fragmentos (y por lo tanto de la
+imagen sobre la que se realiza la operación) es grande, se propuso la hipótesis
+de que el retardo se produce dado que los hilos compiten por el espacio de
+cache.
 
 Para comprobar que esta explicación es correcta se realizaron dos experimentos.
 El primero consto en establecer el llamado a la función como sección critica,
-impidiendo que dos hilos puedan ejecutarla al mismo tiempo. Si bien esto
-introduce un retraso, para los casos donde la cantidad de particiones es
-reducida, se observo una mejora, sin embargo para el resto de los casos produjo
-una reducción. Es por eso que en el framework final se opto por no
-establecer la función como sección critica.
+impidiendo que dos hilos puedan ejecutarla al mismo tiempo y por lo tanto
+obligando a un acceso serial de la cache. Si bien esto introduce un retraso,
+para los casos donde la cantidad de particiones es reducida, se observo una
+mejora, sin embargo para el resto de los casos produjo una reducción. Es por eso
+que en el framework final se opto por no establecer la función como sección
+critica.
 
-El segundo experimento fue simplemente utilizar la herramienta \texttt{perf},
-para comparar los accesos y fallos de cache con 1 y 10 particiones, y probando
-con de 1 a 11 hilos de búsqueda. En todos los resultados se observo que la
-cantidad de fallos de cache en las ejecuciones de 10 particiones siempre fue
-menor que la cantidad de fallos que en la ejecución de 1 partición y misma
-cantidad de hilos de búsqueda, variando desde un 37\% a un 74\%. Por otro lado,
-la cantidad de accesos a cache se vio duplicada en los casos de 3 a 11 hilos.
+TODO: Medir uso de cache en este caso y mostrar resultados en FPS.
+
+La segunda prueba consto en ejecutar el programa procesando el vídeo de 1280x720
+píxeles de resolución, donde cada curva muestra los resultados de dividir la
+imagen en 1, 2, 6 o 12 fragmentos, variando la cantidad de hilos de búsqueda de
+1 a 11 y midiendo los fallos de cache. Los resultados pueden ser observados en
+la figura \ref{cacheFallos}.
+
+\begin{figure}[!h]
+
+	\includegraphics[width=\textwidth]{img/cache_fallos.pdf}
+	\caption{}
+	\label{cacheFallos}
+
+\end{figure}
+
+Si se observa detenidamente cada curva de la figura, se pueden distinguir una
+etapa de crecimiento acelerado, seguido de una etapa de crecimiento mas gradual.
+En los casos de 1, 2 y 6 fragmentos, el cambio es pronunciado, y se puede
+verificar en la figura \ref{1280fps} que es justamente bajo esta configuración
+donde, dado ese numero de fragmentos, agregar un hilo de búsqueda más reduce la
+cantidad de cuadros procesados.
 
 \begin{figure}[h]
 
 	\includegraphics[width=\textwidth]{img/800x600_turnArround.pdf}
 	\caption{}
+	\label{800turnArround}
 
 \end{figure}
+
+===END===
 
 \begin{figure}[h]
 
 	\includegraphics[width=\textwidth]{img/1280x720_turnArround.pdf}
 	\caption{}
+	\label{1280turnArround}
 
 \end{figure}
