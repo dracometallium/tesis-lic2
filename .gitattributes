@@ -1,4 +1,4 @@
 *.res -diff
 *.bres -diff
-*.pres -diff
+*.pdat -diff
 *.svg -diff
