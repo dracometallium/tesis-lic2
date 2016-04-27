@@ -11,7 +11,7 @@ DATOS=$(RES:.res=.dat)
 PRIMOS=img/primos.pdat
 AREAS=img/areas.pdat
 CACHE=img/cache.pdat
-CACHE_PDF=$(CACHE:.pdat=_fallos.pdf) $(CACHE:.pdat=_accesos.pdf) $(CACHE:.pdat=_accesosfallos.pdf)
+CACHE_PDF=$(CACHE:.pdat=_fallos.pdf) $(CACHE:.pdat=_accesos.pdf)
 PRIMOS_PDF=$(PRIMOS:.pdat=_fps.pdf) $(PRIMOS:.pdat=_area.pdf)
 DATOS_PDF=$(DATOS:.dat=_fps.pdf) $(DATOS:.dat=_turnArround.pdf) $(DATOS:.dat=_bestfps.pdf)
 FIGURAS_PDF=$(FIGURAS:.svg=.pdf)
