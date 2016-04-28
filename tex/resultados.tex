@@ -163,12 +163,18 @@ la figura \ref{cacheFallos}.
 
 Si se observa detenidamente cada curva de la figura, se pueden distinguir una
 etapa de crecimiento acelerado, seguido de una etapa de crecimiento mas gradual.
-En los casos de 1, 2 y 6 fragmentos, el cambio es pronunciado, y se puede
-verificar en la figura \ref{1280fps} que es justamente bajo esta configuración
-donde, dado ese numero de fragmentos, agregar un hilo de búsqueda más reduce la
-cantidad de cuadros procesados.
+En los casos de 1 y 2 fragmentos, el cambio es pronunciado, y se puede verificar
+en la figura \ref{1280fps} que es justamente bajo esta configuración donde, dado
+ese numero de fragmentos, agregar un hilo de búsqueda más reduce la cantidad de
+cuadros procesados.
 
-\begin{figure}[h]
+Finalmente, en las figuras \ref{800turnArround} y \ref{1280turnArround} se
+pueden observar los tiempos máximos de espera de procesamiento de los cuadros,
+para los vídeos de 800x600 y 1280x720 píxeles de resolución limitando los
+cuadros por segundo generados al máximo encontrado en los experimentos
+anteriores.
+
+\begin{figure}[!h]
 
 	\includegraphics[width=\textwidth]{img/800x600_turnArround.pdf}
 	\caption{}
@@ -176,12 +182,23 @@ cantidad de cuadros procesados.
 
 \end{figure}
 
-===END===
 
-\begin{figure}[h]
+\begin{figure}[!h]
 
 	\includegraphics[width=\textwidth]{img/1280x720_turnArround.pdf}
 	\caption{}
 	\label{1280turnArround}
 
 \end{figure}
+
+Estos dos últimas figuras nos permiten apreciar que no siempre una mayor
+cantidad de cuadros por segundos procesados implicara el tiempo de retardo
+minimo. Dependiendo de si se desea minimizar el retardo de procesamiento de los
+cuadros, maximizar la cantidad de cuadros procesados, o encontrar un balance
+especifico, se deberá elegir una cantidad de fragmentos y procesadores
+apropiada. Por ejemplo, en el caso del vídeo de 1280x720 píxeles de resolución,
+dividir la imagen en 21 fragmentos y utilizar 11 utilizar permite procesar 94
+cuadros por segundo en el equipo de prueba, sin embargo el retardo es de $0.09$
+segundos. Si el cuadro se divide en 15 fragmentos y se utilizan 11 hilos de
+búsqueda, la cantidad de cuadros por segundo procesados se cae a 90, pero el
+retardo se reduce a $0.05$ segundos.
