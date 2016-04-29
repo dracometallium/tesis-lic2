@@ -136,22 +136,11 @@ imagen sobre la que se realiza la operación) es grande, se propuso la hipótesi
 de que el retardo se produce dado que los hilos compiten por el espacio de
 cache.
 
-Para comprobar que esta explicación es correcta se realizaron dos experimentos.
-El primero consto en establecer el llamado a la función como sección critica,
-impidiendo que dos hilos puedan ejecutarla al mismo tiempo y por lo tanto
-obligando a un acceso serial de la cache. Si bien esto introduce un retraso,
-para los casos donde la cantidad de particiones es reducida, se observo una
-mejora, sin embargo para el resto de los casos produjo una reducción. Es por eso
-que en el framework final se opto por no establecer la función como sección
-critica.
-
-TODO: Medir uso de cache en este caso y mostrar resultados en FPS.
-
-La segunda prueba consto en ejecutar el programa procesando el vídeo de 1280x720
-píxeles de resolución, donde cada curva muestra los resultados de dividir la
-imagen en 1, 2, 6 o 12 fragmentos, variando la cantidad de hilos de búsqueda de
-1 a 11 y midiendo los fallos de cache. Los resultados pueden ser observados en
-la figura \ref{cacheFallos}.
+Para comprobar que esta explicación es correcta se ejecuto el programa
+procesando el vídeo de 1280x720 píxeles de resolución, donde cada curva muestra
+los resultados de dividir la imagen en 1, 2, 6 o 12 fragmentos, variando la
+cantidad de hilos de búsqueda de 1 a 11 y midiendo los fallos de cache. Los
+resultados pueden ser observados en la figura \ref{cacheFallos}.
 
 \begin{figure}[!h]
 
@@ -193,7 +182,7 @@ anteriores.
 
 Estos dos últimas figuras nos permiten apreciar que no siempre una mayor
 cantidad de cuadros por segundos procesados implicara el tiempo de retardo
-minimo. Dependiendo de si se desea minimizar el retardo de procesamiento de los
+mínimo. Dependiendo de si se desea minimizar el retardo de procesamiento de los
 cuadros, maximizar la cantidad de cuadros procesados, o encontrar un balance
 especifico, se deberá elegir una cantidad de fragmentos y procesadores
 apropiada. Por ejemplo, en el caso del vídeo de 1280x720 píxeles de resolución,
