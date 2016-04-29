@@ -26,7 +26,7 @@ for arch in *.res; do
 	rFile=${base}.dat
 	echo -n > $rFile
 	tFile=$(mktemp)
-	for t in $(seq 1 2 11); do
+	for t in $(seq 1 12); do
 		for p in $(seq 1 24); do
 			echo -n > $tFile
 			grep $arch -e "^$t $p " > $tFile
