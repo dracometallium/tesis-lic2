@@ -21,7 +21,7 @@ lo cual se opto que las pilas ejecuten de forma secuencial.
 Conceptualmente el framework ejecutara cuatro tipos de tareas distintos, que a
 su ves pueden ser divididos en tareas persistentes y tareas de búsqueda. Las
 primeras son aquellas de las cuales solo habrá una instancia y permanecerán
-durante la ejecución la mayor parte del programa, mientra que definimos a las
+durante la ejecución de la mayor parte del programa, mientra que definimos a las
 tareas de búsqueda a aquellas creadas con el objetivo de procesar un único
 cuadro (o un fragmento de uno), y que terminaran cuando terminen de procesar
 este. Las tareas persistentes son generación de ítems y generación de tareas de
@@ -51,16 +51,16 @@ procesamiento de fragmentos.
 
 TODO: Diagrama del framework
 
-Dado que los fragmentos deberán compartir un área un sus bordes para que no
-suceda que un robot no se encuentre visible completamente por lo menos un
+Dado que los fragmentos deberán compartir un área en sus bordes para que no
+suceda que un robot no se encuentre visible completamente por lo menos en un
 cuadro, es deseable que se minimice el perímetro de estos. Por la manera que las
-imágenes se representan comúnmente las imágenes en una computadora y por su
-simplicidad, se opto por trabajar con un teselado con rectángulos. En el caso de
-estos, para minimizar su perímetro y maximizar su área, se debe procurar que la
-proporción entre su ancho y altura sea lo mas cercana a uno. También, para
-balancear la carga uniformemente, todos los fragmentos serán de igual tamaño.
-Aquellos que se encuentren en los bordes inferior y derecho pueden que sean mas
-chicos, pero la reducción en tamaño nunca sera mayor que la del área compartida.
+imágenes se representan comúnmente en una computadora y por su simplicidad, se
+opto por trabajar con un teselado con rectángulos. En el caso de estos, para
+minimizar su perímetro y maximizar su área, se debe procurar que la proporción
+entre su ancho y altura sea lo mas cercana a uno. También, para balancear la
+carga uniformemente, todos los fragmentos serán de igual tamaño. Aquellos que se
+encuentren en los bordes inferior y derecho pueden que sean mas chicos, pero la
+reducción en tamaño nunca sera mayor que la del área compartida.
 
 En la figura \ref{fragmentos} se muestran como se divide una imagen de 16x12
 píxeles en 1, 2, 5 y 12 fragmentos. Debido a que se divide en fragmentos
@@ -100,9 +100,10 @@ es que permite la creación de regiones paralelas, secciones criticas, tareas y
 puntos de sincronización, simplemente marcando un bloque de código con unas
 pocas directivas al compilador. \emph{OpenMP} ademas provee la facilidad de que
 se puede establecer la cantidad de hilos que irán ejecutando las tareas, y que
-el orden de la cola de espera es \emph{frist-come/first-served}. Aun así se
-mantiene un control del numero de tareas para no crear mas de las que pueden ser
-procesadas, y no retrasar al sistema con tareas viejas.
+el orden de la cola de espera es \emph{frist-come/first-served}. Aun así, en la
+implementación final se mantiene un control del numero de tareas para no crear
+mas de las que pueden ser procesadas, y no retrasar al sistema con tareas
+viejas.
 
 Las clases del framework básico son las siguientes:
 
@@ -117,15 +118,15 @@ Las clases del framework básico son las siguientes:
 	permitan acceder la estructura desde múltiples threads al mismo tiempo
 	de forma segura. Cuando se solicita un ítem, se devuelve el puntero al
 	mas antiguo o \textbf{NULL} en caso de que la estructura este vacía.
-	Cuando se intenta agregar un nuevo ítem pero la estructura esta llena se
-	coloca este en espacio del ítem mas viejo en la estructura y se retorna
-	el puntero de este al llamador, delegándole su destrucción.  La
+	Cuando se intenta agregar un nuevo ítem pero la estructura esta llena,
+	se coloca este en espacio del ítem mas viejo en la estructura y se
+	retorna el puntero de este al llamador, delegándole su destrucción. La
 	destrucción del ítem se delega al llamador por dos motivos. El primero
 	es que el buffer desconoce el tipo real del ítem. La segunda razón es
 	que para poder ser utilizado de forma segura, las llamadas a los métodos
 	del buffer deben estar dentro de secciones criticas y realizar las
-	eliminaciones dentro de estas podría ser muy lento. Si el dominio así lo
-	requiere, se puede cambiar el comportamiento de esta clase para que
+	eliminaciones dentro de estas podría ser muy lento. Si el dominio así
+	lo requiere, se puede cambiar el comportamiento de esta clase para que
 	funcione como una pila en lugar de una cola.
 
 \item[Input:] Se trata de una clase que funciona como definición de la interfaz
@@ -199,10 +200,15 @@ cuales fueron tomadas y modificadas del sistema de visión presentado en
 \item[FastCaptureFromFile:] Subclase de \emph{Input}. Muy similar a
 	\emph{CaptureFromFile}, con las diferencias de que carga los cuadros a
 	memoria antes de que comience el sistema a capturar los cuadros (para
-	evitar los retardos de la lectura de disco y decodificación), y si la
-	cola de cuadros a procesar esta vacía, adelantara la creación del
-	próximo cuadro. Esta clase es útil para comprobar la capacidad máxima
-	del sistema.
+	evitar los retardos de la lectura de disco y decodificación), y que
+	tiene dos modos de controlar la frecuencia de la generación de los
+	cuadros. Se puede adelantar la creación de cuadros si la cola de cuadros
+	a procesar esta vacía, o fijar la frecuencia de su creación a un valor.
+	Esta clase es útil para comprobar la capacidad máxima del sistema, ya
+	que permite simular una cámara con una velocidad de captura que se
+	desee, y los distintos modos permiten testear la carga máxima en cuadros
+	por segundo soportada por el sistema, así como los tiempos de retardo
+	bajo una cantidad de cuadros por segundo especifica.
 
 \item[FrameSlicer:] Subclase de \emph{ItemSlicer}. En este caso lo que se divide
 	es la imagen del cuadro. Cada sub cuadro tendrá un solapamiento con los
@@ -226,6 +232,7 @@ cuales fueron tomadas y modificadas del sistema de visión presentado en
 
 \end{description}
 
+
 \begin{figure}[h]
 
 	\includegraphics[width=\textwidth]{img/clasesFrameworkRobots.pdf}
@@ -241,4 +248,4 @@ pilas para la etapa de pre procesamiento de la imagen utilizan los mismos
 plugins con la misma configuración, ademas, los plugins que no tienen en común
 solo modifican datos propios de cada pila. Esto permite que ambas pilas puedan
 ser unidas en una sola, lo que trae como ventaja que la etapa de pre
-procesamiento se realice solo una ves por cuadro.
+procesamiento se realice solo una ves por fragmento.
