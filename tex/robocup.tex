@@ -20,19 +20,22 @@ compartido. Este sistema de visión consta de un conjunto de cámaras montadas
 sobre distintas áreas del campo de juego conectadas a una computadora donde se
 ejecuta el sistema de visión. El sistema detecta la posición y orientación de
 cada uno de los robots y la posición de la pelota, y reporta esta información a
-las computadoras que controlan los equipos. El uso de este sistema centralizado
-permite a los participantes abstraerse de los problemas de la visión por
-computadora y enfocarse en la estrategia del juego. Además, permite que las
-tareas de calibración y montaje de las cámaras se realicen una sola vez para
-cada campo de juego en vez de para cada partido.
+las computadoras que controlan los equipos. En la figura \ref{sistemaVG} se
+presenta un diagrama mostrando esta estructura.
 
 \begin{figure}[!h]
 
 	\includegraphics[width=\textwidth]{img/sistemaVG.pdf}
-	\caption{}
+	\caption{Estructura de comunicación del sistema de visión global en
+	fútbol de robots de la \emph{SSL}.}
 	\label{sistemaVG}
 
 \end{figure}
+
+El uso de este sistema centralizado permite a los participantes abstraerse de
+los problemas de la visión por computadora y enfocarse en la estrategia del
+juego. Además, permite que las tareas de calibración y montaje de las cámaras se
+realicen una sola vez para cada campo de juego en vez de para cada partido.
 
 Originalmente el tamaño de la cancha era de 4,9$m$x3,4$m$, lo que permitía que
 todo el campo de juego fuera observado con una sola cámara. Luego se opto por
@@ -50,5 +53,5 @@ inferior a 800x600 píxeles, con la posibilidad de que en un futuro la cancha y
 el tamaño de la imagen capturada se incrementen. Este problema sera el eje
 central de esta tesis.
 
-TODO: ¿Como y donde pongo que es un sistema de memoria compartida?
+%TODO: ¿Como y donde pongo que es un sistema de memoria compartida?
 
