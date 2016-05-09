@@ -2,3 +2,4 @@
 *.bres -diff
 *.pdat -diff
 *.svg -diff
+*.png -diff
