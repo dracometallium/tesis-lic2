@@ -1,0 +1,30 @@
+% vim: set spell spelllang=es syntax=tex :
+
+\section{Conclusiones finales}
+
+Durante el desarrollo de esta tesis se logro cumplir satisfactoriamente con los
+objetivos de esta. El software desarrollado es capas de procesar un vídeo de
+800x600 píxeles de resolución a una taza de 195 cuadros por segundo, más del 3
+veces lo buscado originalmente. Ademas se pudo observar y analizar como se
+comportaba el sistema bajo distintas configuraciones. Se pudo comprobar como un
+numero primo de fragmentos afectaba de forma negativa el desempeño del sistema,
+y como un bajo numero de estos obliga a los hilos a competir por los recursos de
+cache.
+
+El framework final es adaptable a distintos dominios y su arquitectura basada en
+plugins permite modificarlos y agregar nuevos fácilmente. Finalmente,
+modificando las variables de cantidad de fragmentos e hilos de búsqueda el
+sistema puede adaptarse a un amplio rango de configuraciones de hardware
+fácilmente.
+
+\section{Trabajos futuros}
+
+Si bien el sistema funciona correctamente, existen aspectos que hacen difícil su
+aplicación como remplazo para los sistemas de visión global utilizados hoy en
+día en las competencias de la \emph{SSL}. En primer lugar, actualmente el plugin
+de difusión notifica la posición de los robots con respecto a las coordenadas
+del fragmento, en lugar de utilizar las de la imagen original. En segundo lugar,
+en esta versión, si se desea calibrar los colores de los parches o la pelota se
+deben realizar modificaciones en el código. Seria deseable una interfaz gráfica
+que permita modificar estos datos interactivamente. Seria útil también mostrar
+gráficamente la detección de los objetos.
