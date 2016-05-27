@@ -20,8 +20,15 @@ compartido. Este sistema de visión consta de un conjunto de cámaras montadas
 sobre distintas áreas del campo de juego conectadas a una computadora donde se
 ejecuta el sistema de visión. El sistema detecta la posición y orientación de
 cada uno de los robots y la posición de la pelota, y reporta esta información a
-las computadoras que controlan los equipos. En la figura \ref{sistemaVG} se
-presenta un diagrama mostrando esta estructura.
+las computadoras que controlan los equipos.
+
+Para poder identificar a cada robot cada robot tiene sobre su parte superior 5
+parches de colores. El parche que se encuentra en el centro indica el color del
+equipo del robot, los cuatro restantes sirven para identificar al robot dentro
+del equipo y su orientación. La pelota de color liso distinto a el de los
+parches de los robots, normalmente naranja, ya que contrasta fácilmente con el
+verde de la cancha. En la figura \ref{sistemaVG} se presenta un diagrama
+mostrando esta estructura.
 
 \begin{figure}[!h]
 
@@ -52,7 +59,7 @@ las canchas originales.
 
 Aunque las reglas de la \emph{SSL} no establecen una resolución o taza de
 cuadros para los vídeos capturados por las cámaras, en \cite{torres2014} se
-comprobó que para una cancha de tamaño simple, con un vídeo con una resolución
-de 352x288 píxeles, es suficiente para encontrar los robots y pelota en el
-$99\%$ de los cuadros. Por lo tanto, un vídeo de 800x600 píxeles es suficiente
-para la totalidad de una cancha de tamaño doble.
+comprobó que para una cancha de tamaño simple, un vídeo con una resolución de
+352x288 píxeles, es suficiente para encontrar los robots y pelota en el $99\%$
+de los cuadros. Por lo tanto, un vídeo de 800x600 píxeles es suficiente para la
+totalidad de una cancha de tamaño doble.
