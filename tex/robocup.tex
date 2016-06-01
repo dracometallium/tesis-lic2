@@ -13,15 +13,22 @@ Size League}).
 
 Un partido de la \emph{SSL} enfrenta a dos equipos de seis robots, que deben
 tener un tamaño menor que un cilindro de 9$cm$ de radio y 15$cm$ de
-alto\cite{sslrules2015}. Los robots tienen capacidad de procesamiento limitada o
-nula, delegando la toma de decisiones a la computadora de su equipo. Estas a su
-vez perciben el ambiente a través de un sistema de visión global centralizado
+alto\cite{sslrules2015}. Los robots tienen capacidad de procesamiento reducida,
+delegando la toma de decisiones a la computadora de su equipo. Estas a su vez
+perciben el ambiente a través de un sistema de visión global centralizado
 compartido. Este sistema de visión consta de un conjunto de cámaras montadas
 sobre distintas áreas del campo de juego conectadas a una computadora donde se
 ejecuta el sistema de visión. El sistema detecta la posición y orientación de
 cada uno de los robots y la posición de la pelota, y reporta esta información a
-las computadoras que controlan los equipos. En la figura \ref{sistemaVG} se
-presenta un diagrama mostrando esta estructura.
+las computadoras que controlan los equipos.
+
+Para poder identificar a cada robot cada robot tiene sobre su parte superior 5
+parches de colores. El parche que se encuentra en el centro indica el color del
+equipo del robot, los cuatro restantes sirven para identificar al robot dentro
+del equipo y su orientación. La pelota de color liso distinto a el de los
+parches de los robots, normalmente naranja, ya que contrasta fácilmente con el
+verde de la cancha. En la figura \ref{sistemaVG} se presenta un diagrama
+mostrando esta estructura.
 
 \begin{figure}[!h]
 
@@ -48,7 +55,11 @@ predeterminada\cite{sslrules2015}. Con este cambio se espera permitir la
 exploración de nuevas tácticas por parte de los equipos, ya que mayor área
 permite mayor movilidad. Sin embargo, esto trae aparejado el problema de que en
 las canchas de tamaño doble se debe procesar cuatro veces la información que en
-las canchas originales, con una imagen final de una resolución levemente
-inferior a 800x600 píxeles, con la posibilidad de que en un futuro la cancha y
-el tamaño de la imagen capturada se incrementen. Este problema sera el eje
-central de esta tesis.
+las canchas originales.
+
+Aunque las reglas de la \emph{SSL} no establecen una resolución o taza de
+cuadros para los vídeos capturados por las cámaras, en \cite{torres2014} se
+comprobó que para una cancha de tamaño simple, un vídeo con una resolución de
+352x288 píxeles, es suficiente para encontrar los robots y pelota en el $99\%$
+de los cuadros. Por lo tanto, un vídeo de 800x600 píxeles es suficiente para la
+totalidad de una cancha de tamaño doble.
