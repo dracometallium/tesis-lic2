@@ -2,14 +2,40 @@
 
 \section{Descripción del framework}
 
-Para aumentar el throughput del sistema se aplicaran las dos técnicas discutidas
-con anterioridad. La primer optimización consta en dividir cada cuadro para que
-cada parte pueda ser procesada por un hilo distinto. La segunda optimización
-sera que el sistema no estará limitado a tomar solo un cuadro por ves. Para
-controlar estas dos optimizaciones debemos definir dos parámetros. Para la
-primera establecemos la cantidad de partes en las cuales se dividirá cada ítem,
-mientras que para la segunda establecemos la cantidad máxima de tareas de
-búsqueda en ejecución.
+Para aumentar el throughput del sistema se pueden aplicar tres enfoques distintos:
+
+\begin{itemize}
+
+\item 	Dado que en un vídeo ya decodificado el procesamiento de cada cuadro es
+	independiente del procesamiento de los demás, y dada la disponibilidad
+	de recursos de computo, se pueden procesar múltiples cuadros al mismo
+	tiempo sin que esto genere diferencias en la información obtenida (salvo
+	por el orden). Esto permitiría aumentar la cantidad de cuadros por
+	segundo obtenidos, aunque el tiempo de procesamiento de cada uno se
+	mantenga igual.
+
+\item	Para realizar la búsqueda de los objetos, el cuadro puede ser dividido.
+	Esto permitirá realizar la búsqueda en cada zona en paralelo. Para el
+	correcto funcionamiento, las zonas deberán tener partes en común que
+	dependerán del tamaño de los objetos, ya que no debe suceder que un
+	objeto no aparezca completo en ninguna de las zonas. Esto permitiría
+	reducir el tiempo de procesamiento de cada cuadro.
+
+\item	Se puede resolver el problema optimizando cada uno de los plugins del
+	framework, esperando de esta manera que el tiempo de procesamiento de
+	cada cuadro se reduzca lo suficiente como para que el sistema pueda
+	procesar la mayoría de los cuadros a tiempo.
+
+\end{itemize}
+
+Lamentablemente este último enfoque es muy especifico de la solución para ser
+aplicada en el framework. Ademas no fomenta la experimentación, ya que cada
+plugin que se agregue o modifique deberá ser optimizado. El primer y segundo
+enfoque son suficientemente generales como para ser aplicados como parte del
+framework, permite agregar y modificar los plugins sin mayores dificultades, y
+en el caso en el cual una solución especifica no cumpla con las condiciones que
+permitan aplicar alguna de las soluciones se puede limitar el paralelismo (ya
+sea no dividiendo el cuadro o procesando solo uno por vez).
 
 También seria deseable que las distintas pilas de plugins ejecuten de forma
 independiente una de la otra para que el retardo de procesamiento de cada cuadro
