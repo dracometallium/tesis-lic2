@@ -2,31 +2,22 @@
 
 \section{Metodología}
 
-Para la construcción del nuevo sistema de visión global por computadora para
-fútbol de robots se tomo como base aquel descripto en \cite{torres2014}.
-
 Esta tesis es de tipo experimental, durante su transcurso se desarrollo un
 nuevo sistema de visión global por computadora para fútbol de robots basado en
 plugins paralelo capas de aprovechar hardware de distintas cantidades de
 núcleos. Para la construcción del nuevo sistema se tomo como base el sistema
-descripto en \cite{torres2014}, este es un sistema esta basado en plugins pero
-de paralelismo limitado, ya que solo puede hacer uso de 4 núcleos a la vez.
+descripto en \cite{torres2014}, este es un sistema basado en plugins. De este
+se utilizaran los plugins desarrollados modificándolos para que se integren en
+el nuevo framework.
 
-Para comprobar la adaptabilidad del sistema desarrollado por Guillermo Torres en
-\cite{torres2014} se grabó un vídeo del que se crearon tres versiones con
-resoluciones de 352x228, 800x600 y 1280x720 pixeles, cada uno con una taza de 60
-cuadros por segundo. El segundo nos permite verificar el sistema contra los
-requerimientos actuales, mientras que el tercero nos permitirá vislumbrar si el
-sistema puede adaptarse a una mayor exigencia. Las ejecuciones con cada uno de
-estos vídeos se realizaron en una computadora con un procesador Intel Xeon
-E5-2630. Este es un procesador de 6 núcleos, cada uno de dos subprocesos
-simultáneos a través de la técnica de \emph{simultaneus multithreading} y con un
-reloj de 2,30GHz. El equipo cuenta ademas con 16GiB de memoria RAM.
-
-Durante la prueba con el vídeo de resolución 352x228 el sistema pudo procesar
-todos los cuadros del vídeo a tiempo (60 cuadros por segundo). Esto era de
-esperarse, ya que el sistema fue desarrollado con el objetivo de procesar vídeos
-de esa resolución. Sin embargo a pesar de la velocidad y cantidad de los
-núcleos, con el vídeo de resolución 800x600 píxeles la cantidad de cuadros por
-segundo cayo a 45. Para el vídeo de resolución 1280x720, la reducción del
-rendimiento fue mas brusca, decayendo a 14 cuadros por segundo.
+Para poder medir el rendimiento del sistema se consideran 2 variables. La
+primera es la cantidad de cuadros por segundo (o FPS, de sus siglas en ingles
+\emph{Frames per second}) procesados por el sistema. Por si misma, los FPS solo
+indican una cantidad promedio por segundo, sin asegurar su distribución, sin
+embargo, si se configura la cámara para proveer los cuadros a una taza
+especifica entonces se generaran de forma uniforme en el tiempo. Una taza de
+cuadros por segundo más alta se considera beneficiosa, ya que significa que se
+provee a los equipos con más información cada segundo. La segunda es el tiempo
+de procesamiento máximo de los cuadros. Mientras menor sea el retardo, la
+información entregada por el sistema sera mas actual, y por lo tanto mas
+relevante.
