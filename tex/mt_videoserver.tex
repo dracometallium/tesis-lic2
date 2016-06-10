@@ -3,16 +3,6 @@
 \section{Descripción de un sistema de visión global para fútbol de robots
 físicos sobre el que se basa la presente propuesta}
 
-El objetivo principal de un sistema de visión por computadora es el de definir
-un modelo a partir de una escena. En el fútbol de robots el modelo que se
-intenta definir es la ubicación y orientación de los robots y pelota con
-respecto a la cancha. Físicamente, el sistema de visión global para fútbol de
-robots consta de un conjunto de cámaras posicionadas sobre la cancha, una
-computadora sobre la que corre el software de visión global y la conexión de red
-hacia las computadoras de los equipos. En esta sección describiremos el sistema
-de visión global para fútbol de robots físicos sobre el cual se basa la presente
-propuesta.
-
 Si bien pueden existir variantes entre los distintos sistemas de visión que se
 han propuesto para el fútbol de robots, la mayoría de las soluciones convergen a
 un sistema de pila de plugins. Incluso los plugins utilizados suelen ser
@@ -20,7 +10,17 @@ similares. Esta similitud se debe a que el dominio es muy especifico y el
 ambiente esta controlado para facilitar la extracción de la información por el
 sistema.
 
-El sistema descripto en \cite{torres2014} tiene tres componentes principales:
+Por esto la decisión de que sistema tomar como base se realizo teniendo en
+cuenta la similitud de los objetivos.
+El sistema descripto en
+\cite{torres2014} tiene como objetivo ser utilizado como herramienta
+didáctica para la introducción a la visión por computadora, pero no aprovecha
+los sistemas multi-core con mas de 4 núcleos.
+
+El sistema descripto en \cite{torres2014} es un framework de visión por
+computadora capas de adaptarse a distintos dominios, pero se provee una solución
+especifica para el fútbol de robots de tamaño pequeño. El framework tiene tres
+componentes principales:
 
 \begin{description}
 
