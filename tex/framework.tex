@@ -6,72 +6,82 @@ Para aumentar el throughput del sistema se pueden aplicar tres enfoques distinto
 
 \begin{itemize}
 
-\item 	Dado que en un vídeo ya decodificado el procesamiento de cada cuadro es
-	independiente del procesamiento de los demás, y dada la disponibilidad
-	de recursos de computo, se pueden procesar múltiples cuadros al mismo
-	tiempo sin que esto genere diferencias en la información obtenida (salvo
-	por el orden). Esto permitiría aumentar la cantidad de cuadros por
-	segundo obtenidos, aunque el tiempo de procesamiento de cada uno se
-	mantenga igual.
+	\item 	Dado que en un vídeo ya decodificado el procesamiento de cada
+		cuadro es independiente del procesamiento de los demás, y dada
+		la disponibilidad de recursos de computo, se pueden procesar
+		múltiples cuadros al mismo tiempo sin que esto genere
+		diferencias en la información obtenida (salvo por el orden).
+		Esto permitiría aumentar la cantidad de cuadros por segundo
+		obtenidos, aunque el tiempo de procesamiento de cada uno se
+		mantenga igual.
 
-\item	Para realizar la búsqueda de los objetos, el cuadro puede ser dividido.
-	Esto permitirá realizar la búsqueda en cada zona en paralelo. Para el
-	correcto funcionamiento, las zonas deberán tener partes en común que
-	dependerán del tamaño de los objetos, ya que no debe suceder que un
-	objeto no aparezca completo en ninguna de las zonas. Esto permitiría
-	reducir el tiempo de procesamiento de cada cuadro.
+	\item	Para realizar la búsqueda de los objetos, el cuadro puede ser
+		dividido.  Esto permitirá realizar la búsqueda en cada zona en
+		paralelo. Para el correcto funcionamiento, las zonas deberán
+		tener partes en común que dependerán del tamaño de los objetos,
+		ya que no debe suceder que un objeto no aparezca completo en
+		ninguna de las zonas. Esto permitiría reducir el tiempo de
+		procesamiento de cada cuadro, ademas de que se puede sacar
+		provecho de una mayor localidad espacial.
 
-\item	Se puede resolver el problema optimizando cada uno de los plugins del
-	framework, esperando de esta manera que el tiempo de procesamiento de
-	cada cuadro se reduzca lo suficiente como para que el sistema pueda
-	procesar la mayoría de los cuadros a tiempo.
+	\item	Ya que la búsqueda de cada tipo de objetos es independiente de
+		la búsqueda de los demás, se pueden realizar múltiples búsquedas
+		en paralelo sobre el mismo cuadro por cada tipo de objeto.
+
+	\item	Se puede resolver el problema optimizando cada uno de los
+		plugins del framework, esperando de esta manera que el tiempo de
+		procesamiento de cada cuadro se reduzca lo suficiente como para
+		que el sistema pueda procesar la mayoría de los cuadros a
+		tiempo.
 
 \end{itemize}
 
 Lamentablemente este último enfoque es muy especifico de la solución para ser
-aplicada en el framework. Ademas no fomenta la experimentación, ya que cada
-plugin que se agregue o modifique deberá ser optimizado. El primer y segundo
-enfoque son suficientemente generales como para ser aplicados como parte del
-framework, permite agregar y modificar los plugins sin mayores dificultades, y
-en el caso en el cual una solución especifica no cumpla con las condiciones que
-permitan aplicar alguna de las soluciones se puede limitar el paralelismo (ya
-sea no dividiendo el cuadro o procesando solo uno por vez).
+aplicada en el framework. Ademas dificulta su uso como herramienta didáctica, ya
+que cada plugin que se agregue o modifique deberá ser optimizado. El primer y
+segundo enfoque son suficientemente generales como para ser aplicados como parte
+del framework, permite agregar y modificar los plugins sin mayores dificultades,
+y en el caso en el cual una solución especifica no cumpla con las condiciones
+que permitan aplicar alguna de las soluciones se puede limitar el paralelismo,
+ya sea no dividiendo el cuadro o procesando solo uno por vez.
 
-También seria deseable que las distintas pilas de plugins ejecuten de forma
-independiente una de la otra para que el retardo de procesamiento de cada cuadro
-sea menor. Sin embargo, en los experimentos realizados se comprobó que el
-overhead y la competencia de recursos introducidos por el incremento en la
-cantidad de tareas afecta de forma notable el rendimiento de la aplicación, por
-lo cual se opto que las pilas ejecuten de forma secuencial.
+Si bien el tercer enfoque es también es suficientemente general como para ser
+aplicado en el framework, en las pruebas que se realizaron se comprobó que
+realizar las búsquedas por cada tipo de objeto en paralelo sobre cada fragmento
+tenia un efecto adverso. Por este motivo, el tercer enfoque no fue aplicado
+sobre el producto final, y no sera incluido en las explicaciones siguientes. Los
+detalles de los resultados que llevaron a tomar esta decisión serán detallados
+mas adelante en la sección de resultados.
 
-Conceptualmente el framework ejecutara cuatro tipos de tareas distintos, que a
-su ves pueden ser divididos en tareas persistentes y tareas de búsqueda. Las
-primeras son aquellas de las cuales solo habrá una instancia y permanecerán
-durante la ejecución de la mayor parte del programa, mientra que definimos a las
-tareas de búsqueda a aquellas creadas con el objetivo de procesar un único
-cuadro (o un fragmento de uno), y que terminaran cuando terminen de procesar
-este. Las tareas persistentes son generación de ítems y generación de tareas de
-búsqueda, mientras que las tareas de búsqueda son fractura de ítems y
-procesamiento de fragmentos.
+Conceptualmente el framework ejecuta cuatro tipos de tareas distintas que
+pertenecen a uno de dos grupos que llamaremos tareas estáticas y tareas
+dinámicas. Las tareas estáticas son aquellas que permanecen en ejecución desde
+el inicio del programa hasta su finalización y de las que solo hay una por cada
+tipo. Las tareas dinámicas son aquellas creadas para procesar un cuadro o
+fragmento especifico, una ves que terminan de procesar el cuadro o fragmento
+finalizan, y existen múltiples tareas del mismo tipo pero cada una asociada a un
+cuadro o fragmento distinto. Las tareas del framework son:
 
 \begin{description}
 
-\item[Generación de ítems:] Sera la encargada de la generación o captura de los
-	ítems y colocarlos en la cola de ítems a procesar. Solo habrá una
-	instancia de esta tarea.
+	\item[Generación de cuadros:] Es la tarea encargada de la generación o
+		captura de los cuadros y colocarlos en la cola de cuadros a
+		procesar. Esta es una tarea estática.
 
-\item[Generación de tareas de búsqueda:] Esta tarea sera la encargada de tomar
-	un ítem de la cola de ítems a procesar cuando la cantidad de tareas en
-	ejecución sea menor que el máximo establecido, y crear una tarea de
-	fractura para este. Solo habrá una instancia de esta tarea.
+	\item[Generación de tareas dinámicas:] Esta tarea sera la encargada de
+		tomar un cuadro de la cola de cuadros a procesar cuando la cantidad
+		de tareas en ejecución sea menor que el máximo establecido, y
+		crear una tarea de fractura para este. Esta es una tarea
+		estática.
 
-\item[Fractura de ítems:] Cada una de estas tareas dividirá el ítem en tantas
-	partes como se haya definido al comienzo de la ejecución y por cada
-	fragmento creara una tarea de procesamiento de fragmentos asociada a
-	este.
+	\item[Fractura de cuadro:] Cada tarea de este tipo divide el cuadro que
+		tiene asignada en una cantidad predefinida de fragmentos de
+		igual tamaño. Luego crea una tarea de procesamiento de fragmento
+		para cada uno de los fragmentos.
 
-\item[Procesamiento de fragmentos:] Cada una de estas tareas tomara su fragmento
-	asociado y lo procesara utilizando cada una de las pilas de plugins.
+	\item[Procesamiento de fragmento:] Cada una de estas tareas toma su
+		fragmento asociado y lo procesa utilizando cada una de las pilas
+		de plugins.
 
 \end{description}
 
