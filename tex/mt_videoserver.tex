@@ -8,19 +8,21 @@ han propuesto para el fútbol de robots, la mayoría de las soluciones convergen
 un sistema de pila de plugins. Incluso los plugins utilizados suelen ser
 similares. Esta similitud se debe a que el dominio es muy especifico y el
 ambiente esta controlado para facilitar la extracción de la información por el
-sistema.
+sistema. Por esto la decisión de que sistema tomar como base se realizo teniendo
+en cuenta la similitud de los objetivos. Se busco un sistema diseñado para ser
+utilizado como herramienta para la introducción a la visión por computadora,
+para crear en base a este un nuevo sistema que aproveche el paralelismo proveido
+por los sistemas de hardware actuales pero manteniendo su utilidad como
+herramienta didáctica.
 
-Por esto la decisión de que sistema tomar como base se realizo teniendo en
-cuenta la similitud de los objetivos.
-El sistema descripto en
-\cite{torres2014} tiene como objetivo ser utilizado como herramienta
-didáctica para la introducción a la visión por computadora, pero no aprovecha
-los sistemas multi-core con mas de 4 núcleos.
-
-El sistema descripto en \cite{torres2014} es un framework de visión por
-computadora capas de adaptarse a distintos dominios, pero se provee una solución
-especifica para el fútbol de robots de tamaño pequeño. El framework tiene tres
-componentes principales:
+El sistema descripto en \cite{torres2014} tiene como objetivo ser utilizado como
+herramienta didáctica para la introducción a la visión por computadora, esta
+basado en plugins y desacopla el hilo de captura del los hilos de búsqueda. Se
+utilizan múltiples hilos para aprovechar hasta cuatro núcleos (para el fútbol de
+robots), pero si el sistema pose mas núcleos estos no son utilizados. El sistema
+define un framework de visión por computadora capas de adaptarse a distintos
+dominios, pero se provee una solución especifica para el fútbol de robots de
+tamaño pequeño. El framework general tiene tres componentes principales:
 
 \begin{description}
 
