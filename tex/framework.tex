@@ -16,7 +16,7 @@ Para aumentar el throughput del sistema se pueden aplicar tres enfoques distinto
 		mantenga igual.
 
 	\item	Para realizar la búsqueda de los objetos, el cuadro puede ser
-		dividido.  Esto permitirá realizar la búsqueda en cada zona en
+		dividido. Esto permitirá realizar la búsqueda en cada zona en
 		paralelo. Para el correcto funcionamiento, las zonas deberán
 		tener partes en común que dependerán del tamaño de los objetos,
 		ya que no debe suceder que un objeto no aparezca completo en
@@ -69,10 +69,11 @@ cuadro o fragmento distinto. Las tareas del framework son:
 		procesar. Esta es una tarea estática.
 
 	\item[Generación de tareas dinámicas:] Esta tarea sera la encargada de
-		tomar un cuadro de la cola de cuadros a procesar cuando la cantidad
-		de tareas en ejecución sea menor que el máximo establecido, y
-		crear una tarea de fractura para este. Esta es una tarea
-		estática.
+		tomar un cuadro de la cola de cuadros a procesar cuando la
+		cantidad de tareas dinámicas en ejecución y listas para ser
+		ejecutadas sea menor que el máximo establecido al inicio de la
+		aplicación, y crear una tarea de fractura para este. Esta es una
+		tarea estática.
 
 	\item[Fractura de cuadro:] Cada tarea de este tipo divide el cuadro que
 		tiene asignada en una cantidad predefinida de fragmentos de
@@ -91,18 +92,43 @@ cuadro o fragmento distinto. Las tareas del framework son:
 
 	\caption{Tareas principales del framework.}
 
+	\label{tareasFramework}
+
 \end{figure}
+
+A medida que las tareas dinámicas son creadas se colocan en una cola de tareas.
+Para su ejecución se crean una cantidad de hilos igual al numero máximo $N$ de
+tareas dinámicas establecido al comienzo de la ejecución del programa. Cuando un
+hilo termina de ejecutar una tarea, toma otra de la cola de tareas. En la figura
+\ref{tareasFramework} se muestran un diagrama de las tareas del framework.
+
+Si el cuadro se divide en partes sin zonas solapadas puede suceder que los
+parches de un robot se encuentren en fragmentos distintos. Esto es un problema,
+ya que para encontrar los robots el plugin de detección de robots debe detectar
+todos los parches que lo identifican, por lo cual todos deben estar dentro del
+mismo fragmento. Para asegurar esto, cada par de fragmentos adyacentes deben
+compartir una zona igual al ancho de un robot.
+
+TODO: Insertar gráfico.
 
 Dado que los fragmentos deberán compartir un área en sus bordes para que no
 suceda que un robot no se encuentre visible completamente por lo menos en un
-cuadro, es deseable que se minimice el perímetro de estos. Por la manera que las
-imágenes se representan comúnmente en una computadora y por su simplicidad, se
-opto por trabajar con un teselado con rectángulos. En el caso de estos, para
-minimizar su perímetro y maximizar su área, se debe procurar que la proporción
-entre su ancho y altura sea lo mas cercana a uno. También, para balancear la
-carga uniformemente, todos los fragmentos serán de igual tamaño. Aquellos que se
-encuentren en los bordes inferior y derecho pueden que sean mas chicos, pero la
-reducción en tamaño nunca sera mayor que la del área compartida.
+cuadro, es deseable que se minimice el perímetro de estos.
+
+Dado que los fragmentos comparten una área en sus bordes, la suma del área de
+los fragmentos es superior al área de la imagen original. Para reducir el área
+total, y por lo tanto los píxeles a procesar, se debe reducir la zona
+compartida. Como la zona compartida tiene un ancho fijo (el ancho de un robot),
+para encontrar el área mínima se debe minimizar el perímetro del fragmento.
+
+Por la manera que las imágenes se representan comúnmente en una computadora y
+por su simplicidad, se opto por trabajar con un teselado con rectángulos. En el
+caso de estos, para minimizar su perímetro y maximizar su área, se debe procurar
+que la proporción entre su ancho y altura sea lo mas cercana a uno. También,
+para balancear la carga uniformemente, todos los fragmentos serán de igual
+tamaño. Aquellos que se encuentren en los bordes inferior y derecho pueden que
+sean mas chicos, pero la reducción en tamaño nunca sera mayor que la del área
+compartida.
 
 En la figura \ref{fragmentos} se muestran como se divide una imagen de 16x12
 píxeles en 1, 2, 5 y 12 fragmentos. Debido a que se divide en fragmentos
