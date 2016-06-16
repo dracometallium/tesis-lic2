@@ -100,7 +100,19 @@ A medida que las tareas dinámicas son creadas se colocan en una cola de tareas.
 Para su ejecución se crean una cantidad de hilos igual al numero máximo $N$ de
 tareas dinámicas establecido al comienzo de la ejecución del programa. Cuando un
 hilo termina de ejecutar una tarea, toma otra de la cola de tareas. En la figura
-\ref{tareasFramework} se muestran un diagrama de las tareas del framework.
+\ref{tareasFramework} se muestran un diagrama de las tareas del framework, y en
+la figura \ref{hilosFramework} se muestra como las tareas son asignadas a los
+hilos de ejecución.
+
+\begin{figure}[!h]
+
+	\includegraphics[width=\textwidth]{img/hilos.pdf}
+
+	\caption{Asignación de tareas a los hilos de ejecución.}
+
+	\label{hilosFramework}
+
+\end{figure}
 
 Si el cuadro se divide en partes sin zonas solapadas puede suceder que los
 parches de un robot se encuentren en fragmentos distintos. Esto es un problema,
