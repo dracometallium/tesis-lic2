@@ -107,19 +107,35 @@ parches de un robot se encuentren en fragmentos distintos. Esto es un problema,
 ya que para encontrar los robots el plugin de detección de robots debe detectar
 todos los parches que lo identifican, por lo cual todos deben estar dentro del
 mismo fragmento. Para asegurar esto, cada par de fragmentos adyacentes deben
-compartir una zona igual al ancho de un robot.
+compartir una zona igual al ancho de un robot. En la figura \ref{areaCompartida}
+se muestran los casos donde el área compartida es menor al ancho de un robot y
+donde el área compartida es del ancho de un robot.
 
-TODO: Insertar gráfico.
+\begin{figure}[!h]
+
+	\centering
+	\includegraphics[width=0.45\textwidth]{img/areaTooSmall.pdf}
+	\includegraphics[width=0.45\textwidth]{img/areaPerfect.pdf}
+
+	\caption{Izquierda: si el área compartida es demasiado pequeña y el
+	robot se encuentra entre dos fragmentos, puede que sus parches no sean
+	completamente visibles desde ninguno de ellos. Derecha: si el área
+	compartida es del ancho de los robots, entonces todos los parches son
+	visibles completamente desde por lo menos un fragmento.}
+
+	\label{areaCompartida}
+
+\end{figure}
 
 Dado que los fragmentos deberán compartir un área en sus bordes para que no
 suceda que un robot no se encuentre visible completamente por lo menos en un
 cuadro, es deseable que se minimice el perímetro de estos.
 
 Dado que los fragmentos comparten una área en sus bordes, la suma del área de
-los fragmentos es superior al área de la imagen original. Para reducir el área
-total, y por lo tanto los píxeles a procesar, se debe reducir la zona
-compartida. Como la zona compartida tiene un ancho fijo (el ancho de un robot),
-para encontrar el área mínima se debe minimizar el perímetro del fragmento.
+los fragmentos es superior al área de la imagen original. Para reducir los
+píxeles a procesar, se debe reducir la zona compartida. Como la zona compartida
+tiene un ancho fijo (el ancho de un robot), para encontrar el área mínima se
+debe minimizar el perímetro del fragmento.
 
 Por la manera que las imágenes se representan comúnmente en una computadora y
 por su simplicidad, se opto por trabajar con un teselado con rectángulos. En el
@@ -127,7 +143,7 @@ caso de estos, para minimizar su perímetro y maximizar su área, se debe procur
 que la proporción entre su ancho y altura sea lo mas cercana a uno. También,
 para balancear la carga uniformemente, todos los fragmentos serán de igual
 tamaño. Aquellos que se encuentren en los bordes inferior y derecho pueden que
-sean mas chicos, pero la reducción en tamaño nunca sera mayor que la del área
+sean mas chicos, pero la diferencia de tamaño nunca sera mayor que la del área
 compartida.
 
 En la figura \ref{fragmentos} se muestran como se divide una imagen de 16x12
@@ -147,7 +163,6 @@ original.
 	\label{fragmentos}
 
 \end{figure}
-
 
 \section{Implementación del framework}
 
