@@ -151,23 +151,22 @@ caso de estos, para minimizar su perímetro y maximizar su área, se debe procur
 que la proporción entre su ancho y altura sea lo mas cercana a uno. También,
 para balancear la carga uniformemente, todos los fragmentos serán de igual
 tamaño. Aquellos que se encuentren en los bordes inferior y derecho pueden que
-sean mas chicos, pero la diferencia de tamaño nunca sera mayor que la del área
-compartida.
+sean mas chicos.
 
-En la figura \ref{fragmentos} se muestran como se divide una imagen de 16x12
-píxeles en 1, 2, 5 y 12 fragmentos. Debido a que se divide en fragmentos
-rectangulares de igual tamaño, cuando el numero de fragmentos es un numero
-primo, el cuadro se dividirá en tiras con el ancho o alto igual que el cuadro
-original.
+En la figura \ref{fragmentos} se muestran como se divide una imagen de 800x600
+píxeles con un area compartida de 50 píxeles en 1, 2, 5 y 8 fragmentos. Debido a
+que se divide en fragmentos rectangulares de igual tamaño, cuando el numero de
+fragmentos es un numero primo, el cuadro se dividirá en tiras con el ancho o
+alto igual que el cuadro original.
 
 \begin{figure}[!h]
 
 	\includegraphics[width=0.5\textwidth]{img/fragmentos1.pdf}
 	\includegraphics[width=0.5\textwidth]{img/fragmentos2.pdf}
 	\includegraphics[width=0.5\textwidth]{img/fragmentos5.pdf}
-	\includegraphics[width=0.5\textwidth]{img/fragmentos12.pdf}
-	\caption{Resultado de dividir un cuadro de 16x12 píxeles en 1(a), 2(b),
-	5(c) y 12(d) fragmentos.}
+	\includegraphics[width=0.5\textwidth]{img/fragmentos8.pdf}
+	\caption{Resultado de dividir un cuadro de 800x600 píxeles con un área
+	compartida de 50 píxeles en 1(a), 2(b), 5(c) y 8(d) fragmentos.}
 	\label{fragmentos}
 
 \end{figure}
