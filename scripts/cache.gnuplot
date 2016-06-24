@@ -1,10 +1,10 @@
 # vim: set syntax=gnuplot syntax :
 
 set term pdfcairo font "Arial,10" dashed
-set linetype 1 lw 3 lc rgb "#D02720"  pointtype 7 ps 0.5
-set linetype 2 lw 3 lc rgb "#1FD9B2" pointtype 11 ps 0.75
-set linetype 3 lw 3 lc rgb "#3ADE58" pointtype 8 ps 0.75
-set linetype 4 lw 3 lc rgb "#E0B82F" pointtype 10 ps 0.75
+set linetype 1 lw 1 lc rgb "#D02720"  pointtype 7 ps 0.5
+set linetype 2 lw 1 lc rgb "#1FD9B2" pointtype 11 ps 0.75
+set linetype 3 lw 1 lc rgb "#3ADE58" pointtype 8 ps 0.75
+set linetype 4 lw 1 lc rgb "#E0B82F" pointtype 10 ps 0.75
 set linetype 5 lw 1 lc rgb "gray" pointtype 0
 set grid xtics ytics lw 1 lc rgb 'gray'
 

@@ -5,8 +5,6 @@
 
 #set title "Video ".resolution."pixeles"
 set term pdfcairo font "Arial,10"
-set dgrid3d 12,12
-#set palette defined (0 '#9ecae1', 300 '#3182bd')
 
 set yrange [0.5:24.5]
 set xrange [0.5:12.5]
@@ -15,7 +13,6 @@ set xtics 1
 set xtics in scale 0.5
 set xlabel "Nº threads búsqueda"
 set ylabel 'Nº particiones'
-set view map
 
 set palette defined (300 '#0000ff', 600 'white')
 set cbrange [ 0 : 60 < * ]
