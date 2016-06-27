@@ -6,26 +6,26 @@
 #set title "Video ".resolution."pixeles"
 set term pdfcairo font "Arial,10"
 
-set yrange [0.5:24.5]
-set xrange [0.5:12.5]
+set xrange [0.5:24.5]
+set yrange [0.5:12.5]
 set ytics 1
 set xtics 1
-set xtics in scale 0.5
-set xlabel "Nº threads búsqueda"
-set ylabel 'Nº particiones'
+set ytics in scale 0.5
+set ylabel "Nº threads búsqueda"
+set xlabel 'Nº particiones'
 
 set palette defined (300 '#0000ff', 600 'white')
 set cbrange [ 0 : 60 < * ]
 
 set output resolution.'_fps.pdf'
-set title "Cuadros por segundo\n".resolution." pixeles"
-plot arch using 1:2:($3/10) with image title '', \
- arch using 1:2:(sprintf('%.0f', ($3/10.0))) with labels font ',10' title ''
+set title "Cuadros por segundo\n".resolution." pixeles."
+plot arch using 2:1:($3/10) with image title '', \
+ arch using 2:1:(sprintf('%.0f', ($3/10.0))) with labels font ',8' title ''
 
 set palette defined (0 'white', 300 '#0000ff')
 set cbrange [ * : * ]
 
 set output resolution.'_turnArround.pdf'
-set title "Tiempo máximo de espera, FSP limitados.\n".resolution." pixeles"
-plot arch using 1:2:5 with image title '', \
- arch using 1:2:(sprintf('%.2f', $5)) with labels font ',10' title '' 
+set title "Tiempo máximo de espera, FSP limitados.\n".resolution." pixeles.\n(en centésimas de segundo)"
+plot arch using 2:1:($5*100) with image title '', \
+ arch using 2:1:(sprintf('%.0f', ($5 * 100))) with labels font ',8' title ''
