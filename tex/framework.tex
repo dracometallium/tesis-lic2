@@ -2,7 +2,7 @@
 
 \section{Descripción del framework}
 
-Para aumentar el throughput del sistema se pueden aplicar tres enfoques distintos:
+Para aumentar el throughput del sistema se pueden aplicar cuatro enfoques distintos:
 
 \begin{itemize}
 
@@ -68,7 +68,7 @@ cuadro o fragmento distinto. Las tareas del framework son:
 		captura de los cuadros y colocarlos en la cola de cuadros a
 		procesar. Esta es una tarea estática.
 
-	\item[Generación de tareas dinámicas:] Esta tarea sera la encargada de
+	\item[Generación de tareas dinámicas:] Esta tarea es la encargada de
 		tomar un cuadro de la cola de cuadros a procesar cuando la
 		cantidad de tareas dinámicas en ejecución y listas para ser
 		ejecutadas sea menor que el máximo establecido al inicio de la
@@ -142,8 +142,8 @@ donde el área compartida es del ancho de un robot.
 Dado que los fragmentos comparten una área en sus bordes, la suma del área de
 los fragmentos es superior al área de la imagen original. Para reducir los
 píxeles a procesar, se debe reducir la zona compartida. Como la zona compartida
-tiene un ancho fijo (el ancho de un robot), para encontrar el área mínima se
-debe minimizar el perímetro del fragmento.
+tiene un ancho fijo (el ancho de un robot), para encontrar el área compartida
+mínima se debe minimizar el perímetro del fragmento.
 
 Por la manera que las imágenes se representan comúnmente en una computadora y
 por su simplicidad, se opto por trabajar con un teselado con rectángulos. En el
@@ -154,10 +154,10 @@ tamaño. Aquellos que se encuentren en los bordes inferior y derecho pueden que
 sean mas chicos.
 
 En la figura \ref{fragmentos} se muestran como se divide una imagen de 800x600
-píxeles con un area compartida de 50 píxeles en 1, 2, 5 y 8 fragmentos. Debido a
+píxeles con un área compartida de 50 píxeles en 1, 2, 5 y 8 fragmentos. Debido a
 que se divide en fragmentos rectangulares de igual tamaño, cuando el numero de
-fragmentos es un numero primo, el cuadro se dividirá en tiras con el ancho o
-alto igual que el cuadro original.
+fragmentos es un numero primo, el cuadro se divide en tiras con el ancho o alto
+igual que el cuadro original.
 
 \begin{figure}[!h]
 
