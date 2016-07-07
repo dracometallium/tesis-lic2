@@ -8,14 +8,12 @@ el \emph{SSL-Vision}\cite{sslvision}. Este es un sistema programado en
 \emph{C++} basado en plugins, lo que le permite ser extendido fácilmente
 mediante estos. Lamentablemente posee algunas desventajas. En primer lugar, el
 sistema de captura de cuadros y el de procesamiento están fuertemente acoplados
-formando parte del mismo hilo de ejecución. Esto impide hacer uso de sistema de
-captura de cuadros y el de procesamiento están fuertemente acoplados formando
-parte del mismo hilo de ejecución. Esto impide hacer uso de las capacidades de
-paralelización que ofrece el hardware actual, limitando su desempeño. Para
-aumentar la eficiencia del sistema los plugins están altamente optimizados
-aumentando la complejidad del sistema. Esta complejidad entorpece su uso como
-herramienta didáctica para la introducción a la visión por computadora.
-
+formando parte del mismo hilo de ejecución. Esto impide hacer uso de las
+capacidades de paralelización que ofrece el hardware actual, limitando su
+desempeño y escalabilidad. Para aumentar la eficiencia del sistema los plugins
+están altamente optimizados aumentando la complejidad del sistema. Esta
+complejidad entorpece su uso como herramienta didáctica para la introducción a
+la visión por computadora.
 
 En respuesta a estos problemas, en \cite{torres2012,torres2014} se presenta un
 nuevo framework, también programado en \emph{C++} y orientado a plugins
