@@ -2,30 +2,25 @@
 
 \section{Metodología experimental}
 
-Como se menciono con anterioridad, para comprobar el funcionamiento del nuevo
-framework se procesaron los vídeos de resolución 800x600 y 1280x720, en
-una computadora con un procesador Intel Xeon E5-2630. Este es un procesador de 6
-núcleos, cada uno de dos subprocesos simultáneos a través de la técnica de
-\emph{simultaneus multithreading} y con un reloj de 2,30GHz. El equipo cuenta
-ademas con 16GiB de memoria RAM, 15MiB de memoria cache L3, 256KiB de cache L2,
-32Kib de cache L1 para datos, y 32 KiB de cache L1 para instrucciones.
-
-\begin{figure}[!ht]
-
-	\includegraphics[width=\textwidth]{img/topo.pdf}
-	\caption{Arquitectura de la maquina de pruebas.}
-
-\end{figure}
+Para comprobar el funcionamiento del nuevo framework se grabo un vídeo a partir
+del cual se crearon dos, uno con una resolución de 800x600 píxeles y otro con
+una resolución de 1280x720 píxeles.
 
 Se realizaron pruebas con cada vídeo, variando la cantidad de partes en las que
 fueron divididos los cuadros de 1 a 24, y la cantidad de hilos de búsqueda entre
-1 y 12. Cada prueba se ejecuto dos veces, la primera buscando el mínimo de la
-cantidad máxima de cuadros por segundo que soporta el sistema bajo cada
-configuración. En la segunda se limito la cantidad de cuadros por segundo de
-cada configuración, según lo encontrado en la primer prueba, y se registró el
-tiempo de procesamiento de los cuadros máximo para cada de estas. Cada prueba
-consto de 10 ejecuciones distintas de las que solo se registró el peor valor
-obtenido.
+1 y 12. Como resultado de las pruebas se buscan obtener dos valores para cada
+configuración: la cantidad de \emph{FPS} soportados por el sistema y el tiempo
+de retardo máximo cuando la cantidad de \emph{FPS} es la máxima soportada por el
+sistema para esa configuración. Como la obtención de uno de los valores buscados
+depende del previo conocimiento del otro, cada prueba consto de dos partes.
+En la primera partes se busco la cantidad de \emph{FPS} soportados por el
+sistema para esa configuración, ejecutando el programa sin limitar la cantidad
+de cuadros por segundo. En la segunda parte se limito la cantidad de
+cuadros por segundo (según lo encontrado en la primera ejecución) y se registró
+el tiempo de procesamiento máximo. Dado que se trata de un sistema de
+tiempo real débil, se busca obtener cotas inferiores del rendimiento. Por esto
+se repitió cada ejecución 10 veces, registrando solo el peor valor obtenido para
+cada variable en cada configuración.
 
 Dada la gran cantidad de ejecuciones se busco el tiempo mínimo necesario para
 que estas fueran representativas de una ejecución prolongada. Se realizaron 3
@@ -34,7 +29,29 @@ no se contabilizo con el fin de permitir que la ejecución se estabilizara.
 Estas se compararon con ejecuciones bajo la misma configuración, pero ejecutando
 de 10 a 20 segundos, y contabilizando solo los últimos 10. Con esta prueba se
 pudo comprobar que las pruebas de 16 segundos son representativas de ejecuciones
-mas largas.
+mas largas. En la siguiente tabla se pueden ver los resultados de estas pruebas.
+
+TODO: Insertar tabla
+
+\section{Plataforma experimental}
+
+El equipo de pruebas cuenta un procesador Intel Xeon E5-2630. Este es un
+procesador de 6 núcleos con multithreading simultáneo de dos vías, una
+frecuencia básica de CPU de 2,30GHz y 2,8GHz en modo turbo, 15MiB de memoria
+cache L3, 256KiB de cache L2, 32Kib de cache L1 para datos, y 32 KiB de cache L1
+para instrucciones. El equipo posee ademas con 16GiB de memoria RAM. La
+jerarquía de memoria se muestra en la figura \ref{topoMemoria}
+
+\begin{figure}[!ht]
+
+	\includegraphics[width=\textwidth]{img/topo.pdf}
+	\caption{Jerarquía de memoria de la maquina de pruebas.}
+
+	\label{topoMemoria}
+
+\end{figure}
+
+\section{Resultados}
 
 Durante el desarrollo de la aplicación se probaron tres distintas
 implementaciones. En la primera implementación, el framework ejecutaba las
@@ -42,18 +59,25 @@ distintas pilas de plugins en tareas separadas. En la segunda implementación el
 framework fue modificado para que una sola tarea ejecutara todas las pilas de
 plugins sobre un mismo fragmento. Para la tercera implementación se trabajo
 sobre el mismo framework que la segunda, pero se unieron las pilas de búsquedas
-de robots y la de búsqueda de pelota. De estas, la última fue la que produjo
-resultados mas satisfactorios, por lo que sera sobre los resultados de esta que
+de robots y la de búsqueda de pelota. Para comprobar cual de estas era la mas
+efectiva se realizaron las pruebas con cada una de estas para la configuración
+de 12 hilos de búsqueda y 12 particiones con el vídeo de 1280x720 píxeles de
+resolución. La primera implementación proceso XX \emph{FPS}, la segunda XX
+\emph{FPS} y la tercera XX \emph{FPS}. Como esta última fue la que produjo
+resultados mas satisfactorios, sera sobre los resultados de esta que
 trabajaremos a continuación.
 
-\section{Resultados}
-
-Como se pueden ver en las figuras \ref{800fps} y \ref{1280fps}, se cumplió
-satisfactoriamente con el objetivo crear un sistema capas de procesar un vídeo
-de 800x600 píxeles a 60 cuadros por segundo, llegando a triplicar la cantidad de
-cuadros por segundos buscados. También se logro superar esta taza en el vídeo de
-1280x720 píxeles de resolución, indicando que el sistema podría ser usando bajo
-estas condiciones.
+En las figuras \ref{800fps} y \ref{1280fps} se muestran las cantidades de
+\emph{FPS} alcanzados para un vídeo de 800x600 píxeles y 1280x720 píxeles
+respectivamente, para distintas cantidades de threads de búsqueda y fragmentos.
+El numero de threads de búsqueda indica la cantidad de threads que ejecutan las
+tareas dinámicas. Adicionalmente el sistema ejecuta dos threads más para las
+tareas estáticas, uno para la generación de cuadros y otro para la tarea de
+generación de tareas dinámicas. En el caso de del vídeo de 800x600 píxeles se
+llego a un máximo de 195 \emph{FPS} cuando se divide el cuadro en 15 fragmentos
+y se utilizan 10 u 11 hilos de busqueda, mientras que para el vídeo de 1280x720
+píxeles se alcanzo un máximo de 94 \emph{FPS} cuando se divide el cuadro en 21
+fragmentos y se utilizan 10 u 11 cuadros de búsqueda.
 
 \begin{figure}[!h]
 
@@ -72,27 +96,26 @@ estas condiciones.
 \end{figure}
 
 En las figuras \ref{800fps} y \ref{1280fps} se pueden observar dos patrones que
-ocurren en ambos vídeos y cuyas causas pueden ser no inmediatamente obvias. El
-primero es que si los cuadros se dividen en 7, 11, 17, 19 y 23 fragmentos, se
-produce una notable reducción en la cantidad de cuadros por segundo con respecto
-a las divisiones adyacentes. El segundo patrón que se puede observar es una
-reducción en la cantidad de cuadros por segundo cuando la cantidad de fragmentos
-es reducida y la cantidad de hilos de búsqueda alta.
+ocurren en ambos vídeos. El primero es que si los cuadros se dividen en 7, 11,
+17, 19 y 23 fragmentos, se produce una notable reducción en la cantidad de
+cuadros por segundo con respecto a las divisiones adyacentes. El segundo patrón
+que se puede observar es una reducción en la cantidad de cuadros por segundo
+cuando la cantidad de fragmentos es reducida y la cantidad de hilos de búsqueda
+alta.
 
-Dado que el orden de ejecución de la pila de plugins es del orden de la suma del
-área de los fragmentos, es de esperar que a mayor área total, menor sea la
-cantidad de cuadros por segundo, por lo cual mayor cantidad de fragmentos,
-implicaría una reducción en la cantidad de cuadros procesados. Pero al mismo
-tiempo, mayor cantidad de fragmentos permite aprovechar el paralelismo de mejor
-manera. Sin embargo, la relación entre cantidad de fragmentos y el área es
-irregular. Si se divide el cuadro en un número primo de fragmentos, el área
-total se incrementa de forma significativa con respecto a los valores
-circundantes. En la figura \ref{primosArea} se muestra la fluctuación del área
-para cada cantidad de particiones desde 1 hasta 100 para un vídeo de 1280x720
-píxeles de resolución, resaltando el crecimiento para valores primos y para los
-valores inmediatamente inferiores y superiores. Como puede observarse, a partir
-de 7 fragmentos el área total se incrementa de forma significativa cuando el
-número es primo con respecto a los valores cercanos no primos.
+Cuando se incrementan la cantidad de fragmentos aumenta el área compartida y por
+lo tanto el área total que se procesa, al mismo, una mayor cantidad de
+fragmentos permite aprovechar mejor el paralelismo. Si se divide el cuadro en un
+número primo de fragmentos, el área total se incrementa de forma significativa
+con respecto a los valores circundantes. En la figura \ref{primosArea} se
+muestra la fluctuación del área para cada cantidad de particiones desde 1 hasta
+100 para un vídeo de 1280x720 píxeles de resolución, resaltando el crecimiento
+para valores primos y para los valores inmediatamente inferiores y superiores.
+Como puede observarse, a partir de 7 fragmentos el área total se incrementa de
+forma significativa cuando el número es primo con respecto a los valores
+cercanos no primos. Esto lleva a que un cambio mínimo en las posibilidades de
+aprovechar el paralelismo se vea acompañado por un gran incremento en el área a
+procesar.
 
 \begin{figure}[!h]
 
@@ -126,29 +149,26 @@ respecto tanto a un fragmento menos como un fragmento más. También se pueden
 apreciar que los incrementos repentinos en el área total coinciden con
 disminuciones repentinas en los cuadros por segundo procesados.
 
-TODO: ¿Falta aclarar algo al respecto?
+El segundo patrón observado es que cuando la cantidad de fragmentos es baja y la
+cantidad de hilos de búsqueda alta, el sistema tiene menor desempeño que
+utilizar una menor cantidad de hilos de búsqueda pero una mayor cantidad de
+fragmentos. Si la cantidad de fragmentos es menor que la cantidad de hilos de
+búsqueda, siempre se estarán procesando por lo menos dos cuadros, y si la
+cantidad de fragmentos uno menor que la mitad de los hilos de búsqueda, entonces
+siempre se estarán procesando por lo menos tres cuadros. Esto tiene como efecto
+que los cuadros compitan por la cache y reduce las posibilidades de que los
+fragmentos entren completamente en las caches de nivel mas bajo. Por esto se
+propuso la hipótesis de que el retardo se produce debido a un aumento en los
+fallos de cache.
 
-Para encontrar las cusas del segundo patrón (la reducción en cuadros por
-segundos procesados cuando la cantidad de hilos de búsqueda es alta, y la
-cantidad de fragmentos baja) se realizo una búsqueda manual del fragmento de
-código donde se producía el retardo. Finalmente se pudo comprobar que la causa
-principal de este retardo se produce en una función de una librería externa.
-Analizando el código de esta se encontró que la fuente principal del retardo se
-trata de un segmento de código que accede a todos los píxeles de una imagen
-auxiliar y lo colorea de negro. Por cada fragmento se crea una de estas imágenes
-auxiliares y su tamaño es igual al tamaño del fragmentos del cuadro.
-
-Dado que la causa del retardo se trata de una operación intensiva en memoria, y
-que su efecto se observa cuando el tamaño del fragmentos (y por lo tanto de la
-imagen sobre la que se realiza la operación) es grande, se propuso la hipótesis
-de que el retardo se produce dado que los hilos compiten por el espacio de
-cache.
-
-Para comprobar que esta explicación es correcta se ejecuto el programa
-procesando el vídeo de 1280x720 píxeles de resolución, donde cada curva muestra
-los resultados de dividir la imagen en 1, 2, 6 o 12 fragmentos, variando la
-cantidad de hilos de búsqueda de 1 a 11 y midiendo los fallos de cache. Los
-resultados pueden ser observados en la figura \ref{cacheFallos}.
+Para comprobar que la hipótesis es correcta se ejecuto el programa procesando el
+vídeo de 1280x720 píxeles de resolución, donde cada curva muestra los resultados
+de dividir la imagen en 1, 2, 6 o 12 fragmentos, variando la cantidad de hilos
+de búsqueda de 1 a 11 y midiendo los fallos de cache. Para obtener los fallos de
+cache se utilizo la herramienta \emph{perf}. Esta es una aplicación que permite
+acceder a los contadores de hardware del procesador, lo que provee datos muy
+precisos y sin overhead que modifique los datos. Los resultados pueden ser
+observados en la figura \ref{cacheFallos}.
 
 \begin{figure}[!h]
 
@@ -194,8 +214,8 @@ mínimo. Dependiendo de si se desea minimizar el retardo de procesamiento de los
 cuadros, maximizar la cantidad de cuadros procesados, o encontrar un balance
 especifico, se deberá elegir una cantidad de fragmentos y procesadores
 apropiada. Por ejemplo, en el caso del vídeo de 1280x720 píxeles de resolución,
-dividir la imagen en 21 fragmentos y utilizar 11 utilizar permite procesar 94
-cuadros por segundo en el equipo de prueba, sin embargo el retardo es de $0.09$
-segundos. Si el cuadro se divide en 15 fragmentos y se utilizan 11 hilos de
-búsqueda, la cantidad de cuadros por segundo procesados se cae a 90, pero el
-retardo se reduce a $0.05$ segundos.
+dividir la imagen en 21 fragmentos y utilizar 11 permite procesar 94 cuadros por
+segundo en el equipo de prueba, sin embargo el retardo es de $0.09$ segundos. Si
+el cuadro se divide en 15 fragmentos y se utilizan 11 hilos de búsqueda, la
+cantidad de cuadros por segundo procesados se cae a 90, pero el retardo se
+reduce a $0.05$ segundos.
