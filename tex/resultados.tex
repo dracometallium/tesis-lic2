@@ -24,38 +24,39 @@ cada variable en cada configuración.
 
 Dada la gran cantidad de ejecuciones se busco el tiempo mínimo necesario para
 que estas fueran representativas de una ejecución prolongada. Se realizaron 3
-ejecuciones con 11 hilos y 12 fragmentos, durante 6 minutos. El primer minuto
-no se contabilizo con el fin de permitir que la ejecución se estabilizara.
-Estas se compararon con ejecuciones bajo la misma configuración, pero ejecutando
-de 11 a 20 segundos, y contabilizando solo los últimos 10. Con esta prueba se
-pudo comprobar que las pruebas de 16 segundos son representativas de ejecuciones
-mas largas. En la siguiente tabla se pueden ver los resultados de estas pruebas.
+ejecuciones con 11 hilos y 10 fragmento procesando el vídeo 800x600 píxeles de
+resolución, durante 6 minutos. El primer minuto no se contabilizo con el fin de
+permitir que la ejecución se estabilizara.  Estas se compararon con ejecuciones
+bajo la misma configuración, pero ejecutando de 11 a 20 segundos, y
+contabilizando solo los últimos 10. Con esta prueba se pudo comprobar que las
+pruebas de 16 segundos son representativas de ejecuciones mas largas. En la
+siguiente tabla se pueden ver los resultados de estas pruebas.
 
-TODO: Insertar tabla
+\begin{table}[h]
+	\centering
+	\begin{tabular}{c|c|c|c|c|c|c|c|c|c|c|c}
 
-1+5 minutos
-90 90 90
-1+10
-83 82 81
-2+10
-84 84 84
-3+10
-83 84 83
-4+10
-82 83 83
-5+10
-83 83 83
-6+10
-82 83 83
-7+10
-83 83 82
-8+10
-82 82 82
-9+10
-82 82 82
-10+10
-82 82 82
+		Ejecución&6min&11s&12s&13s&14s&15s&16s&17s&18s&19s&20s\\
 
+		\hline
+
+		1&166& 171& 170& 170& 170& 169& 166& 166& 166& 166& 165\\
+
+		\hline
+
+		2&166& 171& 170& 170& 170& 168& 167& 166& 166& 165& 166\\
+
+		\hline
+
+		3&166& 171& 170& 170& 170& 169& 166& 166& 167& 166& 165
+
+	\end{tabular}
+
+\caption{}
+
+\label{tabla}
+
+\end{table}
 
 \section{Plataforma experimental}
 
