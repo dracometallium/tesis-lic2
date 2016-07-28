@@ -20,6 +20,7 @@ awkProg='
 	}
 '
 
+bkIFS=$IFS
 for arch in *.res; do
 	dir=$(dirname $0)
 	base=$(basename -s .res $arch)
@@ -56,5 +57,11 @@ for arch in *.res; do
 		done
 	done
 	rm $tFile
+	echo $rFile
+	IFS=$(printf "\n\t")
+	for j in $(seq 1 2000); do
+		cat $rFile | cut -f 3,4 -d ' ' | grep "^$j " | sort -k 2nr | sed '1q';
+	done > ${base}.tdat
+	IFS=$bkIFS
 done
 

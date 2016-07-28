@@ -13,7 +13,7 @@ AREAS=img/areas.pdat
 CACHE=img/cache.pdat
 CACHE_PDF=$(CACHE:.pdat=_fallos.pdf) $(CACHE:.pdat=_accesos.pdf)
 PRIMOS_PDF=$(PRIMOS:.pdat=_fps.pdf) $(PRIMOS:.pdat=_area.pdf)
-DATOS_PDF=$(DATOS:.dat=_fps.pdf) $(DATOS:.dat=_turnArround.pdf) $(DATOS:.dat=_bestfps.pdf)
+DATOS_PDF=$(DATOS:.dat=_fps.pdf) $(DATOS:.dat=_turnArround.pdf) $(DATOS:.dat=_tFPS.pdf)
 FIGURAS_PDF=$(FIGURAS:.svg=.pdf)
 PDF=$(FIGURAS_PDF) $(DATOS_PDF) $(PRIMOS_PDF) $(CACHE_PDF)
 GARBAGE=*.aux *.bbl *.blg *.log *.pdf *.toc
@@ -37,7 +37,6 @@ $(FIGURAS_PDF): $(FIGURAS)
 
 $(DATOS_PDF): $(DATOS)
 	cd img && ../scripts/plot.sh
-	cd img && ../scripts/plotbest.sh
 
 $(DATOS): $(RES) $(BRES)
 	cd img && ../scripts/mdat.sh
