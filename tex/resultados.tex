@@ -26,11 +26,14 @@ Dada la gran cantidad de ejecuciones se busco el tiempo mínimo necesario para
 que estas fueran representativas de una ejecución prolongada. Se realizaron 3
 ejecuciones con 11 hilos y 10 fragmento procesando el vídeo 800x600 píxeles de
 resolución, durante 6 minutos. El primer minuto no se contabilizo con el fin de
-permitir que la ejecución se estabilizara.  Estas se compararon con ejecuciones
+permitir que la ejecución se estabilizara. Estas se compararon con ejecuciones
 bajo la misma configuración, pero ejecutando de 11 a 20 segundos, y
-contabilizando solo los últimos 10. Con esta prueba se pudo comprobar que las
-pruebas de 16 segundos son representativas de ejecuciones mas largas. En la
-siguiente tabla se pueden ver los resultados de estas pruebas.
+contabilizando solo los últimos 10. Para poder realizar la prueba de 6 minutos
+se tuvo que modificar el sistema para que reutilizaran los cuadros, es por esto
+que los resultados de esta prueba no coinciden con los de las pruebas finales.
+Con esta prueba se pudo comprobar que las pruebas de 16 segundos son
+representativas de ejecuciones mas largas. En la siguiente tabla se pueden ver
+los resultados de estas pruebas.
 
 \begin{table}[h]
 	\centering
@@ -52,7 +55,10 @@ siguiente tabla se pueden ver los resultados de estas pruebas.
 
 	\end{tabular}
 
-\caption{}
+\caption{Resultados de la prueba para encontrar el tiempo mínimo representativo
+	de ejecuciones mas largas. Para el caso de la prueba de 6 minutos, las
+	mediciones se toman solo sobre los últimos 5 minutos, mientras que en
+	resto solo durante los últimos 10 segundos.}
 
 \label{tabla}
 
