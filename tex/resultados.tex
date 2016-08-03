@@ -69,7 +69,7 @@ los resultados de estas pruebas.
 El equipo de pruebas cuenta un procesador Intel Xeon E5-2630. Este es un
 procesador de 6 núcleos con multithreading simultáneo de dos vías, una
 frecuencia básica de CPU de 2,30GHz y 2,8GHz en modo turbo, 15MiB de memoria
-cache L3, 256KiB de cache L2, 32Kib de cache L1 para datos, y 32 KiB de cache L1
+caché L3, 256KiB de caché L2, 32Kib de caché L1 para datos, y 32 KiB de caché L1
 para instrucciones. El equipo posee ademas con 16GiB de memoria RAM. La
 jerarquía de memoria se muestra en la figura \ref{topoMemoria}
 
@@ -106,14 +106,14 @@ tareas dinámicas. Adicionalmente el sistema ejecuta dos threads más para las
 tareas estáticas, uno para la generación de cuadros y otro para la tarea de
 generación de tareas dinámicas. En el caso de del vídeo de 800x600 píxeles se
 llego a un máximo de 195 \emph{FPS} cuando se divide el cuadro en 15 fragmentos
-y se utilizan 10 u 11 hilos de busqueda, mientras que para el vídeo de 1280x720
+y se utilizan 10 u 11 hilos de búsqueda, mientras que para el vídeo de 1280x720
 píxeles se alcanzo un máximo de 94 \emph{FPS} cuando se divide el cuadro en 21
 fragmentos y se utilizan 10 u 11 cuadros de búsqueda.
 
 \begin{figure}[!h]
 
 	\includegraphics[width=\textwidth]{img/800x600_fps.pdf}
-	\caption{}
+	\caption{FPS alcanzados por el sistema para vídeo de 800x600 píxeles}
 	\label{800fps}
 
 \end{figure}
@@ -121,7 +121,7 @@ fragmentos y se utilizan 10 u 11 cuadros de búsqueda.
 \begin{figure}[!h]
 
 	\includegraphics[width=\textwidth]{img/1280x720_fps.pdf}
-	\caption{}
+	\caption{FPS alcanzados por el sistema para vídeo de 1280x720 píxeles}
 	\label{1280fps}
 
 \end{figure}
@@ -151,7 +151,7 @@ procesar.
 \begin{figure}[!h]
 
 	\includegraphics[width=\textwidth]{img/primos_area.pdf}
-	\caption{}
+	\caption{Área total a procesar para número de fragmentos primos y sus inmediatos}
 	\label{primosArea}
 
 \end{figure}
@@ -167,7 +167,7 @@ pueden ser observados en la figura \ref{primosFPS}.
 \begin{figure}[!h]
 
 	\includegraphics[width=\textwidth]{img/primos_fps.pdf}
-	\caption{}
+	\caption{FPS totales para número de fragmentos primos y sus inmediatos}
 	\label{primosFPS}
 
 \end{figure}
@@ -187,16 +187,16 @@ fragmentos. Si la cantidad de fragmentos es menor que la cantidad de hilos de
 búsqueda, siempre se estarán procesando por lo menos dos cuadros, y si la
 cantidad de fragmentos uno menor que la mitad de los hilos de búsqueda, entonces
 siempre se estarán procesando por lo menos tres cuadros. Esto tiene como efecto
-que los cuadros compitan por la cache y reduce las posibilidades de que los
-fragmentos entren completamente en las caches de nivel mas bajo. Por esto se
+que los cuadros compitan por la caché y reduce las posibilidades de que los
+fragmentos entren completamente en las caché de nivel mas bajo. Por esto se
 propuso la hipótesis de que el retardo se produce debido a un aumento en los
-fallos de cache.
+fallos de caché.
 
 Para comprobar que la hipótesis es correcta se ejecuto el programa procesando el
 vídeo de 1280x720 píxeles de resolución, donde cada curva muestra los resultados
 de dividir la imagen en 1, 2, 6 o 12 fragmentos, variando la cantidad de hilos
-de búsqueda de 1 a 11 y midiendo los fallos de cache. Para obtener los fallos de
-cache se utilizo la herramienta \emph{perf}. Esta es una aplicación que permite
+de búsqueda de 1 a 11 y midiendo los fallos de caché. Para obtener los fallos de
+caché se utilizo la herramienta \emph{perf}. Esta es una aplicación que permite
 acceder a los contadores de hardware del procesador, lo que provee datos muy
 precisos y sin overhead que modifique los datos. Los resultados pueden ser
 observados en la figura \ref{cacheFallos}.
@@ -204,7 +204,8 @@ observados en la figura \ref{cacheFallos}.
 \begin{figure}[!h]
 
 	\includegraphics[width=\textwidth]{img/cache_fallos.pdf}
-	\caption{}
+	\caption{Fallos de caché por cuadro para distintas cantidades de
+	fragmentos}
 	\label{cacheFallos}
 
 \end{figure}
@@ -225,7 +226,7 @@ anteriores.
 \begin{figure}[!h]
 
 	\includegraphics[width=\textwidth]{img/800x600_turnArround.pdf}
-	\caption{}
+	\caption{Tiempos máximos de espera para vídeo de 800x600 píxeles}
 	\label{800turnArround}
 
 \end{figure}
@@ -234,7 +235,7 @@ anteriores.
 \begin{figure}[!h]
 
 	\includegraphics[width=\textwidth]{img/1280x720_turnArround.pdf}
-	\caption{}
+	\caption{Tiempos máximos de espera para vídeo de 1280x720 píxeles}
 	\label{1280turnArround}
 
 \end{figure}
