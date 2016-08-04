@@ -5,26 +5,15 @@ físicos sobre el que se basa la presente propuesta}
 \sectionmark{Descripción del sistema de visión global para fútbol de robots
 físicos...}
 
-Si bien pueden existir variantes entre los distintos sistemas de visión que se
-han propuesto para el fútbol de robots, la mayoría de las soluciones convergen a
-un sistema de pila de plugins. Incluso los plugins utilizados suelen ser
-similares. Esta similitud se debe a que el dominio es muy especifico y el
-ambiente esta controlado para facilitar la extracción de la información por el
-sistema. Por esto la decisión de que sistema tomar como base se realizo teniendo
-en cuenta la similitud de los objetivos. Se busco un sistema diseñado para ser
-utilizado como herramienta para la introducción a la visión por computadora,
-para crear en base a este un nuevo sistema que aproveche el paralelismo proveido
-por los sistemas de hardware actuales pero manteniendo su utilidad como
-herramienta didáctica.
-
 El sistema descripto en \cite{torres2014} tiene como objetivo ser utilizado como
-herramienta didáctica para la introducción a la visión por computadora, esta
-basado en plugins y desacopla el hilo de captura del los hilos de búsqueda. Se
-utilizan múltiples hilos para aprovechar hasta cuatro núcleos (para el fútbol de
-robots), pero si el sistema pose mas núcleos estos no son utilizados. El sistema
-define un framework de visión por computadora capas de adaptarse a distintos
-dominios, pero se provee una solución especifica para el fútbol de robots de
-tamaño pequeño. El framework general tiene tres componentes principales:
+herramienta didáctica para la introducción a la visión por computadora. Éste
+sistema esta basado en pilas de plugins y desacopla el hilo de captura del los
+hilos de búsqueda. Se utilizan múltiples hilos para aprovechar hasta cuatro
+núcleos (para el fútbol de robots), pero si el sistema pose mas núcleos estos no
+son utilizados. El sistema define un framework de visión por computadora capas
+de adaptarse a distintos dominios, pero se provee una solución especifica para
+el fútbol de robots de tamaño pequeño. El framework general tiene tres
+componentes principales:
 
 \begin{description}
 
@@ -47,7 +36,8 @@ tamaño pequeño. El framework general tiene tres componentes principales:
 
 \end{description}
 
-En la implementación de la solución especifica, se crean dos hilos de
+En la implementación de la solución especifica para el fútbol de robots de la
+\emph{SSL}, se crean dos hilos de
 procesamiento de cuadros, uno para la búsqueda de los robots y la otro para la
 búsqueda de la pelota. Las primeras etapas de procesamiento son iguales en
 ambos. Los primeros plugins son los de conversión de color, segmentación de
