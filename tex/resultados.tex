@@ -10,17 +10,17 @@ Se realizaron pruebas con cada vídeo, variando la cantidad de partes en las que
 fueron divididos los cuadros de 1 a 24, y la cantidad de hilos de búsqueda entre
 1 y 12. Como resultado de las pruebas se buscan obtener dos valores para cada
 configuración: la cantidad de \emph{FPS} soportados por el sistema y el tiempo
-de retardo máximo cuando la cantidad de \emph{FPS} es la máxima soportada por el
+de espera máximo cuando la cantidad de \emph{FPS} es la máxima soportada por el
 sistema para esa configuración. Como la obtención de uno de los valores buscados
-depende del previo conocimiento del otro, cada prueba consto de dos partes.
-En la primera partes se busco la cantidad de \emph{FPS} soportados por el
-sistema para esa configuración, ejecutando el programa sin limitar la cantidad
-de cuadros por segundo. En la segunda parte se limito la cantidad de
-cuadros por segundo (según lo encontrado en la primera ejecución) y se registró
-el tiempo de procesamiento máximo. Dado que se trata de un sistema de
-tiempo real débil, se busca obtener cotas inferiores del rendimiento. Por esto
-se repitió cada ejecución 10 veces, registrando solo el peor valor obtenido para
-cada variable en cada configuración.
+depende del previo conocimiento del otro, cada prueba consto de dos partes.  En
+la primera partes se busco la cantidad de \emph{FPS} soportados por el sistema
+para esa configuración, ejecutando el programa sin limitar la cantidad de
+cuadros por segundo. En la segunda parte se limito la cantidad de cuadros por
+segundo (según lo encontrado en la primera ejecución) y se registró el tiempo de
+procesamiento máximo. Dado que se trata de un sistema de tiempo real débil, se
+busca obtener cotas inferiores del rendimiento. Por esto se repitió cada
+ejecución 10 veces, registrando solo el peor valor obtenido para cada variable
+en cada configuración.
 
 Dada la gran cantidad de ejecuciones se busco el tiempo mínimo necesario para
 que estas fueran representativas de una ejecución prolongada. Se realizaron 3
@@ -189,8 +189,8 @@ cantidad de fragmentos uno menor que la mitad de los hilos de búsqueda, entonce
 siempre se estarán procesando por lo menos tres cuadros. Esto tiene como efecto
 que los cuadros compitan por la caché y reduce las posibilidades de que los
 fragmentos entren completamente en las caché de nivel mas bajo. Por esto se
-propuso la hipótesis de que el retardo se produce debido a un aumento en los
-fallos de caché.
+propuso la hipótesis de que el tiempo de espera se produce debido a un aumento
+en los fallos de caché.
 
 Para comprobar que la hipótesis es correcta se ejecuto el programa procesando el
 vídeo de 1280x720 píxeles de resolución, donde cada curva muestra los resultados
@@ -241,13 +241,13 @@ anteriores.
 \end{figure}
 
 Estos dos últimas figuras nos permiten apreciar que no siempre una mayor
-cantidad de cuadros por segundos procesados implicara el tiempo de retardo
-mínimo. Dependiendo de si se desea minimizar el retardo de procesamiento de los
-cuadros, maximizar la cantidad de cuadros procesados, o encontrar un balance
-especifico, se deberá elegir una cantidad de fragmentos y procesadores
-apropiada. Por ejemplo, en el caso del vídeo de 1280x720 píxeles de resolución,
-dividir la imagen en 21 fragmentos y utilizar 11 permite procesar 94 cuadros por
-segundo en el equipo de prueba, sin embargo el retardo es de $0.09$ segundos. Si
+cantidad de cuadros por segundos procesados implicara el tiempo de espera
+mínimo. Dependiendo de si se desea minimizar el tiempo de espera de los cuadros,
+maximizar la cantidad de cuadros procesados, o encontrar un balance especifico,
+se deberá elegir una cantidad de fragmentos y procesadores apropiada. Por
+ejemplo, en el caso del vídeo de 1280x720 píxeles de resolución, dividir la
+imagen en 21 fragmentos y utilizar 11 permite procesar 94 cuadros por segundo en
+el equipo de prueba, sin embargo el tiempo de espera es de $0.09$ segundos. Si
 el cuadro se divide en 15 fragmentos y se utilizan 11 hilos de búsqueda, la
-cantidad de cuadros por segundo procesados se cae a 90, pero el retardo se
-reduce a $0.05$ segundos.
+cantidad de cuadros por segundo procesados se cae a 90, pero el tiempo de espera
+se reduce a $0.05$ segundos.
