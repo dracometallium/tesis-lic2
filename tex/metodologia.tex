@@ -6,18 +6,15 @@ Esta tesis es de tipo experimental, durante su transcurso se desarrollo un
 nuevo sistema de visión global por computadora para fútbol de robots basado en
 plugins paralelo capas de aprovechar hardware de distintas cantidades de
 núcleos. Para la construcción del nuevo sistema se tomo como base el sistema
-descripto en \cite{torres2014}, este es un sistema basado en plugins. De este
-se utilizaran los plugins desarrollados modificándolos para que se integren en
-el nuevo framework.
+descripto en \cite{torres2014}, este es un sistema basado en plugins orientado
+al uso educativo. De este se utilizaran los plugins desarrollados modificándolos
+para que se integren en el nuevo framework.
 
 Para poder medir el rendimiento del sistema se consideran 2 variables. La
 primera es la cantidad de cuadros por segundo (o FPS, de sus siglas en ingles
-\emph{Frames per second}) procesados por el sistema. Por si misma, los FPS solo
-indican una cantidad promedio por segundo, sin asegurar su distribución, sin
-embargo, si se configura la cámara para proveer los cuadros a una taza
-especifica entonces se generaran de forma uniforme en el tiempo. Una taza de
-cuadros por segundo más alta se considera beneficiosa, ya que significa que se
-provee a los equipos con más información cada segundo. La segunda es el tiempo
-de procesamiento máximo de los cuadros. Mientras menor sea tiempo de espera del
-cuadro, la información entregada por el sistema sera mas actual, y por lo tanto
-mas relevante.
+\emph{Frames per second}) procesados por el sistema. Una taza de cuadros por
+segundo más alta se considera beneficiosa, ya que significa que se provee a los
+equipos con más información cada segundo. La segunda es el tiempo de espera
+máximo de los cuadros. Mientras menor sea tiempo de espera del cuadro, la
+información entregada por el sistema sera mas actual, y por lo tanto mas
+relevante.
