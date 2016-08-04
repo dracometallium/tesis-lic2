@@ -6,28 +6,23 @@
 El software de visión global utilizado en la \emph{SSL} de la \emph{Robocup} es
 el \emph{SSL-Vision}\cite{sslvision}. Este es un sistema programado en
 \emph{C++} basado en plugins, lo que le permite ser extendido fácilmente
-mediante estos. Lamentablemente posee algunas desventajas. En primer lugar, el
-sistema de captura de cuadros y el de procesamiento están fuertemente acoplados
-formando parte del mismo hilo de ejecución. Esto impide hacer uso de las
-capacidades de paralelización que ofrece el hardware actual, limitando su
-desempeño y escalabilidad. Para aumentar la eficiencia del sistema los plugins
-están altamente optimizados aumentando la complejidad del sistema. Esta
-complejidad entorpece su uso como herramienta didáctica para la introducción a
-la visión por computadora.
+mediante estos. Lamentablemente, posee algunas desventajas en relación a la
+escalabilidad y al uso educativo. En primer lugar, el sistema de captura de
+cuadros y el de procesamiento están fuertemente acoplados formando parte del
+mismo hilo de ejecución. Esto impide hacer uso de las capacidades de
+paralelización que ofrece el hardware actual, limitando su desempeño y
+escalabilidad. Para aumentar la eficiencia del sistema los plugins están
+altamente optimizados aumentando la complejidad del sistema. Esta complejidad
+entorpece su uso como herramienta didáctica para la introducción a la visión por
+computadora.
 
-En respuesta a estos problemas, en \cite{torres2012,torres2014} se presenta un
-nuevo framework, también programado en \emph{C++} y orientado a plugins
-destinado al uso educativo y de producción. El framework es general, pero se
-provee una implementación de un sistema de visión de fútbol de robots. La
-diferencia principal de este framework es el desacoplamiento del hilo de captura
-y los hilos de búsqueda. En el caso del fútbol de robots, el framework tiene dos
-hilos de búsqueda (uno para encontrar la pelota y otro para encontrar los
-robots), un hilo de captura (desde un vídeo pre grabado o una captura desde una
-cámara) y un hilo para la interfaz. Dividir el costo de procesamiento le permite
-un mejor aprovechamiento de los recursos de hardware que \emph{SSL-Vision}, pero
-en equipos de mas de cuatro procesadores estos se ven desaprovechados.
-
-TODO: Revisar
+En \cite{torres2014} se presenta un sistema destinado al uso educativo, basado
+en pilas de plugins, y también programado en \emph{C++}. El framework tiene dos
+hilos de búsqueda de objetos, uno para encontrar la pelota y otro para encontrar
+los robots, un hilo de captura de cuadros de vídeo (desde un vídeo pre grabado o
+una captura desde una cámara), y un hilo para la interfaz de usuario. Su grado
+de paralelismo es mejor que el de \emph{SSL-Vision} pero aún así no permite
+escalar a más de cuatro núcleos.
 
 Bajo las condiciones para las que fue pensado este framework, el
 desaprovechamiento de los recursos de hardware no es un problema, ya que el
