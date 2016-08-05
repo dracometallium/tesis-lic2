@@ -1,6 +1,6 @@
 % vim: set spell spelllang=es syntax=tex :
 
-\section{Descripción del framework}
+\section{Descripción del sistema}
 
 Para aumentar el throughput del sistema se pueden aplicar cuatro enfoques distintos:
 
@@ -25,8 +25,9 @@ Para aumentar el throughput del sistema se pueden aplicar cuatro enfoques distin
 		provecho de una mayor localidad espacial.
 
 	\item	Ya que la búsqueda de cada tipo de objetos es independiente de
-		la búsqueda de los demás, se pueden realizar múltiples búsquedas
-		en paralelo sobre el mismo cuadro por cada tipo de objeto.
+		la búsqueda de los demás tipos, se pueden realizar múltiples
+		búsquedas en paralelo sobre el mismo cuadro por cada tipo de
+		objeto.
 
 	\item	Se puede resolver el problema optimizando cada uno de los
 		plugins del framework, esperando de esta manera que el tiempo de
@@ -36,53 +37,52 @@ Para aumentar el throughput del sistema se pueden aplicar cuatro enfoques distin
 
 \end{itemize}
 
-Lamentablemente este último enfoque es muy especifico de la solución para ser
-aplicada en el framework. Ademas dificulta su uso como herramienta didáctica, ya
-que cada plugin que se agregue o modifique deberá ser optimizado. El primer y
-segundo enfoque son suficientemente generales como para ser aplicados como parte
-del framework, permite agregar y modificar los plugins sin mayores dificultades,
-y en el caso en el cual una solución especifica no cumpla con las condiciones
-que permitan aplicar alguna de las soluciones se puede limitar el paralelismo,
-ya sea no dividiendo el cuadro o procesando solo uno por vez.
+Lamentablemente este último enfoque dificulta su uso como herramienta didáctica,
+ya que cada plugin que se agregue o modifique deberá ser optimizado. El primer y
+segundo enfoque permiten agregar y modificar los plugins sin mayores
+dificultades, y en el caso en el cual un plugin no cumpla con las condiciones
+que permitan aplicar alguno de los enfoques, se puede limitar el paralelismo ya
+sea no dividiendo el cuadro o procesando solo uno por vez.
 
-Si bien el tercer enfoque es también es suficientemente general como para ser
-aplicado en el framework, en las pruebas que se realizaron se comprobó que
-realizar las búsquedas por cada tipo de objeto en paralelo sobre cada fragmento
-tenia un efecto adverso. Por este motivo, el tercer enfoque no fue aplicado
-sobre el producto final, y no sera incluido en las explicaciones siguientes. Los
-detalles de los resultados que llevaron a tomar esta decisión serán detallados
-mas adelante en la sección de resultados.
+Si bien el tercer enfoque es también permitiría agregar o modificar los plugins
+fácilmente, en las pruebas que se realizaron se comprobó que realizar las
+búsquedas por cada tipo de objeto en paralelo sobre cada fragmento tenia un
+efecto adverso. Por este motivo, el tercer enfoque no fue aplicado sobre el
+producto final, y no sera incluido en las explicaciones siguientes. Los detalles
+de los resultados que llevaron a tomar esta decisión serán detallados mas
+adelante en la sección de resultados.
 
-Conceptualmente el framework ejecuta cuatro tipos de tareas distintas que
-pertenecen a uno de dos grupos que llamaremos tareas estáticas y tareas
-dinámicas. Las tareas estáticas son aquellas que permanecen en ejecución desde
-el inicio del programa hasta su finalización y de las que solo hay una por cada
-tipo. Las tareas dinámicas son aquellas creadas para procesar un cuadro o
-fragmento especifico, una ves que terminan de procesar el cuadro o fragmento
-finalizan, y existen múltiples tareas del mismo tipo pero cada una asociada a un
-cuadro o fragmento distinto. Las tareas del framework son:
+El sistema ejecuta tareas estáticas y tareas dinámicas. Las tareas estáticas son
+aquellas que permanecen en ejecución desde el inicio del programa hasta su
+finalización. Las tareas dinámicas son creadas para procesar un cuadro o
+fragmento específico y una vez que terminan de procesar el cuadro o fragmento
+finalizan.
+
+Según su funcionalidad, las tareas son clasificadas en cuatro tipos:
 
 \begin{description}
 
 	\item[Generación de cuadros:] Es la tarea encargada de la generación o
 		captura de los cuadros y colocarlos en la cola de cuadros a
-		procesar. Esta es una tarea estática.
+		procesar. Esta es una tarea estática, y sólo hay una en el
+		sistema.
 
-	\item[Generación de tareas dinámicas:] Esta tarea es la encargada de
-		tomar un cuadro de la cola de cuadros a procesar cuando la
-		cantidad de tareas dinámicas en ejecución y listas para ser
-		ejecutadas sea menor que el máximo establecido al inicio de la
-		aplicación, y crear una tarea de fractura para este. Esta es una
-		tarea estática.
+	\item[Generación de tareas de fragmentación de cuadro:] Esta tarea crea
+		una tarea de fragmentación de cuadro para cada cuadro en la
+		cola. Solo toma un cuadro de la cola si hay hilos de ejecución
+		para tareas dinámicas libres. Ésta es una tarea estática, y solo
+		hay una en el sistema.
 
-	\item[Fractura de cuadro:] Cada tarea de este tipo divide el cuadro que
-		tiene asignada en una cantidad predefinida de fragmentos de
-		igual tamaño. Luego crea una tarea de procesamiento de fragmento
-		para cada uno de los fragmentos.
+	\item[Fragmentación de cuadro:] Cada tarea de este tipo divide su cuadro
+		en una cantidad predefinida de fragmentos de igual (o similar)
+		tamaño. Luego, por cada fragmento, se crea una tarea de
+		procesamiento de fragmento. Estas tareas son dinámicas, y pueden
+		haber múltiples en el sistema.
 
 	\item[Procesamiento de fragmento:] Cada una de estas tareas toma su
 		fragmento asociado y lo procesa utilizando cada una de las pilas
-		de plugins.
+		de plugins. Estas tareas son dinámicas, y pueden haber múltiples
+		en el sistema.
 
 \end{description}
 
@@ -96,10 +96,12 @@ cuadro o fragmento distinto. Las tareas del framework son:
 
 \end{figure}
 
-A medida que las tareas dinámicas son creadas se colocan en una cola de tareas.
-Para su ejecución se crean una cantidad de hilos igual al numero máximo $N$ de
-tareas dinámicas establecido al comienzo de la ejecución del programa. Cuando un
-hilo termina de ejecutar una tarea, toma otra de la cola de tareas. En la figura
+Cada una de las dos tareas estáticas tiene un hilo de ejecución asignado. Las
+tareas dinámicas son ejecutadas por un conjunto de $N$ hilos de ejecución
+\footnote{$N$ es un parámetro de entrada del programa.}. Cuando un hilo de
+ejecución (del conjunto) está libre, toma una nueva tarea dinámica para
+ejecutar. Como estos hilos de ejecución son los que ejecutan las tareas de
+búsqueda, nos referiremos a ellos como "hilos de búsqueda". En la figura
 \ref{tareasFramework} se muestran un diagrama de las tareas del framework, y en
 la figura \ref{hilosFramework} se muestra como las tareas son asignadas a los
 hilos de ejecución.
@@ -108,7 +110,7 @@ hilos de ejecución.
 
 	\includegraphics[width=\textwidth]{img/hilos.pdf}
 
-	\caption{Asignación de tareas a los hilos de ejecución.}
+	\caption{Asignación de tareas a los hilos de búsqueda.}
 
 	\label{hilosFramework}
 
@@ -119,9 +121,9 @@ parches de un robot se encuentren en fragmentos distintos. Esto es un problema,
 ya que para encontrar los robots el plugin de detección de robots debe detectar
 todos los parches que lo identifican, por lo cual todos deben estar dentro del
 mismo fragmento. Para asegurar esto, cada par de fragmentos adyacentes deben
-compartir una zona igual al ancho de un robot. En la figura \ref{areaCompartida}
-se muestran los casos donde el área compartida es menor al ancho de un robot y
-donde el área compartida es del ancho de un robot.
+compartir una zona igual al diametro de un robot. En la figura \ref{areaCompartida}
+se muestran los casos donde el área compartida es menor al diametro de un robot y
+donde el área compartida es del diametro de un robot.
 
 \begin{figure}[!h]
 
@@ -142,22 +144,23 @@ donde el área compartida es del ancho de un robot.
 Dado que los fragmentos comparten una área en sus bordes, la suma del área de
 los fragmentos es superior al área de la imagen original. Para reducir los
 píxeles a procesar, se debe reducir la zona compartida. Como la zona compartida
-tiene un ancho fijo (el ancho de un robot), para encontrar el área compartida
+tiene un ancho fijo (el diametro de un robot), para encontrar el área compartida
 mínima se debe minimizar el perímetro del fragmento.
 
 Por la manera que las imágenes se representan comúnmente en una computadora y
 por su simplicidad, se opto por trabajar con un teselado con rectángulos. En el
 caso de estos, para minimizar su perímetro y maximizar su área, se debe procurar
-que la proporción entre su ancho y altura sea lo mas cercana a uno. También,
+que la relacion entre su ancho y altura sea lo mas cercana a uno. También,
 para balancear la carga uniformemente, todos los fragmentos serán de igual
 tamaño. Aquellos que se encuentren en los bordes inferior y derecho pueden que
 sean mas chicos.
 
-En la figura \ref{fragmentos} se muestran como se divide una imagen de 800x600
-píxeles con un área compartida de 50 píxeles en 1, 2, 5 y 8 fragmentos. Debido a
-que se divide en fragmentos rectangulares de igual tamaño, cuando el numero de
-fragmentos es un numero primo, el cuadro se divide en tiras con el ancho o alto
-igual que el cuadro original.
+En la figura \ref{fragmentos} se muestran como se divide un cuadro de 800x600
+píxeles con un área compartida de 50 píxeles en 1, 2, 5 y 8 fragmentos. Cuando
+el número de fragmentos es un número primo, como en el caso de 5 fragmentos, el
+cuadro se divide en franjas de igual ancho o altura que el cuadro original. Este
+tipo de división produce fragmentos con perímetros mayores, produciendo grandes
+áreas compartidas.
 
 \begin{figure}[!h]
 
@@ -173,15 +176,15 @@ igual que el cuadro original.
 
 \section{Implementación del framework}
 
-El framework fue implementado en \emph{C++} utilizando \emph{OpenMP}. La
-elección del lenguaje principalmente se debe al deseo de trabajar tomando como
-base el desarrollo realizado por Torres en \cite{torres2014}, en especial se
-espero hacer uso de los plugins. Por su parte, el autor original del software
-eligió este lenguaje debido a su eficiencia y paradigma. Dado que el sistema
-debe procesar los cuadros en tiempos acotados, la eficiencia es es crucial,
-mientras que el paradigma orientado a objetos permite establecer fácilmente la
-interfaz de los plugins. Por otra parte, utilizar \emph{OpenMP} es una
-desviación del software original.
+El framework fue implementado en \emph{C++} con \emph{OpenMP} y está basada en
+plugins para facilitar su modificación en un ambiente educativo.
+La elección del lenguaje principalmente se debe a su eficiencia y paradigma.
+Dado que el sistema debe procesar los cuadros en tiempos acotados, la eficiencia
+es crucial, mientras que el paradigma orientado a objetos permite establecer
+fácilmente la interfaz de los plugins. El uso de \emph{OpenMP} permite la
+creación y control de hilos de ejecución y tareas de forma sencilla. Se
+utilizaron los plugins implementados en \cite{torres2014}, modificándolos para
+permitir su uso en un sistema paralelo.
 
 \emph{OpenMP} es una API de bibliotecas y directivas al compilador para la
 definición de paralelismo de alto nivel para sistemas de memoria compartida en
@@ -199,63 +202,66 @@ Las clases del framework básico son las siguientes:
 
 \begin{description}
 
-\item[Item:] Esta clase define un tipo genérico de los ítems que serán tratados
-	por el sistema.
+	\item[Item:] Esta clase define un tipo genérico de los ítems que serán
+		tratados por el sistema.
 
-\item[RingBuffer:] Este es el buffer donde se guardan los ítems generados
-	mientras esperan ser procesados. El buffer guarda solo punteros a
-	objetos de la clase \emph{Item} y no tiene mecanismos de control que
-	permitan acceder la estructura desde múltiples threads al mismo tiempo
-	de forma segura. Cuando se solicita un ítem, se devuelve el puntero al
-	mas antiguo o \textbf{NULL} en caso de que la estructura este vacía.
-	Cuando se intenta agregar un nuevo ítem pero la estructura esta llena,
-	se coloca este en espacio del ítem mas viejo en la estructura y se
-	retorna el puntero de este al llamador, delegándole su destrucción. La
-	destrucción del ítem se delega al llamador por dos motivos. El primero
-	es que el buffer desconoce el tipo real del ítem. La segunda razón es
-	que para poder ser utilizado de forma segura, las llamadas a los métodos
-	del buffer deben estar dentro de secciones criticas y realizar las
-	eliminaciones dentro de estas podría ser muy lento. Si el dominio así
-	lo requiere, se puede cambiar el comportamiento de esta clase para que
-	funcione como una pila en lugar de una cola.
+	\item[RingBuffer:] Este es el buffer donde se guardan los ítems
+		generados mientras esperan ser procesados. El buffer guarda solo
+		punteros a objetos de la clase \emph{Item} y no tiene mecanismos
+		de control que permitan acceder la estructura desde múltiples
+		hilos al mismo tiempo de forma segura. Cuando se solicita un
+		ítem, se devuelve el puntero al mas antiguo o \textbf{NULL} en
+		caso de que la estructura este vacía. Cuando se intenta agregar
+		un nuevo ítem pero la estructura esta llena, se coloca este en
+		el espacio del ítem mas viejo en la estructura y se retorna el
+		puntero de este al llamador, delegándole su destrucción. La
+		destrucción del ítem se delega al llamador por dos motivos. El
+		primero es que el buffer desconoce el tipo real del ítem. La
+		segunda razón es que para poder ser utilizado de forma segura,
+		las llamadas a los métodos del buffer deben estar dentro de
+		secciones criticas y realizar las eliminaciones dentro de estas
+		podría ser muy lento.
 
-\item[Input:] Se trata de una clase que funciona como definición de la interfaz
-	de las clases que generan los ítems. Sus métodos principales son
-	\emph{run} y \emph{generate}. El método \emph{generate} debe ser re
-	implementado por las clases hijas para generar el tipo de ítem
-	especifico del sistema. El método \emph{run} es el encargado de generar
-	los ítems llamando a \emph{generate} y colocarlos en el
-	\emph{RingBuffer}. Este último método puede ser redefinido si la
-	aplicación así lo requiere.
+	\item[Input:] Se trata de una clase que funciona como definición de la
+		interfaz de las clases que generan los ítems. Sus métodos
+		principales son \emph{run} y \emph{generate}. El método
+		\emph{generate} debe ser re implementado por las clases hijas
+		para generar el tipo de ítem especifico del sistema. El método
+		\emph{run} es el encargado de generar los ítems llamando a
+		\emph{generate} y colocarlos en el \emph{RingBuffer}. Este
+		último método puede ser redefinido si la aplicación así lo
+		requiere.
 
-\item[ItemSlicer:] Es la clase que define la interfaz de las clases encargadas
-	de dividir los ítems. Se definen tres métodos. El primero es
-	\emph{slice} que recibe como parámetro ítem y la cantidad de partes en
-	la que este debe ser dividido y retorna un arreglo de ítems. El segundo
-	método es \emph{resetItem} que recibe como parámetro una de las partes
-	creadas por el método \emph{slice} luego de que fue procesada por una
-	pila de plugins y la configura al estado para que el funcionamiento de
-	la próxima pila no se vea interferido. El tercer método es
-	\emph{delPart} que recibe como parámetro un fragmento de ítem y lo
-	elimina.
+	\item[ItemSlicer:] Es la clase que define la interfaz de las clases
+		encargadas de dividir los ítems. Se definen tres métodos. El
+		primero es \emph{slice} que recibe como parámetro ítem y la
+		cantidad de partes en la que este debe ser dividido y retorna un
+		arreglo de ítems. El segundo método es \emph{resetItem} que
+		recibe como parámetro una de las partes creadas por el método
+		\emph{slice} luego de que fue procesada por una pila de plugins
+		y la configura al estado para que el funcionamiento de la
+		próxima pila no se vea interferido. El tercer método es
+		\emph{delPart} que recibe como parámetro un fragmento de ítem y
+		lo elimina.
 
-\item[Plugin:] Esta clase define una interfaz para los plugins que realizaran
-	las distintas partes del procesamiento de la imagen. Solo se define el
-	método \emph{process} que tiene como único parámetro un puntero a un
-	objeto de la clase \emph{Item}.
+	\item[Plugin:] Esta clase define una interfaz para los plugins que
+		realizaran las distintas partes del procesamiento de la imagen.
+		Solo se define el método \emph{process} que tiene como único
+		parámetro un puntero a un objeto de la clase \emph{Item}.
 
-\item[PluginStack:] Esta es la clase que tomara el ítem y se encarga de
-	entregarlo a cada uno de los plugins. Tiene solo dos métodos,
-	\emph{addPlugin}, para agregar un plugin, y \emph{process} que tiene
-	como parámetro un ítem, para procesarlo.
+	\item[PluginStack:] Esta es la clase que tomara el ítem y se encarga de
+		entregarlo a cada uno de los plugins. Tiene solo dos métodos,
+		\emph{addPlugin}, para agregar un plugin, y \emph{process} que
+		tiene como parámetro un ítem, para procesarlo.
 
-\item[ItemSwitch:] Esta es la clase mas compleja del framework básico, ya que es
-	la que crea las múltiples tareas. La primera tarea que crea es la
-	encargada de consumir los ítems del buffer y crear las tareas de
-	búsqueda. Cada tarea de búsqueda divide el ítem utilizando el
-	\emph{ItemSlicer} y crea una nueva tarea por cada fragmento. Por último,
-	las tarea de fragmento procesara cada fragmento con todas las pilas de
-	plugins de forma secuencial.
+	\item[ItemSwitch:] Esta es la clase encargada de implementar la tarea de
+		generación de tareas de fragmentación de cuadro. Para no crear
+		mas tareas de las que puede procesar el sistema, solo se toma un
+		cuadro de la cola de cuadros a procesar si hay hilos de búsqueda
+		libres y no hay tareas ya creadas para asignarles. Cada tarea de
+		fragmentación de cuadro divide el ítem utilizando
+		\emph{ItemSlicer} y crea una nueva tarea de procesamiento de
+		cuadros por cada fragmento.
 
 \end{description}
 
@@ -278,47 +284,51 @@ cuales fueron tomadas y modificadas del sistema de visión presentado en
 
 \begin{description}
 
-\item[Frame:] Subclase de \emph{Item}. Contiene una imagen que representa un
-	cuadro y una estructura auxiliar que contiene la información necesaria
-	para el funcionamiento de los plugins.
+	\item[Frame:] Subclase de \emph{Item}. Contiene una imagen que
+		representa un cuadro y una estructura auxiliar que contiene la
+		información necesaria para el funcionamiento de los plugins.
 
-\item[CaptureFromFile:] Subclase de \emph{Input}. Es la clase encargada de crear
-	el flujo de objetos \emph{Frame}, tomando cada cuadro desde un archivo
-	de vídeo. También debe respetar la taza de cuadros por segundo del
-	vídeo.
+	\item[CaptureFromFile:] Subclase de \emph{Input}. Es la clase encargada
+		de crear el flujo de objetos \emph{Frame}, tomando cada cuadro
+		desde un archivo de vídeo. También debe respetar la taza de
+		cuadros por segundo del vídeo.
 
-\item[FastCaptureFromFile:] Subclase de \emph{Input}. Muy similar a
-	\emph{CaptureFromFile}, con las diferencias de que carga los cuadros a
-	memoria antes de que comience el sistema a capturar los cuadros (para
-	evitar los retardos de la lectura de disco y decodificación), y que
-	tiene dos modos de controlar la frecuencia de la generación de los
-	cuadros. Se puede adelantar la creación de cuadros si la cola de cuadros
-	a procesar esta vacía, o fijar la frecuencia de su creación a un valor.
-	Esta clase es útil para comprobar la capacidad máxima del sistema, ya
-	que permite simular una cámara con una velocidad de captura que se
-	desee, y los distintos modos permiten testear la carga máxima en cuadros
-	por segundo soportada por el sistema, así como los tiempos de espera
-	bajo una cantidad de cuadros por segundo especifica.
+	\item[FastCaptureFromFile:] Subclase de \emph{Input}. Muy similar a
+		\emph{CaptureFromFile}, con las diferencias de que carga los
+		cuadros a memoria antes de que comience el sistema a capturar
+		los cuadros (para evitar los retardos de la lectura de disco y
+		decodificación), y que tiene dos modos de controlar la
+		frecuencia de la generación de los cuadros. Se puede adelantar
+		la creación de cuadros si la cola de cuadros a procesar esta
+		vacía, o fijar la frecuencia de su creación a un valor
+		especifico. Esta clase es útil para comprobar la capacidad
+		máxima del sistema, ya que permite simular una cámara con la
+		velocidad de captura que se desee, y los distintos modos
+		permiten testear la carga máxima en cuadros por segundo
+		soportada por el sistema, así como los tiempos de espera bajo
+		una cantidad de cuadros por segundo especifica.
 
-\item[FrameSlicer:] Subclase de \emph{ItemSlicer}. En este caso lo que se divide
-	es la imagen del cuadro. Cada sub cuadro tendrá un solapamiento con los
-	adyacente ya que se debe evitar que un robots o la pelota no este
-	totalmente contenido dentro de por lo menos un sub cuadro. Para
-	minimizar el área solapada, las particiones se realizan de manera tal
-	que se minimice el perímetro pero ocupen la mayor área posible. Para
-	lograr esto se busca la partición que haga que la relación entre el alto
-	y el ancho sea lo mas cercana a uno.
+	\item[FrameSlicer:] Subclase de \emph{ItemSlicer}. En este caso lo que
+		se divide es la imagen del cuadro. Cada sub cuadro tendrá un
+		solapamiento con los adyacente ya que se debe evitar que un
+		robots o la pelota no este totalmente contenido dentro de por lo
+		menos un sub cuadro. Para minimizar el área solapada, las
+		particiones se realizan de manera tal que se minimice el
+		perímetro pero ocupen la mayor área posible. Para lograr esto se
+		busca la partición que haga que la relación entre el alto y el
+		ancho sea lo mas cercana a uno.
 
-\item[Subclases de \emph{Plugin}:] \emph{PluginBlur},
-	\emph{PluginColorConversions}, \emph{PluginColorSegmentation},
-	\emph{PluginDetectBalls}, \emph{PluginFindBlobs},
-	\emph{PluginFindSecondariesBlobs}, \emph{PluginMorphology} y
-	\emph{PluginNetworking}.
+	\item[Subclases de \emph{Plugin}:] \emph{PluginBlur},
+		\emph{PluginColorConversions}, \emph{PluginColorSegmentation},
+		\emph{PluginDetectBalls}, \emph{PluginFindBlobs},
+		\emph{PluginFindSecondariesBlobs}, \emph{PluginMorphology} y
+		\emph{PluginNetworking}.
 
-\item[Clases auxiliares:] \emph{ball}, \emph{colorspace}, \emph{datastruct},
-	\emph{homography}, \emph{marker}, \emph{pattern},
-	\emph{pattern\_matching}, \emph{practicalsocket}, \emph{segmentation},
-	\emph{team}, \emph{timer}.
+	\item[Clases auxiliares:] \emph{ball}, \emph{colorspace},
+		\emph{datastruct}, \emph{homography}, \emph{marker},
+		\emph{pattern}, \emph{pattern\_matching},
+		\emph{practicalsocket}, \emph{segmentation}, \emph{team},
+		\emph{timer}.
 
 \end{description}
 
@@ -327,15 +337,15 @@ cuales fueron tomadas y modificadas del sistema de visión presentado en
 
 	\includegraphics[width=\textwidth]{img/clasesFrameworkRobots.pdf}
 
-	\caption{Diagrama de clases Framework del framework instanciado para el
-	sistema de visión para el fútbol de robots.}
+	\caption{Diagrama de clases del sistema sistema de visión para el fútbol
+	de robots.}
 
 \end{figure}
 
 Conceptualmente, la implementación para fútbol de robots tiene dos pilas, una
 para búsqueda de robots y la otra para búsqueda de la pelota. Sin embargo, ambas
-pilas para la etapa de pre procesamiento de la imagen utilizan los mismos
-plugins con la misma configuración, ademas, los plugins que no tienen en común
-solo modifican datos propios de cada pila. Esto permite que ambas pilas puedan
-ser unidas en una sola, lo que trae como ventaja que la etapa de pre
-procesamiento se realice solo una ves por fragmento.
+pilas utilizan los mismos plugins con la misma configuración para la etapa de
+pre procesamiento de la imagen, ademas, los plugins que no tienen en común solo
+modifican datos propios de cada pila. Esto permite que ambas pilas puedan ser
+unidas en una sola, lo que trae como ventaja que la etapa de pre procesamiento
+se realice solo una ves por fragmento.
