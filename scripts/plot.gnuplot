@@ -37,10 +37,11 @@ set grid xtics ytics lw 1 lc rgb 'gray'
 
 set xrange [*:*]
 set yrange [*:*]
-set cbrange [ 0 : * ]
+set cbrange [ 0.0001 : * ]
 set ytics autofreq
 set xtics autofreq
 set ytics in scale 1
+set logscale y 2
 
 arch=resolution.".tdat"
 
