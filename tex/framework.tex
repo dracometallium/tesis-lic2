@@ -121,9 +121,9 @@ parches de un robot se encuentren en fragmentos distintos. Esto es un problema,
 ya que para encontrar los robots el plugin de detección de robots debe detectar
 todos los parches que lo identifican, por lo cual todos deben estar dentro del
 mismo fragmento. Para asegurar esto, cada par de fragmentos adyacentes deben
-compartir una zona igual al diametro de un robot. En la figura \ref{areaCompartida}
-se muestran los casos donde el área compartida es menor al diametro de un robot y
-donde el área compartida es del diametro de un robot.
+compartir una zona igual al diámetro de un robot. En la figura \ref{areaCompartida}
+se muestran los casos donde el área compartida es menor al diámetro de un robot y
+donde el área compartida es del diámetro de un robot.
 
 \begin{figure}[!h]
 
@@ -144,13 +144,13 @@ donde el área compartida es del diametro de un robot.
 Dado que los fragmentos comparten una área en sus bordes, la suma del área de
 los fragmentos es superior al área de la imagen original. Para reducir los
 píxeles a procesar, se debe reducir la zona compartida. Como la zona compartida
-tiene un ancho fijo (el diametro de un robot), para encontrar el área compartida
+tiene un ancho fijo (el diámetro de un robot), para encontrar el área compartida
 mínima se debe minimizar el perímetro del fragmento.
 
 Por la manera que las imágenes se representan comúnmente en una computadora y
 por su simplicidad, se opto por trabajar con un teselado con rectángulos. En el
 caso de estos, para minimizar su perímetro y maximizar su área, se debe procurar
-que la relacion entre su ancho y altura sea lo mas cercana a uno. También,
+que la relación entre su ancho y altura sea lo mas cercana a uno. También,
 para balancear la carga uniformemente, todos los fragmentos serán de igual
 tamaño. Aquellos que se encuentren en los bordes inferior y derecho pueden que
 sean mas chicos.
