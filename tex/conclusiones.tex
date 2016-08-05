@@ -2,29 +2,52 @@
 
 \section{Conclusiones finales}
 
-Durante el desarrollo de esta tesis se logro cumplir satisfactoriamente con los
-objetivos de esta. El software desarrollado es capas de procesar un vídeo de
-800x600 píxeles de resolución a una taza de 195 cuadros por segundo, más del 3
-veces lo buscado originalmente. Ademas se pudo observar y analizar como se
-comportaba el sistema bajo distintas configuraciones. Se pudo comprobar como un
-numero primo de fragmentos afectaba de forma negativa el desempeño del sistema,
-y como un bajo numero de estos obliga a los hilos a competir por los recursos de
-caché.
+En este trabajo se ha presentado un nuevo sistema de visión global por
+computadora para el fútbol de robots de la \emph{SSL}, que puede ser utilizado
+como herramienta educativa en una asignatura de visión por Computadora y permite
+explorar distintas estrategias de paralelización. El sistema procesa cuadros de
+vídeo y reporta la posición y orientación de los robots y la posición de la
+pelota en cada uno de ellos.
+
+Se describieron dos estrategias de paralelización que son aplicadas en conjunto.
+Una de ellas explota el paralelismo dentro de cada cuadro, dividiendo los
+cuadros en fragmentos que son procesados de forma independiente. La otra
+estrategia se basa en el procesamiento simultáneo de diferentes cuadros del
+vídeo (independientes unos de otros).
+
+Se realizó una implementación en \emph{OpenMP} para \emph{C++}, basada en
+plugins para facilitar su modificación en un ambiente educativo. Se detallaron
+las tareas que ejecuta el sistema para implementar las estrategias de
+paralelización. Se estudió el comportamiento del sistema en términos de
+\emph{FPS} y de retardo en el procesamiento de los cuadros para diferentes
+configuraciones del sistema en distintas resoluciones de vídeo.
+
+En un servidor con un procesador Intel Xeon E5-2630 (6 cores y multithreading
+simultáneo) el software es capas de procesar un vídeo de 800x600 píxeles de
+resolución a una taza de 195 cuadros por segundo y un vídeo de 1280x720 píxeles
+resolución a una taza de 94 cuadros por segundo.
+
+Se pudo comprobar como un numero primo de fragmentos afectaba de forma negativa
+el desempeño del sistema, y como un bajo numero de estos obliga a los hilos a
+competir por los recursos de caché.
 
 El framework final es adaptable a distintos dominios y su arquitectura basada en
 plugins permite modificarlos y agregar nuevos fácilmente. Finalmente,
 modificando las variables de cantidad de fragmentos e hilos de búsqueda el
-sistema puede adaptarse a un amplio rango de configuraciones de hardware
-fácilmente.
+sistema puede adaptarse a un amplio rango de configuraciones de hardware.
 
 \section{Trabajos futuros}
 
 Si bien el sistema funciona correctamente, existen aspectos que hacen difícil su
 aplicación como remplazo para los sistemas de visión global utilizados hoy en
-día en las competencias de la \emph{SSL}. En primer lugar, actualmente el plugin
-de difusión notifica la posición de los robots con respecto a las coordenadas
-del fragmento, en lugar de utilizar las de la imagen original. En segundo lugar,
-en esta versión, si se desea calibrar los colores de los parches o la pelota se
-deben realizar modificaciones en el código. Seria deseable una interfaz gráfica
-que permita modificar estos datos interactivamente. Seria útil también mostrar
-gráficamente la detección de los objetos.
+día en las competencias de la \emph{SSL}. En la implementación actual, si se
+desea calibrar los colores de los parches o la pelota se deben realizar
+modificaciones en el código. Seria deseable una interfaz gráfica que permita
+modificar estos datos interactivamente. Seria útil también mostrar gráficamente
+la detección de los objetos.
+
+Como trabajo futuro se planea hacer una interfaz de usuario gráfica para
+configurar el sistema. Además, se cree conveniente implementar soluciones
+paralelas optimizadas de los plugins para utilizar el sistema en competencias de
+fútbol de robots.
+
