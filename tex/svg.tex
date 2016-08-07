@@ -4,30 +4,73 @@
 
 
 El software de visión global utilizado en la \emph{SSL} de la \emph{Robocup} es
-el \emph{SSL-Vision}\cite{sslvision}. Este es un sistema programado en
-\emph{C++} basado en plugins, lo que le permite ser extendido fácilmente
-mediante estos. Lamentablemente, posee algunas desventajas en relación a la
-escalabilidad y al uso educativo. En primer lugar, el sistema de captura de
-cuadros y el de procesamiento están fuertemente acoplados formando parte del
-mismo hilo de ejecución. Esto impide hacer uso de las capacidades de
-paralelización que ofrece el hardware actual, limitando su desempeño y
-escalabilidad. Para aumentar la eficiencia del sistema los plugins están
-altamente optimizados aumentando la complejidad del sistema. Esta complejidad
-entorpece su uso como herramienta didáctica para la introducción a la visión por
-computadora.
+el \emph{SSL-Vision}\cite{sslvision}. Éste es un sistema programado en
+\emph{C++} basado en plugins, lo que le permite ser extendido fácilmente.
+Lamentablemente, posee algunas desventajas en relación a la escalabilidad y al
+uso educativo.
 
-En \cite{torres2014} se presenta un sistema destinado al uso educativo, basado
-en pilas de plugins, y también programado en \emph{C++}. El framework tiene dos
-hilos de búsqueda de objetos, uno para encontrar la pelota y otro para encontrar
-los robots, un hilo de captura de cuadros de vídeo (desde un vídeo pre grabado o
-una captura desde una cámara), y un hilo para la interfaz de usuario. Su grado
-de paralelismo es mejor que el de \emph{SSL-Vision} pero aún así no permite
-escalar a más de cuatro núcleos.
+\begin{itemize}
 
-Bajo las condiciones para las que fue pensado este framework, el
-desaprovechamiento de los recursos de hardware no es un problema, ya que el
-sistema puede procesar un vídeo de 352x228 píxeles a una taza de 60 cuadros por
-segundo. Sin embargo, actualmente se utiliza como fuente cuatro cámaras, en
-lugar de la cámara única para la cual el sistema fue pensado. Cuando se probó el
-framework con un vídeo con una resolución de 800x600 píxeles el número de
-cuadros por segundos procesados cayo a 45 cuadros por segundo.
+	\item 	En primer lugar, el sistema de captura de cuadros y el de
+		procesamiento están fuertemente acoplados, formando parte del
+		mismo hilo de ejecución. Esto impide hacer uso de las
+		capacidades de paralelización que ofrece el hardware actual,
+		limitando su desempeño y escalabilidad.
+
+	\item 	En segundo lugar, para aumentar la eficiencia del sistema, los
+		plugins están altamente optimizados, aumentando la complejidad
+		del sistema. Esta complejidad dificulta su uso como herramienta
+		didáctica para la introducción al tema de la visión por
+		computadora.
+
+\end{itemize}
+
+Abordando estos problemas, en \cite{torres2014} se presenta un sistema destinado
+al uso educativo, basado en pilas de plugins, y también programado en
+\emph{C++}. El sistema está planteado como un framework de construcción de
+aplicaciones que permite elaborar diferentes estrategias y medir su rendimiento,
+sin necesidad de construir una aplicación desde cero para cada una de ellas. En
+el trabajo citado se ha validado el framework mediante la construcción y prueba
+de una instancia de aplicación de servidor de vídeo para un campeonato de fútbol
+de robots reales.
+
+La capacidad de respuesta a las restricciones de tiempo real del servidor así
+construido fueron probadas en condiciones acordes a las presentadas en las
+competencias. Se estableció un tiempo máximo de procesamiento de cuadro
+admisible. Se midió el porcentaje de cuadros para los cuales el tiempo de
+procesamiento superaba este máximo, hallando que este porcentaje quedaba dentro
+de los objetivos de tolerancia.
+
+La programación del framework propone un enfoque multi-hilo con el propósito de
+mejorar la escalabilidad en microprocesadores multi-core. Utiliza dos hilos de
+búsqueda de objetos: uno para encontrar la pelota y otro para encontrar los
+robots; un hilo de captura de cuadros de vídeo (desde un vídeo pre grabado o una
+captura desde una cámara), y finalmente uno para la interfaz de usuario. Su
+grado de paralelismo es mejor que el de \emph{SSL-Vision}; pero aún así, al
+organizar el cómputo en tan sólo cuatro hilos en total, su diseño está acoplado
+a una arquitectura de, a lo sumo, cuatro núcleos. Por lo tanto, no resulta capaz
+de aprovechar plenamente las capacidades de plataformas de hardware con mayores
+recursos.
+
+Bajo las condiciones para las que fue diseñado este framework, el
+desaprovechamiento de los recursos de hardware no es un problema, ya que, sobre
+el hardware utilizado para las pruebas, el sistema puede procesar un vídeo de
+352$\times$228 píxeles a una tasa de 60 cuadros por segundo. Sin embargo, en las
+competencias actuales se utilizan cuatro cámaras como origen de los datos de
+vídeo, en lugar de la cámara única para la cual el sistema fue pensado.
+
+Nota de OSO: Esto es como lo entendí? El experimento este no representa las
+cuatro cámaras sino que es un intermedio
+
+Como punto de partida de la presente tesis, nos formulamos la pregunta de si el
+framework soportaría este nuevo caudal de información. Al probar el servidor de
+vídeo, construido sobre el framework, con un vídeo con una resolución de
+800$\times$600 píxeles, comprobamos que el número de cuadros por segundo
+procesados cayó a 45 cuadros por segundo.
+
+Esta diferencia en prestaciones muestra que la utilidad del sistema se ve
+comprometida a medida que el volumen de los datos aumenta. Como las cuatro
+cámaras de las competencias actuales ofrecen una carga agregada todavía superior
+a la utilizada en el experimento, resulta de interés abordar una mejora de
+escalabilidad en la arquitectura de software del framework, a fin de permitirle
+hacer frente a los cambios de escala en el problema.
