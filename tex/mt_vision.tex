@@ -2,66 +2,81 @@
 
 \section{Visión por computadora}
 
-La visión por computadora es una disciplina cuyo objetivo principal es definir
-un modelo de una escena a partir de imágenes\cite{cvLinda2001}, en el caso del
-fútbol de robots, el modelo que se quiere definir es la posición de los robots y
-la pelota dentro de la cancha. La disciplina engloba el estudio de métodos
-captura, mejoramiento, y extracción de información. Dependiendo de la
-aplicación, existen distintas etapas para la obtención de la información y su
-procesamiento, pero por lo general se definen los siguientes
-pasos\cite{digitalImageProcessing2ed,wikiCV}:
+La disciplina de Visión por Computadora engloba el estudio de métodos de
+captura, mejoramiento, y extracción de información a partir de imágenes. Su
+objetivo principal es definir un modelo de una escena a partir de
+imágenes\cite{cvLinda2001}. En el caso particular del fútbol de robots, el
+modelo que se quiere definir describe la posición de los robots y la pelota
+dentro de la cancha.
+
+Dependiendo de la aplicación, existen distintas etapas para la obtención de la
+información y su procesamiento (Fig. \ref{FALTA3}). En general, se definen los
+siguientes pasos\cite{digitalImageProcessing2ed,wikiCV}:
 
 \begin{description}
 
 	\item[Adquisición de la imagen:] Se trata de la digitalización de la
-		imagen a procesar. Esta puede ser obtenida de uno o mas
+		imagen a procesar. Ésta puede ser obtenida de uno o más
 		sensores. Distintos sensores pueden capturar distintas bandas
 		del espectro electromagnético. El resultado puede variar desde
 		una imagen bidimensional monocromática hasta volúmenes
 		tridimensionales.
-	
+
 		En el fútbol de robots de tamaño pequeño, el conjunto de cámaras
-		capturan serie de imágenes bidimensionales a color. El sistemas
-		de coordenadas de la imagen es normalmente \emph{RGB} o
+		captura una serie de imágenes bidimensionales a color. El
+		sistema de coordenadas de la imagen es normalmente \emph{RGB} o
 		\emph{YUV}.
 
-	\item[Pre procesamiento:] Para que la imagen pueda ser procesada, muchas
+	\item[Preprocesamiento:] Para que la imagen pueda ser procesada, muchas
 		veces es necesario aplicarle transformaciones que no extraen
-		información, pero son pre condiciones para las siguientes etapas
-		de procesamiento. Algunas de las transformaciones comunes son
-		corrección de color, reducción de ruido o cambio de espacio de
-		color.
+		información, pero que son precondiciones para las siguientes
+		etapas de procesamiento. Algunas de las transformaciones comunes
+		son corrección de color, reducción de ruido o cambio de espacio
+		de color.
 
 		Los sistemas de visión global para el fútbol de robots de la
 		\emph{SSL} suelen trabajar con el espacio de color \emph{YUV},
-		por lo que de ser necesario, la imagen debe ser convertida a
-		este espacio de color. Otro pre procesamiento que puede
-		realizarse es componer las imágenes del conjunto de cámaras en
-		una sola imagen.
+		por lo que, de ser necesario, la imagen debe ser convertida a
+		este espacio de color. Otro preprocesamiento que puede
+		realizarse es la composición de las imágenes del conjunto de
+		cámaras en una sola imagen.
 
 	\item[Extracción de características:] Consiste en el reconocimiento de
-		características de bajo nivel como puntos de interés, bordes,
+		características de bajo nivel, como puntos de interés, bordes,
 		regiones y masas. Los sistemas para la \emph{SSL} suelen en esta
 		etapa reconocer las masas de colores de los parches y la pelota.
 
 	\item[Detección y Segmentación:] Se trata de separar la imagen en sus
-		partes constituyentes y seleccionar aquellas de interés. Los
+		partes constituyentes y seleccionar aquéllas de interés. Los
 		sistemas de visión global para fútbol de robots de la \emph{SSL}
 		utilizan las masas de color reconocidas en la etapa anterior
 		para encontrar los robots y la pelota.
 
 	\item[Procesamiento de alto nivel:] En esta etapa se crea finalmente el
 		modelo de la escena utilizando los resultados de las etapas
-		anteriores. En fútbol de robots de la \emph{SSL} se toman las
-		posiciones dentro de la imagen de los robots y pelota
-		encontrados en la etapa anterior y se calcula su posición dentro
-		de la cancha de acuerdo con la geometría de esta.
+		anteriores. En el fútbol de robots de la \emph{SSL}, se toman
+		las posiciones, dentro de la imagen, de los robots y pelota
+		encontrados en la etapa anterior, y se calcula su posición
+		dentro de la cancha de acuerdo con la geometría de ésta.
 
 	\item[Toma de decisiones:] Muchas de las aplicaciones de visión por
-		computadora integran la toma de decisiones como parte del
-		proceso, en lugar de solo informar. En el caso de los sistemas
-		de visión global para fútbol de robots, el sistema solo notifica
-		a las computadoras de los equipos la posición de los robots y
-		pelota.
+		computadora, en lugar de sólo entregar información, integran la
+		toma de decisiones como parte del procesamiento. En el caso de
+		los sistemas de visión global para fútbol de robots, el sistema
+		sólo notifica a las computadoras de los equipos la posición de
+		los robots y de la pelota.
 
 \end{description}
+
+Nota OSO: Acá re da para afanarse figuritas del trabajo de Guille (pág. 9)
+
+\begin{figure}[!h]
+
+	 \includegraphics[width=\textwidth]{img/FALTA.png}
+
+	\caption{Etapas de procesamiento de un sistema de visión afanado de pág.
+	9 del Guille.}
+
+	\label{FALTA3}
+
+ \end{figure}

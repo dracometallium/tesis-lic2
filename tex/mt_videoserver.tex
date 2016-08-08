@@ -1,75 +1,93 @@
 % vim: set spell spelllang=es syntax=tex :
 
-\section{Descripción del sistema de visión global para fútbol de robots
-físicos sobre el que se basa la presente propuesta}
+\section{Descripción del sistema de visión global para fútbol de robots físicos
+sobre el que se basa la presente propuesta}
+
 \sectionmark{Descripción del sistema de visión global para fútbol de robots
 físicos...}
 
-El sistema descripto en \cite{torres2014} tiene como objetivo ser utilizado como
-herramienta didáctica para la introducción a la visión por computadora. Éste
-sistema esta basado en pilas de plugins y desacopla el hilo de captura del los
-hilos de búsqueda. Se utilizan múltiples hilos para aprovechar hasta cuatro
-núcleos (para el fútbol de robots), pero si el sistema pose mas núcleos estos no
-son utilizados. El sistema define un framework de visión por computadora capas
-de adaptarse a distintos dominios, pero se provee una solución especifica para
-el fútbol de robots de tamaño pequeño. El framework general tiene tres
-componentes principales:
+El principal objetivo del sistema descripto en \cite{torres2014} es su
+utilización como herramienta didáctica para la introducción a la visión por
+computadora. El sistema define un framework de visión por computadora capaz de
+adaptarse a distintos dominios, pero en el trabajo se ofrece una solución
+específica para el fútbol de robots de la liga de tamaño pequeño.
+
+El sistema está basado en pilas de plugins y utiliza múltiples hilos para
+aprovechar hasta cuatro núcleos (para el fútbol de robots); pero si la
+plataforma posee más núcleos, no serán utilizados. Cada uno de los hilos tiene
+una responsabilidad diferente. El framework general tiene tres componentes
+principales:
 
 \begin{description}
 
 	\item[Hilo principal:] es el hilo encargado de la interfaz gráfica de
 		usuario.
-	
+
 	\item[Hilo de captura de cuadros:] es el hilo encargado de la captura o
-		generación de los cuadros a partir de una cámara o archivo.
+		generación de los cuadros a partir de una cámara o archivo. El
+		hilo de captura está desacoplado de los hilos de búsqueda o
+		procesamiento de cuadros.
 
 	\item[Hilos de procesamiento de cuadros:] estos hilos están formados por
-		una pila de plugins que procesaran cada cuadro en forma
+		una pila de plugins que procesarán cada cuadro en forma
 		secuencial. Normalmente, por cada tipo de objeto a reconocer,
 		hay un hilo de este tipo dedicado a su detección. La diferencia
-		entre cada uno de ellos esta en los plugins que componen la pila
-		y en su orden. Existen mecanismos de control para asegurar que
-		si un cuadro es procesado por hilo de procesamiento entonces
-		sera procesado por el resto de los hilos de procesamiento,
-		mientras que al mismo tiempo se asegura que cada cuadro se
-		procese solo una ves por cada hilo.
+		entre ellos está en los plugins que componen la pila y en su
+		orden. Existen mecanismos de control para asegurar que, si un
+		cuadro es procesado por un hilo de procesamiento, entonces
+		también será procesado por el resto de los hilos de
+		procesamiento, asegurando al mismo tiempo que cada cuadro será
+		procesado sólo una vez por cada hilo.
 
 \end{description}
 
-En la implementación de la solución especifica para el fútbol de robots de la
-\emph{SSL}, se crean dos hilos de
-procesamiento de cuadros, uno para la búsqueda de los robots y la otro para la
-búsqueda de la pelota. Las primeras etapas de procesamiento son iguales en
-ambos. Los primeros plugins son los de conversión de color, segmentación de
-color y morfología. El hilo de procesamiento que busca la pelota continua con el
-plugin de búsqueda de pelota, mientras que aquel encargado de la búsqueda de
-robots continua con los plugins de detección de regiones principales y detección
-de detecciones secundarias. Ambos terminan con el plugin de difusión. De
-acuerdo a su función, los plugins pueden ser agrupados por las etapas de la
+En la implementación de la solución específica para el fútbol de robots de la
+\emph{SSL}, se crean dos hilos de procesamiento de cuadros, uno para la búsqueda
+de los robots y el otro para la búsqueda de la pelota. Las primeras etapas de
+procesamiento son iguales en ambos. Los primeros plugins son los de conversión
+de color, segmentación de color y morfología. El hilo de procesamiento que busca
+la pelota continúa con el plugin de búsqueda de pelota, mientras que aquél
+encargado de la búsqueda de robots continúa con los plugins de detección de
+regiones principales y detección de regiones secundarias. Ambos terminan con el
+plugin de difusión (Fig. \ref{FALTA2}).
+
+\begin{figure}[!h]
+
+	\includegraphics[width=\textwidth]{img/FALTA.png}
+
+	\caption{Esquema de hilos y plugins afanado de pág 13 del Guille.}
+
+	\label{FALTA2}
+
+\end{figure}
+
+
+De acuerdo a su función, los plugins pueden ser agrupados por las etapas de la
 visión por computadora que implementan:
 
 \begin{description}
 
-\item[Adquisicion de la imagen:] Esta etapa esta a cargo del hilo de captura de
-	cuadros.
+	\item[Adquisición de la imagen:] Esta etapa está a cargo del hilo de
+		captura de cuadros.
 
-\item[Pre procesamiento:] plugins de conversión de color, de segmentación de
-	color y de morfología.
+	\item[Preprocesamiento:] plugins de conversión de color, de segmentación
+		de color y de morfología.
 
-\item[Extraccion de características, Detección y Segmentación:] plugins de
-	detección de regiones principales.
+	\item[Extracción de características, Detección y Segmentación:] plugins
+		de detección de regiones principales.
 
-\item[Procesamiento de alto nivel:] plugins de detección de pelota y de
-	detección de regiones secundarias.
+	\item[Procesamiento de alto nivel:] plugins de detección de pelota y de
+		detección de regiones secundarias.
 
-\item[Toma de decisiones:] Dado que el sistema de visión para fútbol de robots
-	no realiza toma de decisiones, el estado de la cancha es comunicado a
-	las computadoras de los equipos a través del plugin de difusión.
+	\item[Toma de decisiones:] Dado que el sistema de visión para fútbol de
+		robots no realiza toma de decisiones, el estado de la cancha es
+		comunicado a las computadoras de los equipos a través del plugin
+		de difusión.
 
 \end{description}
 
 La generación de los cuadros y su procesamiento son independientes, y los
-tiempos de generación y procesamiento pueden ser distintos y variables, por lo
-cual es necesario un buffer entre el hilo de captura de cuadros y los hilos de
-procesamiento de cuadros. En caso de que el buffer alcance su capacidad máxima,
-se descartan los cuadros mas viejos.
+tiempos de generación y procesamiento pueden ser distintos y variables. Por este
+motivo es necesario interponer un buffer entre el hilo de captura de cuadros y
+los hilos de procesamiento de cuadros. En caso de que el buffer alcance su
+capacidad máxima, se descartan los cuadros más viejos.

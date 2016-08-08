@@ -2,19 +2,31 @@
 
 \section{Metodología}
 
-Esta tesis es de tipo experimental, durante su transcurso se desarrollo un
-nuevo sistema de visión global por computadora para fútbol de robots basado en
-plugins paralelo capas de aprovechar hardware de distintas cantidades de
-núcleos. Para la construcción del nuevo sistema se tomo como base el sistema
-descripto en \cite{torres2014}, este es un sistema basado en plugins orientado
-al uso educativo. De este se utilizaran los plugins desarrollados modificándolos
-para que se integren en el nuevo framework.
+La presente tesis es del tipo experimental. Durante su realización se desarrolló
+un nuevo sistema de visión global por computadora para fútbol de robots, basado
+en plugins, paralelo, capaz de aprovechar hardware multi-core, sin limitaciones
+arquitectónicas respecto de la cantidad de núcleos utilizables.
 
-Para poder medir el rendimiento del sistema se consideran 2 variables. La
-primera es la cantidad de cuadros por segundo (o FPS, de sus siglas en ingles
-\emph{Frames per second}) procesados por el sistema. Una taza de cuadros por
-segundo más alta se considera beneficiosa, ya que significa que se provee a los
-equipos con más información cada segundo. La segunda es el tiempo de espera
-máximo de los cuadros. Mientras menor sea tiempo de espera del cuadro, la
-información entregada por el sistema sera mas actual, y por lo tanto mas
-relevante.
+Para la construcción del nuevo sistema se tomó como base el sistema descripto en
+\cite{torres2014}. Éste es un sistema basado en plugins, orientado al uso
+educativo. Del mismo se utilizaron los plugins desarrollados en dicho trabajo,
+modificándolos para que se integren al nuevo framework.
+
+Para poder medir el rendimiento del nuevo sistema se consideraron dos variables.
+
+\begin {itemize}
+
+	\item	La primera variable es la cantidad de cuadros por segundo (o
+		FPS, de sus siglas en inglés \emph{Frames per second})
+		procesados por el sistema. Una tasa de cuadros por segundo más
+		alta se considera beneficiosa, ya que significa que se provee a
+		los equipos con más información cada segundo.
+
+	\item	La segunda es el tiempo de espera máximo de los cuadros.
+		Mientras menor sea el tiempo de espera del cuadro, la
+		información entregada por el sistema será más actual, y por lo
+		tanto más relevante.
+
+\end {itemize}
+
+Nota OSO: Acá no va algo de OpenMP? Y la forma de prueba?
