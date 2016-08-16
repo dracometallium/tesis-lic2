@@ -198,6 +198,33 @@ implementación final se mantiene un control del numero de tareas para no crear
 mas de las que pueden ser procesadas, y no retrasar al sistema con tareas
 viejas.
 
+En la figura \ref{codigo} se muestra el fragmento de código (en pseudocódigo que
+ejecuta y crea las tareas principales del framework. La
+función principal (\emph{main}, linea 1) del sistema comienza inicializando
+las estructuras del sistema, incluyendo inicialización del sistema de captura y
+creación de plugins y pilas de plugins entre otros. Se define también una
+estructura de control compartida \emph{continuar} para indicar la finalización
+de la ejecución a las tareas del sistema (linea 3). A continuación se crean tres
+hilos para la ejecución de tres tareas (linea 4). La primer tarea es la
+generación de cuadros (lineas 6 a 9), se llama al método de generación de
+cuadros dándole acceso a la fuente de los cuadros (ya sea una cámara o un vídeo
+pre grabado), la pila de cuadros y la estructura de control \emph{continuar}. La
+segunda tarea es la tarea de generación de tareas de fragmentación de cuadros
+(lineas 10 a 14), se llama al método de generación de tareas de fragmentación de
+cuadros, indicándole la cantidad de hilos para tareas de búsqueda, la cantidad
+de partes en la que se deben fragmentar los cuadros y dándole acceso a la pila
+de cuadros y la estructura de control \emph{continuar}.
+
+\begin{figure}[!h]
+
+	\includegraphics[width=\textwidth]{img/itemSwitch.pdf}
+
+	\caption{Pseudo código del sistema}
+
+	\label{codigo}
+
+\end{figure}
+
 Las clases del framework básico son las siguientes:
 
 \begin{description}
