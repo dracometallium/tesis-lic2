@@ -25,7 +25,7 @@ int main(){
 int generaciónDeTareasDeFragmentaciónDeCuadros
         (NHilos, NPartes, pilaCuadros, continuar)
 {
-    hilosLibre = NHilos;
+    hilosLibres = NHilos;
 #pragma omp parallel num_threads(NHilos + 1) default(shared)
 #pragma omp single
     while(*continuar) {

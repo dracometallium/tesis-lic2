@@ -199,25 +199,47 @@ mas de las que pueden ser procesadas, y no retrasar al sistema con tareas
 viejas.
 
 En la figura \ref{codigo} se muestra el fragmento de código (en pseudocódigo que
-ejecuta y crea las tareas principales del framework. La
-función principal (\emph{main}, linea 1) del sistema comienza inicializando
-las estructuras del sistema, incluyendo inicialización del sistema de captura y
-creación de plugins y pilas de plugins entre otros. Se define también una
-estructura de control compartida \emph{continuar} para indicar la finalización
-de la ejecución a las tareas del sistema (linea 3). A continuación se crean tres
-hilos para la ejecución de tres tareas (linea 4). La primer tarea es la
-generación de cuadros (lineas 6 a 9), se llama al método de generación de
-cuadros dándole acceso a la fuente de los cuadros (ya sea una cámara o un vídeo
-pre grabado), la pila de cuadros y la estructura de control \emph{continuar}. La
-segunda tarea es la tarea de generación de tareas de fragmentación de cuadros
-(lineas 10 a 14), se llama al método de generación de tareas de fragmentación de
-cuadros, indicándole la cantidad de hilos para tareas de búsqueda, la cantidad
-de partes en la que se deben fragmentar los cuadros y dándole acceso a la pila
-de cuadros y la estructura de control \emph{continuar}.
+ejecuta y crea las tareas principales del framework. La función principal
+(\emph{main}, linea 1) del sistema comienza inicializando las estructuras del
+sistema, incluyendo inicialización del sistema de captura y creación de plugins
+y pilas de plugins entre otros. Se define también una estructura de control
+compartida \emph{continuar} para indicar la finalización de la ejecución a las
+tareas del sistema (linea 3). A continuación se crean tres hilos para la
+ejecución de tres tareas (linea 4). La primer tarea es la generación de cuadros
+(lineas 6 a 9), se llama al método de generación de cuadros dándole acceso a la
+fuente de los cuadros (ya sea una cámara o un vídeo pre grabado), la pila de
+cuadros y la estructura de control \emph{continuar}. La segunda tarea es la
+tarea de generación de tareas de fragmentación de cuadros (lineas 10 a 14), se
+llama al método de generación de tareas de fragmentación de cuadros, indicándole
+la cantidad de hilos para tareas de búsqueda, la cantidad de partes en la que se
+deben fragmentar los cuadros y dándole acceso a la pila de cuadros y la
+estructura de control \emph{continuar}. La tercera tarea (lineas 15 a 18) se
+encarga simplemente de esperar la señal de fin de ejecución (en el caso de los
+experimentos espera a que pase un tiempo determinado), una ves que se cumple la
+condición de corte, se pone en falso \emph{continuar}. En la finalización del
+bloque de definición de tareas (linea 20) se define un punto de sincronización
+tacito. Una ves que las tareas terminan, el sistema ejecuta el código de
+finalización (linea 21).
+
+La tarea de generación de tareas de fragmentación de cuadros se implementa en la
+función \emph{generaciónDeTareasDeFragmentaciónDeCuadros} (lineas 25 a 71).  La
+función comienza estableciendo la cantidad de hilos libres como la cantidad de
+hilos de búsqueda (linea 28), luego se crean los hilos de búsqueda más uno para
+la tarea de generación de tareas fragmentación de cuadros (linea 29). La tarea
+de generación de tareas de fragmentación de cuadros consta de un bucle que
+termina cuando la estructura de control \emph{continuar} es falsa (lineas 31 a
+68).
+
+En cada iteración se verifica si hay hilos libres y hay cuadros en la cola de
+cuadros, se toma un cuadro de la pila de cuadros (lineas 32 a 38). En caso de
+que se haya tomado un cuadro se reduce la cantidad de hilos libres y se crea una
+tarea de fragmentación de cuadro con una copia privada del puntero al cuadro (lineas 39 a
+42). La tarea de fragmentación de cuadro (lineas 43 a 66).
+
 
 \begin{figure}[!h]
 
-	\includegraphics[width=\textwidth]{img/itemSwitch.pdf}
+	\includegraphics[height=\textheight]{img/itemSwitch.pdf}
 
 	\caption{Pseudo código del sistema}
 
