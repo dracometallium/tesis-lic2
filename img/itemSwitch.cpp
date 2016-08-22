@@ -41,8 +41,8 @@ int generaciónDeTareasDeFragmentaciónDeCuadros
             hilosLibres--;
 #pragma omp task firstprivate(cuadro) default(shared)
             if (*continuar) {
-                deltaHilos = NHilos - 1;
                 p = fraccionar(cuadro, NPartes);
+                deltaHilos = NHilos - 1;
 #pragma omp atomic
                 hilosLibres = hilosLibres - deltaHilos;
                 for (t = 0; t < NPartes; t++)

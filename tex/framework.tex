@@ -198,8 +198,8 @@ implementación final se mantiene un control del numero de tareas para no crear
 mas de las que pueden ser procesadas, y no retrasar al sistema con tareas
 viejas.
 
-En la figura \ref{codigo} se muestra el fragmento de código (en pseudocódigo que
-ejecuta y crea las tareas principales del framework. La función principal
+En la figura \ref{codigo} se muestra el fragmento de código (en pseudocódigo)
+que ejecuta y crea las tareas principales del framework. La función principal
 (\emph{main}, linea 1) del sistema comienza inicializando las estructuras del
 sistema, incluyendo inicialización del sistema de captura y creación de plugins
 y pilas de plugins entre otros. Se define también una estructura de control
@@ -222,20 +222,35 @@ tacito. Una ves que las tareas terminan, el sistema ejecuta el código de
 finalización (linea 21).
 
 La tarea de generación de tareas de fragmentación de cuadros se implementa en la
-función \emph{generaciónDeTareasDeFragmentaciónDeCuadros} (lineas 25 a 71).  La
-función comienza estableciendo la cantidad de hilos libres como la cantidad de
-hilos de búsqueda (linea 28), luego se crean los hilos de búsqueda más uno para
-la tarea de generación de tareas fragmentación de cuadros (linea 29). La tarea
-de generación de tareas de fragmentación de cuadros consta de un bucle que
-termina cuando la estructura de control \emph{continuar} es falsa (lineas 31 a
-68).
+función \emph{generaciónDeTareasDeFragmentaciónDeCuadros} (lineas 25 a 71). La
+función comienza estableciendo la cantidad de hilos de ejecución libres como la
+cantidad de hilos de búsqueda (linea 28), luego se crean los hilos de búsqueda,
+junto a uno más para la tarea de generación de tareas fragmentación de cuadros
+(linea 29). La tarea de generación de tareas de fragmentación de cuadros consta
+de un bucle que termina cuando la estructura de control \emph{continuar} es
+falsa (lineas 31 a 68).
 
-En cada iteración se verifica si hay hilos libres y hay cuadros en la cola de
-cuadros, se toma un cuadro de la pila de cuadros (lineas 32 a 38). En caso de
-que se haya tomado un cuadro se reduce la cantidad de hilos libres y se crea una
-tarea de fragmentación de cuadro con una copia privada del puntero al cuadro (lineas 39 a
-42). La tarea de fragmentación de cuadro (lineas 43 a 66).
+En cada iteración se verifica si hay hilos de ejecución libres y hay cuadros en
+la cola de cuadros y de ser este el caso, se toma un cuadro de la pila de cuadros
+(lineas 32 a 38). En caso de que se haya tomado un cuadro se reduce la cantidad
+de hilos libres y se crea una tarea de fragmentación de cuadro con una copia
+privada del puntero al cuadro (lineas 39 a 42).
 
+La tarea de fragmentación de cuadro (lineas 43 a 66), comienza fraccionando el
+cuadro y reservando un hilo por cada uno creado a partir del primero (lineas 45
+a 47). Por cada cuadro se crea una tarea de procesamiento de fragmento (lineas
+48 y 49).
+
+Cada tarea de procesamiento de fragmento (lineas 50 a 58) procesa el fragmento
+con cada pila (lineas 51 a 54). Antes de comenzar el procesamiento con cada pila
+se reinician las estructuras del cuadro que sean necesarias (linea 52). Cuando
+se termina de procesar el fragmento con todas las pilas se borra el fragmento
+(linea 55) y se libera el hilo de ejecución (lineas 56 y 57).
+
+La tarea de facturación de cuadro espera a la finalización de todas las tareas
+de procesamiento de los fragmentos (linea 60), cuando terminan reserva un hilo
+de ejecución (lineas 61 y 62), elimina el cuadro (linea 63) y libera el hilo de
+ejecución (lineas 64 y 65).
 
 \begin{figure}[!h]
 
