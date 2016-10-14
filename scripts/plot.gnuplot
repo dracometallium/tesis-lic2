@@ -46,7 +46,7 @@ set logscale y 2
 arch=resolution.".tdat"
 
 set key off
-set ylabel "Retardo de cuadro\n(en centésimas de segundo)"
+set ylabel "Retardo de cuadro\n(en segundos)"
 set xlabel 'FPS'
 set output resolution.'_tFPS.pdf'
 plot arch using ($1/10):2 with points lt 1 title ''

@@ -7,7 +7,7 @@ set linetype 3 lw 1 lc rgb "#3ADE58" pointtype 8 ps 0.75
 set linetype 4 lw 1 lc rgb "gray" pointtype 0
 set grid xtics ytics lw 1 lc rgb 'gray'
 
-set xlabel 'Nº particiones'
+set xlabel 'Nº fragmentos'
 
 arch='img/primos.pdat'
 
