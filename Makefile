@@ -34,8 +34,8 @@ propuesta:
 	pdflatex $(PROPUESTA)
 	pdflatex $(PROPUESTA)
 
-$(FIGURAS_PDF): $(FIGURAS)
-	inkscape $(@:.pdf=.svg) -z -A $@
+$(FIGURAS_PDF): %.pdf : %.svg
+	inkscape $^ -z -A $@
 
 $(DATOS_PDF): $(DATOS)
 	cd img && ../scripts/plot.sh
