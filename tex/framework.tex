@@ -106,6 +106,12 @@ búsqueda, nos referiremos a ellos como "hilos de búsqueda". En la figura
 la figura \ref{hilosFramework} se muestra como las tareas son asignadas a los
 hilos de ejecución.
 
+La cantidad de hilos de ejecución del sistema es igual a la cantidad de hilos de
+búsqueda mas los dos hilos para tareas estáticas (generación de cuadros y
+generación de tareas de fragmentación de cuadro). Por esto la cantidad de
+unidades de procesamiento aprovechables esta principalmente determinado por la
+cantidad de hilos de búsqueda.
+
 \begin{figure}[!h]
 
 	\includegraphics[width=\textwidth]{img/hilos.pdf}
@@ -152,8 +158,13 @@ por su simplicidad, se opto por trabajar con un teselado con rectángulos. En el
 caso de estos, para minimizar su perímetro y maximizar su área, se debe procurar
 que la relación entre su ancho y altura sea lo mas cercana a uno. También,
 para balancear la carga uniformemente, todos los fragmentos serán de igual
-tamaño. Aquellos que se encuentren en los bordes inferior y derecho pueden que
-sean mas chicos.
+tamaño\footnote{El tiempo de procesamiento de un fragmento depende no solo de su
+área sino que es influido por los elementos encontrados por los plugins, por lo
+cual fragmentos de igual tamaño pueden tener tiempos de procesamiento muy
+distintos. Sin embargo, dado que no poseemos mas información antes del
+procesamiento, consideramos que esta es la mejor heurística con la que
+contamos}. Aquellos que se encuentren en los bordes inferior y derecho pueden
+que sean mas chicos.
 
 En la figura \ref{fragmentos} se muestran como se divide un cuadro de 800x600
 píxeles con un área compartida de 50 píxeles en 1, 2, 5 y 8 fragmentos. Cuando
