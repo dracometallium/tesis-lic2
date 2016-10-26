@@ -18,7 +18,7 @@ DATOS_PDF=$(DATOS:.dat=_fps.pdf) $(DATOS:.dat=_turnArround.pdf) $(DATOS:.dat=_tF
 FIGURAS_PDF=$(FIGURAS:.svg=.pdf)
 CODIGO_PDF=$(CODIGO:.cpp=.pdf)
 PDF=$(FIGURAS_PDF) $(DATOS_PDF) $(PRIMOS_PDF) $(CACHE_PDF) $(CODIGO_PDF)
-GARBAGE=*.aux *.bbl *.blg *.log *.pdf *.toc *.lof
+GARBAGE=*.aux *.bbl *.blg *.log *.pdf *.toc *.lof img/*.tdat
 
 all: $(NAME).pdf
 
