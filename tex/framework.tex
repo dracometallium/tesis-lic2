@@ -52,6 +52,8 @@ producto final, y no sera incluido en las explicaciones siguientes. Los detalles
 de los resultados que llevaron a tomar esta decisión serán detallados mas
 adelante en la sección de resultados.
 
+\subsection{Tareas del sistema}
+
 El sistema ejecuta tareas estáticas y tareas dinámicas. Las tareas estáticas son
 aquellas que permanecen en ejecución desde el inicio del programa hasta su
 finalización. Las tareas dinámicas son creadas para procesar un cuadro o
@@ -76,12 +78,12 @@ Según su funcionalidad, las tareas son clasificadas en cuatro tipos:
 	\item[Fragmentación de cuadro:] Cada tarea de este tipo divide su cuadro
 		en una cantidad predefinida de fragmentos de igual (o similar)
 		tamaño. Luego, por cada fragmento, se crea una tarea de
-		procesamiento de fragmento. Estas tareas son dinámicas, y pueden
+		procesamiento de fragmento. Estas tareas son dinámicas, y puede
 		haber múltiples en el sistema.
 
 	\item[Procesamiento de fragmento:] Cada una de estas tareas toma su
 		fragmento asociado y lo procesa utilizando cada una de las pilas
-		de plugins. Estas tareas son dinámicas, y pueden haber múltiples
+		de plugins. Estas tareas son dinámicas, y puede haber múltiples
 		en el sistema.
 
 \end{description}
@@ -122,14 +124,27 @@ cantidad de hilos de búsqueda.
 
 \end{figure}
 
+\subsection{Fragmentación del conjunto de datos}
+
+Para poder realizar el procesamiento paralelo, el conjunto de datos debe ser
+fragmentado, en el caso del framework propuesto la división ser realizara en dos
+niveles. Dado que el conjunto de datos es un vídeo, la primera fragmentación
+consta de la separación en cuadros. Dado que cada cuadro es una captura del
+ambiente completo en un instante de tiempo especifico distinto al de los demás
+cuadros, se pueden procesar de forma independiente. La segunda fragmentación de
+los datos se realiza dentro de cada cuadro. Dado que fragmentos de un mismo
+cuadro contienen información distinta del ambiente sobre el mismo instante, los
+fragmentos son dependientes entre si. Es por eso que se deben tener
+consideraciones especiales para la división del cuadro.
+
 Si el cuadro se divide en partes sin zonas solapadas puede suceder que los
 parches de un robot se encuentren en fragmentos distintos. Esto es un problema,
-ya que para encontrar los robots el plugin de detección de robots debe detectar
+ya que para encontrar los robots, el plugin de detección de robots debe detectar
 todos los parches que lo identifican, por lo cual todos deben estar dentro del
 mismo fragmento. Para asegurar esto, cada par de fragmentos adyacentes deben
-compartir una zona igual al diámetro de un robot. En la figura \ref{areaCompartida}
-se muestran los casos donde el área compartida es menor al diámetro de un robot y
-donde el área compartida es del diámetro de un robot.
+compartir una zona igual al diámetro de un robot. En la figura
+\ref{areaCompartida} se muestran los casos donde el área compartida es menor al
+diámetro de un robot y donde el área compartida es del diámetro de un robot.
 
 \begin{figure}[!h]
 
