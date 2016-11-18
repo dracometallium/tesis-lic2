@@ -94,13 +94,11 @@ plugins sobre un mismo fragmento. Para la tercera implementación se trabajo
 sobre el mismo framework que la segunda, pero se unieron las pilas de búsquedas
 de robots y la de búsqueda de pelota. Para comprobar cual de estas era la mas
 efectiva se realizaron las pruebas con cada una de estas para la configuración
-de 11 hilos de búsqueda y 10 particiones con el vídeo de 800x600 píxeles de
+de 11 hilos de búsqueda y 10 fragmentos con el vídeo de 800x600 píxeles de
 resolución. La primera implementación proceso XX \emph{FPS}, la segunda XX
-\emph{FPS} y la tercera 188 \emph{FPS}. Como esta última fue la que produjo
+\emph{FPS} y la tercera 192 \emph{FPS}. Como esta última fue la que produjo
 resultados mas satisfactorios, sera sobre los resultados de esta que
 trabajaremos a continuación.
-
-NOTA: Faltan los datos, los consigo mañana.
 
 En las figuras \ref{800fps} y \ref{1280fps} se muestran las cantidades de
 \emph{FPS} alcanzados para un vídeo de 800x600 píxeles y 1280x720 píxeles
@@ -109,10 +107,10 @@ El numero de hilos de búsqueda indica la cantidad de hilos que ejecutan las
 tareas dinámicas. Adicionalmente el sistema ejecuta dos hilos más para las
 tareas estáticas, uno para la generación de cuadros y otro para la tarea de
 generación de tareas dinámicas. En el caso de del vídeo de 800x600 píxeles se
-llego a un máximo de 195 \emph{FPS} cuando se divide el cuadro en 18 fragmentos
-y se utilizan 10 u 11 hilos de búsqueda, mientras que para el vídeo de 1280x720
-píxeles se alcanzo un máximo de 94 \emph{FPS} cuando se divide el cuadro en 21
-fragmentos y se utilizan 10 u 11 cuadros de búsqueda.
+llego a un máximo de 194 \emph{FPS} cuando se divide el cuadro en 15 fragmentos
+y se utilizan 5 hilos de búsqueda, mientras que para el vídeo de 1280x720
+píxeles se alcanzo un máximo de 130 \emph{FPS} cuando se divide el cuadro en 24
+fragmentos y se utilizan 11 hilos de búsqueda.
 
 \begin{figure}[!h]
 

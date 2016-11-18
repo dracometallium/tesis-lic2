@@ -15,9 +15,14 @@ set style line 1 lc rgb "#0000ff"
 set boxwidth 0.75
 set grid
 
+set output '/dev/null'
+plot arch using 1:($3/10)
+maxy=GPVAL_DATA_Y_MAX
+
 set output dir.resolution.'_bestfps.pdf'
 set title ""
 set ylabel "Cuadros por segundo\n(retado en milisegundos)"
 plot arch using 1:($3/10) with boxes ls 1 title '', \
- arch using 1:($3/10)+6:(sprintf('%.0ffps', ($3/10.0))) with labels font ',8' title '', \
- arch using 1:($3/10)+2:(sprintf('(%.1fms)', ($4*1000.0))) with labels font ',8' title ''
+ arch using 1:($3/10)+((maxy-50)/12):\
+ (sprintf('%.0f fps\n%.0f ms', ($3/10.0), ($4*1000.0)))\
+ with labels font ',8' title ''

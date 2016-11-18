@@ -42,11 +42,17 @@ $(FIGURAS_PDF): %.pdf : %.svg
 
 $(DATOS_PDF_P2): $(DATOS_PDF)
 
+$(DATOS_PDF): scripts/plot.sh scripts/plot.gnuplot
+
 $(DATOS_PDF): %_fps.pdf : %.dat
 	scripts/plot.sh $^
 
+$(BEST_PDF): scripts/plotbest.sh scripts/plotbest.gnuplot
+
 $(BEST_PDF): %_bestfps.pdf : %.dat
 	scripts/plotbest.sh $^
+
+$(DATOS): scripts/mdat.sh
 
 $(DATOS): %.dat : %.res %.bres
 	scripts/mdat.sh $<
