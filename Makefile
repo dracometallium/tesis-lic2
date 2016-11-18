@@ -16,9 +16,11 @@ CACHE_PDF=$(CACHE:.pdat=_fallos.pdf)
 PRIMOS_PDF=$(PRIMOS:.pdat=_fps.pdf) $(PRIMOS:.pdat=_area.pdf)
 DATOS_PDF=$(DATOS:.dat=_fps.pdf)
 DATOS_PDF_P2=$(DATOS:.dat=_turnArround.pdf) $(DATOS:.dat=_tFPS.pdf)
+BEST_PDF=$(DATOS:.dat=_bestfps.pdf)
 FIGURAS_PDF=$(FIGURAS:.svg=.pdf)
 CODIGO_PDF=$(CODIGO:.cpp=.pdf)
-PDF=$(FIGURAS_PDF) $(DATOS_PDF) $(DATOS_PDF_P2) $(PRIMOS_PDF) $(CACHE_PDF) $(CODIGO_PDF)
+PDF=$(FIGURAS_PDF) $(DATOS_PDF) $(DATOS_PDF_P2) $(PRIMOS_PDF) $(CACHE_PDF)\
+    $(CODIGO_PDF) $(BEST_PDF)
 GARBAGE=*.aux *.bbl *.blg *.log *.pdf *.toc *.lof img/*.tdat
 
 all: $(NAME).pdf
@@ -42,6 +44,9 @@ $(DATOS_PDF_P2): $(DATOS_PDF)
 
 $(DATOS_PDF): %_fps.pdf : %.dat
 	scripts/plot.sh $^
+
+$(BEST_PDF): %_bestfps.pdf : %.dat
+	scripts/plotbest.sh $^
 
 $(DATOS): %.dat : %.res %.bres
 	scripts/mdat.sh $<
