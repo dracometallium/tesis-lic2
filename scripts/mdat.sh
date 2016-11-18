@@ -21,10 +21,10 @@ awkProg='
 '
 
 bkIFS=$IFS
-for arch in *.res; do
-	dir=$(dirname $0)
+arch=$1
+	dir=$(dirname $1)
 	base=$(basename -s .res $arch)
-	rFile=${base}.dat
+	rFile=${dir}/${base}.dat
 	echo -n > $rFile
 	tFile=$(mktemp)
 	for t in $(seq 1 12); do
@@ -44,7 +44,7 @@ for arch in *.res; do
 			err=$(
 				awk "$awkProg" $tFile
 				)
-			grep ${base}.bres -e "^$t $p " > $tFile
+			grep ${dir}/${base}.bres -e "^$t $p " > $tFile
 			mbWait=$(
 				cut -f 5 -d ' ' $tFile |
 				sort -nr |
@@ -57,11 +57,8 @@ for arch in *.res; do
 		done
 	done
 	rm $tFile
-	echo $rFile
 	IFS=$(printf "\n\t")
-	for j in $(seq 1 2000); do
+	for j in $(cat $rFile | cut -f 3 -d ' '| sort | uniq); do
 		cat $rFile | cut -f 3,4 -d ' ' | grep "^$j " | sort -k 2nr | sed '1q';
-	done > ${base}.tdat
+	done > ${dir}/${base}.tdat
 	IFS=$bkIFS
-done
-

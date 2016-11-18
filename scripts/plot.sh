@@ -1,7 +1,6 @@
 #!/bin/sh
 
-for arch in *.dat; do
-	dir=$(dirname $0)
+	arch=$1
+	dir=$(dirname $1)
 	resolution=$(basename -s .dat $arch)
-	gnuplot -e "arch='"$arch"';resolution='"$resolution"'" ${dir}/plot.gnuplot
-done
+	gnuplot -e "arch='"$arch"';resolution='"$resolution"';dir='"$dir/"';" scripts/plot.gnuplot

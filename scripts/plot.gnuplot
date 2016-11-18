@@ -18,14 +18,14 @@ set xlabel 'Nº fragmentos'
 set palette defined (300 '#0000ff', 600 'white')
 set cbrange [ 0 : 60 < * ]
 
-set output resolution.'_fps.pdf'
+set output dir.resolution.'_fps.pdf'
 plot arch using 2:1:($3/10) with image title '', \
  arch using 2:1:(sprintf('%.0f', ($3/10.0))) with labels font ',9' title ''
 
 set palette defined (0 'white', 300 '#0000ff')
 set cbrange [ * : * ]
 
-set output resolution.'_turnArround.pdf'
+set output dir.resolution.'_turnArround.pdf'
 plot arch using 2:1:($5*100) with image title '', \
  arch using 2:1:(sprintf('%.0f', ($5 * 100))) with labels font ',9' title ''
 
@@ -43,10 +43,10 @@ set xtics autofreq
 set ytics in scale 1
 set logscale y 2
 
-arch=resolution.".tdat"
+arch=dir.resolution.".tdat"
 
 set key off
 set ylabel "Retardo de cuadro\n(en segundos)"
 set xlabel 'FPS'
-set output resolution.'_tFPS.pdf'
+set output dir.resolution.'_tFPS.pdf'
 plot arch using ($1/10):2 with points lt 1 title ''
