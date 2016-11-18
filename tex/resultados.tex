@@ -191,11 +191,6 @@ respecto tanto a un fragmento menos como un fragmento más. También se pueden
 apreciar que los incrementos repentinos en el área total coinciden con
 disminuciones repentinas en los cuadros por segundo procesados.
 
-El segundo patrón
-que se puede observar es una reducción en la cantidad de cuadros por segundo
-cuando la cantidad de fragmentos es reducida y la cantidad de hilos de búsqueda
-alta.
-
 El segundo patrón que se puede observar en las figuras \ref{800fps} y
 \ref{1280fps} es que cuando la cantidad de fragmentos es baja y la cantidad de
 hilos de búsqueda es alta, el sistema tiene menor \emph{FPS} que utilizar una
@@ -235,10 +230,10 @@ fragmentos, mayor es la cantidad de fallos de caché ocurridos por cuadro.
 
 \end{figure}
 
-Finalmente, en las figuras \ref{800turnArround} y \ref{1280turnArround} se
-muestran los tiempos máximos de espera de los cuadros, para los vídeos de
-800x600 y 1280x720 píxeles de resolución (considerando que los \emph{FPS} son
-limitados al máximo encontrado en la primera etapa de los experimentos).
+En las figuras \ref{800turnArround} y \ref{1280turnArround} se muestran los
+tiempos máximos de espera de los cuadros, para los vídeos de 800x600 y 1280x720
+píxeles de resolución (considerando que los \emph{FPS} son limitados al máximo
+encontrado en la primera etapa de los experimentos).
 
 \begin{figure}[!h]
 
@@ -263,11 +258,11 @@ mínimo. Dependiendo de si se desea minimizar el tiempo de espera de los cuadros
 maximizar la cantidad de cuadros procesados, o encontrar un balance especifico,
 se deberá elegir una cantidad de fragmentos y procesadores apropiada. Por
 ejemplo, en el caso del vídeo de 1280x720 píxeles de resolución, dividir la
-imagen en 21 fragmentos y utilizar 11 permite procesar 94 cuadros por segundo en
-el equipo de prueba, sin embargo el tiempo de espera es de $0.09$ segundos. Si
-el cuadro se divide en 15 fragmentos y se utilizan 11 hilos de búsqueda, la
-cantidad de cuadros por segundo procesados se cae a 90, pero el tiempo de espera
-se reduce a $0.05$ segundos. Las figuras \ref{800tFPS} y \ref{1280tFPS}
+imagen en 24 fragmentos y utilizar 11 permite procesar 130 cuadros por segundo en
+el equipo de prueba, sin embargo el tiempo de espera es de $0.11$ segundos. Si
+el cuadro se divide en 21 fragmentos y se utilizan 11 hilos de búsqueda, la
+cantidad de cuadros por segundo procesados cae a 117, pero el tiempo de espera
+se reduce a $0.06$ segundos. Las figuras \ref{800tFPS} y \ref{1280tFPS}
 sintetizan la relación entre los \emph{FPS} y el retardo de cuadros, mostrando
 el mínimo retardo de cuadros para los diferentes \emph{FPS} que puede alcanzar
 el sistema en cada vídeo.
@@ -287,5 +282,37 @@ el sistema en cada vídeo.
 	\caption{Tiempos máximos de espera para vídeo de 1280x720 píxeles para
 	los FPS soportados por el sistema}
 	\label{1280tFPS}
+
+\end{figure}
+
+Por último las figuras \ref{bestFPS800} y \ref{bestFPS1280} muestran el máximo
+rendimiento en cuadros por segundo obtenidos para cada configuración de hilos de
+búsqueda incluyendo el retardo de cuadro, para los vídeos de 800x600 y 1280x720
+píxeles. Se puede apreciar en la figura que para el caso del vídeo de 800x600
+píxeles el sistema escala solo hasta el uso de 5 hilos de búsqueda. En el
+caso del vídeo de 1280x720 píxeles, también muestra una reducción en el
+rendimiento cuando se utilizan 12 hilos de búsqueda. Como la plataforma
+experimental cuenta con 12 núcleos, bajo estas condiciones los hilos de búsqueda
+deberán compartir recursos con los hilos dedicados a las tareas estáticas. Por
+lo cual no podemos determinar el punto en el cual la aplicación deja de escalar
+para un vídeo de 1280x720 píxeles.
+
+\begin{figure}[!h]
+
+	\includegraphics[width=\textwidth]{img/800x600_bestfps.pdf}
+	\caption{FPS máximos alcanzados para el vídeo de 800x600 píxeles bajo
+	para distintas configuraciones de cantidad de hilos de búsqueda. Se
+	incluye el retardo de cuadro bajo la configuración}
+	\label{bestFPS800}
+
+\end{figure}
+
+\begin{figure}[!h]
+
+	\includegraphics[width=\textwidth]{img/1280x720_bestfps.pdf}
+	\caption{FPS máximos alcanzados para el vídeo de 1280x720 píxeles bajo
+	para distintas configuraciones de cantidad de hilos de búsqueda. Se
+	incluye el retardo de cuadro bajo la configuración}
+	\label{bestFPS1280}
 
 \end{figure}
