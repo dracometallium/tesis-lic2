@@ -59,14 +59,13 @@ el hardware utilizado para las pruebas, el sistema puede procesar un vídeo de
 competencias actuales se utilizan cuatro cámaras como origen de los datos de
 vídeo, en lugar de la cámara única para la cual el sistema fue pensado.
 
-Nota de OSO: Esto es como lo entendí? El experimento este no representa las
-cuatro cámaras sino que es un intermedio
-
 Como punto de partida de la presente tesis, nos formulamos la pregunta de si el
-framework soportaría este nuevo caudal de información. Al probar el servidor de
-vídeo, construido sobre el framework, con un vídeo con una resolución de
-800$\times$600 píxeles, comprobamos que el número de cuadros por segundo
-procesados cayó a 45 cuadros por segundo.
+framework soportaría este nuevo caudal de información. En este caso, si cada
+cámara captura un vídeo con una resolución de 325$\times$228, el vídeo compuesto
+resultante tendrá una resolución levemente inferior a 800$\times$600 píxeles.
+Al probar el servidor de vídeo, construido sobre el framework, con un vídeo de
+esa resolución el número de cuadros por segundo procesados cayó a 45 cuadros por
+segundo.
 
 Esta diferencia en prestaciones muestra que la utilidad del sistema se ve
 comprometida a medida que el volumen de los datos aumenta. Como las cuatro
