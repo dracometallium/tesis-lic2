@@ -15,12 +15,15 @@ CODIGO=img/itemSwitch.cpp
 CACHE_PDF=$(CACHE:.pdat=_fallos.pdf)
 PRIMOS_PDF=$(PRIMOS:.pdat=_fps.pdf) $(PRIMOS:.pdat=_area.pdf)
 DATOS_PDF=$(DATOS:.dat=_fps.pdf)
-DATOS_PDF_P2=$(DATOS:.dat=_turnArround.pdf) $(DATOS:.dat=_tFPS.pdf)
+turnArround_PDF=$(DATOS:.dat=_turnArround.pdf)
+tFPS_PDF=$(DATOS:.dat=_tFPS.pdf)
+DATOS_PDF_P2=$(turnArround_PDF) $(tFPS_PDF)
 BEST_PDF=$(DATOS:.dat=_bestfps.pdf)
+SPEEDUP_PDF=$(DATOS:.dat=_speedup.pdf)
 FIGURAS_PDF=$(FIGURAS:.svg=.pdf)
 CODIGO_PDF=$(CODIGO:.cpp=.pdf)
 PDF=$(FIGURAS_PDF) $(DATOS_PDF) $(DATOS_PDF_P2) $(PRIMOS_PDF) $(CACHE_PDF)\
-    $(CODIGO_PDF) $(BEST_PDF)
+    $(CODIGO_PDF) $(BEST_PDF) $(SPEEDUP_PDF)
 GARBAGE=*.aux *.bbl *.blg *.log *.pdf *.toc *.lof img/*.tdat
 
 all: $(NAME).pdf
@@ -40,12 +43,16 @@ propuesta:
 $(FIGURAS_PDF): %.pdf : %.svg
 	inkscape $^ -z -A $@
 
-$(DATOS_PDF_P2): $(DATOS_PDF)
+$(turnArround_PDF): %_turnArround.pdf : %_fps.pdf
+
+$(tFPS_PDF): %_tFPS.pdf : %_fps.pdf
 
 $(DATOS_PDF): scripts/plot.sh scripts/plot.gnuplot
 
 $(DATOS_PDF): %_fps.pdf : %.dat
 	scripts/plot.sh $^
+
+$(SPEEDUP_PDF): %_speedup.pdf : %_bestfps.pdf
 
 $(BEST_PDF): scripts/plotbest.sh scripts/plotbest.gnuplot
 

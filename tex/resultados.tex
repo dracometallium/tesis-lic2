@@ -285,17 +285,17 @@ el sistema en cada vídeo.
 
 \end{figure}
 
-Por último las figuras \ref{bestFPS800} y \ref{bestFPS1280} muestran el máximo
-rendimiento en cuadros por segundo obtenidos para cada configuración de hilos de
-búsqueda incluyendo el retardo de cuadro, para los vídeos de 800x600 y 1280x720
-píxeles. Se puede apreciar en la figura que para el caso del vídeo de 800x600
-píxeles el sistema escala solo hasta el uso de 5 hilos de búsqueda. En el
-caso del vídeo de 1280x720 píxeles, también muestra una reducción en el
-rendimiento cuando se utilizan 12 hilos de búsqueda. Como la plataforma
-experimental cuenta con 12 núcleos, bajo estas condiciones los hilos de búsqueda
-deberán compartir recursos con los hilos dedicados a las tareas estáticas. Por
-lo cual no podemos determinar el punto en el cual la aplicación deja de escalar
-para un vídeo de 1280x720 píxeles.
+Las figuras \ref{bestFPS800} y \ref{bestFPS1280} muestran el máximo rendimiento
+en cuadros por segundo obtenidos para cada configuración de hilos de búsqueda
+incluyendo el retardo de cuadro, para los vídeos de 800x600 y 1280x720 píxeles.
+Se puede apreciar en la figura que para el caso del vídeo de 800x600 píxeles el
+sistema escala solo hasta el uso de 5 hilos de búsqueda. En el caso del vídeo de
+1280x720 píxeles, también muestra una reducción en el rendimiento cuando se
+utilizan 12 hilos de búsqueda. Como la plataforma experimental cuenta con 12
+núcleos, bajo estas condiciones los hilos de búsqueda deberán compartir recursos
+con los hilos dedicados a las tareas estáticas. Por lo cual no podemos
+determinar el punto en el cual la aplicación deja de escalar para un vídeo de
+1280x720 píxeles.
 
 \begin{figure}[!h]
 
@@ -316,5 +316,26 @@ para un vídeo de 1280x720 píxeles.
 	incluye el retardo de cuadro bajo la configuración y la cantidad de
 	fragmentos en la que fue dividido.}
 	\label{bestFPS1280}
+
+\end{figure}
+
+El \emph{speedup} del rendimiento (sobre los FPS) máximo alcanzado por el
+sistema para el vídeo de 800$\times$600 píxeles es de XX, mientras que para el
+vídeo 1280$\times$720 es de XX. Las curvas de \emph{speedup} son mostradas en
+las figuras \ref{speedUp800} y \ref{speedUp1280}
+
+\begin{figure}[!h]
+
+	\includegraphics[width=\textwidth]{img/800x600_speedup.pdf}
+	\caption{\emph{Speedup} para el vídeo de 800x600 píxeles}
+	\label{speedUp800}
+
+\end{figure}
+
+\begin{figure}[!h]
+
+	\includegraphics[width=\textwidth]{img/1280x720_speedup.pdf}
+	\caption{\emph{Speedup} para el vídeo de 1280$\times$720 píxeles}
+	\label{speedUp1280}
 
 \end{figure}

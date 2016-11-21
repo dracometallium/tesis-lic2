@@ -27,3 +27,16 @@ plot arch using 1:(floor($3/10)) with boxes ls 1 title '', \
  arch using 1:((floor($3/10))-maxy/20):\
  (sprintf('%.0f fps\n%.0f ms\n%d frg.', ($3/10.0), ($4*1000.0), $2))\
  with labels font ',8' textcolor '#FFFFAA' title ''
+
+set yrange [0:*]
+set ytics 0, 1
+
+set output '/dev/null'
+plot arch using 1:($3/base)
+maxy=(GPVAL_DATA_Y_MAX)
+
+set output dir.resolution.'_speedup.pdf'
+set ylabel "Speedup"
+plot arch using 1:($3/base) with boxes ls 1 title '',\
+ arch using 1:(($3/base)-maxy/20):(sprintf('%.2fx', ($3/base)))\
+ with labels font ',8' textcolor '#FFFFAA' title ''
