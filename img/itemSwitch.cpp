@@ -4,14 +4,10 @@ int main(){
 #pragma omp parallel sections num_threads(3)
     {
 #pragma omp section
-        {
             generaciónDeCuadros(fuente, pilaCuadros, &continuar);
-        }
 #pragma omp section
-        {
            generaciónDeTareasDeFragmentaciónDeCuadros
                 (NHilos, NPartes, pilaCuadros, &continuar);
-        }
 #pragma omp section
         {
                 esperarSeñalFin();
@@ -32,9 +28,7 @@ int generaciónDeTareasDeFragmentaciónDeCuadros
         cuadro = NULL;
         if ((pilaCuadros->cantidad() > 0) && (hilosLibres > 0)) {
 #pragma omp critical (RingStack)
-            {
                 cuadro = pilaCuadros->siguiente();
-            }
         }
         if (cuadro != NULL) {
 #pragma omp atomic
@@ -56,13 +50,6 @@ int generaciónDeTareasDeFragmentaciónDeCuadros
 #pragma omp atomic
                     hilosLibres++;
                 }
-
-#pragma omp taskwait
-#pragma omp atomic
-                hilosLibres--;
-                delete Cuadro;
-#pragma omp atomic
-                hilosLibres++;
             }
         }
     }
