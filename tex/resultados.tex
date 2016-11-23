@@ -8,7 +8,7 @@ una resolución de 1280x720 píxeles.
 
 Se configuraron diferentes experimentos haciendo variar la cantidad de partes en
 las que fueron divididos los cuadros entre 1 y 24, la cantidad de hilos de
-ejecución para tareas dinámicas entre 1 y 12, con ambos vídeos. Para comparar
+ejecución para tareas de búsqueda entre 1 y 12, con ambos vídeos. Para comparar
 los resultados de las diferentes configuraciones se midieron los \emph{FPS}
 soportados por el sistema y el tiempo de espera máximo (obtenido a los
 \emph{FPS} soportados por el sistema bajo la misma configuración).
@@ -104,9 +104,9 @@ En las figuras \ref{800fps} y \ref{1280fps} se muestran las cantidades de
 \emph{FPS} alcanzados para un vídeo de 800x600 píxeles y 1280x720 píxeles
 respectivamente, para distintas cantidades de hilos de búsqueda y fragmentos.
 El numero de hilos de búsqueda indica la cantidad de hilos que ejecutan las
-tareas dinámicas. Adicionalmente el sistema ejecuta dos hilos más para las
+tareas de búsqueda. Adicionalmente el sistema ejecuta dos hilos más para las
 tareas estáticas, uno para la generación de cuadros y otro para la tarea de
-generación de tareas dinámicas. En el caso de del vídeo de 800x600 píxeles se
+generación de tareas de búsqueda. En el caso de del vídeo de 800x600 píxeles se
 llego a un máximo de 194 \emph{FPS} cuando se divide el cuadro en 15 fragmentos
 y se utilizan 5 hilos de búsqueda, mientras que para el vídeo de 1280x720
 píxeles se alcanzo un máximo de 130 \emph{FPS} cuando se divide el cuadro en 24
@@ -199,12 +199,12 @@ memoria caché se comparte entre los cuadros que están siendo procesados en
 paralelo. Cuanto más cuadros se procesen en paralelo, mayor será la competencia
 por la memoria caché. La cantidad de cuadros que se procesan en paralelo está en
 relación con el número de fragmentos y la cantidad de hilos de ejecución para
-tareas dinámicas. Considerando que la cantidad de hilos de ejecución es mayor
+tareas de búsqueda. Considerando que la cantidad de hilos de ejecución es mayor
 que la cantidad de fragmentos, si se disminuye la cantidad de fragmentos,
-manteniendo la cantidad de hilos de ejecución para tareas dinámicas, se
-incrementa la cantidad de cuadros a procesar en paralelo. Esto tiene como
-efecto que los cuadros compitan por la caché y reduce las posibilidades de que
-los fragmentos entren completamente en las cachés de nivel mas bajo. Por esto se
+manteniendo la cantidad de hilos de ejecución para tareas de búsqueda, se
+incrementa la cantidad de cuadros a procesar en paralelo. Esto tiene como efecto
+que los cuadros compitan por la caché y reduce las posibilidades de que los
+fragmentos entren completamente en las cachés de nivel mas bajo. Por esto se
 propuso la hipótesis de que el retardo se produce debido a un aumento en los
 fallos de caché.
 
