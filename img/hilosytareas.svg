@@ -1,1347 +1,306 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg
-   xmlns:dc="http://purl.org/dc/elements/1.1/"
-   xmlns:cc="http://creativecommons.org/ns#"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-   xmlns:svg="http://www.w3.org/2000/svg"
-   xmlns="http://www.w3.org/2000/svg"
-   version="1.1"
-   id="svg2"
-   viewBox="3.900 -5.418 52.171 46.884"
-   height="46.884cm"
-   width="52.171cm">
-  <metadata
-     id="metadata273">
-    <rdf:RDF>
-      <cc:Work
-         rdf:about="">
-        <dc:format>image/svg+xml</dc:format>
-        <dc:type
-           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
-      </cc:Work>
-    </rdf:RDF>
-  </metadata>
-  <defs
-     id="defs271" />
-  <!-- Layer: Background -->
-  <g
-     id="Background">
-    <!-- Standard - Text -->
-    <text
-       fill="#000000"
-       font-family="FreeSerif"
-       text-anchor="middle"
-       id="text5"
-       font-weight="700"
-       font-style="normal"
-       font-size="1.41"
-       y="3.775"
-       x="8.000">
+<!-- Created by diasvg.py -->
+<svg width="52.171cm" height="46.884cm" viewBox="3.900 -5.418 52.171 46.884"
+ xmlns="http://www.w3.org/2000/svg"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+<!-- Layer: Background -->
+<g id="Background">
+<!-- Standard - Text -->
+<text x="8.000" y="3.775"  fill="#000000" text-anchor="middle" font-size="1.41" font-family="FreeSerif" font-style="normal" font-weight="700">
 Hilo 1</text>
-    <!-- Standard - Line -->
-    <line
-       stroke="#000000"
-       stroke-width="0.100"
-       id="line7"
-       y2="23.000"
-       x2="8.000"
-       y1="4.000"
-       x1="8.000" />
-    <!-- Standard - Text -->
-    <text
-       fill="#000000"
-       font-family="FreeSerif"
-       text-anchor="middle"
-       id="text9"
-       font-weight="700"
-       font-style="normal"
-       font-size="1.41"
-       y="3.775"
-       x="21.000">
+<!-- Standard - Line -->
+<line x1="8.000" y1="4.000" x2="8.000" y2="23.000" stroke="#000000" stroke-width="0.100" />
+<!-- Standard - Text -->
+<text x="21.000" y="3.775"  fill="#000000" text-anchor="middle" font-size="1.41" font-family="FreeSerif" font-style="normal" font-weight="700">
 Hilo 2</text>
-    <!-- Standard - Line -->
-    <line
-       stroke="#000000"
-       stroke-width="0.100"
-       id="line11"
-       y2="23.000"
-       x2="21.000"
-       y1="4.000"
-       x1="21.000" />
-    <!-- Standard - Text -->
-    <text
-       fill="#000000"
-       font-family="FreeSerif"
-       text-anchor="middle"
-       id="text13"
-       font-weight="700"
-       font-style="normal"
-       font-size="1.41"
-       y="3.775"
-       x="33.000">
+<!-- Standard - Line -->
+<line x1="21.000" y1="4.000" x2="21.000" y2="23.000" stroke="#000000" stroke-width="0.100" />
+<!-- Standard - Text -->
+<text x="33.000" y="3.775"  fill="#000000" text-anchor="middle" font-size="1.41" font-family="FreeSerif" font-style="normal" font-weight="700">
 Hilo 3</text>
-    <!-- Standard - Line -->
-    <line
-       stroke="#000000"
-       stroke-width="0.100"
-       id="line15"
-       y2="23.000"
-       x2="33.000"
-       y1="4.000"
-       x1="33.000" />
-    <!-- Standard - Text -->
-    <text
-       fill="#000000"
-       font-family="FreeSerif"
-       text-anchor="start"
-       id="text17"
-       font-weight="700"
-       font-style="normal"
-       font-size="0.78"
-       y="6.560"
-       x="8.500">
+<!-- Standard - Line -->
+<line x1="33.000" y1="4.000" x2="33.000" y2="23.000" stroke="#000000" stroke-width="0.100" />
+<!-- Standard - Text -->
+<text x="8.500" y="6.560"  fill="#000000" text-anchor="start" font-size="0.78" font-family="FreeSerif" font-style="normal" font-weight="700">
 Fragmento de</text>
-    <text
-       fill="#000000"
-       font-family="FreeSerif"
-       text-anchor="start"
-       id="text19"
-       font-weight="700"
-       font-style="normal"
-       font-size="0.78"
-       y="7.336"
-       x="8.500">
+<text x="8.500" y="7.336"  fill="#000000" text-anchor="start" font-size="0.78" font-family="FreeSerif" font-style="normal" font-weight="700">
 Cuadro</text>
-    <!-- Standard - Text -->
-    <text
-       fill="#000000"
-       font-family="FreeSerif"
-       text-anchor="start"
-       id="text21"
-       font-weight="700"
-       font-style="normal"
-       font-size="0.78"
-       y="9.060"
-       x="8.500">
+<!-- Standard - Text -->
+<text x="8.500" y="9.060"  fill="#000000" text-anchor="start" font-size="0.78" font-family="FreeSerif" font-style="normal" font-weight="700">
 Crear tareas de</text>
-    <text
-       fill="#000000"
-       font-family="FreeSerif"
-       text-anchor="start"
-       id="text23"
-       font-weight="700"
-       font-style="normal"
-       font-size="0.78"
-       y="9.836"
-       x="8.500">
+<text x="8.500" y="9.836"  fill="#000000" text-anchor="start" font-size="0.78" font-family="FreeSerif" font-style="normal" font-weight="700">
 procesamiento</text>
-    <!-- Standard - Line -->
-    <line
-       stroke="#000000"
-       stroke-width="0.100"
-       id="line25"
-       y2="6.000"
-       x2="7.000"
-       y1="5.000"
-       x1="8.000" />
-    <!-- Standard - Line -->
-    <line
-       stroke="#000000"
-       stroke-width="0.100"
-       id="line27"
-       y2="11.000"
-       x2="7.000"
-       y1="6.000"
-       x1="7.000" />
-    <!-- Group -->
-    <!-- Geometric - Perfect Circle -->
-    <circle
-       rx="1.000"
-       ry="1.000"
-       fill="#FFFFFF"
-       stroke="#000000"
-       stroke-width="0.100"
-       id="ellipse29"
-       cy="8.000"
-       cx="5.500" />
-    <!-- Standard - Text -->
-    <text
-       fill="#000000"
-       font-family="FreeSerif"
-       text-anchor="middle"
-       id="text31"
-       font-weight="700"
-       font-style="normal"
-       font-size="0.71"
-       y="7.846"
-       x="5.500">
+<!-- Standard - Line -->
+<line x1="8.000" y1="5.000" x2="7.000" y2="6.000" stroke="#000000" stroke-width="0.100" />
+<!-- Standard - Line -->
+<line x1="7.000" y1="6.000" x2="7.000" y2="11.000" stroke="#000000" stroke-width="0.100" />
+<!-- Group -->
+<!-- Geometric - Perfect Circle -->
+<ellipse cx="5.500" cy="8.000" rx="1.000" ry="1.000" fill="#FFFFFF" stroke="#000000"  stroke-width="0.100" />
+<!-- Standard - Text -->
+<text x="5.500" y="7.846"  fill="#000000" text-anchor="middle" font-size="0.71" font-family="FreeSerif" font-style="normal" font-weight="700">
 TF</text>
-    <text
-       fill="#000000"
-       font-family="FreeSerif"
-       text-anchor="middle"
-       id="text33"
-       font-weight="700"
-       font-style="normal"
-       font-size="0.71"
-       y="8.552"
-       x="5.500">
+<text x="5.500" y="8.552"  fill="#000000" text-anchor="middle" font-size="0.71" font-family="FreeSerif" font-style="normal" font-weight="700">
 1</text>
-    <!-- Standard - Text -->
-    <text
-       fill="#000000"
-       font-family="FreeSerif"
-       text-anchor="start"
-       id="text35"
-       font-weight="700"
-       font-style="normal"
-       font-size="0.78"
-       y="11.500"
-       x="8.500">
+<!-- Standard - Text -->
+<text x="8.500" y="11.500"  fill="#000000" text-anchor="start" font-size="0.78" font-family="FreeSerif" font-style="normal" font-weight="700">
 Task Wait</text>
-    <!-- Standard - Line -->
-    <line
-       stroke="#000000"
-       stroke-width="0.100"
-       stroke-dasharray="0.10,0.10"
-       id="line37"
-       y2="11.500"
-       x2="6.500"
-       y1="11.500"
-       x1="8.500" />
-    <!-- Geometric - Perfect Circle -->
-    <circle
-       rx="1.000"
-       ry="1.000"
-       fill="#FFFFFF"
-       stroke="#000000"
-       stroke-width="0.100"
-       id="ellipse39"
-       cy="15.000"
-       cx="5.000" />
-    <!-- Standard - Text -->
-    <text
-       fill="#000000"
-       font-family="FreeSerif"
-       text-anchor="middle"
-       id="text41"
-       font-weight="700"
-       font-style="normal"
-       font-size="0.71"
-       y="14.846"
-       x="5.000">
+<!-- Standard - Line -->
+<line x1="8.500" y1="11.500" x2="6.500" y2="11.500" stroke="#000000" stroke-width="0.100" stroke-dasharray="0.10,0.10"/>
+<!-- Geometric - Perfect Circle -->
+<ellipse cx="5.000" cy="15.000" rx="1.000" ry="1.000" fill="#FFFFFF" stroke="#000000"  stroke-width="0.100" />
+<!-- Standard - Text -->
+<text x="5.000" y="14.846"  fill="#000000" text-anchor="middle" font-size="0.71" font-family="FreeSerif" font-style="normal" font-weight="700">
 TP</text>
-    <text
-       fill="#000000"
-       font-family="FreeSerif"
-       text-anchor="middle"
-       id="text43"
-       font-weight="700"
-       font-style="normal"
-       font-size="0.71"
-       y="15.552"
-       x="5.000">
+<text x="5.000" y="15.552"  fill="#000000" text-anchor="middle" font-size="0.71" font-family="FreeSerif" font-style="normal" font-weight="700">
 1,1</text>
-    <!-- Standard - Line -->
-    <line
-       stroke="#000000"
-       stroke-width="0.100"
-       id="line45"
-       y2="14.000"
-       x2="7.000"
-       y1="13.000"
-       x1="8.000" />
-    <!-- Standard - Line -->
-    <line
-       stroke="#000000"
-       stroke-width="0.100"
-       id="line47"
-       y2="16.000"
-       x2="7.000"
-       y1="14.000"
-       x1="7.000" />
-    <!-- Standard - Line -->
-    <line
-       stroke="#000000"
-       stroke-width="0.100"
-       id="line49"
-       y2="17.000"
-       x2="8.000"
-       y1="16.000"
-       x1="7.000" />
-    <!-- Standard - Text -->
-    <text
-       fill="#000000"
-       font-family="FreeSerif"
-       text-anchor="start"
-       id="text51"
-       font-weight="700"
-       font-style="normal"
-       font-size="0.78"
-       y="15.000"
-       x="9.000">
+<!-- Standard - Line -->
+<line x1="8.000" y1="13.000" x2="7.000" y2="14.000" stroke="#000000" stroke-width="0.100" />
+<!-- Standard - Line -->
+<line x1="7.000" y1="14.000" x2="7.000" y2="16.000" stroke="#000000" stroke-width="0.100" />
+<!-- Standard - Line -->
+<line x1="7.000" y1="16.000" x2="8.000" y2="17.000" stroke="#000000" stroke-width="0.100" />
+<!-- Standard - Text -->
+<text x="9.000" y="15.000"  fill="#000000" text-anchor="start" font-size="0.78" font-family="FreeSerif" font-style="normal" font-weight="700">
 Procesamiento del</text>
-    <text
-       fill="#000000"
-       font-family="FreeSerif"
-       text-anchor="start"
-       id="text53"
-       font-weight="700"
-       font-style="normal"
-       font-size="0.78"
-       y="15.776"
-       x="9.000">
+<text x="9.000" y="15.776"  fill="#000000" text-anchor="start" font-size="0.78" font-family="FreeSerif" font-style="normal" font-weight="700">
 cuadro</text>
-    <!-- Standard - Line -->
-    <line
-       stroke="#000000"
-       stroke-width="0.100"
-       id="line55"
-       y2="14.000"
-       x2="20.000"
-       y1="13.000"
-       x1="21.000" />
-    <!-- Standard - Line -->
-    <line
-       stroke="#000000"
-       stroke-width="0.100"
-       id="line57"
-       y2="16.000"
-       x2="20.000"
-       y1="14.000"
-       x1="20.000" />
-    <!-- Standard - Line -->
-    <line
-       stroke="#000000"
-       stroke-width="0.100"
-       id="line59"
-       y2="17.000"
-       x2="21.000"
-       y1="16.000"
-       x1="20.000" />
-    <!-- Standard - Text -->
-    <text
-       fill="#000000"
-       font-family="FreeSerif"
-       text-anchor="start"
-       id="text61"
-       font-weight="700"
-       font-style="normal"
-       font-size="0.78"
-       y="15.000"
-       x="22.000">
+<!-- Standard - Line -->
+<line x1="21.000" y1="13.000" x2="20.000" y2="14.000" stroke="#000000" stroke-width="0.100" />
+<!-- Standard - Line -->
+<line x1="20.000" y1="14.000" x2="20.000" y2="16.000" stroke="#000000" stroke-width="0.100" />
+<!-- Standard - Line -->
+<line x1="20.000" y1="16.000" x2="21.000" y2="17.000" stroke="#000000" stroke-width="0.100" />
+<!-- Standard - Text -->
+<text x="22.000" y="15.000"  fill="#000000" text-anchor="start" font-size="0.78" font-family="FreeSerif" font-style="normal" font-weight="700">
 Procesamiento del</text>
-    <text
-       fill="#000000"
-       font-family="FreeSerif"
-       text-anchor="start"
-       id="text63"
-       font-weight="700"
-       font-style="normal"
-       font-size="0.78"
-       y="15.776"
-       x="22.000">
+<text x="22.000" y="15.776"  fill="#000000" text-anchor="start" font-size="0.78" font-family="FreeSerif" font-style="normal" font-weight="700">
 cuadro</text>
-    <!-- Geometric - Perfect Circle -->
-    <circle
-       rx="1.000"
-       ry="1.000"
-       fill="#FFFFFF"
-       stroke="#000000"
-       stroke-width="0.100"
-       id="ellipse65"
-       cy="15.000"
-       cx="18.000" />
-    <!-- Standard - Text -->
-    <text
-       fill="#000000"
-       font-family="FreeSerif"
-       text-anchor="middle"
-       id="text67"
-       font-weight="700"
-       font-style="normal"
-       font-size="0.71"
-       y="14.846"
-       x="18.000">
+<!-- Geometric - Perfect Circle -->
+<ellipse cx="18.000" cy="15.000" rx="1.000" ry="1.000" fill="#FFFFFF" stroke="#000000"  stroke-width="0.100" />
+<!-- Standard - Text -->
+<text x="18.000" y="14.846"  fill="#000000" text-anchor="middle" font-size="0.71" font-family="FreeSerif" font-style="normal" font-weight="700">
 TP</text>
-    <text
-       fill="#000000"
-       font-family="FreeSerif"
-       text-anchor="middle"
-       id="text69"
-       font-weight="700"
-       font-style="normal"
-       font-size="0.71"
-       y="15.552"
-       x="18.000">
+<text x="18.000" y="15.552"  fill="#000000" text-anchor="middle" font-size="0.71" font-family="FreeSerif" font-style="normal" font-weight="700">
 1,2</text>
-    <!-- Standard - Line -->
-    <line
-       stroke="#000000"
-       stroke-width="0.100"
-       id="line71"
-       y2="14.000"
-       x2="32.000"
-       y1="13.000"
-       x1="33.000" />
-    <!-- Standard - Line -->
-    <line
-       stroke="#000000"
-       stroke-width="0.100"
-       id="line73"
-       y2="16.000"
-       x2="32.000"
-       y1="14.000"
-       x1="32.000" />
-    <!-- Standard - Line -->
-    <line
-       stroke="#000000"
-       stroke-width="0.100"
-       id="line75"
-       y2="17.000"
-       x2="33.000"
-       y1="16.000"
-       x1="32.000" />
-    <!-- Standard - Text -->
-    <text
-       fill="#000000"
-       font-family="FreeSerif"
-       text-anchor="start"
-       id="text77"
-       font-weight="700"
-       font-style="normal"
-       font-size="0.78"
-       y="15.000"
-       x="34.000">
+<!-- Standard - Line -->
+<line x1="33.000" y1="13.000" x2="32.000" y2="14.000" stroke="#000000" stroke-width="0.100" />
+<!-- Standard - Line -->
+<line x1="32.000" y1="14.000" x2="32.000" y2="16.000" stroke="#000000" stroke-width="0.100" />
+<!-- Standard - Line -->
+<line x1="32.000" y1="16.000" x2="33.000" y2="17.000" stroke="#000000" stroke-width="0.100" />
+<!-- Standard - Text -->
+<text x="34.000" y="15.000"  fill="#000000" text-anchor="start" font-size="0.78" font-family="FreeSerif" font-style="normal" font-weight="700">
 Procesamiento del</text>
-    <text
-       fill="#000000"
-       font-family="FreeSerif"
-       text-anchor="start"
-       id="text79"
-       font-weight="700"
-       font-style="normal"
-       font-size="0.78"
-       y="15.776"
-       x="34.000">
+<text x="34.000" y="15.776"  fill="#000000" text-anchor="start" font-size="0.78" font-family="FreeSerif" font-style="normal" font-weight="700">
 cuadro</text>
-    <!-- Geometric - Perfect Circle -->
-    <circle
-       rx="1.000"
-       ry="1.000"
-       fill="#FFFFFF"
-       stroke="#000000"
-       stroke-width="0.100"
-       id="ellipse81"
-       cy="15.000"
-       cx="30.000" />
-    <!-- Standard - Text -->
-    <text
-       fill="#000000"
-       font-family="FreeSerif"
-       text-anchor="middle"
-       id="text83"
-       font-weight="700"
-       font-style="normal"
-       font-size="0.71"
-       y="14.846"
-       x="30.000">
+<!-- Geometric - Perfect Circle -->
+<ellipse cx="30.000" cy="15.000" rx="1.000" ry="1.000" fill="#FFFFFF" stroke="#000000"  stroke-width="0.100" />
+<!-- Standard - Text -->
+<text x="30.000" y="14.846"  fill="#000000" text-anchor="middle" font-size="0.71" font-family="FreeSerif" font-style="normal" font-weight="700">
 TP</text>
-    <text
-       fill="#000000"
-       font-family="FreeSerif"
-       text-anchor="middle"
-       id="text85"
-       font-weight="700"
-       font-style="normal"
-       font-size="0.71"
-       y="15.552"
-       x="30.000">
+<text x="30.000" y="15.552"  fill="#000000" text-anchor="middle" font-size="0.71" font-family="FreeSerif" font-style="normal" font-weight="700">
 1,2</text>
-    <!-- Standard - Text -->
-    <text
-       fill="#000000"
-       font-family="FreeSerif"
-       text-anchor="start"
-       id="text87"
-       font-weight="700"
-       font-style="normal"
-       font-size="0.78"
-       y="18.000"
-       x="9.000">
+<!-- Standard - Text -->
+<text x="9.000" y="18.000"  fill="#000000" text-anchor="start" font-size="0.78" font-family="FreeSerif" font-style="normal" font-weight="700">
 Tareas completadas</text>
-    <!-- Standard - Line -->
-    <line
-       stroke="#000000"
-       stroke-width="0.100"
-       stroke-dasharray="0.10,0.10"
-       id="line89"
-       y2="18.000"
-       x2="7.000"
-       y1="18.000"
-       x1="9.000" />
-    <!-- Group -->
-    <!-- Geometric - Perfect Circle -->
-    <circle
-       rx="1.000"
-       ry="1.000"
-       fill="#FFFFFF"
-       stroke="#000000"
-       stroke-width="0.100"
-       id="ellipse91"
-       cy="20.000"
-       cx="5.000" />
-    <!-- Standard - Text -->
-    <text
-       fill="#000000"
-       font-family="FreeSerif"
-       text-anchor="middle"
-       id="text93"
-       font-weight="700"
-       font-style="normal"
-       font-size="0.71"
-       y="19.846"
-       x="5.000">
+<!-- Standard - Line -->
+<line x1="9.000" y1="18.000" x2="7.000" y2="18.000" stroke="#000000" stroke-width="0.100" stroke-dasharray="0.10,0.10"/>
+<!-- Group -->
+<!-- Geometric - Perfect Circle -->
+<ellipse cx="5.000" cy="20.000" rx="1.000" ry="1.000" fill="#FFFFFF" stroke="#000000"  stroke-width="0.100" />
+<!-- Standard - Text -->
+<text x="5.000" y="19.846"  fill="#000000" text-anchor="middle" font-size="0.71" font-family="FreeSerif" font-style="normal" font-weight="700">
 TF</text>
-    <text
-       fill="#000000"
-       font-family="FreeSerif"
-       text-anchor="middle"
-       id="text95"
-       font-weight="700"
-       font-style="normal"
-       font-size="0.71"
-       y="20.552"
-       x="5.000">
+<text x="5.000" y="20.552"  fill="#000000" text-anchor="middle" font-size="0.71" font-family="FreeSerif" font-style="normal" font-weight="700">
 1</text>
-    <!-- Standard - Line -->
-    <line
-       stroke="#000000"
-       stroke-width="0.100"
-       id="line97"
-       y2="21.000"
-       x2="7.000"
-       y1="19.000"
-       x1="7.000" />
-    <!-- Standard - Line -->
-    <line
-       stroke="#000000"
-       stroke-width="0.100"
-       id="line99"
-       y2="22.000"
-       x2="8.000"
-       y1="21.000"
-       x1="7.000" />
-    <!-- Standard - Text -->
-    <text
-       fill="#000000"
-       font-family="FreeSerif"
-       text-anchor="start"
-       id="text101"
-       font-weight="700"
-       font-style="normal"
-       font-size="0.78"
-       y="20.000"
-       x="9.000">
+<!-- Standard - Line -->
+<line x1="7.000" y1="19.000" x2="7.000" y2="21.000" stroke="#000000" stroke-width="0.100" />
+<!-- Standard - Line -->
+<line x1="7.000" y1="21.000" x2="8.000" y2="22.000" stroke="#000000" stroke-width="0.100" />
+<!-- Standard - Text -->
+<text x="9.000" y="20.000"  fill="#000000" text-anchor="start" font-size="0.78" font-family="FreeSerif" font-style="normal" font-weight="700">
 Eliminar</text>
-    <text
-       fill="#000000"
-       font-family="FreeSerif"
-       text-anchor="start"
-       id="text103"
-       font-weight="700"
-       font-style="normal"
-       font-size="0.78"
-       y="20.776"
-       x="9.000">
+<text x="9.000" y="20.776"  fill="#000000" text-anchor="start" font-size="0.78" font-family="FreeSerif" font-style="normal" font-weight="700">
 Cuadro</text>
-    <!-- Standard - Text -->
-    <text
-       fill="#000000"
-       font-family="FreeSerif"
-       text-anchor="start"
-       id="text105"
-       font-weight="700"
-       font-style="normal"
-       font-size="0.78"
-       y="19.560"
-       x="21.500">
+<!-- Standard - Text -->
+<text x="21.500" y="19.560"  fill="#000000" text-anchor="start" font-size="0.78" font-family="FreeSerif" font-style="normal" font-weight="700">
 Fragmento de</text>
-    <text
-       fill="#000000"
-       font-family="FreeSerif"
-       text-anchor="start"
-       id="text107"
-       font-weight="700"
-       font-style="normal"
-       font-size="0.78"
-       y="20.336"
-       x="21.500">
+<text x="21.500" y="20.336"  fill="#000000" text-anchor="start" font-size="0.78" font-family="FreeSerif" font-style="normal" font-weight="700">
 Cuadro</text>
-    <!-- Standard - Text -->
-    <text
-       fill="#000000"
-       font-family="FreeSerif"
-       text-anchor="start"
-       id="text109"
-       font-weight="700"
-       font-style="normal"
-       font-size="0.80"
-       y="22.000"
-       x="22.000">
+<!-- Standard - Text -->
+<text x="22.000" y="22.000"  fill="#000000" text-anchor="start" font-size="0.80" font-family="FreeSerif" font-style="normal" font-weight="700">
 ...</text>
-    <!-- Standard - Line -->
-    <line
-       stroke="#000000"
-       stroke-width="0.100"
-       id="line111"
-       y2="19.000"
-       x2="20.000"
-       y1="18.000"
-       x1="21.000" />
-    <!-- Standard - Line -->
-    <line
-       stroke="#000000"
-       stroke-width="0.100"
-       id="line113"
-       y2="22.000"
-       x2="20.000"
-       y1="19.000"
-       x1="20.000" />
-    <!-- Geometric - Perfect Circle -->
-    <circle
-       rx="1.000"
-       ry="1.000"
-       fill="#FFFFFF"
-       stroke="#000000"
-       stroke-width="0.100"
-       id="ellipse115"
-       cy="21.000"
-       cx="18.500" />
-    <!-- Standard - Text -->
-    <text
-       fill="#000000"
-       font-family="FreeSerif"
-       text-anchor="middle"
-       id="text117"
-       font-weight="700"
-       font-style="normal"
-       font-size="0.71"
-       y="20.846"
-       x="18.500">
+<!-- Standard - Line -->
+<line x1="21.000" y1="18.000" x2="20.000" y2="19.000" stroke="#000000" stroke-width="0.100" />
+<!-- Standard - Line -->
+<line x1="20.000" y1="19.000" x2="20.000" y2="22.000" stroke="#000000" stroke-width="0.100" />
+<!-- Geometric - Perfect Circle -->
+<ellipse cx="18.500" cy="21.000" rx="1.000" ry="1.000" fill="#FFFFFF" stroke="#000000"  stroke-width="0.100" />
+<!-- Standard - Text -->
+<text x="18.500" y="20.846"  fill="#000000" text-anchor="middle" font-size="0.71" font-family="FreeSerif" font-style="normal" font-weight="700">
 TF</text>
-    <text
-       fill="#000000"
-       font-family="FreeSerif"
-       text-anchor="middle"
-       id="text119"
-       font-weight="700"
-       font-style="normal"
-       font-size="0.71"
-       y="21.552"
-       x="18.500">
+<text x="18.500" y="21.552"  fill="#000000" text-anchor="middle" font-size="0.71" font-family="FreeSerif" font-style="normal" font-weight="700">
 2</text>
-    <!-- Group -->
-    <!-- Standard - Polygon -->
-    <polygon
-       fill="#FFFFFF"
-       stroke="#000000"
-       stroke-width="0.100"
-       id="polygon121"
-       points="8.000,-4.000 30.000,-4.000 28.000,-2.000 30.000,0.000 8.000,0.000 6.000,-2.000 " />
-    <!-- Geometric - Perfect Circle -->
-    <circle
-       rx="1.500"
-       ry="1.500"
-       fill="#FFFFFF"
-       stroke="#000000"
-       stroke-width="0.100"
-       id="ellipse123"
-       cy="-2.000"
-       cx="9.500" />
-    <!-- Standard - Text -->
-    <text
-       fill="#000000"
-       font-family="FreeSerif"
-       text-anchor="middle"
-       id="text125"
-       font-weight="700"
-       font-style="normal"
-       font-size="1.06"
-       y="-2.233"
-       x="9.500">
+<!-- Group -->
+<!-- Standard - Polygon -->
+<polygon fill="#FFFFFF" stroke="#000000" stroke-width="0.100"  points="8.000,-4.000 30.000,-4.000 28.000,-2.000 30.000,0.000 8.000,0.000 6.000,-2.000 "/>
+<!-- Geometric - Perfect Circle -->
+<ellipse cx="9.500" cy="-2.000" rx="1.500" ry="1.500" fill="#FFFFFF" stroke="#000000"  stroke-width="0.100" />
+<!-- Standard - Text -->
+<text x="9.500" y="-2.233"  fill="#000000" text-anchor="middle" font-size="1.06" font-family="FreeSerif" font-style="normal" font-weight="700">
 TF</text>
-    <text
-       fill="#000000"
-       font-family="FreeSerif"
-       text-anchor="middle"
-       id="text127"
-       font-weight="700"
-       font-style="normal"
-       font-size="1.06"
-       y="-1.175"
-       x="9.500">
+<text x="9.500" y="-1.175"  fill="#000000" text-anchor="middle" font-size="1.06" font-family="FreeSerif" font-style="normal" font-weight="700">
 1</text>
-    <!-- Geometric - Perfect Circle -->
-    <circle
-       rx="1.500"
-       ry="1.500"
-       fill="#FFFFFF"
-       stroke="#000000"
-       stroke-width="0.100"
-       id="ellipse129"
-       cy="-2.000"
-       cx="13.500" />
-    <!-- Standard - Text -->
-    <text
-       fill="#000000"
-       font-family="FreeSerif"
-       text-anchor="middle"
-       id="text131"
-       font-weight="700"
-       font-style="normal"
-       font-size="1.06"
-       y="-2.233"
-       x="13.500">
+<!-- Geometric - Perfect Circle -->
+<ellipse cx="13.500" cy="-2.000" rx="1.500" ry="1.500" fill="#FFFFFF" stroke="#000000"  stroke-width="0.100" />
+<!-- Standard - Text -->
+<text x="13.500" y="-2.233"  fill="#000000" text-anchor="middle" font-size="1.06" font-family="FreeSerif" font-style="normal" font-weight="700">
 TP</text>
-    <text
-       fill="#000000"
-       font-family="FreeSerif"
-       text-anchor="middle"
-       id="text133"
-       font-weight="700"
-       font-style="normal"
-       font-size="1.06"
-       y="-1.175"
-       x="13.500">
+<text x="13.500" y="-1.175"  fill="#000000" text-anchor="middle" font-size="1.06" font-family="FreeSerif" font-style="normal" font-weight="700">
 1,1</text>
-    <!-- Geometric - Perfect Circle -->
-    <circle
-       rx="1.500"
-       ry="1.500"
-       fill="#FFFFFF"
-       stroke="#000000"
-       stroke-width="0.100"
-       id="ellipse135"
-       cy="-2.000"
-       cx="17.500" />
-    <!-- Standard - Text -->
-    <text
-       fill="#000000"
-       font-family="FreeSerif"
-       text-anchor="middle"
-       id="text137"
-       font-weight="700"
-       font-style="normal"
-       font-size="1.06"
-       y="-2.233"
-       x="17.500">
+<!-- Geometric - Perfect Circle -->
+<ellipse cx="17.500" cy="-2.000" rx="1.500" ry="1.500" fill="#FFFFFF" stroke="#000000"  stroke-width="0.100" />
+<!-- Standard - Text -->
+<text x="17.500" y="-2.233"  fill="#000000" text-anchor="middle" font-size="1.06" font-family="FreeSerif" font-style="normal" font-weight="700">
 TP</text>
-    <text
-       fill="#000000"
-       font-family="FreeSerif"
-       text-anchor="middle"
-       id="text139"
-       font-weight="700"
-       font-style="normal"
-       font-size="1.06"
-       y="-1.175"
-       x="17.500">
+<text x="17.500" y="-1.175"  fill="#000000" text-anchor="middle" font-size="1.06" font-family="FreeSerif" font-style="normal" font-weight="700">
 1,2</text>
-    <!-- Geometric - Perfect Circle -->
-    <circle
-       rx="1.500"
-       ry="1.500"
-       fill="#FFFFFF"
-       stroke="#000000"
-       stroke-width="0.100"
-       id="ellipse141"
-       cy="-2.000"
-       cx="21.500" />
-    <!-- Standard - Text -->
-    <text
-       fill="#000000"
-       font-family="FreeSerif"
-       text-anchor="middle"
-       id="text143"
-       font-weight="700"
-       font-style="normal"
-       font-size="1.06"
-       y="-2.233"
-       x="21.500">
+<!-- Geometric - Perfect Circle -->
+<ellipse cx="21.500" cy="-2.000" rx="1.500" ry="1.500" fill="#FFFFFF" stroke="#000000"  stroke-width="0.100" />
+<!-- Standard - Text -->
+<text x="21.500" y="-2.233"  fill="#000000" text-anchor="middle" font-size="1.06" font-family="FreeSerif" font-style="normal" font-weight="700">
 TP</text>
-    <text
-       fill="#000000"
-       font-family="FreeSerif"
-       text-anchor="middle"
-       id="text145"
-       font-weight="700"
-       font-style="normal"
-       font-size="1.06"
-       y="-1.175"
-       x="21.500">
+<text x="21.500" y="-1.175"  fill="#000000" text-anchor="middle" font-size="1.06" font-family="FreeSerif" font-style="normal" font-weight="700">
 1,3</text>
-    <!-- Geometric - Perfect Circle -->
-    <circle
-       rx="1.500"
-       ry="1.500"
-       fill="#FFFFFF"
-       stroke="#000000"
-       stroke-width="0.100"
-       id="ellipse147"
-       cy="-2.000"
-       cx="25.500" />
-    <!-- Standard - Text -->
-    <text
-       fill="#000000"
-       font-family="FreeSerif"
-       text-anchor="middle"
-       id="text149"
-       font-weight="700"
-       font-style="normal"
-       font-size="1.06"
-       y="-2.233"
-       x="25.500">
+<!-- Geometric - Perfect Circle -->
+<ellipse cx="25.500" cy="-2.000" rx="1.500" ry="1.500" fill="#FFFFFF" stroke="#000000"  stroke-width="0.100" />
+<!-- Standard - Text -->
+<text x="25.500" y="-2.233"  fill="#000000" text-anchor="middle" font-size="1.06" font-family="FreeSerif" font-style="normal" font-weight="700">
 TF</text>
-    <text
-       fill="#000000"
-       font-family="FreeSerif"
-       text-anchor="middle"
-       id="text151"
-       font-weight="700"
-       font-style="normal"
-       font-size="1.06"
-       y="-1.175"
-       x="25.500">
+<text x="25.500" y="-1.175"  fill="#000000" text-anchor="middle" font-size="1.06" font-family="FreeSerif" font-style="normal" font-weight="700">
 2</text>
-    <!-- Standard - Text -->
-    <text
-       fill="#000000"
-       font-family="FreeSerif"
-       text-anchor="start"
-       id="text153"
-       font-weight="700"
-       font-style="normal"
-       font-size="1.41"
-       y="-4.400"
-       x="10.000">
+<!-- Standard - Text -->
+<text x="10.000" y="-4.400"  fill="#000000" text-anchor="start" font-size="1.41" font-family="FreeSerif" font-style="normal" font-weight="700">
 Cola de tareas</text>
-    <!-- Standard - BezierLine -->
-    <path
-       fill="none"
-       stroke="#000000"
-       stroke-width="0.100"
-       id="path155"
-       d="M 21.487,18.000 C 35.000,18.000 28.000,-1.000 27.000,-2.000 " />
-    <polygon
-       fill="#000000"
-       stroke="#000000"
-       stroke-width="0.100"
-       id="polygon157"
-       points="21.112,18.000 21.612,17.750 21.487,18.000 21.612,18.250 " />
-    <!-- Standard - BezierLine -->
-    <path
-       fill="none"
-       stroke="#7878FF"
-       stroke-width="0.100"
-       stroke-dasharray="0.10,0.10"
-       id="path159"
-       d="M 13.580,-0.020 C 14.000,2.500 16.000,9.000 14.000,9.000 " />
-    <polygon
-       fill="#7878FF"
-       stroke="#7878FF"
-       stroke-width="0.100"
-       id="polygon161"
-       points="13.518,-0.390 13.847,0.062 13.580,-0.020 13.354,0.145 " />
-    <!-- Standard - BezierLine -->
-    <path
-       fill="none"
-       stroke="#7878FF"
-       stroke-width="0.100"
-       stroke-dasharray="0.10,0.10"
-       id="path163"
-       d="M 17.580,-0.020 C 18.000,2.500 16.000,9.000 14.000,9.000 " />
-    <polygon
-       fill="#7878FF"
-       stroke="#7878FF"
-       stroke-width="0.100"
-       id="polygon165"
-       points="17.518,-0.390 17.847,0.062 17.580,-0.020 17.354,0.145 " />
-    <!-- Standard - BezierLine -->
-    <path
-       fill="none"
-       stroke="#7878FF"
-       stroke-width="0.100"
-       stroke-dasharray="0.10,0.10"
-       id="path167"
-       d="M 21.156,-0.156 C 19.000,2.000 16.000,9.000 14.000,9.000 " />
-    <polygon
-       fill="#7878FF"
-       stroke="#7878FF"
-       stroke-width="0.100"
-       id="polygon169"
-       points="21.421,-0.421 21.244,0.109 21.156,-0.156 20.891,-0.244 " />
-    <!-- Standard - BezierLine -->
-    <path
-       fill="none"
-       stroke="#000000"
-       stroke-width="0.100"
-       id="path171"
-       d="M 20.513,13.000 C 15.000,13.000 21.000,-2.000 19.000,-2.000 " />
-    <polygon
-       fill="#000000"
-       stroke="#000000"
-       stroke-width="0.100"
-       id="polygon173"
-       points="20.888,13.000 20.388,13.250 20.513,13.000 20.388,12.750 " />
-    <!-- Standard - BezierLine -->
-    <path
-       fill="none"
-       stroke="#000000"
-       stroke-width="0.100"
-       id="path175"
-       d="M 32.548,12.819 C 28.000,11.000 24.000,-1.500 23.000,-2.000 " />
-    <polygon
-       fill="#000000"
-       stroke="#000000"
-       stroke-width="0.100"
-       id="polygon177"
-       points="32.896,12.958 32.339,13.005 32.548,12.819 32.525,12.541 " />
-    <!-- Standard - BezierLine -->
-    <path
-       fill="none"
-       stroke="#000000"
-       stroke-width="0.100"
-       id="path179"
-       d="M 8.487,5.000 C 12.000,5.000 13.000,-1.500 11.000,-2.000 " />
-    <polygon
-       fill="#000000"
-       stroke="#000000"
-       stroke-width="0.100"
-       id="polygon181"
-       points="8.112,5.000 8.612,4.750 8.487,5.000 8.612,5.250 " />
-    <!-- Standard - BezierLine -->
-    <path
-       fill="none"
-       stroke="#000000"
-       stroke-width="0.100"
-       id="path183"
-       d="M 8.487,13.000 C 21.000,13.000 16.000,-2.000 15.000,-2.000 " />
-    <polygon
-       fill="#000000"
-       stroke="#000000"
-       stroke-width="0.100"
-       id="polygon185"
-       points="8.112,13.000 8.612,12.750 8.487,13.000 8.612,13.250 " />
-    <!-- Standard - Text -->
-    <text
-       fill="#000000"
-       font-family="FreeSerif"
-       text-anchor="middle"
-       id="text187"
-       font-weight="700"
-       font-style="normal"
-       font-size="1.41"
-       y="2.364"
-       x="45.000">
+<!-- Standard - BezierLine -->
+<path stroke="#000000" fill="none" stroke-width="0.100"  d="M 21.487,18.000 C 35.000,18.000 28.000,-1.000 27.000,-2.000 "/>
+<polygon fill="#000000" stroke="#000000" stroke-width="0.100"  points="21.112,18.000 21.612,17.750 21.487,18.000 21.612,18.250 "/>
+<!-- Standard - BezierLine -->
+<path stroke="#7878FF" fill="none" stroke-width="0.100" stroke-dasharray="0.10,0.10" d="M 13.580,-0.020 C 14.000,2.500 16.000,9.000 14.000,9.000 "/>
+<polygon fill="#7878FF" stroke="#7878FF" stroke-width="0.100"  points="13.518,-0.390 13.847,0.062 13.580,-0.020 13.354,0.145 "/>
+<!-- Standard - BezierLine -->
+<path stroke="#7878FF" fill="none" stroke-width="0.100" stroke-dasharray="0.10,0.10" d="M 17.405,-0.023 C 17.000,2.000 16.000,9.000 14.000,9.000 "/>
+<polygon fill="#7878FF" stroke="#7878FF" stroke-width="0.100"  points="17.478,-0.390 17.625,0.149 17.405,-0.023 17.135,0.051 "/>
+<!-- Standard - BezierLine -->
+<path stroke="#7878FF" fill="none" stroke-width="0.100" stroke-dasharray="0.10,0.10" d="M 21.156,-0.156 C 19.000,2.000 16.000,9.000 14.000,9.000 "/>
+<polygon fill="#7878FF" stroke="#7878FF" stroke-width="0.100"  points="21.421,-0.421 21.244,0.109 21.156,-0.156 20.891,-0.244 "/>
+<!-- Standard - BezierLine -->
+<path stroke="#000000" fill="none" stroke-width="0.100"  d="M 20.513,13.000 C 15.000,13.000 21.000,-2.000 19.000,-2.000 "/>
+<polygon fill="#000000" stroke="#000000" stroke-width="0.100"  points="20.888,13.000 20.388,13.250 20.513,13.000 20.388,12.750 "/>
+<!-- Standard - BezierLine -->
+<path stroke="#000000" fill="none" stroke-width="0.100"  d="M 32.513,13.000 C 28.000,13.000 24.000,-1.500 23.000,-2.000 "/>
+<polygon fill="#000000" stroke="#000000" stroke-width="0.100"  points="32.888,13.000 32.388,13.250 32.513,13.000 32.388,12.750 "/>
+<!-- Standard - BezierLine -->
+<path stroke="#000000" fill="none" stroke-width="0.100"  d="M 8.487,5.000 C 12.000,5.000 13.000,-1.500 11.000,-2.000 "/>
+<polygon fill="#000000" stroke="#000000" stroke-width="0.100"  points="8.112,5.000 8.612,4.750 8.487,5.000 8.612,5.250 "/>
+<!-- Standard - BezierLine -->
+<path stroke="#000000" fill="none" stroke-width="0.100"  d="M 8.487,13.000 C 21.000,13.000 16.000,-2.000 15.000,-2.000 "/>
+<polygon fill="#000000" stroke="#000000" stroke-width="0.100"  points="8.112,13.000 8.612,12.750 8.487,13.000 8.612,13.250 "/>
+<!-- Standard - Text -->
+<text x="45.000" y="2.364"  fill="#000000" text-anchor="middle" font-size="1.41" font-family="FreeSerif" font-style="normal" font-weight="700">
 Hilo generación de tareas de</text>
-    <text
-       fill="#000000"
-       font-family="FreeSerif"
-       text-anchor="middle"
-       id="text189"
-       font-weight="700"
-       font-style="normal"
-       font-size="1.41"
-       y="3.775"
-       x="45.000">
+<text x="45.000" y="3.775"  fill="#000000" text-anchor="middle" font-size="1.41" font-family="FreeSerif" font-style="normal" font-weight="700">
 fragmentación de cuadro</text>
-    <!-- Standard - Line -->
-    <line
-       stroke="#000000"
-       stroke-width="0.100"
-       id="line191"
-       y2="23.000"
-       x2="45.000"
-       y1="4.000"
-       x1="45.000" />
-    <!-- Standard - Line -->
-    <line
-       stroke="#000000"
-       stroke-width="0.100"
-       id="line193"
-       y2="6.000"
-       x2="44.000"
-       y1="5.000"
-       x1="45.000" />
-    <!-- Standard - Line -->
-    <line
-       stroke="#000000"
-       stroke-width="0.100"
-       id="line195"
-       y2="22.000"
-       x2="44.000"
-       y1="6.000"
-       x1="44.000" />
-    <!-- Standard - Text -->
-    <text
-       fill="#000000"
-       font-family="FreeSerif"
-       text-anchor="start"
-       id="text197"
-       font-weight="700"
-       font-style="normal"
-       font-size="0.80"
-       y="21.000"
-       x="46.000">
+<!-- Standard - Line -->
+<line x1="45.000" y1="4.000" x2="45.000" y2="23.000" stroke="#000000" stroke-width="0.100" />
+<!-- Standard - Line -->
+<line x1="45.000" y1="5.000" x2="44.000" y2="6.000" stroke="#000000" stroke-width="0.100" />
+<!-- Standard - Line -->
+<line x1="44.000" y1="6.000" x2="44.000" y2="22.000" stroke="#000000" stroke-width="0.100" />
+<!-- Standard - Text -->
+<text x="46.000" y="21.000"  fill="#000000" text-anchor="start" font-size="0.80" font-family="FreeSerif" font-style="normal" font-weight="700">
 ...</text>
-    <!-- Standard - BezierLine -->
-    <path
-       fill="none"
-       stroke="#7878FF"
-       stroke-width="0.100"
-       stroke-dasharray="0.10,0.10"
-       id="path199"
-       d="M 29.487,-2.000 C 37.000,-2.000 39.000,16.000 45.000,16.000 " />
-    <polygon
-       fill="#7878FF"
-       stroke="#7878FF"
-       stroke-width="0.100"
-       id="polygon201"
-       points="29.112,-2.000 29.612,-2.250 29.487,-2.000 29.612,-1.750 " />
-    <!-- Standard - Text -->
-    <text
-       fill="#000000"
-       font-family="FreeSerif"
-       text-anchor="start"
-       id="text203"
-       font-weight="700"
-       font-style="normal"
-       font-size="0.78"
-       y="7.560"
-       x="46.000">
-Si no hay cuadros sin</text>
-    <text
-       fill="#000000"
-       font-family="FreeSerif"
-       text-anchor="start"
-       id="text205"
-       font-weight="700"
-       font-style="normal"
-       font-size="0.78"
-       y="8.336"
-       x="46.000">
-procesar o no hay hilos</text>
-    <text
-       fill="#000000"
-       font-family="FreeSerif"
-       text-anchor="start"
-       id="text207"
-       font-weight="700"
-       font-style="normal"
-       font-size="0.78"
-       y="9.112"
-       x="46.000">
-de ejecución para tareas</text>
-    <text
-       fill="#000000"
-       font-family="FreeSerif"
-       text-anchor="start"
-       id="text209"
-       font-weight="700"
-       font-style="normal"
-       font-size="0.78"
-       y="9.888"
-       x="46.000">
-de búsqueda libres,</text>
-    <text
-       fill="#000000"
-       font-family="FreeSerif"
-       text-anchor="start"
-       id="text211"
-       font-weight="700"
-       font-style="normal"
-       font-size="0.78"
-       y="10.664"
-       x="46.000">
-esperar.</text>
-    <!-- Standard - Text -->
-    <text
-       fill="#000000"
-       font-family="FreeSerif"
-       text-anchor="start"
-       id="text213"
-       font-weight="700"
-       font-style="normal"
-       font-size="0.78"
-       y="13.000"
-       x="46.000">
+<!-- Standard - BezierLine -->
+<path stroke="#7878FF" fill="none" stroke-width="0.100" stroke-dasharray="0.10,0.10" d="M 29.487,-2.000 C 37.000,-2.000 39.000,16.000 46.000,16.000 "/>
+<polygon fill="#7878FF" stroke="#7878FF" stroke-width="0.100"  points="29.112,-2.000 29.612,-2.250 29.487,-2.000 29.612,-1.750 "/>
+<!-- Standard - Text -->
+<text x="46.000" y="7.577"  fill="#000000" text-anchor="start" font-size="0.78" font-family="FreeSerif" font-style="normal" font-weight="700">
+Si no hay cuadros</text>
+<text x="46.000" y="8.353"  fill="#000000" text-anchor="start" font-size="0.78" font-family="FreeSerif" font-style="normal" font-weight="700">
+sin procesar o no</text>
+<text x="46.000" y="9.129"  fill="#000000" text-anchor="start" font-size="0.78" font-family="FreeSerif" font-style="normal" font-weight="700">
+hay hilos de</text>
+<text x="46.000" y="9.905"  fill="#000000" text-anchor="start" font-size="0.78" font-family="FreeSerif" font-style="normal" font-weight="700">
+ejecución para</text>
+<text x="46.000" y="10.682"  fill="#000000" text-anchor="start" font-size="0.78" font-family="FreeSerif" font-style="normal" font-weight="700">
+tareas de búsqueda</text>
+<text x="46.000" y="11.458"  fill="#000000" text-anchor="start" font-size="0.78" font-family="FreeSerif" font-style="normal" font-weight="700">
+libres, esperar.</text>
+<!-- Standard - Text -->
+<text x="46.000" y="13.000"  fill="#000000" text-anchor="start" font-size="0.78" font-family="FreeSerif" font-style="normal" font-weight="700">
 Espera ocupada</text>
-    <!-- Standard - Line -->
-    <line
-       stroke="#000000"
-       stroke-width="0.100"
-       stroke-dasharray="0.10,0.10"
-       id="line215"
-       y2="13.000"
-       x2="44.000"
-       y1="13.000"
-       x1="46.000" />
-    <!-- Standard - Text -->
-    <text
-       fill="#000000"
-       font-family="FreeSerif"
-       text-anchor="start"
-       id="text217"
-       font-weight="700"
-       font-style="normal"
-       font-size="0.78"
-       y="15.560"
-       x="46.000">
-Crear tarea de fragmentación</text>
-    <text
-       fill="#000000"
-       font-family="FreeSerif"
-       text-anchor="start"
-       id="text219"
-       font-weight="700"
-       font-style="normal"
-       font-size="0.78"
-       y="16.336"
-       x="46.000">
+<!-- Standard - Line -->
+<line x1="46.000" y1="13.000" x2="44.000" y2="13.000" stroke="#000000" stroke-width="0.100" stroke-dasharray="0.10,0.10"/>
+<!-- Standard - Text -->
+<text x="46.000" y="15.560"  fill="#000000" text-anchor="start" font-size="0.78" font-family="FreeSerif" font-style="normal" font-weight="700">
+Crear tarea de</text>
+<text x="46.000" y="16.336"  fill="#000000" text-anchor="start" font-size="0.78" font-family="FreeSerif" font-style="normal" font-weight="700">
+fragmentación </text>
+<text x="46.000" y="17.112"  fill="#000000" text-anchor="start" font-size="0.78" font-family="FreeSerif" font-style="normal" font-weight="700">
 del cuadro.</text>
-    <!-- Standard - Line -->
-    <line
-       stroke="#000000"
-       stroke-width="0.100"
-       id="line221"
-       y2="18.000"
-       x2="54.000"
-       y1="18.000"
-       x1="45.000" />
-    <!-- Standard - Line -->
-    <line
-       stroke="#000000"
-       stroke-width="0.100"
-       id="line223"
-       y2="16.000"
-       x2="56.000"
-       y1="18.000"
-       x1="54.000" />
-    <!-- Standard - Line -->
-    <line
-       stroke="#000000"
-       stroke-width="0.100"
-       id="line225"
-       y2="6.000"
-       x2="54.000"
-       y1="6.000"
-       x1="45.612" />
-    <polygon
-       fill="#FFFFFF"
-       stroke="#000000"
-       stroke-width="0.100"
-       id="polygon227"
-       points="45.612,5.750 45.112,6.000 45.612,6.250 " />
-    <!-- Standard - Line -->
-    <line
-       stroke="#000000"
-       stroke-width="0.100"
-       id="line229"
-       y2="8.000"
-       x2="56.000"
-       y1="6.000"
-       x1="54.000" />
-    <!-- Standard - Line -->
-    <line
-       stroke="#000000"
-       stroke-width="0.100"
-       id="line231"
-       y2="8.000"
-       x2="56.000"
-       y1="16.000"
-       x1="56.000" />
-    <!-- Group -->
-    <!-- Geometric - Perfect Circle -->
-    <circle
-       rx="1.500"
-       ry="1.500"
-       fill="#FFFFFF"
-       stroke="#000000"
-       stroke-width="0.100"
-       id="ellipse233"
-       cy="30.500"
-       cx="6.500" />
-    <!-- Standard - Text -->
-    <text
-       fill="#000000"
-       font-family="FreeSerif"
-       text-anchor="middle"
-       id="text235"
-       font-weight="700"
-       font-style="normal"
-       font-size="1.06"
-       y="30.267"
-       x="6.500">
+<!-- Standard - Line -->
+<line x1="45.000" y1="18.000" x2="54.000" y2="18.000" stroke="#000000" stroke-width="0.100" />
+<!-- Standard - Line -->
+<line x1="54.000" y1="18.000" x2="56.000" y2="16.000" stroke="#000000" stroke-width="0.100" />
+<!-- Standard - Line -->
+<line x1="45.612" y1="6.000" x2="54.000" y2="6.000" stroke="#000000" stroke-width="0.100" />
+<polygon fill="#FFFFFF" stroke="#000000" stroke-width="0.100"  points="45.612,5.750 45.112,6.000 45.612,6.250 "/>
+<!-- Standard - Line -->
+<line x1="54.000" y1="6.000" x2="56.000" y2="8.000" stroke="#000000" stroke-width="0.100" />
+<!-- Standard - Line -->
+<line x1="56.000" y1="16.000" x2="56.000" y2="8.000" stroke="#000000" stroke-width="0.100" />
+<!-- Group -->
+<!-- Geometric - Perfect Circle -->
+<ellipse cx="6.500" cy="30.500" rx="1.500" ry="1.500" fill="#FFFFFF" stroke="#000000"  stroke-width="0.100" />
+<!-- Standard - Text -->
+<text x="6.500" y="30.267"  fill="#000000" text-anchor="middle" font-size="1.06" font-family="FreeSerif" font-style="normal" font-weight="700">
 TF</text>
-    <text
-       fill="#000000"
-       font-family="FreeSerif"
-       text-anchor="middle"
-       id="text237"
-       font-weight="700"
-       font-style="normal"
-       font-size="1.06"
-       y="31.325"
-       x="6.500">
+<text x="6.500" y="31.325"  fill="#000000" text-anchor="middle" font-size="1.06" font-family="FreeSerif" font-style="normal" font-weight="700">
 N</text>
-    <!-- Geometric - Perfect Circle -->
-    <circle
-       rx="1.500"
-       ry="1.500"
-       fill="#FFFFFF"
-       stroke="#000000"
-       stroke-width="0.100"
-       id="ellipse239"
-       cy="34.500"
-       cx="6.500" />
-    <!-- Standard - Text -->
-    <text
-       fill="#000000"
-       font-family="FreeSerif"
-       text-anchor="middle"
-       id="text241"
-       font-weight="700"
-       font-style="normal"
-       font-size="1.06"
-       y="34.267"
-       x="6.500">
+<!-- Geometric - Perfect Circle -->
+<ellipse cx="6.500" cy="34.500" rx="1.500" ry="1.500" fill="#FFFFFF" stroke="#000000"  stroke-width="0.100" />
+<!-- Standard - Text -->
+<text x="6.500" y="34.267"  fill="#000000" text-anchor="middle" font-size="1.06" font-family="FreeSerif" font-style="normal" font-weight="700">
 TP</text>
-    <text
-       fill="#000000"
-       font-family="FreeSerif"
-       text-anchor="middle"
-       id="text243"
-       font-weight="700"
-       font-style="normal"
-       font-size="1.06"
-       y="35.325"
-       x="6.500">
+<text x="6.500" y="35.325"  fill="#000000" text-anchor="middle" font-size="1.06" font-family="FreeSerif" font-style="normal" font-weight="700">
 N,M</text>
-    <!-- Standard - Text -->
-    <text
-       fill="#000000"
-       font-family="FreeSerif"
-       text-anchor="start"
-       id="text245"
-       font-weight="700"
-       font-style="normal"
-       font-size="1.06"
-       y="30.830"
-       x="9.000">
+<!-- Standard - Text -->
+<text x="9.000" y="30.830"  fill="#000000" text-anchor="start" font-size="1.06" font-family="FreeSerif" font-style="normal" font-weight="700">
 Tarea de fragmentación del cuadro N</text>
-    <!-- Standard - Text -->
-    <text
-       fill="#000000"
-       font-family="FreeSerif"
-       text-anchor="start"
-       id="text247"
-       font-weight="700"
-       font-style="normal"
-       font-size="1.06"
-       y="34.830"
-       x="9.000">
+<!-- Standard - Text -->
+<text x="9.000" y="34.830"  fill="#000000" text-anchor="start" font-size="1.06" font-family="FreeSerif" font-style="normal" font-weight="700">
 Tarea de procesamiento del fragmento M del cuadro M</text>
-    <!-- Standard - BezierLine -->
-    <path
-       fill="none"
-       stroke="#7878FF"
-       stroke-width="0.100"
-       stroke-dasharray="0.10,0.10"
-       id="path249"
-       d="M 7.513,38.000 C 7.000,38.000 6.000,38.000 5.000,38.000 " />
-    <polygon
-       fill="#7878FF"
-       stroke="#7878FF"
-       stroke-width="0.100"
-       id="polygon251"
-       points="7.888,38.000 7.388,38.250 7.513,38.000 7.388,37.750 " />
-    <!-- Standard - BezierLine -->
-    <path
-       fill="none"
-       stroke="#000000"
-       stroke-width="0.100"
-       id="path253"
-       d="M 7.513,41.000 C 7.000,41.000 6.000,41.000 5.000,41.000 " />
-    <polygon
-       fill="#000000"
-       stroke="#000000"
-       stroke-width="0.100"
-       id="polygon255"
-       points="7.888,41.000 7.388,41.250 7.513,41.000 7.388,40.750 " />
-    <!-- Standard - Text -->
-    <text
-       fill="#000000"
-       font-family="FreeSerif"
-       text-anchor="start"
-       id="text257"
-       font-weight="700"
-       font-style="normal"
-       font-size="1.06"
-       y="38.296"
-       x="9.000">
+<!-- Standard - BezierLine -->
+<path stroke="#7878FF" fill="none" stroke-width="0.100" stroke-dasharray="0.10,0.10" d="M 7.513,38.000 C 7.000,38.000 6.000,38.000 5.000,38.000 "/>
+<polygon fill="#7878FF" stroke="#7878FF" stroke-width="0.100"  points="7.888,38.000 7.388,38.250 7.513,38.000 7.388,37.750 "/>
+<!-- Standard - BezierLine -->
+<path stroke="#000000" fill="none" stroke-width="0.100"  d="M 7.513,41.000 C 7.000,41.000 6.000,41.000 5.000,41.000 "/>
+<polygon fill="#000000" stroke="#000000" stroke-width="0.100"  points="7.888,41.000 7.388,41.250 7.513,41.000 7.388,40.750 "/>
+<!-- Standard - Text -->
+<text x="9.000" y="38.296"  fill="#000000" text-anchor="start" font-size="1.06" font-family="FreeSerif" font-style="normal" font-weight="700">
 Tarea creada</text>
-    <!-- Standard - Text -->
-    <text
-       fill="#000000"
-       font-family="FreeSerif"
-       text-anchor="start"
-       id="text259"
-       font-weight="700"
-       font-style="normal"
-       font-size="1.06"
-       y="41.296"
-       x="9.000">
+<!-- Standard - Text -->
+<text x="9.000" y="41.296"  fill="#000000" text-anchor="start" font-size="1.06" font-family="FreeSerif" font-style="normal" font-weight="700">
 Tarea asígnada al hilo</text>
-    <!-- Standard - Line -->
-    <line
-       stroke="#000000"
-       stroke-width="0.100"
-       id="line261"
-       y2="25.000"
-       x2="7.000"
-       y1="23.000"
-       x1="5.000" />
-    <!-- Standard - Line -->
-    <line
-       stroke="#000000"
-       stroke-width="0.100"
-       id="line263"
-       y2="25.000"
-       x2="34.000"
-       y1="23.000"
-       x1="36.000" />
-    <!-- Standard - Line -->
-    <line
-       stroke="#000000"
-       stroke-width="0.100"
-       id="line265"
-       y2="25.000"
-       x2="34.000"
-       y1="25.000"
-       x1="7.000" />
-    <!-- Standard - Text -->
-    <text
-       fill="#000000"
-       font-family="FreeSerif"
-       text-anchor="middle"
-       id="text267"
-       font-weight="700"
-       font-style="normal"
-       font-size="1.41"
-       y="26.775"
-       x="21.000">
+<!-- Standard - Line -->
+<line x1="5.000" y1="23.000" x2="7.000" y2="25.000" stroke="#000000" stroke-width="0.100" />
+<!-- Standard - Line -->
+<line x1="36.000" y1="23.000" x2="34.000" y2="25.000" stroke="#000000" stroke-width="0.100" />
+<!-- Standard - Line -->
+<line x1="7.000" y1="25.000" x2="34.000" y2="25.000" stroke="#000000" stroke-width="0.100" />
+<!-- Standard - Text -->
+<text x="21.000" y="26.775"  fill="#000000" text-anchor="middle" font-size="1.41" font-family="FreeSerif" font-style="normal" font-weight="700">
 Pool de Hilos para tareas de búsqueda</text>
-  </g>
+</g>
 </svg>
