@@ -3,9 +3,9 @@ TEX=$(NAME).tex
 PROPUESTA=propuesta.tex
 BIB=biblio.bib
 AUX=$(TEX:.tex=.aux)
-INCTEX=$(shell ls tex/*.tex)
-FIGURAS=$(shell ls img/*.svg)
-RES=$(shell ls img/*.res)
+INCTEX:=$(wildcard tex/*.tex)
+FIGURAS:=$(wildcard img/*.svg)
+RES:=$(wildcard img/*.res)
 BRES=$(RES:.res=.bres)
 DATOS=$(RES:.res=.dat)
 PRIMOS=img/primos.pdat
