@@ -204,26 +204,46 @@ tipo de división produce fragmentos con perímetros mayores, produciendo grande
 \section{Implementación del framework}
 
 El framework fue implementado en \emph{C++} con \emph{OpenMP} y está basado en
-plugins para facilitar su modificación en un ambiente educativo.
-La elección del lenguaje se debe principalmente a su eficiencia y paradigma.
-Dado que el sistema debe procesar los cuadros en tiempos acotados, la eficiencia
-es crucial, mientras que el paradigma orientado a objetos permite establecer
-fácilmente la interfaz de los plugins. El uso de \emph{OpenMP} permite la
-creación y control de hilos de ejecución y tareas de forma sencilla. Se
-utilizaron los plugins implementados en \cite{torres2014}, modificándolos para
-permitir su uso en un sistema paralelo.
+plugins para facilitar su modificación en un ambiente educativo.  La elección
+del lenguaje se debe principalmente a su eficiencia y paradigma.  Dado que el
+sistema debe procesar los cuadros en tiempos acotados, la eficiencia es crucial,
+mientras que el paradigma orientado a objetos permite establecer fácilmente la
+interfaz de los plugins. El uso de \emph{OpenMP} permite la creación y control
+de hilos de ejecución y tareas de forma sencilla. Se utilizaron los plugins
+implementados en \cite{torres2014}, modificándolos para permitir su uso en un
+sistema paralelo.
 
 \emph{OpenMP} es una API de bibliotecas y directivas al compilador para la
 definición de paralelismo de alto nivel para sistemas de memoria compartida en
 \emph{C}, \emph{C++} y \emph{Fortran}\cite{ompWeb}. La ventaja de \emph{OpenMP}
 es que permite la creación de regiones paralelas, secciones criticas, tareas y
 puntos de sincronización, simplemente marcando un bloque de código con unas
-pocas directivas al compilador. \emph{OpenMP} ademas provee la facilidad de que
-se puede establecer la cantidad de hilos que irán ejecutando las tareas, y que
-el orden de la cola de espera es \emph{frist-come/first-served}. Aun así, en la
-implementación final se mantiene un control del numero de tareas para no crear
-mas de las que pueden ser procesadas, y no retrasar al sistema con tareas
-viejas.
+pocas directivas al compilador. \emph{OpenMP} originalmente implementaba solo el
+modelo de \emph{fork and join}, pero a partir de la versión $3.0$ se agrego el
+modelo de tareas explicitas\cite{openmp08}. Ambos modelos fueron utilizados para
+la implementación del sistema.
+
+El modelo de \emph{fork and join} fue propuesto por primera ves en
+\cite{conway1963}. En este modelo, la ejecución del programa se ejecuta con un
+solo hilo al comienzo de se ejecución y durante sus secciones secuenciales, al hilo
+inicial se lo llama hilo principal. Cuando se encuentra una zona paralela de $N$
+tareas, el hilo principal crea $N-1$ nuevos hilos. Cada hilo (incluido el hilo
+principal) ejecuta una de las $N$. Esta etapa es llamada \emph{fork}. El hilo
+principal no continua la ejecución secuencial hasta que no han finalizado todas
+las tareas paralelas. A esta sincronización se la llama \emph{join}.
+
+\begin{figure}[!h]
+
+	\centering
+
+	\includegraphics[width=0.25\textwidth]{img/conway.pdf}
+
+	\caption{Descripción original del modelo de \emph{fork and join}
+	presentado por Melvin Conway en 1963\cite{conway1963}.}
+
+	\label{conway}
+
+\end{figure}
 
 En la figura \ref{codigo} se muestra el fragmento de código (en pseudocódigo)
 que ejecuta y crea las tareas principales del framework. En la función principal
