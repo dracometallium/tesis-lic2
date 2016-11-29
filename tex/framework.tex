@@ -230,13 +230,14 @@ inicial se lo llama hilo principal. Cuando se encuentra una zona paralela de $N$
 tareas, el hilo principal crea $N-1$ nuevos hilos. Cada hilo (incluido el hilo
 principal) ejecuta una de las $N$. Esta etapa es llamada \emph{fork}. El hilo
 principal no continua la ejecución secuencial hasta que no han finalizado todas
-las tareas paralelas. A esta sincronización se la llama \emph{join}.
+las tareas paralelas. A esta sincronización se la llama \emph{join}. La figura
+\ref{conway} muestra un ejemplo en el cual se crean dos tareas paralelas.
 
 \begin{figure}[!h]
 
 	\centering
 
-	\includegraphics[width=0.25\textwidth]{img/conway.pdf}
+	\includegraphics[width=0.25\textheight]{img/conway.pdf}
 
 	\caption{Descripción original del modelo de \emph{fork and join}
 	presentado por Melvin Conway en 1963\cite{conway1963}.}
@@ -244,6 +245,17 @@ las tareas paralelas. A esta sincronización se la llama \emph{join}.
 	\label{conway}
 
 \end{figure}
+
+Dado que la creación de hilos suele ser una operación costosa, la mayoría de las
+implementaciones de \emph{OpenMP} suelen no destruir los hilos creados durante
+el \emph{fork}, sino que se mantienen inactivos hasta que se encuentra una
+sección paralela. Por otro lado, si la sección paralela consta de gran cantidad
+de tareas, se puede crear un numero limitado de hilos y crear una cola de
+tareas. Cada hilo ejecuta una tarea de la cola, y cuando termina de ejecutar esa
+tarea toma otra de la cola. La ejecución secuencial no continua hasta que se
+terminen de ejecutar todas las tareas de la sección paralela.
+
+El segundo paradigma que implementa \emph{OpenMP} es el de tareas.
 
 En la figura \ref{codigo} se muestra el fragmento de código (en pseudocódigo)
 que ejecuta y crea las tareas principales del framework. En la función principal
@@ -279,7 +291,9 @@ ejecución.
 
 \begin{figure}[!h]
 
-	\includegraphics[width=0.9\textwidth]{img/itemSwitch.pdf}
+	\centering
+
+	\includegraphics[width=0.5\textheight]{img/itemSwitch.pdf}
 
 	\caption{Pseudo código del sistema}
 
