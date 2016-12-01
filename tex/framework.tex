@@ -246,6 +246,12 @@ las tareas paralelas. A esta sincronización se la llama \emph{join}. La figura
 
 \end{figure}
 
+El modelo de \emph{fork and join} puede aplicarse tanto para paralelismo de
+tareas como de datos. En el caso de \emph{OpenMP}, su uso para paralelismo de
+datos se realiza a través de la directiva \emph{parallel for}, mientras que la
+directivas \emph{parallel sections} y \emph{parallel section} son utilizadas
+para el paralelismo de tareas.
+
 Dado que la creación de hilos suele ser una operación costosa, la mayoría de las
 implementaciones de \emph{OpenMP} suelen no destruir los hilos creados durante
 el \emph{fork}, sino que se mantienen inactivos hasta que se encuentra una
@@ -255,7 +261,16 @@ tareas. Cada hilo ejecuta una tarea de la cola, y cuando termina de ejecutar esa
 tarea toma otra de la cola. La ejecución secuencial no continua hasta que se
 terminen de ejecutar todas las tareas de la sección paralela.
 
-El segundo paradigma que implementa \emph{OpenMP} es el de tareas.
+WIP:
+
+El segundo modelo que implementado en \emph{OpenMP} a partir de la versión $3.0$
+es el de tareas. En este modelo el hilo principal crea una cantidad fija de
+hilos de ejecución para la ejecución de tareas. Cuando se encuentra una sección
+que puede ser ejecutada paralelamente al hilo principal, se crea una tarea. Esta
+tarea sera ejecutada por los hilos de ejecución creados por el hilo principal,
+en caso de que no haya hilos de ejecución libres para ejecutar la tarea, esta se
+coloca en una cola de espera. Esto permite crear tareas de forma distribuida en
+el tiempo, y facilita el control de la cantidad de hilos de ejecución creados.
 
 En la figura \ref{codigo} se muestra el fragmento de código (en pseudocódigo)
 que ejecuta y crea las tareas principales del framework. En la función principal
