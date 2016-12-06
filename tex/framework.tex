@@ -268,32 +268,37 @@ cola de ejecución. Este modelo permite crear tareas de forma distribuida en el
 tiempo, y la ejecución de mas tareas que la cantidad de hilos de ejecución
 disponibles.
 
+Para la creación de una región de trabajo compartido bajo el modelo de tareas se
+utiliza la directiva \emph{omp parallel}, y para creación de las tareas dentro
+de la región se utiliza la directiva \emph{omp task}.
+
+WIP: Agregar omp single
+
 En la figura \ref{codigo} se muestra el fragmento de código (en pseudocódigo)
 que ejecuta y crea las tareas principales del framework. En la función principal
 (\emph{main}, linea 1 a 19) se crean las tareas de generación de cuadros (lineas
-6 y 7) y generación de tareas de fragmentación de cuadros (lineas 8 a 10). El
-control de la finalización del programa se controlara a través de una variable
-compartida \emph{continuar}.
+6 y 7) y generación de tareas de fragmentación de cuadros (lineas 8 a 10)
+utilizando el modelo de \emph{fork and join}. El control de la finalización del
+programa se controlara a través de una variable compartida \emph{continuar}.
 
 La tarea de generación de tareas de fragmentación de cuadros se implementa en la
-función \emph{generaciónDeTareasDeFragmentaciónDeCuadros} (lineas 23 a 58). La
-función comienza creando el pool de hilos de ejecución para tareas de búsqueda
-(linea 25). También se crea un hilo adicional para la tarea de generación de
-tareas fragmentación de cuadros. La tarea de generación de tareas de
-fragmentación de cuadros implementa un espera ocupada sobre la cola de cuadros a
-procesar para reducir el tiempo durante el cual los cuadros no se procesan aun
-existiendo recursos libres. La tarea termina cuando la variable \emph{continuar}
-es falsa.
+función \emph{generaciónDeTareasDeFragmentaciónDeCuadros} (lineas 23 a 58).  La
+función comienza estableciendo una región de trabajo compartido bajo el modelo
+de tareas, se crean $N+1$ hilos de ejecución (linea 25), $N$ hilos para las
+tareas de búsqueda y uno adicional para la tarea de generación de tarea de
+fragmentación de cuadros. La tarea de generación de tareas de fragmentación de
+cuadros implementa un espera ocupada sobre la cola de cuadros a procesar.  La
+finalización de la tarea es controlada por la variable \emph{continuar}.
 
 Cuando hay hilos de ejecución libres y cuadros en la cola de cuadros, se toma un
-cuadro de la cola de cuadros (lineas 29 a 32), se remueve un hilo del pool de
-hilos de búsqueda para el cual se crea una tarea de fragmentación de cuadro con
-una copia privada del puntero al cuadro (lineas 33 a 36).
+cuadro de la cola de cuadros (lineas 29 a 32), y se crea una tarea de
+fragmentación de cuadro con una copia privada del puntero al cuadro (lineas 33 a
+36).
 
 Cada tarea de fragmentación de cuadro (lineas 37 a 53), comienza fragmentando el
-cuadro. Por cada fragmento crea una tarea de procesamiento de fragmento,
-asignándole a cada una un hilo del pool (lineas 40 a 43). Finalmente la tarea de
-fragmentación de cuadro libera su hilo al finalizar.
+cuadro. Por cada fragmento crea una tarea de procesamiento de fragmento (lineas
+40 a 43). Cuando la tarea de fragmentación de cuadro finaliza, libera al hilo de
+ejecución.
 
 Cada tarea de procesamiento de fragmento (lineas 44 a 52) procesa el fragmento
 con cada pila (lineas 45 a 48). Cuando se termina de procesar el fragmento con
@@ -311,6 +316,11 @@ ejecución.
 	\label{codigo}
 
 \end{figure}
+
+En la figura \ref{hilosytareas} se muestra una posible secuencia de ejecución.
+Dado que el procesamiento de los fragmentos tiene un tiempo variable, los hilos
+se liberan de forma irregular, lo que lleva a que el orden de creación de las
+tareas para los distintos cuadros no sea completamente determinista.
 
 \begin{figure}[!h]
 
