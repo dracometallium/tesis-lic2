@@ -60,11 +60,48 @@ nuevas tareas dentro de la misma región.
 
 \subsubsection{Directivas de OpenMP}
 
-Para la creación de una región de trabajo compartido bajo el modelo de tareas se
-utiliza la directiva \emph{omp parallel}, y para creación de las tareas dentro
-de la región se utiliza la directiva \emph{omp task}.
+El control de la creación de hilos y tareas en \emph{OpenMP} se realiza a través
+de directivas al compilador. En esta sección mencionaremos aquellas utilizadas
+por el sistema propuesto. En \emph{C} y \emph{C++} las directivas toman la forma
+de:
 
-En el caso de \emph{OpenMP}, su uso para paralelismo de datos se realiza
-comúnmente a través de la directiva \emph{parallel for}, mientras que la
-directivas \emph{parallel sections} y \emph{parallel section} son utilizadas
-para el paralelismo de tareas.
+\textbf{\#pragma omp DIRECTIVA OPCIONES}
+
+La directiva mas utilizada es \emph{parallel [num\_threads(N)]}, esta define una
+región de trabajo paralelo y creando $N$ hilos de ejecución (si no se incluye
+\emph{num\_threads(N)}, la cantidad de hilos se establece por medio de una
+variable global, y en caso de que esta no este definida, dependerá de la
+implementación). Cada hilo ejecutara una tarea definida por el bloque inmediato
+a la directiva, implementando el modelo \emph{fork and join}.
+
+Si se desea que un bloque sea ejecutado solo por un hilo se pueden utilizar las
+directivas \emph{single} y \emph{master}. Estas aseguraran que el bloque
+inmediato sea ejecutado solo por uno de los hilos del grupo. En el caso de la
+directiva \emph{single}, cualquiera de los hilos del grupo podrá ser elegido
+para ejecutar el bloque, mientras que en el caso de \emph{master}, solo hilo
+principal del grupo lo ejecutara.
+
+Si se desea que cada hilo ejecute una tarea con código distinto se debe utilizar
+la directiva \emph{parallel sections num\_threads(N)}. El bloque inmediato debe
+contener a su vez bloques precedidos por la directiva \emph{section}. Al igual
+que \emph{parallel}, esta directiva define una región de trabajo paralelo de $N$
+hilos, pero el código de cada tarea esta definido por los bloques inmediatos a
+las directivas \emph{section}. En caso de que se creen mas hilos que las tareas
+definidas, los hilos sobrantes no ejecutaran. El modelo implementado por esta
+directiva es \emph{fork and join}.
+
+Para la creación de una región de trabajo compartido bajo el modelo de tareas, se
+utiliza la directiva \emph{parallel num\_threads(N)} para crear los $N$ hilos de
+ejecución, seguida de la directiva \emph{master} para que solo el hilo principal
+ejecute la tarea que crea las primeras tareas de la región de trabajo
+compartido. Para la creación de cada tarea se debe utilizar la directiva
+\emph{task} seguida del bloque que contiene el código a ejecutar por la tarea.
+
+Si un hilo necesita esperar la finalización de las tareas que creo, antes de
+continuar su ejecución, puede utilizar la directiva \emph{taskwait}.
+
+Para definir secciones criticas se pueden utilizar las directivas \emph{critical
+[NOMBRE]} y \emph{atomic}. La primera permite definir un bloque de complejidad
+arbitraria como sección critica, e incluso permite definir bloques distintos
+como la misma sección critica si comparten el mismo nombre. La segunda directiva
+solo acepta bloques en los cuales se realiza una operación aritmética simple.
