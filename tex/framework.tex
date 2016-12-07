@@ -204,9 +204,9 @@ tipo de división produce fragmentos con perímetros mayores, produciendo grande
 \section{Implementación del framework}
 
 El framework fue implementado en \emph{C++} con \emph{OpenMP} y está basado en
-plugins para facilitar su modificación en un ambiente educativo.  La elección
-del lenguaje se debe principalmente a su eficiencia y paradigma.  Dado que el
-sistema debe procesar los cuadros en tiempos acotados, la eficiencia es crucial,
+plugins para facilitar su modificación en un ambiente educativo. La elección del
+lenguaje se debe principalmente a su eficiencia y paradigma. Dado que el sistema
+debe procesar los cuadros en tiempos acotados, la eficiencia es crucial,
 mientras que el paradigma orientado a objetos permite establecer fácilmente la
 interfaz de los plugins. El uso de \emph{OpenMP} permite la creación y control
 de hilos de ejecución y tareas de forma sencilla. Se utilizaron los plugins
@@ -282,12 +282,12 @@ utilizando el modelo de \emph{fork and join}. El control de la finalización del
 programa se controlara a través de una variable compartida \emph{continuar}.
 
 La tarea de generación de tareas de fragmentación de cuadros se implementa en la
-función \emph{generaciónDeTareasDeFragmentaciónDeCuadros} (lineas 23 a 58).  La
+función \emph{generaciónDeTareasDeFragmentaciónDeCuadros} (lineas 23 a 58). La
 función comienza estableciendo una región de trabajo compartido bajo el modelo
 de tareas, se crean $N+1$ hilos de ejecución (linea 25), $N$ hilos para las
 tareas de búsqueda y uno adicional para la tarea de generación de tarea de
 fragmentación de cuadros. La tarea de generación de tareas de fragmentación de
-cuadros implementa un espera ocupada sobre la cola de cuadros a procesar.  La
+cuadros implementa un espera ocupada sobre la cola de cuadros a procesar. La
 finalización de la tarea es controlada por la variable \emph{continuar}.
 
 Cuando hay hilos de ejecución libres y cuadros en la cola de cuadros, se toma un
