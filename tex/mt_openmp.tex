@@ -61,11 +61,9 @@ nuevas tareas dentro de la misma región.
 \subsubsection{Directivas de OpenMP}
 
 El control de la creación de hilos y tareas en \emph{OpenMP} se realiza a través
-de directivas al compilador. En esta sección mencionaremos aquellas utilizadas
-por el sistema propuesto. En \emph{C} y \emph{C++} las directivas toman la forma
-de:
-
-\textbf{\#pragma omp DIRECTIVA OPCIONES}
+de directivas al compilador, en esta sección mencionaremos aquellas utilizadas
+por el sistema propuesto. En \emph{C} y \emph{C++} todas las directivas toman la
+forma de \textbf{\#pragma omp DIRECTIVA [OPCIONES]}.
 
 La directiva mas utilizada es \emph{parallel [num\_threads(N)]}, esta define una
 región de trabajo paralelo y creando $N$ hilos de ejecución (si no se incluye
