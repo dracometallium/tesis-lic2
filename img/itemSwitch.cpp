@@ -23,7 +23,7 @@ int generaciónDeTareasDeFragmentaciónDeCuadros
 {
     hilosLibres = NHilos;
 #pragma omp parallel num_threads(NHilos + 1) default(shared)
-#pragma omp single
+#pragma omp master
     while(*continuar) {
         cuadro = NULL;
         if ((pilaCuadros->cantidad() > 0) && (hilosLibres > 0)) {
