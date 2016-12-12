@@ -11,7 +11,7 @@ DATOS=$(RES:.res=.dat)
 PRIMOS=img/primos.pdat
 AREAS=img/areas.pdat
 CACHE=img/cache.pdat
-CODIGO=img/itemSwitch.cpp
+CODIGO=img/itemSwitch.cpp img/codigoDirectivasOMP.cpp
 CACHE_PDF=$(CACHE:.pdat=_fallos.pdf)
 PRIMOS_PDF=$(PRIMOS:.pdat=_fps.pdf) $(PRIMOS:.pdat=_area.pdf)
 DATOS_PDF=$(DATOS:.dat=_fps.pdf)
@@ -71,7 +71,7 @@ $(CACHE_PDF): $(CACHE)
 	gnuplot ./scripts/cache.gnuplot
 
 
-$(CODIGO_PDF): $(CODIGO)
+$(CODIGO_PDF): %.pdf :%.cpp
 	echo ":set syntax \n\
 	:set number \n\
 	:set printfont=currier:8 \n\

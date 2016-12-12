@@ -29,7 +29,7 @@ como de datos.
 
 	\centering
 
-	\includegraphics[width=0.25\textheight]{img/conway.pdf}
+	\includegraphics[height=0.25\textheight]{img/conway.pdf}
 
 	\caption{Descripción original del modelo de \emph{fork and join}
 	presentado por Melvin Conway en 1963\cite{conway1963}.}
@@ -103,3 +103,21 @@ Para definir secciones criticas se pueden utilizar las directivas \emph{critical
 arbitraria como sección critica, e incluso permite definir bloques distintos
 como la misma sección critica si comparten el mismo nombre. La segunda directiva
 solo acepta bloques en los cuales se realiza una operación aritmética simple.
+
+En la figura \ref{directivas} se muestra un código ejemplo del uso de las
+directivas presentadas junto con un diagrama mostrando una posible secuencia de
+ejecución.
+
+\begin{figure}[!h]
+
+	\centering
+
+	\includegraphics[height=0.40\textheight]{img/directivasOMP.pdf}
+	\includegraphics{img/codigoDirectivasOMP.pdf}
+
+	\caption{Código de ejemplo de uso de directivas de \emph{OpenMP} y
+	posible secuencia de ejecución.}
+
+	\label{directivas}
+
+\end{figure}
