@@ -90,8 +90,10 @@ Según su funcionalidad, las tareas son clasificadas en cuatro tipos:
 \end{description}
 
 \begin{figure}[!h]
+	
+	\centering
 
-	\includegraphics[width=\textwidth]{img/framework.pdf}
+	\includegraphics[height=0.45\textheight]{img/framework.pdf}
 
 	\caption{Tareas principales del framework.}
 
@@ -128,15 +130,15 @@ cantidad de hilos de búsqueda.
 \subsection{Fragmentación del conjunto de datos}
 
 Para poder realizar el procesamiento paralelo, el conjunto de datos debe ser
-fragmentado, en el caso del framework propuesto la división ser realizara en dos
-niveles. Dado que el conjunto de datos es un vídeo, la primera fragmentación
-consta de la separación en cuadros. Dado que cada cuadro es una captura del
-ambiente completo en un instante de tiempo especifico distinto al de los demás
-cuadros, se pueden procesar de forma independiente. La segunda fragmentación de
-los datos se realiza dentro de cada cuadro. Dado que fragmentos de un mismo
-cuadro contienen información distinta del ambiente sobre el mismo instante, los
-fragmentos son dependientes entre si. Es por eso que se deben tener
-consideraciones especiales para la división del cuadro.
+fragmentado, en el caso del framework propuesto la división se realizara en
+dos niveles. Dado que el conjunto de datos es un vídeo, la primera
+fragmentación consta de la separación en cuadros. Dado que cada cuadro es una
+captura del ambiente completo en un instante de tiempo especifico distinto al
+de los demás cuadros, se pueden procesar de forma independiente. La segunda
+fragmentación de los datos se realiza dentro de cada cuadro. Dado que
+fragmentos de un mismo cuadro contienen información distinta del ambiente
+sobre el mismo instante, los fragmentos son dependientes entre si. Es por eso
+que se deben tener consideraciones especiales para la división del cuadro.
 
 Si el cuadro se divide en partes sin zonas solapadas puede suceder que los
 parches de un robot se encuentren en fragmentos distintos. Esto es un problema,
@@ -153,7 +155,7 @@ diámetro de un robot y donde el área compartida es del diámetro de un robot.
 	\includegraphics[width=0.45\textwidth]{img/areaTooSmall.pdf}
 	\includegraphics[width=0.45\textwidth]{img/areaPerfect.pdf}
 
-	\caption{Izquierda: si el área compartida es demasiado pequeña y el
+	\caption{Izquierda: si el área compartida es demasiado pequeña y si el
 	robot se encuentra entre dos fragmentos, puede que sus parches no sean
 	completamente visibles desde ninguno de ellos. Derecha: si el área
 	compartida es del ancho de los robots, entonces todos los parches son
@@ -179,7 +181,7 @@ tamaño\footnote{El tiempo de procesamiento de un fragmento depende no solo de s
 cual fragmentos de igual tamaño pueden tener tiempos de procesamiento muy
 distintos. Sin embargo, dado que no poseemos mas información antes del
 procesamiento, consideramos que esta es la mejor heurística con la que
-contamos}. Aquellos que se encuentren en los bordes inferior y derecho pueden
+contamos.}. Aquellos que se encuentren en los bordes inferior y derecho pueden
 que sean mas chicos.
 
 En la figura \ref{fragmentos} se muestran como se divide un cuadro de 800x600
