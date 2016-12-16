@@ -133,20 +133,6 @@ ocurren en ambos vídeos. El primero es que si los cuadros se dividen en 7, 11,
 17, 19 y 23 fragmentos, se produce una notable reducción en la cantidad de
 cuadros por segundo con respecto a las divisiones adyacentes.
 
-Cuando se incrementan la cantidad de fragmentos aumenta el área compartida y por
-lo tanto el área total que se procesa, al mismo, una mayor cantidad de
-fragmentos permite aprovechar mejor el paralelismo. Si se divide el cuadro en un
-número primo de fragmentos, el área total se incrementa de forma significativa
-con respecto a los valores circundantes. En la figura \ref{primosArea} se
-muestra la fluctuación del área para cada cantidad de particiones desde 1 hasta
-100 para un vídeo de 1280x720 píxeles de resolución, resaltando el crecimiento
-para valores primos y para los valores inmediatamente inferiores y superiores.
-Como puede observarse, a partir de 7 fragmentos el área total se incrementa de
-forma significativa cuando el número es primo con respecto a los valores
-cercanos no primos. Esto lleva a que un cambio mínimo en las posibilidades de
-aprovechar el paralelismo se vea acompañado por un gran incremento en el área a
-procesar.
-
 Esto se produce porque cuando los cuadros se dividen en un número primo de
 fragmentos, el área total a procesar se incrementa de forma significativa con
 respecto a los valores circundantes. En la figura \ref{primosArea} se muestra la
