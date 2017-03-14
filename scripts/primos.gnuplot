@@ -7,7 +7,7 @@ set linetype 3 lw 1 lc rgb "#3ADE58" pointtype 8 ps 0.75
 set linetype 4 lw 1 lc rgb "gray" pointtype 0
 set grid xtics ytics lw 1 lc rgb 'gray'
 
-set xlabel 'Nº fragmentos'
+set xlabel 'N fragmentos'
 
 arch='img/primos.pdat'
 
@@ -23,7 +23,7 @@ set ylabel "Mega Píxeles"
 set output 'img/primos_area.pdf'
 set key left top
 plot 'img/areas.pdat' using 1:($2*$1)/escala with lines lt 4 title 'Área total N', \
- arch using 1:($2*$1)/1000000 with points lt 1 title 'P', \
- arch using ($1-1):($3*($1-1))/escala with points lt 2 title 'P-1', \
- arch using ($1+1):($4*($1+1))/escala with points lt 3 title 'P+1'
+ arch using 1:($2*$1)/1000000 with points lt 1 title 'N Primo', \
+ arch using ($1-1):($3*($1-1))/escala with points lt 2 title 'N Primo - 1', \
+ arch using ($1+1):($4*($1+1))/escala with points lt 3 title 'N Primo + 1'
 

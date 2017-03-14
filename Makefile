@@ -64,7 +64,7 @@ $(DATOS): scripts/mdat.sh
 $(DATOS): %.dat : %.res %.bres
 	scripts/mdat.sh $<
 
-$(PRIMOS_PDF): $(PRIMOS) $(AREAS)
+$(PRIMOS_PDF): $(PRIMOS) $(AREAS) scripts/primos.gnuplot
 	gnuplot ./scripts/primos.gnuplot
 
 $(CACHE_PDF): $(CACHE)
