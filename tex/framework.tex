@@ -132,13 +132,13 @@ cantidad de hilos de búsqueda.
 Para poder realizar el procesamiento paralelo, el conjunto de datos debe ser
 fragmentado, en el caso del framework propuesto la división se realizara en
 dos niveles. Dado que el conjunto de datos es un vídeo, la primera
-fragmentación consta de la separación en cuadros. Dado que cada cuadro es una
-captura del ambiente completo en un instante de tiempo especifico distinto al
-de los demás cuadros, se pueden procesar de forma independiente. La segunda
-fragmentación de los datos se realiza dentro de cada cuadro. Dado que
-fragmentos de un mismo cuadro contienen información distinta del ambiente
-sobre el mismo instante, los fragmentos son dependientes entre si. Es por eso
-que se deben tener consideraciones especiales para la división del cuadro.
+fragmentación consta de la separación en cuadros. Como cada cuadro es una
+captura del ambiente completo en un instante de tiempo especifico distinto al de
+los demás cuadros, se pueden procesar de forma independiente. La segunda
+fragmentación de los datos se realiza dentro de cada cuadro. Ya que fragmentos
+de un mismo cuadro contienen información distinta del ambiente sobre el mismo
+instante, los fragmentos son dependientes entre si. Es por eso que se deben
+tener consideraciones especiales para la división del cuadro.
 
 Si el cuadro se divide en partes sin zonas solapadas puede suceder que los
 parches de un robot se encuentren en fragmentos distintos. Esto es un problema,
@@ -220,7 +220,7 @@ que ejecuta y crea las tareas principales del framework. En la función principa
 (\emph{main}, linea 1 a 19) se crean las tareas de generación de cuadros (lineas
 6 y 7) y generación de tareas de fragmentación de cuadros (lineas 8 a 10)
 utilizando el modelo de \emph{fork and join}. El control de la finalización del
-programa se controlara a través de una variable compartida \emph{continuar}.
+programa se realiza a través de una variable compartida \emph{continuar}.
 
 La tarea de generación de tareas de fragmentación de cuadros se implementa en la
 función \emph{generaciónDeTareasDeFragmentaciónDeCuadros} (lineas 23 a 58). La
@@ -309,13 +309,13 @@ Las clases del framework básico son las siguientes:
 
 	\item[ItemSlicer:] Es la clase que define la interfaz de las clases
 		encargadas de dividir los ítems. Se definen tres métodos. El
-		primero es \emph{slice} que recibe como parámetro ítem y la
+		primero es \emph{slice} que recibe como parámetro un ítem y la
 		cantidad de partes en la que este debe ser dividido y retorna un
 		arreglo de ítems. El segundo método es \emph{resetItem} que
 		recibe como parámetro una de las partes creadas por el método
 		\emph{slice} luego de que fue procesada por una pila de plugins
-		y la configura al estado para que el funcionamiento de la
-		próxima pila no se vea interferido. El tercer método es
+		y la configura al inicial estado para que el funcionamiento de
+		la próxima pila no se vea interferido. El tercer método es
 		\emph{delPart} que recibe como parámetro un fragmento de ítem y
 		lo elimina.
 
