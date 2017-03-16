@@ -67,7 +67,7 @@ $(DATOS): %.dat : %.res %.bres
 $(PRIMOS_PDF): $(PRIMOS) $(AREAS) scripts/primos.gnuplot
 	gnuplot ./scripts/primos.gnuplot
 
-$(CACHE_PDF): $(CACHE)
+$(CACHE_PDF): $(CACHE) ./scripts/cache.gnuplot
 	gnuplot ./scripts/cache.gnuplot
 
 

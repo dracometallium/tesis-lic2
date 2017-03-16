@@ -196,16 +196,20 @@ fallos de caché.
 
 Para comprobar que la hipótesis es correcta se diseñó el siguiente experimento.
 Se ejecutó el programa procesando cuadros de un vídeo de 1280x720 píxeles de
-resolución, y se midieron los fallos de caché en configuraciones de 1, 2, 6 y 12
-fragmentos y cantidad de hilos búsqueda de 1 a 11. Para obtener los fallos de
-caché de nivel 3 (es decir, cuando es necesario acceder a datos en la memoria
-RAM) se utilizó la herramienta \emph{perf}. Ésta es una aplicación que permite
-acceder a los contadores de hardware del procesador que proveen datos muy
-precisos con un overhead despreciable.
+resolución, y se midieron los fallos de caché en configuraciones de 1, 2, 3, 4,
+6 y 12 fragmentos y cantidad de hilos búsqueda de 1 a 11. Para obtener los
+fallos de caché de nivel 3 (es decir, cuando es necesario acceder a datos en la
+memoria RAM) se utilizó la herramienta \emph{perf}. Ésta es una aplicación que
+permite acceder a los contadores de hardware del procesador que proveen datos
+muy precisos con un overhead despreciable.
 
 En la figura \ref{cacheFallos} se muestran los fallos de caché por cuadro
-obtenidos en el experimento. En está se ve reflejado que a menor cantidad de
-fragmentos, mayor es la cantidad de fallos de caché ocurridos por cuadro.
+obtenidos en el experimento. En todas las curvas se produce un incremento
+significativo de los fallos de cache cuando la cantidad de hilos de búsqueda se
+aproxima al doble de la cantidad de fragmentos por cuadro\footnote{Cuando la
+cantidad de hilos de busqueda es el doble de la cantidad de fragmentos por
+cuadro, la cantidad de fragmentos que se procesan concurrentemente es la
+cantidad contenida en dos cuadros.}.
 
 \begin{figure}[!h]
 
