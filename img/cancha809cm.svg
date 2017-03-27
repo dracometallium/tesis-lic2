@@ -10,11 +10,11 @@
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    width="91.408432mm"
-   height="69.221695mm"
-   viewBox="0 0 323.88815 245.27372"
+   height="63.026917mm"
+   viewBox="0 0 323.88815 223.32373"
    id="svg2"
    version="1.1"
-   inkscape:version="0.91 r13725"
+   inkscape:version="0.92.1 r15371"
    sodipodi:docname="cancha809cm.svg">
   <defs
      id="defs4">
@@ -177,9 +177,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.7"
-     inkscape:cx="-131.2223"
-     inkscape:cy="146.53446"
+     inkscape:zoom="1.4"
+     inkscape:cx="174.06602"
+     inkscape:cy="148.14143"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="true"
@@ -200,7 +200,7 @@
        empspacing="10"
        dotted="false"
        originx="-177.78356"
-       originy="-356.39792" />
+       originy="-378.34798" />
   </sodipodi:namedview>
   <metadata
      id="metadata7">
@@ -257,35 +257,35 @@
        y="452.36221" />
     <path
        style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#marker4684);marker-end:url(#Arrow2Lend)"
-       d="m 190,452.36222 0,199.99999"
+       d="M 190,452.36222 V 652.36221"
        id="path4144"
        inkscape:connector-curvature="0" />
     <text
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10px;line-height:125%;font-family:FreeSerif;-inkscape-font-specification:FreeSerif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:FreeSerif;-inkscape-font-specification:FreeSerif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        x="349.88147"
        y="672.60425"
-       id="text5112"
-       sodipodi:linespacing="125%"><tspan
+       id="text5112"><tspan
          sodipodi:role="line"
          id="tspan5114"
          x="349.88147"
-         y="672.60425">8,09m</tspan></text>
+         y="672.60425"
+         style="font-size:10px;line-height:1.25">8,09m</tspan></text>
     <text
-       sodipodi:linespacing="125%"
        id="text5260"
        y="-179.19356"
        x="552.3537"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10px;line-height:125%;font-family:FreeSerif;-inkscape-font-specification:FreeSerif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:FreeSerif;-inkscape-font-specification:FreeSerif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        xml:space="preserve"
-       transform="matrix(0,1,-1,0,0,0)"><tspan
+       transform="rotate(90)"><tspan
          y="-179.19356"
          x="552.3537"
          id="tspan5262"
-         sodipodi:role="line">6,05m</tspan></text>
+         sodipodi:role="line"
+         style="font-size:10px;line-height:1.25">6,05m</tspan></text>
     <path
        style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="m 350,452.36222 0,199.99999"
+       d="M 350,452.36222 V 652.36221"
        id="path5331"
        inkscape:connector-curvature="0" />
     <rect
@@ -311,20 +311,9 @@
        id="rect5204" />
     <path
        style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#marker5006);marker-end:url(#marker4918)"
-       d="m 200,662.36221 300,0"
+       d="M 200,662.36221 H 500"
        id="path6579"
        inkscape:connector-curvature="0" />
-    <text
-       sodipodi:linespacing="125%"
-       id="text6611"
-       y="692.60425"
-       x="349.88147"
-       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:20px;line-height:125%;font-family:FreeSerif;-inkscape-font-specification:'FreeSerif Bold';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       xml:space="preserve"><tspan
-         y="692.60425"
-         x="349.88147"
-         id="tspan6613"
-         sodipodi:role="line">(b)</tspan></text>
     <g
        id="g6137"
        transform="translate(133.66071,-20.660739)">
@@ -338,12 +327,12 @@
            inkscape:connector-curvature="0" />
         <path
            id="path6119"
-           d="m 129.35165,517.37823 29.70995,0 0,16.97711 -29.70995,0 z m 0,0"
+           d="m 129.35165,517.37823 h 29.70995 v 16.97711 h -29.70995 z m 0,0"
            style="fill:#505050;fill-opacity:1;fill-rule:evenodd;stroke:#7878ff;stroke-width:0.23579322;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-opacity:1"
            inkscape:connector-curvature="0" />
         <path
            id="path6121"
-           d="m 129.35165,517.37823 29.70995,0 0,16.97711 -29.70995,0 z m 0,0"
+           d="m 129.35165,517.37823 h 29.70995 v 16.97711 h -29.70995 z m 0,0"
            style="fill:none;stroke:#000000;stroke-width:0.23579322;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-opacity:1"
            inkscape:connector-curvature="0" />
         <path
@@ -363,26 +352,26 @@
            inkscape:connector-curvature="0" />
         <path
            id="path6129"
-           d="m 152.69518,515.25609 4.24428,0 0,2.12214 -4.24428,0 z m 0,0"
+           d="m 152.69518,515.25609 h 4.24428 v 2.12214 h -4.24428 z m 0,0"
            style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#7878ff;stroke-width:0.23579322;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-opacity:1"
            inkscape:connector-curvature="0" />
         <path
            id="path6131"
-           d="m 152.69518,515.25609 4.24428,0 0,2.12214 -4.24428,0 z m 0,0"
+           d="m 152.69518,515.25609 h 4.24428 v 2.12214 h -4.24428 z m 0,0"
            style="fill:#ff0000;fill-opacity:1;stroke:#000000;stroke-width:0.23579322;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-opacity:1"
            inkscape:connector-curvature="0" />
       </g>
       <text
          xml:space="preserve"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:10px;line-height:125%;font-family:FreeSerif;-inkscape-font-specification:'FreeSerif Bold';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;line-height:0%;font-family:FreeSerif;-inkscape-font-specification:'FreeSerif Bold';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
          x="141.45428"
          y="540.36224"
-         id="text6133"
-         sodipodi:linespacing="125%"><tspan
+         id="text6133"><tspan
            sodipodi:role="line"
            id="tspan6135"
            x="141.45428"
-           y="540.36224">C1</tspan></text>
+           y="540.36224"
+           style="font-size:10px;line-height:1.25">C1</tspan></text>
     </g>
     <g
        transform="translate(283.66071,-20.660735)"
@@ -398,12 +387,12 @@
         <path
            inkscape:connector-curvature="0"
            style="fill:#505050;fill-opacity:1;fill-rule:evenodd;stroke:#7878ff;stroke-width:0.23579322;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-opacity:1"
-           d="m 129.35165,517.37823 29.70995,0 0,16.97711 -29.70995,0 z m 0,0"
+           d="m 129.35165,517.37823 h 29.70995 v 16.97711 h -29.70995 z m 0,0"
            id="path6885" />
         <path
            inkscape:connector-curvature="0"
            style="fill:none;stroke:#000000;stroke-width:0.23579322;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-opacity:1"
-           d="m 129.35165,517.37823 29.70995,0 0,16.97711 -29.70995,0 z m 0,0"
+           d="m 129.35165,517.37823 h 29.70995 v 16.97711 h -29.70995 z m 0,0"
            id="path6887" />
         <path
            inkscape:connector-curvature="0"
@@ -423,25 +412,25 @@
         <path
            inkscape:connector-curvature="0"
            style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#7878ff;stroke-width:0.23579322;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-opacity:1"
-           d="m 152.69518,515.25609 4.24428,0 0,2.12214 -4.24428,0 z m 0,0"
+           d="m 152.69518,515.25609 h 4.24428 v 2.12214 h -4.24428 z m 0,0"
            id="path6895" />
         <path
            inkscape:connector-curvature="0"
            style="fill:#ff0000;fill-opacity:1;stroke:#000000;stroke-width:0.23579322;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-opacity:1"
-           d="m 152.69518,515.25609 4.24428,0 0,2.12214 -4.24428,0 z m 0,0"
+           d="m 152.69518,515.25609 h 4.24428 v 2.12214 h -4.24428 z m 0,0"
            id="path6897" />
       </g>
       <text
-         sodipodi:linespacing="125%"
          id="text6899"
          y="540.36224"
          x="141.45428"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:10px;line-height:125%;font-family:FreeSerif;-inkscape-font-specification:'FreeSerif Bold';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;line-height:0%;font-family:FreeSerif;-inkscape-font-specification:'FreeSerif Bold';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
          xml:space="preserve"><tspan
            y="540.36224"
            x="141.45428"
            id="tspan6901"
-           sodipodi:role="line">C2</tspan></text>
+           sodipodi:role="line"
+           style="font-size:10px;line-height:1.25">C2</tspan></text>
     </g>
     <g
        id="g7624"
@@ -456,12 +445,12 @@
            inkscape:connector-curvature="0" />
         <path
            id="path7630"
-           d="m 129.35165,517.37823 29.70995,0 0,16.97711 -29.70995,0 z m 0,0"
+           d="m 129.35165,517.37823 h 29.70995 v 16.97711 h -29.70995 z m 0,0"
            style="fill:#505050;fill-opacity:1;fill-rule:evenodd;stroke:#7878ff;stroke-width:0.23579322;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-opacity:1"
            inkscape:connector-curvature="0" />
         <path
            id="path7632"
-           d="m 129.35165,517.37823 29.70995,0 0,16.97711 -29.70995,0 z m 0,0"
+           d="m 129.35165,517.37823 h 29.70995 v 16.97711 h -29.70995 z m 0,0"
            style="fill:none;stroke:#000000;stroke-width:0.23579322;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-opacity:1"
            inkscape:connector-curvature="0" />
         <path
@@ -481,26 +470,26 @@
            inkscape:connector-curvature="0" />
         <path
            id="path7640"
-           d="m 152.69518,515.25609 4.24428,0 0,2.12214 -4.24428,0 z m 0,0"
+           d="m 152.69518,515.25609 h 4.24428 v 2.12214 h -4.24428 z m 0,0"
            style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#7878ff;stroke-width:0.23579322;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-opacity:1"
            inkscape:connector-curvature="0" />
         <path
            id="path7642"
-           d="m 152.69518,515.25609 4.24428,0 0,2.12214 -4.24428,0 z m 0,0"
+           d="m 152.69518,515.25609 h 4.24428 v 2.12214 h -4.24428 z m 0,0"
            style="fill:#ff0000;fill-opacity:1;stroke:#000000;stroke-width:0.23579322;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-opacity:1"
            inkscape:connector-curvature="0" />
       </g>
       <text
          xml:space="preserve"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:10px;line-height:125%;font-family:FreeSerif;-inkscape-font-specification:'FreeSerif Bold';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;line-height:0%;font-family:FreeSerif;-inkscape-font-specification:'FreeSerif Bold';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
          x="141.45428"
          y="540.36224"
-         id="text7644"
-         sodipodi:linespacing="125%"><tspan
+         id="text7644"><tspan
            sodipodi:role="line"
            id="tspan7646"
            x="141.45428"
-           y="540.36224">C3</tspan></text>
+           y="540.36224"
+           style="font-size:10px;line-height:1.25">C3</tspan></text>
     </g>
     <g
        transform="translate(283.66071,79.339265)"
@@ -516,12 +505,12 @@
         <path
            inkscape:connector-curvature="0"
            style="fill:#505050;fill-opacity:1;fill-rule:evenodd;stroke:#7878ff;stroke-width:0.23579322;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-opacity:1"
-           d="m 129.35165,517.37823 29.70995,0 0,16.97711 -29.70995,0 z m 0,0"
+           d="m 129.35165,517.37823 h 29.70995 v 16.97711 h -29.70995 z m 0,0"
            id="path7654" />
         <path
            inkscape:connector-curvature="0"
            style="fill:none;stroke:#000000;stroke-width:0.23579322;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-opacity:1"
-           d="m 129.35165,517.37823 29.70995,0 0,16.97711 -29.70995,0 z m 0,0"
+           d="m 129.35165,517.37823 h 29.70995 v 16.97711 h -29.70995 z m 0,0"
            id="path7656" />
         <path
            inkscape:connector-curvature="0"
@@ -541,25 +530,25 @@
         <path
            inkscape:connector-curvature="0"
            style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#7878ff;stroke-width:0.23579322;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-opacity:1"
-           d="m 152.69518,515.25609 4.24428,0 0,2.12214 -4.24428,0 z m 0,0"
+           d="m 152.69518,515.25609 h 4.24428 v 2.12214 h -4.24428 z m 0,0"
            id="path7664" />
         <path
            inkscape:connector-curvature="0"
            style="fill:#ff0000;fill-opacity:1;stroke:#000000;stroke-width:0.23579322;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-opacity:1"
-           d="m 152.69518,515.25609 4.24428,0 0,2.12214 -4.24428,0 z m 0,0"
+           d="m 152.69518,515.25609 h 4.24428 v 2.12214 h -4.24428 z m 0,0"
            id="path7666" />
       </g>
       <text
-         sodipodi:linespacing="125%"
          id="text7668"
          y="540.36224"
          x="141.45428"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:10px;line-height:125%;font-family:FreeSerif;-inkscape-font-specification:'FreeSerif Bold';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;line-height:0%;font-family:FreeSerif;-inkscape-font-specification:'FreeSerif Bold';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
          xml:space="preserve"><tspan
            y="540.36224"
            x="141.45428"
            id="tspan7670"
-           sodipodi:role="line">C4</tspan></text>
+           sodipodi:role="line"
+           style="font-size:10px;line-height:1.25">C4</tspan></text>
     </g>
   </g>
 </svg>
