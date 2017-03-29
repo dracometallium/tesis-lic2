@@ -51,6 +51,14 @@ los problemas de la visión por computadora y enfocarse en la estrategia del
 juego. Además, permite que las tareas de calibración y montaje de las cámaras se
 realicen una sola vez para cada campo de juego, en vez de para cada partido.
 
+Las computadoras utilizadas para la ejecución del sistema de visión global son
+equipos de escritorio de gama media. Esto permite que el sistema pueda ser
+ejecutado en el sitio donde se lleva a cabo el partido de la \emph{SSL} y
+aumenta la cantidad de equipos de hardware disponibles. Actualmente tales
+equipos son computadoras de memoria compartida de múltiples núcleos, sin
+embargo el sistema actual utilizado por la \emph{SSL} es un sistema de un sólo
+hilo de ejecución por lo cual solo hace uso de uno de los núcleos disponibles.
+
 Originalmente el tamaño de la cancha era de 4,9$m\times$3,4$m$, lo que
 permitía que todo el campo de juego fuera observado con una sola cámara. Luego
 se optó por dos tipos de canchas en los partidos de la \emph{SSL}: las canchas
@@ -122,3 +130,7 @@ segundo procesados y se incrementa el tiempo de espera del cuadro. Para aumentar
 el rendimiento de estos sistemas es necesario implementar soluciones paralelas
 que aprovechen las múltiples unidades de procesamiento de las arquitecturas de
 cómputo actuales.
+
+\footnote{Según la encuesta de hardware de la plataforma de distribución
+digital \emph{Steam} de marzo del 2017, solo el $1.93$\% de los usuarios posee
+un solo núcleo.}
