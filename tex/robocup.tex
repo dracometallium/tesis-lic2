@@ -26,12 +26,14 @@ posición y orientación de cada uno de los robots y la posición de la pelota, 
 reporta esta información a las computadoras que controlan los equipos.
 
 Para que el sistema de visión pueda identificar a cada robot, cada uno tiene
-sobre su parte superior cinco parches de colores (Fig. \ref{sistemaVG}). El
-parche que se encuentra en el centro indica el color del equipo del robot, y los
-cuatro restantes sirven para identificar al robot dentro del equipo y para
-conocer la orientación que lleva en cada momento. La pelota es de un color
-uniforme y distinto al de los parches de los robots; normalmente, naranja, ya
-que este color contrasta fácilmente con el verde de la cancha.
+sobre su parte superior cinco parches de colores. El parche que se encuentra
+en el centro indica el color del equipo del robot, y los cuatro restantes
+sirven para identificar al robot dentro del equipo y para conocer la
+orientación que lleva en cada momento. La pelota es de un color uniforme y
+distinto al de los parches de los robots; normalmente, naranja, ya que este
+color contrasta fácilmente con el verde de la cancha. En la figura
+\ref{sistemaVG} se muestra la arquitectura del sistema con tres robots, dos
+del equipo azul y uno del equipo rojo.
 
 \begin{figure}[!h]
 
@@ -49,17 +51,18 @@ los problemas de la visión por computadora y enfocarse en la estrategia del
 juego. Además, permite que las tareas de calibración y montaje de las cámaras se
 realicen una sola vez para cada campo de juego, en vez de para cada partido.
 
-Originalmente el tamaño de la cancha era de 4,9$m\times$3,4$m$, lo que permitía
-que todo el campo de juego fuera observado con una sola cámara. Luego se optó
-por dos tipos de canchas en los partidos de la \emph{SSL}: las canchas de tamaño
-simple, con un tamaño de 6,05$m\times$4,05$m$ para las cuales se utilizan dos
-cámaras, una sobre cada media cancha, y las de tamaño doble, con un tamaño de
-8,09$m\times$6,05$m$, que utilizan cuatro cámaras, una por cada mitad de cada
-media cancha (Fig. \ref{cancha}). Desde el año 2015, las canchas de tamaño doble
-son las utilizadas de forma predeterminada\cite{sslrules2015}. Con este cambio
-se espera permitir la exploración de nuevas tácticas por parte de los equipos,
-ya que una mayor área de juego permite a los robots movimientos de mayor
-amplitud y variedad.
+Originalmente el tamaño de la cancha era de 4,9$m\times$3,4$m$, lo que
+permitía que todo el campo de juego fuera observado con una sola cámara. Luego
+se optó por dos tipos de canchas en los partidos de la \emph{SSL}: las canchas
+de tamaño simple, con un tamaño de 6,05$m\times$4,05$m$ para las cuales se
+utilizan dos cámaras, una sobre cada media cancha, y las de tamaño doble, con
+un tamaño de 8,09$m\times$6,05$m$, que utilizan cuatro cámaras, una por cada
+mitad de cada media cancha. Desde el año 2015, las canchas de tamaño doble son
+las utilizadas de forma predeterminada\cite{sslrules2015}. Con este cambio se
+espera permitir la exploración de nuevas tácticas por parte de los equipos, ya
+que una mayor área de juego permite a los robots movimientos de mayor amplitud
+y variedad. En la figura \ref{cancha} se muestran los tamaños de las canchas y
+la distribución de las cámaras.
 
 \begin{figure}[!h]
 
