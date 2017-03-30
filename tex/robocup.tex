@@ -16,11 +16,18 @@ Nota de OSO: Se puede agregar info detallada de cada una de las ligas
 
 Un partido de la \emph{SSL} enfrenta a dos equipos de seis robots, que deben
 tener un tamaño menor que un cilindro de 9$cm$ de radio y 15$cm$ de
-alto\cite{sslrules2015}. Los robots tienen capacidad de procesamiento reducida,
-y cada equipo cuenta con una computadora fuera del campo de juego, a la cual se
-delega la toma de decisiones. Estas computadoras perciben el ambiente a través
-de un sistema de visión global centralizado compartido. Se utiliza un conjunto
-de cámaras, montadas sobre distintas áreas del campo de juego y conectadas a una
+alto\cite{sslrules2015}, se movilizan sobre ruedas y tienen un ``pie'' con el
+que patear la pelota. Los detalles de su construcción no están reglamentados,
+aunque los equipos suelen coincidir en algunos puntos, como por ejemplo el uso
+de ruedas omnidireccionales.
+
+Cada equipo cuenta con una computadora fuera del campo de juego, a la cual se
+delega la toma de decisiones y planeamiento del movimiento de los robots. Por
+su parte la capacidad de procesamiento de los robots se limita a aquella
+necesaria para ejecutar las ordenes de movimiento de la computadora de su
+equipo. Estas computadoras perciben el ambiente a través de un sistema de
+visión global centralizado compartido. Se utiliza un conjunto de cámaras,
+montadas sobre distintas áreas del campo de juego y conectadas a una
 computadora donde se ejecuta el sistema de visión. El sistema detecta la
 posición y orientación de cada uno de los robots y la posición de la pelota, y
 reporta esta información a las computadoras que controlan los equipos.
@@ -59,53 +66,13 @@ equipos son computadoras de memoria compartida de múltiples núcleos, sin
 embargo el sistema actual utilizado por la \emph{SSL} es un sistema de un sólo
 hilo de ejecución por lo cual solo hace uso de uno de los núcleos disponibles.
 
-Originalmente el tamaño de la cancha era de 4,9$m\times$3,4$m$, lo que
-permitía que todo el campo de juego fuera observado con una sola cámara. Luego
-se optó por dos tipos de canchas en los partidos de la \emph{SSL}: las canchas
-de tamaño simple, con un tamaño de 6,05$m\times$4,05$m$ para las cuales se
-utilizan dos cámaras, una sobre cada media cancha, y las de tamaño doble, con
-un tamaño de 8,09$m\times$6,05$m$, que utilizan cuatro cámaras, una por cada
-mitad de cada media cancha. Desde el año 2015, las canchas de tamaño doble son
-las utilizadas de forma predeterminada\cite{sslrules2015}. Con este cambio se
-espera permitir la exploración de nuevas tácticas por parte de los equipos, ya
-que una mayor área de juego permite a los robots movimientos de mayor amplitud
-y variedad. En la figura \ref{cancha} se muestran los tamaños de las canchas y
-la distribución de las cámaras.
-
-\begin{figure}[!h]
-
-	\centering
-
-	\begin{subfigure}{0.45\textwidth}
-		\centering
-		\includegraphics[scale=1]{img/cancha605cm.pdf}
-		\caption{}
-	\end{subfigure}
-	~
-	\begin{subfigure}{0.45\textwidth}
-		\centering
-		\includegraphics[scale=1]{img/cancha809cm.pdf}
-		\caption{}
-	\end{subfigure}
-
-	\caption{Dimensiones y área de cobertura de las cámaras en la liga
-	\emph{SSL}, en competencias a) anteriores a 2015; b) año 2015 y
-	posteriores.}
-
-	\label{cancha}
-
-\end{figure}
-
-Sin embargo, como consecuencia, en las canchas de tamaño doble, el sistema de
-visión debe procesar cuatro veces más información que en las canchas originales;
-lo que da lugar a un problema. En efecto, el fútbol de robots se desarrolla en
-un contexto de tiempo real, ya que el ciclo completo de procesamiento de
-información debe cumplirse en un plazo máximo para poder alcanzar los objetivos.
-El servidor debe procesar cada cuadro para entregar la información de posición y
-velocidad de cada elemento en el campo de juego a las computadoras coordinadoras
-de los equipos; y éstas deben tomar una decisión y comunicarla a los robots,
-todo dentro de un tiempo de respuesta razonable para el progreso de la
-aplicación.
+El fútbol de robots se desarrolla en un contexto de tiempo real, ya que el
+ciclo completo de procesamiento de información debe cumplirse en un plazo
+máximo para poder alcanzar los objetivos.  El servidor debe procesar cada
+cuadro para entregar la información de posición y velocidad de cada elemento
+en el campo de juego a las computadoras coordinadoras de los equipos; y éstas
+deben tomar una decisión y comunicarla a los robots, todo dentro de un tiempo
+de respuesta razonable para el progreso de la aplicación.
 
 Los parámetros de calidad de este tipo de sistema son, normalmente:
 
@@ -126,13 +93,53 @@ Los parámetros de calidad de este tipo de sistema son, normalmente:
 
 \end{itemize}
 
-Duplicar la cantidad de información que se debe procesar impacta negativamente
-en el rendimiento de estos sistemas, debido a que se reducen los cuadros por
-segundo procesados y se incrementa el tiempo de espera del cuadro. Para aumentar
-el rendimiento de estos sistemas es necesario implementar soluciones paralelas
-que aprovechen las múltiples unidades de procesamiento de las arquitecturas de
-cómputo actuales.
+Originalmente el tamaño de la cancha era de 4,9$m\times$3,4$m$, lo que
+permitía que todo el campo de juego fuera observado con una sola cámara. Luego
+se optó por dos tipos de canchas en los partidos de la \emph{SSL}: las canchas
+de tamaño simple, con un tamaño de 6,05$m\times$4,05$m$ para las cuales se
+utilizan dos cámaras, una sobre cada media cancha, y las de tamaño doble, con
+un tamaño de 8,09$m\times$6,05$m$, que utilizan cuatro cámaras, una por cada
+mitad de cada media cancha. Desde el año 2015, las canchas de tamaño doble son
+las utilizadas de forma predeterminada\cite{sslrules2015}. Con este cambio se
+espera permitir la exploración de nuevas tácticas por parte de los equipos, ya
+que una mayor área de juego permite a los robots movimientos de mayor amplitud
+y variedad. En la figura \ref{cancha} se muestran los tamaños de las canchas y
+la distribución de las cámaras.
 
-\footnote{Según la encuesta de hardware de la plataforma de distribución
-digital \emph{Steam} de marzo del 2017, solo el $1.93$\% de los usuarios posee
-un solo núcleo.}
+\begin{figure}[!h]
+
+	\centering
+
+	\begin{subfigure}[c]{0.45\textwidth}
+		\centering
+		\includegraphics[scale=0.8]{img/cancha605cm.pdf}
+		\caption{}
+	\end{subfigure}
+	~
+	\begin{subfigure}[c]{0.45\textwidth}
+		\centering
+		\includegraphics[scale=0.8]{img/cancha809cm.pdf}
+		\caption{}
+	\end{subfigure}
+
+	\caption{Dimensiones y área de cobertura de las cámaras en la liga
+	\emph{SSL}, en competencias a) anteriores a 2015; b) año 2015 y
+	posteriores.}
+
+	\label{cancha}
+
+\end{figure}
+
+Sin embargo, como consecuencia, en las canchas de tamaño doble, el sistema de
+visión debe procesar cuatro veces más información que en las canchas
+originales y el doble que las canchas de tamaño doble, lo que da lugar a un
+problema para un sistema de tiempo real como este. El aumento en la cantidad
+de información impacta negativamente en el rendimiento debido a que se reducen
+los cuadros por segundo procesados y se incrementa el tiempo de espera del
+cuadro.
+
+Dado que el sistema es ejecutado en sistemas de memoria compartida de
+múltiples núcleos, pero actualmente solo hace uso de uno de ellos, se plantea
+la posibilidad de crear un nuevo sistema de visión global paralelo con el fin
+de aumentar el rendimiento del sistema al hacer un mayor uso de los recursos
+disponibles.
