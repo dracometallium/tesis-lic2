@@ -59,12 +59,9 @@ juego. Además, permite que las tareas de calibración y montaje de las cámaras
 realicen una sola vez para cada campo de juego, en vez de para cada partido.
 
 Las computadoras utilizadas para la ejecución del sistema de visión global son
-equipos de escritorio de gama media. Esto permite que el sistema pueda ser
-ejecutado en el sitio donde se lleva a cabo el partido de la \emph{SSL} y
-aumenta la cantidad de equipos de hardware disponibles. Actualmente tales
-equipos son computadoras de memoria compartida de múltiples núcleos, sin
-embargo el sistema actual utilizado por la \emph{SSL} es un sistema de un sólo
-hilo de ejecución por lo cual solo hace uso de uno de los núcleos disponibles.
+equipos de escritorio de gama media o alta. Esto permite que el sistema pueda
+ser ejecutado en el sitio donde se lleva a cabo el partido de la \emph{SSL} y
+aumenta la cantidad de equipos de hardware disponibles.
 
 El fútbol de robots se desarrolla en un contexto de tiempo real, ya que el
 ciclo completo de procesamiento de información debe cumplirse en un plazo
@@ -138,8 +135,13 @@ de información impacta negativamente en el rendimiento debido a que se reducen
 los cuadros por segundo procesados y se incrementa el tiempo de espera del
 cuadro.
 
-Dado que el sistema es ejecutado en sistemas de memoria compartida de
-múltiples núcleos, pero actualmente solo hace uso de uno de ellos, se plantea
-la posibilidad de crear un nuevo sistema de visión global paralelo con el fin
-de aumentar el rendimiento del sistema al hacer un mayor uso de los recursos
-disponibles.
+Como se utilizan computadoras de escritorio convencionales para la ejecución
+del sistema de visión global es sensato asumir que se trata de un sistema de
+memoria compartida de múltiples núcleos\footnote{Según la encuesta de hardware
+de la plataforma de distribución digital \emph{Steam} de marzo del 2017
+\cite{steamSurvey}, solo el $1.93$\% de los equipos donde esta instalado posee
+un solo núcleo.}, pero el sistema actual utilizado por la \emph{SSL} ejecuta
+en un solo hilo, aprovechando solo uno de los núcleos disponibles. Por esto se
+plantea como posibilidad crear un nuevo sistema de visión global paralelo con
+el fin de aumentar el rendimiento del sistema al hacer un mayor uso de los
+recursos disponibles.
