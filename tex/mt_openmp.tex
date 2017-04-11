@@ -12,7 +12,7 @@ modelo de \emph{fork and join}, pero a partir de la versión $3.0$ se agrego el
 modelo de tareas explicitas \cite{openmp08}. Ambos modelos fueron utilizados para
 la implementación del sistema.
 
-El modelo de \emph{fork and join} fue propuesto por primera ves en
+El modelo de \emph{fork and join} fue propuesto por primera vez en
 \cite{conway1963}. En este modelo, la ejecución del programa se ejecuta con un
 solo hilo al comienzo de se ejecución y durante sus secciones secuenciales, al
 hilo inicial se lo llama hilo principal. Cuando se encuentra una región de
@@ -65,27 +65,27 @@ de directivas al compilador, en esta sección mencionaremos aquellas utilizadas
 por el sistema propuesto. En \emph{C} y \emph{C++} todas las directivas toman la
 forma de \textbf{\#pragma omp DIRECTIVA [OPCIONES]}.
 
-La directiva mas utilizada es \emph{parallel [num\_threads(N)]}, esta define una
+La directiva más utilizada es \emph{parallel [num\_threads(N)]}, esta define una
 región de trabajo paralelo y creando $N$ hilos de ejecución (si no se incluye
 \emph{num\_threads(N)}, la cantidad de hilos se establece por medio de una
 variable global, y en caso de que esta no este definida, dependerá de la
-implementación). Cada hilo ejecutara una tarea definida por el bloque inmediato
+implementación). Cada hilo ejecutarán una tarea definida por el bloque inmediato
 a la directiva, implementando el modelo \emph{fork and join}.
 
 Si se desea que un bloque sea ejecutado solo por un hilo se pueden utilizar las
 directivas \emph{single} y \emph{master}. Estas aseguraran que el bloque
 inmediato sea ejecutado solo por uno de los hilos del grupo. En el caso de la
 directiva \emph{single}, cualquiera de los hilos del grupo podrá ser elegido
-para ejecutar el bloque, mientras que en el caso de \emph{master}, solo hilo
-principal del grupo lo ejecutara.
+para ejecutar el bloque, mientras que en el caso de \emph{master}, solo el
+hilo principal del grupo lo ejecutarán.
 
 Si se desea que cada hilo ejecute una tarea con código distinto se debe utilizar
 la directiva \emph{parallel sections num\_threads(N)}. El bloque inmediato debe
 contener a su vez bloques precedidos por la directiva \emph{section}. Al igual
 que \emph{parallel}, esta directiva define una región de trabajo paralelo de $N$
 hilos, pero el código de cada tarea esta definido por los bloques inmediatos a
-las directivas \emph{section}. En caso de que se creen mas hilos que las tareas
-definidas, los hilos sobrantes no ejecutaran. El modelo implementado por esta
+las directivas \emph{section}. En caso de que se creen más hilos que las tareas
+definidas, los hilos sobrantes no ejecutarán. El modelo implementado por esta
 directiva es \emph{fork and join}.
 
 Para la creación de una región de trabajo compartido bajo el modelo de tareas, se
@@ -104,9 +104,9 @@ arbitraria como sección critica, e incluso permite definir bloques distintos
 como la misma sección critica si comparten el mismo nombre. La segunda directiva
 solo acepta bloques en los cuales se realiza una operación aritmética simple.
 
-En la figura \ref{directivas} se muestra un código ejemplo del uso de las
-directivas presentadas junto con un diagrama mostrando una posible secuencia de
-ejecución.
+En la figura \ref{directivas} se muestra un código de ejemplo del uso de las
+directivas presentadas junto con un diagrama mostrando una posible secuencia
+de ejecución.
 
 \begin{figure}[!h]
 

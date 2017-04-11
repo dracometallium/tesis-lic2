@@ -6,11 +6,11 @@
 }
 #pragma omp parallel sections num_threads(3)
 {
-#pragma omp serction
+#pragma omp section
 	printf("Sección 1\n");
-#pragma omp serction
+#pragma omp section
 	printf("Sección 2\n");
-#pragma omp serction
+#pragma omp section
 	printf("Sección 3\n");
 }
 #pragma omp parallel num_threads(3)

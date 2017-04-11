@@ -49,7 +49,7 @@ fácilmente, en las pruebas que se realizaron se comprobó que realizar las
 búsquedas por cada tipo de objeto en paralelo sobre cada fragmento tenia un
 efecto adverso. Por este motivo, el tercer enfoque no fue aplicado sobre el
 producto final, y no sera incluido en las explicaciones siguientes. Los detalles
-de los resultados que llevaron a tomar esta decisión serán detallados mas
+de los resultados que llevaron a tomar esta decisión serán detallados más
 adelante en la sección de resultados.
 
 \subsection{Tareas del sistema}
@@ -112,7 +112,7 @@ la figura \ref{hilosFramework} se muestra como las tareas son asignadas a los
 hilos de ejecución.
 
 La cantidad de hilos de ejecución del sistema es igual a la cantidad de hilos de
-búsqueda mas los dos hilos para tareas estáticas (generación de cuadros y
+búsqueda más los dos hilos para tareas estáticas (generación de cuadros y
 generación de tareas de fragmentación de cuadro). Por esto la cantidad de
 unidades de procesamiento aprovechables esta principalmente determinado por la
 cantidad de hilos de búsqueda.
@@ -174,15 +174,15 @@ mínima se debe minimizar el perímetro del fragmento.
 Por la manera que las imágenes se representan comúnmente en una computadora y
 por su simplicidad, se opto por trabajar con un teselado con rectángulos. En el
 caso de estos, para minimizar su perímetro y maximizar su área, se debe procurar
-que la relación entre su ancho y altura sea lo mas cercana a uno. También,
+que la relación entre su ancho y altura sea lo más cercana a uno. También,
 para balancear la carga uniformemente, todos los fragmentos serán de igual
 tamaño\footnote{El tiempo de procesamiento de un fragmento depende no solo de su
 área sino que es influido por los elementos encontrados por los plugins, por lo
 cual fragmentos de igual tamaño pueden tener tiempos de procesamiento muy
-distintos. Sin embargo, dado que no poseemos mas información antes del
+distintos. Sin embargo, dado que no poseemos más información antes del
 procesamiento, consideramos que esta es la mejor heurística con la que
 contamos.}. Aquellos que se encuentren en los bordes inferior y derecho pueden
-que sean mas chicos.
+que sean más chicos.
 
 En la figura \ref{fragmentos} se muestran como se divide un cuadro de 800x600
 píxeles con un área compartida de 50 píxeles en 1, 2, 5 y 8 fragmentos. Cuando
@@ -285,10 +285,10 @@ Las clases del framework básico son las siguientes:
 		punteros a objetos de la clase \emph{Item} y no tiene mecanismos
 		de control que permitan acceder la estructura desde múltiples
 		hilos al mismo tiempo de forma segura. Cuando se solicita un
-		ítem, se devuelve el puntero al mas antiguo o \textbf{NULL} en
+		ítem, se devuelve el puntero al más antiguo o \textbf{NULL} en
 		caso de que la estructura este vacía. Cuando se intenta agregar
 		un nuevo ítem pero la estructura esta llena, se coloca este en
-		el espacio del ítem mas viejo en la estructura y se retorna el
+		el espacio del ítem más viejo en la estructura y se retorna el
 		puntero de este al llamador, delegándole su destrucción. La
 		destrucción del ítem se delega al llamador por dos motivos. El
 		primero es que el buffer desconoce el tipo real del ítem. La
@@ -349,7 +349,7 @@ Las clases del framework básico son las siguientes:
 \end{figure}
 
 Existen dos parámetros ajustables. El primero es la cantidad de hilos que
-ejecutaran las tareas de búsqueda. El segundo parámetro es la cantidad de partes
+ejecutarán las tareas de búsqueda. El segundo parámetro es la cantidad de partes
 en las cuales se dividirá el cuadro.
 
 Para adaptar el framework para utilizarlo como un sistema de visión por
@@ -391,7 +391,7 @@ cuales fueron tomadas y modificadas del sistema de visión presentado en
 		particiones se realizan de manera tal que se minimice el
 		perímetro pero ocupen la mayor área posible. Para lograr esto se
 		busca la partición que haga que la relación entre el alto y el
-		ancho sea lo mas cercana a uno.
+		ancho sea lo más cercana a uno.
 
 	\item[Subclases de \emph{Plugin}:] \emph{PluginBlur},
 		\emph{PluginColorConversions}, \emph{PluginColorSegmentation},
@@ -422,4 +422,4 @@ pilas utilizan los mismos plugins con la misma configuración para la etapa de
 pre procesamiento de la imagen, ademas, los plugins que no tienen en común solo
 modifican datos propios de cada pila. Esto permite que ambas pilas puedan ser
 unidas en una sola, lo que trae como ventaja que la etapa de pre procesamiento
-se realice solo una ves por fragmento.
+se realice solo una vez por fragmento.

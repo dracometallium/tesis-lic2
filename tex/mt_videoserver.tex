@@ -87,8 +87,11 @@ visión por computadora que implementan:
 
 \end{description}
 
-La generación de los cuadros y su procesamiento son independientes, y los
-tiempos de generación y procesamiento pueden ser distintos y variables. Por este
-motivo es necesario interponer un buffer entre el hilo de captura de cuadros y
-los hilos de procesamiento de cuadros. En caso de que el buffer alcance su
-capacidad máxima, se descartan los cuadros más viejos.
+El tiempo de generación de cuadros es fijo (o a demanda), mientras que el de
+procesamiento es variable, pudiendo variar entre mayor que el tiempo de
+generación o menor a éste. Por ello, cuando se genera un nuevo cuadro, éste se
+coloca en un buffer. Si la capacidad de procesamiento es insuficiente, y no
+hay más espacio en el buffer para almacenar un nuevo cuadro, se descarta el
+cuadro más viejo. Esta estrategia da mayor prioridad a la información más
+actual.
+

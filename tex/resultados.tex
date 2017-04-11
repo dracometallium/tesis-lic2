@@ -89,15 +89,15 @@ jerarquía de memoria se muestra en la figura \ref{topoMemoria}
 Durante el desarrollo de la aplicación se probaron tres distintas
 implementaciones. En la primera implementación, el framework ejecutaba las
 distintas pilas de plugins en tareas separadas. En la segunda implementación el
-framework fue modificado para que una sola tarea ejecutara todas las pilas de
+framework fue modificado para que una sola tarea ejecutarán todas las pilas de
 plugins sobre un mismo fragmento. Para la tercera implementación se trabajo
 sobre el mismo framework que la segunda, pero se unieron las pilas de búsquedas
-de robots y la de búsqueda de pelota. Para comprobar cual de estas era la mas
+de robots y la de búsqueda de pelota. Para comprobar cual de estas era la más
 efectiva se realizaron las pruebas con cada una de estas para la configuración
 de 11 hilos de búsqueda y 10 fragmentos con el vídeo de 800x600 píxeles de
 resolución. La primera implementación proceso 70 \emph{FPS}, la segunda 152
 \emph{FPS} y la tercera 192 \emph{FPS}. Como esta última fue la que produjo
-resultados mas satisfactorios, sera sobre los resultados de esta que
+resultados más satisfactorios, sera sobre los resultados de esta que
 trabajaremos a continuación.
 
 En las figuras \ref{800fps} y \ref{1280fps} se muestran las cantidades de
@@ -190,7 +190,7 @@ que la cantidad de fragmentos, si se disminuye la cantidad de fragmentos,
 manteniendo la cantidad de hilos de ejecución para tareas de búsqueda, se
 incrementa la cantidad de cuadros a procesar en paralelo. Esto tiene como efecto
 que los cuadros compitan por la caché y reduce las posibilidades de que los
-fragmentos entren completamente en las cachés de nivel mas bajo. Por esto se
+fragmentos entren completamente en las cachés de nivel más bajo. Por esto se
 propuso la hipótesis de que el retardo se produce debido a un aumento en los
 fallos de caché.
 
