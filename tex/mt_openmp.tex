@@ -4,13 +4,25 @@
 
 \emph{OpenMP} es una API de bibliotecas y directivas al compilador para la
 definición de paralelismo de alto nivel para sistemas de memoria compartida en
-\emph{C}, \emph{C++} y \emph{Fortran} \cite{ompWeb}. La ventaja de \emph{OpenMP}
-es que permite la creación de regiones paralelas, secciones criticas, tareas y
-puntos de sincronización, simplemente marcando un bloque de código con unas
-pocas directivas al compilador. \emph{OpenMP} originalmente implementaba solo el
-modelo de \emph{fork and join}, pero a partir de la versión $3.0$ se agrego el
-modelo de tareas explicitas \cite{openmp08}. Ambos modelos fueron utilizados para
-la implementación del sistema.
+\emph{C}, \emph{C++} y \emph{Fortran} \cite{ompWeb}. Es una API abierta,
+publicada y definida por el consorcio \emph{OpenMP Architecture Review Board}
+(o \emph{OpenMP ARB}). El consorcio esta compuesto por representantas de las
+industrias del hardware y software, sus miembros permanentes son \emph{AMD},
+\emph{ARM}, \emph{CRAY} \emph{Fujitsu}, \emph{HPE}, \emph{IBM}, \emph{Intel},
+\emph{Micron}, \emph{NEC}, \emph{NVIDIA}, \emph{Oracle}, \emph{Red Hat},
+\emph{Texas Instruments}, sus miembros temporales incluyen al centro de
+computo Barcelona, la \emph{NASA} y \emph{cOMPunity}, entre otros
+\cite{openmp08}. La primera publicación de \emph{OpenMP} fue su versión para
+\emph{fortran} en octubre de 1997, las especificaciones para \emph{C} y
+\emph{C++} fueron publicadas en octubre de 1998.
+
+La ventaja de \emph{OpenMP} es que permite la creación de regiones paralelas,
+secciones criticas, tareas y puntos de sincronización, simplemente marcando un
+bloque de código con unas pocas directivas al compilador. \emph{OpenMP}
+originalmente implementaba solo el modelo de \emph{fork and join}, pero a
+partir de la versión $3.0$ se agrego el modelo de tareas explicitas
+\cite{openmp08}. Ambos modelos fueron utilizados para la implementación del
+sistema.
 
 El modelo de \emph{fork and join} fue propuesto por primera vez en
 \cite{conway1963}. En este modelo, la ejecución del programa se ejecuta con un
