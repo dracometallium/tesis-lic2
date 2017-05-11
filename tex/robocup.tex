@@ -8,9 +8,30 @@ una versión simplificada del fútbol. Su finalidad es la de ofrecer un ambiente
 controlado donde poner a prueba los avances en distintas áreas de conocimiento
 como la inteligencia artificial, visión por computadora y robótica. Existen
 cinco ligas distintas cuyas características varían desde la simulación del
-ambiente y robots, hasta robots humanoides con visión local. De éstas, la más
-antigua es la liga de tamaño pequeño (\emph{SSL}, del inglés \emph{Small Size
-League}).
+ambiente y robots, hasta robots humanoides con visión local:
+
+\begin{description}
+
+	\item[Liga simulada]: Tanto los robots como el ambiente son simulados.
+		El movimiento de cada robot es controlado por un agente de
+		software independiente y con visión local. El sistema de
+		simulación tiene información precisa de la posición de todos
+		los robots y la pelota en la cancha virtual, pero le entrega a
+		los agentes de software información relativa a su posición y
+		orientación, y con ruido.
+
+	\item[Liga de tamaño pequeño]: También llamada \emph{SSL}, del ingles
+		\emph{Small Size League}, es la liga más antigua de la
+		\emph{RoboCup}.
+
+	\item[Liga de tamaño mediano]:
+
+	\item[Plataforma Standard]:
+
+	\item[Liga humanoide]:
+
+
+\end{description}
 
 Nota de OSO: Se puede agregar info detallada de cada una de las ligas
 
@@ -65,7 +86,7 @@ aumenta la cantidad de equipos de hardware disponibles.
 
 El fútbol de robots se desarrolla en un contexto de tiempo real, ya que el
 ciclo completo de procesamiento de información debe cumplirse en un plazo
-máximo para poder alcanzar los objetivos.  El servidor debe procesar cada
+máximo para poder alcanzar los objetivos. El servidor debe procesar cada
 cuadro para entregar la información de posición y velocidad de cada elemento
 en el campo de juego a las computadoras coordinadoras de los equipos; y éstas
 deben tomar una decisión y comunicarla a los robots, todo dentro de un tiempo
