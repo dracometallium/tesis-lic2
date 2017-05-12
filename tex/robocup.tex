@@ -15,25 +15,38 @@ ambiente y robots, hasta robots humanoides con visión local:
 	\item[Liga simulada]: Tanto los robots como el ambiente son simulados.
 		El movimiento de cada robot es controlado por un agente de
 		software independiente y con visión local. El sistema de
-		simulación tiene información precisa de la posición de todos
-		los robots y la pelota en la cancha virtual, pero le entrega a
-		los agentes de software información relativa a su posición y
-		orientación, y con ruido.
+		simulación tiene información precisa de la posición y
+		orientación de todos los robots y la pelota en la cancha
+		virtual, pero le entrega a los agentes de software información
+		con ruido y relativa a su posición y orientación.
+
+		Esta compuesta de dos sub-ligas, la liga simulada
+		bidimensional y la liga simulada tridimensional.
 
 	\item[Liga de tamaño pequeño]: También llamada \emph{SSL}, del ingles
 		\emph{Small Size League}, es la liga más antigua de la
-		\emph{RoboCup}.
+		\emph{RoboCup}. Cada equipo controla sus robots a través de un
+		sistema centralizado. La visión es global y compartida por
+		ambos. Los robots se mueven sobre ruedas y tienen un ``pie''
+		para patear la pelota.
 
-	\item[Liga de tamaño mediano]:
+	\item[Liga de tamaño mediano]: En esta los robots tienen visión local
+		y son agentes independientes. Al igual que la liga pequeña, se
+		mueven sobre ruedas y tienen un ``pie'' para patear la pelota.
 
-	\item[Plataforma Standard]:
+	\item[Plataforma estándar]: Esta liga introduce modelo de robot
+		estándar sobre el cual todos los equipos deben ejecutar su
+		software. En la actualidad se utiliza el robot \emph{NAO} de
+		\emph{SoftBank Robotics}, un robot humanoide. La visión es
+		local y cada robot es autónomo, pero pueden comunicarse.
 
-	\item[Liga humanoide]:
-
+	\item[Liga humanoide]: En esta liga los robots intentan simular
+		características humanas, no solo en su forma sino también en
+		las limitaciones sensoriales y su autonomía.
 
 \end{description}
 
-Nota de OSO: Se puede agregar info detallada de cada una de las ligas
+TODO: ¿Pero por que nos quedamos con la SSL?
 
 Un partido de la \emph{SSL} enfrenta a dos equipos de seis robots, que deben
 tener un tamaño menor que un cilindro de 9$cm$ de radio y 15$cm$ de
