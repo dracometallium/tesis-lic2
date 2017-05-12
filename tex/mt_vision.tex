@@ -9,6 +9,15 @@ imágenes \cite{cvLinda2001}. En el caso particular del fútbol de robots, el
 modelo que se quiere definir describe la posición y orientación de los robots y
 la pelota dentro de la cancha.
 
+En computación las imágenes suelen representarse como matrices de vectores de
+$N$ componentes. Para las imágenes de escala de grises solo se utiliza un
+componente, mientras que para las imágenes a color se utilizan 3 o 4,
+dependiendo del espacio de colores. Los espacios de colores mas comunes son
+\emph{RGB}, donde los componentes indican las cantidades de rojo, verde y
+azul, \emph{YUV}, donde el componente \emph{Y} indica la luma y los
+componentes \emph{U} y \emph{V} indican la cromancia, y \emph{HSV} donde sus
+componentes indican la tonalidad, saturación, y valor, respectivamente.
+
 Dependiendo de la aplicación, existen distintas etapas para la obtención de la
 información y su procesamiento (Fig. \ref{FALTA3}). En general, se definen los
 siguientes pasos \cite{digitalImageProcessing2ed,wikiCV}:
@@ -37,11 +46,11 @@ siguientes pasos \cite{digitalImageProcessing2ed,wikiCV}:
 		de color.
 
 		Los sistemas de visión global para el fútbol de robots de la
-		\emph{SSL} suelen trabajar con el espacio de color \emph{YUV},
-		por lo que, de ser necesario, la imagen debe ser convertida a
-		este espacio de color. Otro preprocesamiento que puede
-		realizarse es la composición de las imágenes del conjunto de
-		cámaras en una sola imagen.
+		\emph{SSL} suelen trabajar con el espacio de color \emph{YUV}
+		o \emph{HSV}, por lo que, de ser necesario, la imagen debe ser
+		convertida a uno de estos espacios de color. Otro
+		preprocesamiento que puede realizarse es la composición de las
+		imágenes del conjunto de cámaras en una sola imagen.
 
 	\item[Extracción de características:] Consiste en el reconocimiento de
 		características de bajo nivel, como puntos de interés, bordes,
