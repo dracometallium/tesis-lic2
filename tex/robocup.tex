@@ -26,9 +26,14 @@ ambiente y robots, hasta robots humanoides con visión local:
 	\item[Liga de tamaño pequeño:] También llamada \emph{SSL}, del ingles
 		\emph{Small Size League}, es la liga más antigua de la
 		\emph{RoboCup}. Cada equipo controla sus robots a través de un
-		sistema centralizado. La visión es global y compartida por
-		ambos equipos. Los robots se mueven sobre ruedas y tienen un
-		``pie'' para patear la pelota.
+		sistema centralizado. La visión es global y compartida por ambos
+		equipos. Las cámaras están montadas sobre la cancha en
+		posiciones fijas, y cada robot es identificado por parches en su
+		parte superior. Los parches están diseñados para poder ser
+		identificados rápidamente, y por la posición de la cámaras y los
+		parches, son observables completamente en toda la cancha. Los
+		robots se mueven sobre ruedas y tienen un ``pie'' para patear la
+		pelota.
 
 	\item[Liga de tamaño mediano:] En esta los robots tienen visión local
 		y son agentes independientes. Al igual que la liga pequeña, se
@@ -46,7 +51,11 @@ ambiente y robots, hasta robots humanoides con visión local:
 
 \end{description}
 
-En este trabajo nos enfocaremos en la \emph{SSL}.
+Dado que en la \emph{SSL} el sistema de visión captura las imágenes desde puntos
+fijos sobre la cancha y que los marcadores sobre los robots están especialmente
+diseñados para ser identificados fácilmente, consideramos que el sistema de
+visión global de la \emph{SSL} es suficientemente sencillo como para ser
+utilizado con el fin de introducir a los alumnos a la visión por computadora.
 
 Un partido de la \emph{SSL} enfrenta a dos equipos de seis robots, que deben
 tener un tamaño menor que un cilindro de 9$cm$ de radio y 15$cm$ de alto
