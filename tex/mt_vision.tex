@@ -19,7 +19,7 @@ componentes \emph{U} y \emph{V} indican la cromancia, y \emph{HSV} donde sus
 componentes indican la tonalidad, saturación, y valor, respectivamente.
 
 Dependiendo de la aplicación, existen distintas etapas para la obtención de la
-información y su procesamiento (Fig. \ref{FALTA3}). En general, se definen los
+información y su procesamiento (Fig. \ref{etapasVision}). En general, se definen los
 siguientes pasos \cite{digitalImageProcessing2ed,wikiCV}:
 
 \begin{description}
@@ -83,15 +83,17 @@ siguientes pasos \cite{digitalImageProcessing2ed,wikiCV}:
 
 \end{description}
 
-Nota OSO: Acá re da para afanarse figuritas del trabajo de Guille (pág. 9)
+Esta separación de las etapas es principalmente conceptual y distintos sistemas
+pueden presentar otra separación o incluso acoplar todas las etapas de
+procesamiento en una sola (la etapa de \textbf{adquisición de la imagen} es la
+única que no puede ser acoplada con el resto).
 
-\begin{figure}[!h]
+\begin{figure}[!ht]
 
-	 \includegraphics[width=\textwidth]{img/FALTA.png}
+	\centering	
+	\includegraphics[width=\textwidth]{img/etapasVision.pdf}
+	\caption{Etapas de procesamiento de un sistema de visión por computadora}
 
-	\caption{Etapas de procesamiento de un sistema de visión afanado de pág.
-	9 del Guille.}
-
-	\label{FALTA3}
+	\label{etapasVision}
 
  \end{figure}
