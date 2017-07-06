@@ -49,7 +49,7 @@ fácilmente, en las pruebas que se realizaron se comprobó que realizar las
 búsquedas por cada tipo de objeto en paralelo sobre cada fragmento tenia un
 efecto adverso. Por este motivo, el tercer enfoque no fue aplicado sobre el
 producto final, y no sera incluido en las explicaciones siguientes. Los detalles
-de los resultados que llevaron a tomar esta decisión serán detallados más
+de los resultados que llevaron a tomar esta decisión serán explayados más
 adelante en la sección de resultados.
 
 \subsection{Tareas del sistema}
@@ -59,7 +59,7 @@ aquellas que permanecen en ejecución desde el inicio del programa hasta su
 finalización. Las tareas dinámicas son creadas para procesar un cuadro o
 fragmento específico y una vez que terminan de procesar el cuadro o fragmento
 finalizan. Como las tareas dinámicas son aquellas que realizan el procesamiento
-para la búsqueda de los objetos, las llamamos "tareas de búsqueda".
+para la búsqueda de los objetos, a las llamamos ``tareas de búsqueda''.
 
 Según su funcionalidad, las tareas son clasificadas en cuatro tipos:
 
@@ -106,7 +106,7 @@ tareas de búsqueda son ejecutadas por un conjunto de $N$ hilos de
 ejecución\footnote{$N$ es un parámetro de entrada del programa.}. Cuando un hilo
 de ejecución (del conjunto) está libre, toma una nueva tarea de búsqueda para
 ejecutar. Como estos hilos de ejecución son los que ejecutan las tareas de
-búsqueda, nos referiremos a ellos como "hilos de búsqueda". En la figura
+búsqueda, nos referiremos a ellos como ``hilos de búsqueda''. En la figura
 \ref{tareasFramework} se muestran un diagrama de las tareas del framework, y en
 la figura \ref{hilosFramework} se muestra como las tareas son asignadas a los
 hilos de ejecución.
