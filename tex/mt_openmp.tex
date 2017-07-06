@@ -27,7 +27,7 @@ para la implementación del sistema.
 
 El modelo de \emph{fork and join} fue propuesto por primera vez en
 \cite{conway1963}. En este modelo, la ejecución del programa se ejecuta con un
-solo hilo al comienzo de se ejecución y durante sus secciones secuenciales, al
+solo hilo al comienzo de su ejecución y durante sus secciones secuenciales, al
 hilo inicial se lo llama hilo principal. Cuando se encuentra una región de
 trabajo compartido (o \emph{worksharing region}) de $N$ tareas, el hilo
 principal crea $N-1$ nuevos hilos. Cada hilo (incluido el hilo principal)
@@ -61,10 +61,10 @@ el de tareas. En este modelo cuando se encuentra una región de trabajo
 compartido, se crea un conjunto de $N$ hilos de ejecución pero no se crean
 tareas para esos hilos inmediatamente. Durante le ejecución de la región de
 trabajo compartido, se crean tareas que son colocadas en una cola de ejecución.
-Cuando un hilo de ejecución del conjunto esta libre se le asigna una tarea de la
+Si un hilo de ejecución del conjunto esta libre, se le asigna una tarea de la
 cola de ejecución. Cuando un hilo termina de ejecutar una tarea, toma otra de la
-cola de tareas o espera. Solo se destruyen los hilos cuando se termina la
-ejecución de todas las tareas y se sale de la región de trabajo compartido.
+cola de tareas o espera. Solo se destruyen los hilos al terminar la ejecución de
+todas las tareas y se sale de la región de trabajo compartido.
 
 Dado que la creación de las tareas se puede hacer luego de la creación de los
 hilos de ejecución, este modelo permite una mayor distribución temporal de las
@@ -79,7 +79,7 @@ por el sistema propuesto. En \emph{C} y \emph{C++} todas las directivas toman la
 forma de \textbf{\#pragma omp DIRECTIVA [OPCIONES]}.
 
 La directiva más utilizada es \emph{parallel [num\_threads(N)]}, esta define una
-región de trabajo paralelo y creando $N$ hilos de ejecución (si no se incluye
+región de trabajo paralelo y crea $N-1$ hilos de ejecución (si no se incluye
 \emph{num\_threads(N)}, la cantidad de hilos se establece por medio de una
 variable global, y en caso de que esta no este definida, dependerá de la
 implementación). Cada hilo ejecutarán una tarea definida por el bloque inmediato
