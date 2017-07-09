@@ -10,9 +10,34 @@
 
 \ \\
 \ \\
-Descripción de la tesis de hasta 500 palabras.\\
 
- Deberá contener mínimamente motivación,  objetivo, resultado y conclusiones. 
+La \emph{RoboCup} (del inglés \emph{Robot World Cup}) es una competencia donde
+equipos de robots juegan una versión simplificada del fútbol. Su finalidad es
+la de ofrecer un ambiente controlado donde poner a prueba los avances en
+distintas áreas de conocimiento como la inteligencia artificial, visión por
+computadora y robótica. Existen cinco ligas distintas cuyas características
+varían desde la simulación del ambiente y robots, hasta robots humanoides con
+visión local, la mas antigua de estas es la liga de tamaño pequeño (también
+llamada \emph{SSL} por sus siglas en ingles).
+
+\emph{SSL} utiliza un sistema de visión global compartido por los dos equipos.
+El sistema procesa cuadros de vídeo y reporta la posición y orientación de los
+robots y la posición de la pelota en cada uno de ellos. En este trabajo se
+presenta un nuevo sistema de visión global por computadora alternativo al
+utilizado actualmente por la \emph{RoboCup} para la \emph{SSL}, que puede ser
+utilizado como herramienta educativa en una asignatura de visión por
+Computadora y permite explorar distintas estrategias de paralelización. Se
+aplicaron conjuntamente dos estrategias de paralelización. Una de ellas
+explota el paralelismo dentro de cada cuadro, dividiendo los cuadros en
+fragmentos que son procesados de forma independiente. La otra estrategia se
+basa en el procesamiento simultáneo de diferentes cuadros del vídeo.
+
+Se realizó una implementación en OpenMP para C++, basada en plugins para
+facilitar su modificación en un ambiente educativo. En un servidor con un
+procesador Intel Xeon E5-2630 (6 cores y multithreading simultáneo), la
+solución paralela respecto a la solución que utiliza un único núcleo (de los 6
+disponibles) logró mejoras máximas de 5,37x en los FPS procesados mientras el
+retardo por cuadro se redujo a la mitad.
 
 \vfill
 \pagebreak
