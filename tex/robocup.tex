@@ -181,11 +181,11 @@ cuadro.
 
 Como se utilizan computadoras de escritorio convencionales para la ejecución
 del sistema de visión global es sensato asumir que se trata de un sistema de
-memoria compartida de múltiples núcleos\footnote{Según la encuesta de hardware
-de la plataforma de distribución digital \emph{Steam} de marzo del 2017
-\cite{steamSurvey}, solo el $1.93$\% de los equipos donde esta instalado posee
-un solo núcleo.}, pero el sistema actual utilizado por la \emph{SSL} ejecuta
-en un solo hilo, aprovechando solo uno de los núcleos disponibles. Por esto se
-plantea como posibilidad crear un nuevo sistema de visión global paralelo con
-el fin de aumentar el rendimiento del sistema al hacer un mayor uso de los
-recursos disponibles.
+memoria compartida de múltiples núcleos, pero el sistema actual utilizado por la
+\emph{SSL} ejecuta en un solo hilo, aprovechando solo uno de los núcleos
+disponibles.
+
+Para poder entregar la información requerida en tiempos acotados utilizando solo
+un hilo de ejecución, los plugins del sistema están altamente optimizados. Esto
+tiene como efecto colateral que el sistema no es ideal para ser utilizado como
+herramienta didáctica para la introducción a la visión por computadora.
