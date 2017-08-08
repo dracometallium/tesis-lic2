@@ -4,7 +4,7 @@
 
 \label{descripcionSistema}
 
-<INTRODUCCIÓN>
+FALTA: <INTRODUCCIÓN>
 
 \subsection{Discusión de las estrategias de paralelización}
 
@@ -24,11 +24,13 @@ Para aumentar el throughput del sistema se pueden aplicar cuatro enfoques distin
 	\item	Para realizar la búsqueda de los objetos, el cuadro puede ser
 		dividido. Esto permitirá realizar la búsqueda en cada zona en
 		paralelo. Para el correcto funcionamiento, las zonas deberán
-		tener partes en común que dependerán del tamaño de los objetos,
-		ya que no debe suceder que un objeto no aparezca completo en
-		ninguna de las zonas. Esto permitiría reducir el tiempo de
-		procesamiento de cada cuadro, ademas de que se puede sacar
-		provecho de una mayor localidad espacial.
+		tener partes en común cuyos tamaños dependerán del tamaño de los
+		objetos (en este caso, los robots), ya que no debe suceder que
+		un objeto no aparezca completo en ninguna de las zonas. Esta
+		estrategia busca reducir el tiempo de procesamiento por cuadro
+		mediante el uso de múltiples unidades de procesamiento abocadas
+		al mismo cuadro. Ademas esta estrategia podría sacar provecho de
+		una mayor localidad espacial.
 
 	\item	Ya que la búsqueda de cada tipo de objetos es independiente de
 		la búsqueda de los demás tipos, se pueden realizar múltiples
@@ -180,15 +182,14 @@ mínima se debe minimizar el perímetro del fragmento.
 Por la manera que las imágenes se representan comúnmente en una computadora y
 por su simplicidad, se opto por trabajar con un teselado con rectángulos. En el
 caso de estos, para minimizar su perímetro y maximizar su área, se debe procurar
-que la relación entre su ancho y altura sea lo más cercana a uno. También,
-para balancear la carga uniformemente, todos los fragmentos serán de igual
-tamaño\footnote{El tiempo de procesamiento de un fragmento depende no solo de su
-área sino que es influido por los elementos encontrados por los plugins, por lo
-cual fragmentos de igual tamaño pueden tener tiempos de procesamiento muy
-distintos. Sin embargo, dado que no poseemos más información antes del
-procesamiento, consideramos que esta es la mejor heurística con la que
-contamos.}. Aquellos que se encuentren en los bordes inferior y derecho pueden
-que sean más chicos.
+que la relación entre su ancho y altura sea lo más cercana a uno. También, para
+balancear la carga uniformemente, todos los fragmentos serán de igual tamaño.
+El tiempo de procesamiento de un fragmento depende no solo de su área sino que
+es influido por los elementos encontrados por los plugins, por lo cual
+fragmentos de igual tamaño pueden tener tiempos de procesamiento muy distintos.
+Sin embargo, dado que no poseemos más información antes del procesamiento,
+consideramos que esta es la mejor heurística con la que contamos. Aquellos que
+se encuentren en los bordes inferior y derecho pueden que sean más chicos.
 
 En la figura \ref{fragmentos} se muestran como se divide un cuadro de 800x600
 píxeles con un área compartida de 50 píxeles en 1, 2, 5 y 8 fragmentos. Cuando
@@ -213,6 +214,12 @@ tipo de división produce fragmentos con perímetros mayores, produciendo grande
 
 \label{implementacionFramework}
 
+Como primera etapa se implemento un famework base que simula el procesamiento de
+ítems prototipo vacíos y establece las clases base a ser extendidas. Esto
+permite explicar el flujo de la información así como la estructura base del
+sistema sin preocuparse por la implementación especifica para el sistema de
+visión global para el fútbol de robots.
+
 El framework fue implementado en \emph{C++} con \emph{OpenMP} y está basado en
 plugins para facilitar su modificación en un ambiente educativo. La elección del
 lenguaje se debe principalmente a su eficiencia y paradigma. Dado que el sistema
@@ -236,7 +243,7 @@ función comienza estableciendo una región de trabajo compartido bajo el modelo
 de tareas, se crean $N+1$ hilos de ejecución (linea 25), $N$ hilos para las
 tareas de búsqueda y uno adicional para la tarea de generación de tarea de
 fragmentación de cuadros. La tarea de generación de tareas de fragmentación de
-cuadros implementa un espera ocupada sobre la cola de cuadros a procesar. La
+cuadros implementa una espera ocupada sobre la cola de cuadros a procesar. La
 finalización de la tarea es controlada por la variable \emph{continuar}.
 
 Cuando hay hilos de ejecución libres y cuadros en la cola de cuadros, se toma un
@@ -285,8 +292,10 @@ Las clases del framework básico son las siguientes:
 
 \begin{description}
 
-	\item[Item:] Esta clase define un tipo genérico de los ítems que serán
-		tratados por el sistema.
+	\item[Item:] Esta clase define un tipo prototipo de los ítems que serán
+		tratados por el sistema. En la implementación especifica para el
+		sistema de visión global para el fútbol de robots, los cuadros
+		son subclase de la clase \emph{Item}.
 
 	\item[RingBuffer:] Este es el buffer donde se guardan los ítems
 		generados mientras esperan ser procesados. El buffer guarda solo
@@ -298,12 +307,12 @@ Las clases del framework básico son las siguientes:
 		un nuevo ítem pero la estructura esta llena, se coloca este en
 		el espacio del ítem más viejo en la estructura y se retorna el
 		puntero de este al llamador, delegándole su destrucción. La
-		destrucción del ítem se delega al llamador por dos motivos. El
-		primero es que el buffer desconoce el tipo real del ítem. La
-		segunda razón es que para poder ser utilizado de forma segura,
-		las llamadas a los métodos del buffer deben estar dentro de
-		secciones criticas y realizar las eliminaciones dentro de estas
-		podría ser muy lento.
+		razón de la delegación de la destrucción se debe a que la
+		destrucción un objeto es lenta (y aun mayor en el caso de los
+		cuadros del sistema final), y el control de acceso al buffer se
+		realiza a través del uso de de secciones criticas, por lo que es
+		importante reducir el tiempo de acceso de cada hilo, para no
+		impedirle el acceso a otros hilos que pueden estar listos.
 
 	\item[Input:] Se trata de una clase que funciona como definición de la
 		interfaz de las clases que generan los ítems. Sus métodos
@@ -319,13 +328,14 @@ Las clases del framework básico son las siguientes:
 		encargadas de dividir los ítems. Se definen tres métodos. El
 		primero es \emph{slice} que recibe como parámetro un ítem y la
 		cantidad de partes en la que este debe ser dividido y retorna un
-		arreglo de ítems. El segundo método es \emph{resetItem} que
-		recibe como parámetro una de las partes creadas por el método
-		\emph{slice} luego de que fue procesada por una pila de plugins
-		y la configura al inicial estado para que el funcionamiento de
-		la próxima pila no se vea interferido. El tercer método es
-		\emph{delPart} que recibe como parámetro un fragmento de ítem y
-		lo elimina.
+		arreglo de ítems. Algunos plugins pueden agregar información a
+		los fragmentos de los ítems, con el fin de ser utilizada por
+		plugins posteriores dentro de la misma pila, es por esto que
+		antes de continuar con la siguiente pila se utiliza el método
+		\emph{resetItem} que elimina la información agregada por los
+		plugins, retornando al fragmento a su configuración inicial. El
+		tercer método es \emph{delPart} que recibe como parámetro un
+		fragmento de ítem y lo elimina.
 
 	\item[Plugin:] Esta clase define una interfaz para los plugins que
 		realizaran las distintas partes del procesamiento de la imagen.
@@ -341,12 +351,15 @@ Las clases del framework básico son las siguientes:
 		generación de tareas de fragmentación de cuadro. Para no crear
 		mas tareas de las que puede procesar el sistema, solo se toma un
 		cuadro de la cola de cuadros a procesar si hay hilos de búsqueda
-		libres y no hay tareas ya creadas para asignarles. Cada tarea de
-		fragmentación de cuadro divide el ítem utilizando
+		libres (o lo que es lo mismo, la cola de tareas esta vacía).
+		Cada tarea de fragmentación de cuadro divide el ítem utilizando
 		\emph{ItemSlicer} y crea una nueva tarea de procesamiento de
 		cuadros por cada fragmento.
 
 \end{description}
+
+En la figura \ref{clasesFramework} se muestra el diagrama de clases del
+framework base.
 
 \begin{figure}[h]
 
@@ -354,13 +367,15 @@ Las clases del framework básico son las siguientes:
 
 	\caption{Diagrama de clases Framework base.}
 
+	\label{clasesFramework}
+
 \end{figure}
 
 Existen dos parámetros ajustables. El primero es la cantidad de hilos que
 ejecutarán las tareas de búsqueda. El segundo parámetro es la cantidad de partes
 en las cuales se dividirá el cuadro.
 
-Para adaptar el framework para utilizarlo como un sistema de visión por
+Para extender el framework para utilizarlo como un sistema de visión por
 computadora para el fútbol de robots se incorporaron las siguientes clases, las
 cuales fueron tomadas y modificadas del sistema de visión presentado en
 \cite{torres2014}:
@@ -419,7 +434,7 @@ cuales fueron tomadas y modificadas del sistema de visión presentado en
 
 	\includegraphics[width=\textwidth]{img/clasesFrameworkRobots.pdf}
 
-	\caption{Diagrama de clases del sistema sistema de visión para el fútbol
+	\caption{Diagrama de clases del sistema de visión para el fútbol
 	de robots.}
 
 \end{figure}
