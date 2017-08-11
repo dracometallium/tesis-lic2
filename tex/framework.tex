@@ -12,7 +12,7 @@ Para aumentar el throughput del sistema se pueden aplicar cuatro enfoques distin
 
 \begin{itemize}
 
-	\item 	Dado que en un vídeo ya decodificado el procesamiento de cada
+	\item	Dado que en un vídeo ya decodificado el procesamiento de cada
 		cuadro es independiente del procesamiento de los demás, y dada
 		la disponibilidad de recursos de computo, se pueden procesar
 		múltiples cuadros al mismo tiempo sin que esto genere
@@ -406,15 +406,13 @@ cuales fueron tomadas y modificadas del sistema de visión presentado en
 		soportada por el sistema, así como los tiempos de espera bajo
 		una cantidad de cuadros por segundo especifica.
 
-	\item[FrameSlicer:] Subclase de \emph{ItemSlicer}. En este caso lo que
-		se divide es la imagen del cuadro. Cada sub cuadro tendrá un
-		solapamiento con los adyacente ya que se debe evitar que un
-		robots o la pelota no este totalmente contenido dentro de por lo
-		menos un sub cuadro. Para minimizar el área solapada, las
-		particiones se realizan de manera tal que se minimice el
-		perímetro pero ocupen la mayor área posible. Para lograr esto se
-		busca la partición que haga que la relación entre el alto y el
-		ancho sea lo más cercana a uno.
+	\item[FrameSlicer:] Subclase de \emph{ItemSlicer}. Cada cuadro es
+		dividido en rectángulos del mismo tamaño (excepto por los
+		cuadros en los bordes inferiores y derechos, que pueden ser
+		más pequeños). Cada sub cuadro incluye un área solapada con
+		los cuadros adyacentes para asegurar que todos los objetos
+		(robots y pelota) se encuentren completamente en por lo menos
+		un sub cuadro.
 
 	\item[Subclases de \emph{Plugin}:] \emph{PluginBlur},
 		\emph{PluginColorConversions}, \emph{PluginColorSegmentation},
@@ -430,12 +428,18 @@ cuales fueron tomadas y modificadas del sistema de visión presentado en
 
 \end{description}
 
+En la figura \ref{clasesFrameworkRobots} se muestra el diagrama de clases del
+framework extendido para ser utilizado como sistema de visión global para
+fútbol de robots.
+
 \begin{figure}[h]
 
 	\includegraphics[width=\textwidth]{img/clasesFrameworkRobots.pdf}
 
 	\caption{Diagrama de clases del sistema de visión para el fútbol
 	de robots.}
+
+	\label{clasesFrameworkRobots}
 
 \end{figure}
 
