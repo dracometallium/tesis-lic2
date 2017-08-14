@@ -15,6 +15,13 @@ los resultados de las diferentes configuraciones se midieron los \emph{FPS}
 soportados por el sistema y el tiempo de espera máximo (obtenido a los
 \emph{FPS} soportados por el sistema bajo la misma configuración).
 
+Se configuraron diferentes experimentos haciendo variar la cantidad de partes en
+las que fueron divididos los cuadros y la cantidad de hilos de ejecución para
+tareas de búsqueda, para ambos vídeos. Para comparar los resultados de las
+diferentes configuraciones se midieron los \emph{FPS} soportados por el sistema
+y el tiempo de espera máximo (obtenido a los \emph{FPS} soportados por el
+sistema bajo la misma configuración).
+
 Como la obtención del retardo máximo depende del conocimiento previo de los
 \emph{FPS}, cada experimento se dividió en dos partes. En la primera parte se
 busca la cantidad de \emph{FPS} soportados por el sistema para esa
@@ -32,22 +39,27 @@ necesario para que éstos fueran representativos de una ejecución prolongada. S
 realizaron tres ejecuciones de 6 minutos cada una con una misma configuración:
 11 hilos y 10 fragmentos procesando el vídeo de 800x600 píxeles de resolución.
 El primer minuto no se contabilizó, con el fin de permitir que la ejecución se
-estabilizara. Los resultados se compararon con ejecuciones bajo la misma
-configuración, pero ejecutando de 11 a 20 segundos, y contabilizando sólo los
-últimos 10 segundos. En la tabla 1 se muestran los \emph{FPS} obtenidos para
-cada ejecución. Se observa que las pruebas de 16 segundos son representativas de
-ejecuciones más largas. Dado que los 6 minutos de vídeo no caben en la memoria
-RAM del equipo de pruebas, el sistema fue modificado para reintroducir en la
-lista de cuadros a procesar aquellos cuadros ya procesados. Debido a esto, el
-rendimiento en estos experimentos es levemente inferior al resto con igual
-configuración.
+estabilizara. Dado que los 6 minutos de vídeo no caben en la memoria RAM del
+equipo de pruebas, el sistema fue modificado para reintroducir en la lista de
+cuadros a procesar aquellos cuadros ya procesados. Los resultados se compararon
+con ejecuciones utilizando la misma configuración, es decir: utilizando el mismo
+framework modificado para reutilizar los cuadros, utilizando 11 hilos, y
+dividiendo el vídeo de 800x600 píxeles de resolución en 10 fragmentos, pero
+ejecutando de 11 a 20 segundos, y contabilizando sólo los últimos 10 segundos.
+El uso del framework modificado para este experimento en particular tiene un
+rendimiento menor al framework original, por lo que los resultados son distintos
+a los presentados en la sección \ref{resultados} cuando se utiliza la misma
+cantidad de fragmentos e hilos. En la tabla 1 se muestran los \emph{FPS}
+obtenidos para cada ejecución. Se observa que las pruebas de 16 segundos son
+representativas de ejecuciones más largas.
 
 \begin{table}[h]
 	\centering
-	\begin{tabular}{c|c|c|c|c|c|c|c|c|c|c|c}
+	\begin{tabular}{c||c|c|c|c|c|c|c|c|c|c|c}
 
 		Ejecución&6min&11s&12s&13s&14s&15s&16s&17s&18s&19s&20s\\
 
+		\hline
 		\hline
 
 		1&166& 171& 170& 170& 170& 169& 166& 166& 166& 166& 165\\
@@ -77,7 +89,7 @@ procesador de 6 núcleos con multithreading simultáneo de dos vías, una
 frecuencia básica de CPU de 2,30GHz y 2,8GHz en modo turbo, 15MiB de memoria
 caché L3, 256KiB de caché L2, 32Kib de caché L1 para datos, y 32 KiB de caché L1
 para instrucciones. El equipo posee ademas con 16GiB de memoria RAM. La
-jerarquía de memoria se muestra en la figura \ref{topoMemoria}
+jerarquía de memoria se muestra en la figura \ref{topoMemoria}.
 
 \begin{figure}[!ht]
 
@@ -88,7 +100,7 @@ jerarquía de memoria se muestra en la figura \ref{topoMemoria}
 
 \end{figure}
 
-\section{Resultados}
+\section{Diseño de experimentos y resultados}
 
 \label{resultados}
 
@@ -105,6 +117,13 @@ resolución. La primera implementación proceso 70 \emph{FPS}, la segunda 152
 \emph{FPS} y la tercera 192 \emph{FPS}. Como esta última fue la que produjo
 resultados más satisfactorios, sera sobre los resultados de esta que
 trabajaremos a continuación.
+
+El sistema posee 6 núcleos con multithreading simultaneo de dos vías, por lo
+cual como máximo puede ejecutar 12 hilos en paralelo. Por este motivo el rango
+de la hilos de búsqueda sera inicialmente de 1 a 12 hilos, y en caso de que los
+experimentos demuestren que el \emph{speedup} no ha comenzado a decaer, se
+extenderá el rango hasta que esto suceda. El rango de cantidad de fragmentos
+esta limitado de 1 a 24.
 
 En las figuras \ref{800fps} y \ref{1280fps} se muestran las cantidades de
 \emph{FPS} alcanzados para un vídeo de 800x600 píxeles y 1280x720 píxeles
@@ -175,13 +194,14 @@ pueden ser observados en la figura \ref{primosFPS}.
 
 \end{figure}
 
-Como se puede observar en la figura, para una cantidad de fragmentos menor a 7,
-el perjuicio por aumento en el área es menor que el beneficio aportado por el
-incremento en el paralelismo. Si se observa la figura \ref{primosArea}, dividir
-el cuadro en 7 fragmentos resulta en el primer incremento notable de área con
-respecto tanto a un fragmento menos como un fragmento más. También se pueden
-apreciar que los incrementos repentinos en el área total coinciden con
-disminuciones repentinas en los cuadros por segundo procesados.
+Como se puede observar en la figura \ref{primosFPS}, para una cantidad de
+fragmentos menor a 7, el perjuicio por aumento en el área es menor que el
+beneficio aportado por el incremento en el paralelismo. Si se observa la figura
+\ref{primosArea}, dividir el cuadro en 7 fragmentos resulta en el primer
+incremento notable de área con respecto tanto a un fragmento menos como un
+fragmento más. También se pueden apreciar que los incrementos repentinos en el
+área total coinciden con disminuciones repentinas en los cuadros por segundo
+procesados.
 
 El segundo patrón que se puede observar en las figuras \ref{800fps} y
 \ref{1280fps} es que cuando la cantidad de fragmentos es baja y la cantidad de
@@ -254,16 +274,16 @@ Estos dos últimas figuras nos permiten apreciar que no siempre una mayor
 cantidad de cuadros por segundos procesados implicara el tiempo de espera
 mínimo. Dependiendo de si se desea minimizar el tiempo de espera de los cuadros,
 maximizar la cantidad de cuadros procesados, o encontrar un balance especifico,
-se deberá elegir una cantidad de fragmentos y procesadores apropiada. Por
+se deberá elegir una cantidad de fragmentos y hilos de búsqueda apropiada. Por
 ejemplo, en el caso del vídeo de 1280x720 píxeles de resolución, dividir la
-imagen en 24 fragmentos y utilizar 11 permite procesar 130 cuadros por segundo en
-el equipo de prueba, sin embargo el tiempo de espera es de $0.11$ segundos. Si
-el cuadro se divide en 21 fragmentos y se utilizan 11 hilos de búsqueda, la
-cantidad de cuadros por segundo procesados cae a 117, pero el tiempo de espera
-se reduce a $0.06$ segundos. Las figuras \ref{800tFPS} y \ref{1280tFPS}
-sintetizan la relación entre los \emph{FPS} y el retardo de cuadros, mostrando
-el mínimo retardo de cuadros para los diferentes \emph{FPS} que puede alcanzar
-el sistema en cada vídeo.
+imagen en 24 fragmentos y utilizar 11 hilos de búsqueda permite procesar 130
+cuadros por segundo en el equipo de prueba, sin embargo el tiempo de espera es
+de $0.11$ segundos. Si el cuadro se divide en 21 fragmentos y se utilizan 11
+hilos de búsqueda, la cantidad de cuadros por segundo procesados cae a 117, pero
+el tiempo de espera se reduce a $0.06$ segundos. Las figuras \ref{800tFPS} y
+\ref{1280tFPS} sintetizan la relación entre los \emph{FPS} y el retardo de
+cuadros, mostrando el mínimo retardo de cuadros para los diferentes \emph{FPS}
+que puede alcanzar el sistema en cada vídeo.
 
 \begin{figure}[!h]
 
@@ -299,21 +319,20 @@ de los 5 hilos de búsqueda.
 \begin{figure}[!h]
 
 	\includegraphics[width=\textwidth]{img/800x600_bestfps.pdf}
-	\caption{FPS máximos alcanzados para el vídeo de 800x600 píxeles bajo
-	para distintas configuraciones de cantidad de hilos de búsqueda. Se
-	incluye el retardo de cuadro bajo la configuración y la cantidad de
-	fragmentos en la que fue dividido.}
-	\label{bestFPS800}
+	\caption{FPS máximos alcanzados para el vídeo de 800x600 píxeles para
+	distintas configuraciones de cantidad de hilos de búsqueda. Se incluye
+	el retardo de cuadro bajo la configuración y la cantidad de fragmentos
+	en la que fue dividido.} \label{bestFPS800}
 
 \end{figure}
 
 \begin{figure}[!h]
 
 	\includegraphics[width=\textwidth]{img/1280x720_bestfps.pdf}
-	\caption{FPS máximos alcanzados para el vídeo de 1280x720 píxeles bajo
-	para distintas configuraciones de cantidad de hilos de búsqueda. Se
-	incluye el retardo de cuadro bajo la configuración y la cantidad de
-	fragmentos en la que fue dividido.}
+	\caption{FPS máximos alcanzados para el vídeo de 1280x720 píxeles para
+	distintas configuraciones de cantidad de hilos de búsqueda. Se incluye
+	el retardo de cuadro bajo la configuración y la cantidad de fragmentos
+	en la que fue dividido.}
 	\label{bestFPS1280}
 
 \end{figure}
