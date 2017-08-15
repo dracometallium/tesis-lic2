@@ -309,8 +309,8 @@ incluyendo el retardo de cuadro, para los vídeos de 800x600 y 1280x720 píxeles
 Se puede apreciar en la figura que para el caso del vídeo de 800x600 píxeles el
 sistema escala solo hasta el uso de 5 hilos de búsqueda. En el caso del vídeo de
 1280x720 píxeles, también muestra una reducción en el rendimiento cuando se
-utilizan 12 hilos de búsqueda. Como la plataforma experimental cuenta con 12
-núcleos, bajo estas condiciones los hilos de búsqueda deberán compartir recursos
+utilizan 12 hilos de búsqueda. Como la plataforma experimental puede ejecutar
+hasta 12 hilos simultáneamente, los hilos de búsqueda deberán compartir recursos
 con los hilos dedicados a las tareas estáticas. Por lo cual no podemos
 determinar el punto en el cual la aplicación deja de escalar para un vídeo de
 1280x720 píxeles, aunque se alcanza un punto de rendimientos decrecientes luego
