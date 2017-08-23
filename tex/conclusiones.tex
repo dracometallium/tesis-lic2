@@ -50,8 +50,15 @@ modificaciones en el código. Seria deseable una interfaz gráfica que permita
 modificar estos datos interactivamente. Seria útil también mostrar gráficamente
 la detección de los objetos.
 
+La taza decrecimiento del \emph{speedup} se vio disminuida a partir de los seis
+hilos de búsqueda, para analizar si la causa se debe a que los accesos a memoria
+crean un cuello de botella o si se se debe a que con seis hilos se alcanza un
+alto paralelismo a nivel de instrucción se podría analizar la cantidad de
+instrucciones por ciclo.
+
 Como trabajo futuro se planea hacer una interfaz de usuario gráfica para
 configurar el sistema. Además, se cree conveniente implementar soluciones
 paralelas optimizadas de los plugins para utilizar el sistema en competencias de
-fútbol de robots.
-
+fútbol de robots, para esto es aconsejable encontrar la causa de la reducción
+del crecimiento del \emph{speedup} analizando la cantidad de instrucciones por
+ciclo.
