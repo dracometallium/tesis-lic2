@@ -16,10 +16,10 @@ arch='img/cache.pdat'
 set xrange [0.5:11.5]
 set xtics 1
 
-escala=1000
+escala=1000000
 
 set key outside
-set ylabel "Miles de fallos caché por cuadro"
+set ylabel "Millones de fallos caché por cuadro"
 set output 'img/cache_fallos.pdf'
 set title ""
 plot arch using 1:($2/escala) with linespoints lt 1 title '1 fragmento', \
