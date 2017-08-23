@@ -311,8 +311,9 @@ Las clases del framework básico son las siguientes:
 		destrucción un objeto es lenta (y aun mayor en el caso de los
 		cuadros del sistema final), y el control de acceso al buffer se
 		realiza a través del uso de de secciones criticas, por lo que es
-		importante reducir el tiempo de acceso de cada hilo, para no
-		impedirle el acceso a otros hilos que pueden estar listos.
+		importante reducir el tiempo que cada hilo pasa dentro de la
+		sección critica, para no impedirle el acceso a otros hilos que
+		pueden estar esperando entrar a ellas.
 
 	\item[Input:] Se trata de una clase que funciona como definición de la
 		interfaz de las clases que generan los ítems. Sus métodos

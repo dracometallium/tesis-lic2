@@ -196,8 +196,13 @@ pueden ser observados en la figura \ref{primosFPS}.
 
 Como se puede observar en la figura \ref{primosFPS}, para una cantidad de
 fragmentos menor a 7, el perjuicio por aumento en el área es menor que el
-beneficio aportado por el incremento en el paralelismo. Si se observa la figura
-\ref{primosArea}, dividir el cuadro en 7 fragmentos resulta en el primer
+beneficio aportado por el incremento en el paralelismo. Para cantidades primas
+de fragmentos menores a 7, la cantidad de FPS es inferior para la cantidad de
+fragmentos inmediatamente anterior, y mayor para la cantidad de fragmentos
+inmediatamente posterior. A partir de 7 fragmentos, se produce una reducción de
+los FPS si la cantidad de fragmentos es un cantidad prima con respecto las
+cantidades de fragmentos inmediatamente anterior y posterior. Si se observa la
+figura \ref{primosArea}, dividir el cuadro en 7 fragmentos resulta en el primer
 incremento notable de área con respecto tanto a un fragmento menos como un
 fragmento más. También se pueden apreciar que los incrementos repentinos en el
 área total coinciden con disminuciones repentinas en los cuadros por segundo
