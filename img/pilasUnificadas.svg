@@ -1,0 +1,368 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   width="17.368685cm"
+   height="43.527477cm"
+   viewBox="-121 -622 343.62751 854.4633"
+   id="svg3355"
+   version="1.1">
+  <metadata
+     id="metadata3536">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs3357" />
+  <rect
+     id="rect3362"
+     ry="0"
+     rx="0"
+     height="820.37024"
+     width="318.39444"
+     y="-585.06067"
+     x="-96.422821"
+     style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1.31176198;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+  <g
+     id="g3364"
+     transform="translate(22.774385,-245.19578)">
+    <rect
+       id="rect3366"
+       ry="0"
+       rx="0"
+       height="60"
+       width="280"
+       y="-200"
+       x="-100"
+       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-opacity:1" />
+    <text
+       id="text3368"
+       y="-163.64999"
+       x="40"
+       style="font-style:normal;font-weight:700;font-size:18.06220055px;font-family:serif;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none"
+       font-size="18.0622">
+      <tspan
+         id="tspan3370"
+         y="-163.64999"
+         x="40">Segmentación de color</tspan>
+    </text>
+  </g>
+  <g
+     id="g3372"
+     transform="translate(22.774385,-245.19578)">
+    <rect
+       id="rect3374"
+       ry="0"
+       rx="0"
+       height="60"
+       width="280"
+       y="-100"
+       x="-100"
+       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-opacity:1" />
+    <text
+       id="text3376"
+       y="-63.650002"
+       x="40"
+       style="font-style:normal;font-weight:700;font-size:18.06220055px;font-family:serif;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none"
+       font-size="18.0622">
+      <tspan
+         id="tspan3378"
+         y="-63.650002"
+         x="40">Morfologı́a</tspan>
+    </text>
+  </g>
+  <g
+     id="g3380"
+     transform="translate(22.774385,-245.19578)">
+    <rect
+       id="rect3382"
+       ry="0"
+       rx="0"
+       height="60"
+       width="280"
+       y="0"
+       x="-100"
+       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-opacity:1" />
+    <text
+       id="text3384"
+       y="36.349998"
+       x="40"
+       style="font-style:normal;font-weight:700;font-size:18.06220055px;font-family:serif;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none"
+       font-size="18.0622">
+      <tspan
+         id="tspan3386"
+         y="36.349998"
+         x="40">Búsqueda de pelota</tspan>
+    </text>
+  </g>
+  <g
+     id="g3388"
+     transform="translate(22.774385,-245.19578)">
+    <rect
+       id="rect3390"
+       ry="0"
+       rx="0"
+       height="60"
+       width="280"
+       y="100"
+       x="-100"
+       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-opacity:1" />
+    <text
+       id="text3392"
+       y="136.35001"
+       x="40"
+       style="font-style:normal;font-weight:700;font-size:18.06220055px;font-family:serif;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none"
+       font-size="18.0622">
+      <tspan
+         id="tspan3394"
+         y="136.35001"
+         x="40">Difusión pelota</tspan>
+    </text>
+  </g>
+  <g
+     id="g3440"
+     transform="translate(22.774385,-245.19578)">
+    <rect
+       id="rect3442"
+       ry="0"
+       rx="0"
+       height="60"
+       width="280"
+       y="-300"
+       x="-100"
+       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-opacity:1" />
+    <text
+       id="text3444"
+       y="-263.64999"
+       x="40"
+       style="font-style:normal;font-weight:700;font-size:18.06220055px;font-family:serif;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none"
+       font-size="18.0622">
+      <tspan
+         id="tspan3446"
+         y="-263.64999"
+         x="40">Conversión de color</tspan>
+    </text>
+  </g>
+  <g
+     id="g3456"
+     transform="translate(22.774385,-245.19578)">
+    <line
+       id="line3458"
+       y2="-320.59"
+       x2="40"
+       y1="-380"
+       x1="40"
+       style="fill:none;stroke:#000000;stroke-width:5;stroke-opacity:1" />
+    <polygon
+       id="polygon3460"
+       points="40,-320.59 50,-325.59 40,-305.59 30,-325.59 "
+       style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:5;stroke-opacity:1" />
+  </g>
+  <g
+     id="g3468"
+     transform="translate(22.774385,-245.19578)">
+    <line
+       id="line3470"
+       y2="-220.59"
+       x2="40"
+       y1="-240"
+       x1="40"
+       style="fill:none;stroke:#000000;stroke-width:5;stroke-opacity:1" />
+    <polygon
+       id="polygon3472"
+       points="40,-220.59 50,-225.59 40,-205.59 30,-225.59 "
+       style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:5;stroke-opacity:1" />
+  </g>
+  <g
+     id="g3480"
+     transform="translate(22.774385,-245.19578)">
+    <line
+       id="line3482"
+       y2="-120.59"
+       x2="40"
+       y1="-140"
+       x1="40"
+       style="fill:none;stroke:#000000;stroke-width:5;stroke-opacity:1" />
+    <polygon
+       id="polygon3484"
+       points="40,-120.59 50,-125.59 40,-105.59 30,-125.59 "
+       style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:5;stroke-opacity:1" />
+  </g>
+  <g
+     id="g3492"
+     transform="translate(22.774385,-245.19578)">
+    <line
+       id="line3494"
+       y2="-20.5902"
+       x2="40"
+       y1="-40"
+       x1="40"
+       style="fill:none;stroke:#000000;stroke-width:5;stroke-opacity:1" />
+    <polygon
+       id="polygon3496"
+       points="40,-20.5902 50,-25.5902 40,-5.59017 30,-25.5902 "
+       style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:5;stroke-opacity:1" />
+  </g>
+  <g
+     id="g3498"
+     transform="translate(22.774385,-245.19578)">
+    <line
+       id="line3500"
+       y2="79.409798"
+       x2="40"
+       y1="60"
+       x1="40"
+       style="fill:none;stroke:#000000;stroke-width:5;stroke-opacity:1" />
+    <polygon
+       id="polygon3502"
+       points="40,79.4098 50,74.4098 40,94.4098 30,74.4098 "
+       style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:5;stroke-opacity:1" />
+  </g>
+  <g
+     id="g3396"
+     transform="translate(-377.22562,-44.195781)">
+    <rect
+       id="rect3398"
+       ry="0"
+       rx="0"
+       height="60"
+       width="280"
+       y="200"
+       x="300"
+       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-opacity:1" />
+    <text
+       id="text3400"
+       y="236.35001"
+       x="440"
+       style="font-style:normal;font-weight:700;font-size:18.06220055px;font-family:serif;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none"
+       font-size="18.0622">
+      <tspan
+         id="tspan3402"
+         y="236.35001"
+         x="440">Difusión robots</tspan>
+    </text>
+  </g>
+  <g
+     id="g3404"
+     transform="translate(-377.22562,-44.195781)">
+    <rect
+       id="rect3406"
+       ry="0"
+       rx="0"
+       height="60"
+       width="280"
+       y="100"
+       x="300"
+       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-opacity:1" />
+    <text
+       id="text3408"
+       y="125.061"
+       x="440"
+       style="font-style:normal;font-weight:700;font-size:18.06220055px;font-family:serif;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none"
+       font-size="18.0622">
+      <tspan
+         id="tspan3410"
+         y="125.061"
+         x="440">Detección de regiones</tspan>
+      <tspan
+         id="tspan3412"
+         y="147.63901"
+         x="440">secundarias</tspan>
+    </text>
+  </g>
+  <g
+     id="g3414"
+     transform="translate(-377.22562,-44.195781)">
+    <rect
+       id="rect3416"
+       ry="0"
+       rx="0"
+       height="60"
+       width="280"
+       y="0"
+       x="300"
+       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-opacity:1" />
+    <text
+       id="text3418"
+       y="25.0611"
+       x="440"
+       style="font-style:normal;font-weight:700;font-size:18.06220055px;font-family:serif;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none"
+       font-size="18.0622">
+      <tspan
+         id="tspan3420"
+         y="25.0611"
+         x="440">Detección de regiones</tspan>
+      <tspan
+         id="tspan3422"
+         y="47.638901"
+         x="440">principales</tspan>
+    </text>
+  </g>
+  <g
+     id="g3504"
+     transform="translate(-377.22562,-44.195781)">
+    <line
+       id="line3506"
+       y2="-20.5902"
+       x2="440"
+       y1="-40"
+       x1="440"
+       style="fill:none;stroke:#000000;stroke-width:5;stroke-opacity:1" />
+    <polygon
+       id="polygon3508"
+       points="450,-25.5902 440,-5.59017 430,-25.5902 440,-20.5902 "
+       style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:5;stroke-opacity:1" />
+  </g>
+  <g
+     id="g3510"
+     transform="translate(-377.22562,-44.195781)">
+    <line
+       id="line3512"
+       y2="79.409798"
+       x2="440"
+       y1="60"
+       x1="440"
+       style="fill:none;stroke:#000000;stroke-width:5;stroke-opacity:1" />
+    <polygon
+       id="polygon3514"
+       points="450,74.4098 440,94.4098 430,74.4098 440,79.4098 "
+       style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:5;stroke-opacity:1" />
+  </g>
+  <g
+     id="g3516"
+     transform="translate(-377.22562,-44.195781)">
+    <line
+       id="line3518"
+       y2="179.41"
+       x2="440"
+       y1="160"
+       x1="440"
+       style="fill:none;stroke:#000000;stroke-width:5;stroke-opacity:1" />
+    <polygon
+       id="polygon3520"
+       points="450,174.41 440,194.41 430,174.41 440,179.41 "
+       style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:5;stroke-opacity:1" />
+  </g>
+  <text
+     id="text3522"
+     y="-102.94217"
+     x="283.68854"
+     style="font-style:normal;font-weight:700;font-size:22.57780075px;font-family:serif;text-anchor:start;opacity:1;fill:#000000;fill-opacity:1;stroke:none"
+     font-size="22.5778"
+     transform="rotate(-90)">
+    <tspan
+       id="tspan3524"
+       y="-102.94217"
+       x="283.68854">Pila búsqueda unificada</tspan>
+  </text>
+</svg>

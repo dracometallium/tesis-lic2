@@ -445,9 +445,26 @@ fútbol de robots.
 \end{figure}
 
 Conceptualmente, la implementación para fútbol de robots tiene dos pilas, una
-para búsqueda de robots y la otra para búsqueda de la pelota. Sin embargo, ambas
-pilas utilizan los mismos plugins con la misma configuración para la etapa de
-pre procesamiento de la imagen, ademas, los plugins que no tienen en común solo
-modifican datos propios de cada pila. Esto permite que ambas pilas puedan ser
-unidas en una sola, lo que trae como ventaja que la etapa de pre procesamiento
-se realice solo una vez por fragmento.
+para búsqueda de robots y la otra para búsqueda de la pelota. Sin embargo, para
+ambas pilas los primeros tres plugins realizan la misma tarea de pre
+procesamiento (plugins de conversión de color, segmentación de color y
+morfología), mientras que los plugins propios de cada pila (para la búsqueda de
+la pelota, plugin de búsqueda de pelota. Para la búsqueda de los robots, plugins
+de detección de regiones principales y detección de regiones secundarias) no
+modifican el cuadro, permitiendo unir ambas pilas en una sola y realizar el pre
+procesamiento una vez por cuadro. El plugin de difusión se ejecutara dos veces,
+una para enviar los datos de la pelota y otra para enviar los datos de los
+robots. En la figura \ref{pilasUnificadas} se muestra la pila de búsqueda
+unificada que utiliza el sistema final.
+
+\begin{figure}[h]
+
+	\centering
+
+	\includegraphics[height=0.25\textheight]{img/pilasUnificadas.pdf}
+
+	\caption{Pila de búsqueda unificada utilizada por el sistema final.}
+
+	\label{pilasUnificadas}
+
+\end{figure}
