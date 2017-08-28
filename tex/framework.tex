@@ -129,7 +129,7 @@ cantidad de hilos de búsqueda.
 
 	\includegraphics[width=\textwidth]{img/hilos.pdf}
 
-	\caption{Asignación de tareas a los hilos de búsqueda.}
+	\caption{Asignación de tareas a los hilos de ejecución.}
 
 	\label{hilosFramework}
 
@@ -246,7 +246,7 @@ fragmentación de cuadros. La tarea de generación de tareas de fragmentación d
 cuadros implementa una espera ocupada sobre la cola de cuadros a procesar. La
 finalización de la tarea es controlada por la variable \emph{continuar}.
 
-Cuando hay hilos de ejecución libres y cuadros en la cola de cuadros, se toma un
+Cuando hay hilos de búsqueda libres y cuadros en la cola de cuadros, se toma un
 cuadro de la cola de cuadros (lineas 29 a 32), y se crea una tarea de
 fragmentación de cuadro con una copia privada del puntero al cuadro (lineas 33 a
 36).
@@ -282,7 +282,7 @@ tareas para los distintos cuadros no sea completamente determinista.
 
 	\includegraphics[width=\textwidth]{img/hilosytareas.pdf}
 
-	\caption{Asignación de las tareas a los hilos de ejecución}
+	\caption{Asignación de las tareas a los hilos de búsqueda}
 
 	\label{hilosytareas}
 
