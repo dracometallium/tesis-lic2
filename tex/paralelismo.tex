@@ -46,16 +46,14 @@ pueden están montados sobre dispositivos con reducido poder de procesamiento,
 normalmente los datos son enviados a ``la nube'', lo cual puede ser problemático
 por los limites de ancho de banda y las dudas de la privacidad de los datos.
 Para el caso particular donde el procesamiento se realiza a través de redes
-neuronales de convolución, en \cite{pipelinebasedCaffe2017} se proponen un
+neuronales de convolución, en \cite{pipelinebasedCaffe2017} se propuso un
 esquema que permite atenuar ambos problemas. El esquema consiste en dividir la
 red neuronal en dos partes, las primeras $N$ capas son ejecutadas en el
 dispositivo donde están montados los sensores, y el resto de las capas son
-ejecutadas en un servidor remoto.
+ejecutadas en un servidor remoto. El éxito de este trabajo plantea la
+posibilidad de dividir en trabajo en mas capas, ejecutando capas intermedias en
+una computadora del usuario dentro de la red local con el fin de enviar al
+servidor externo menor cantidad de datos e información sensible.
 
-El éxito de este trabajo plantea la posibilidad de dividir en trabajo en mas
-capas, ejecutando capas intermedias en una computadora del usuario dentro de la
-red local con el fin de enviar al servidor externo menor cantidad de datos e
-información sensible.
-
-Por este motivo es deseable que los alumnos de las asignaturas de visión por
+Por estos motivos es deseable que los alumnos de las asignaturas de visión por
 computadora puedan incorporar conceptos de computación paralela.
