@@ -1,12 +1,14 @@
 % vim: set spell spelllang=es syntax=tex :
 
-\section{Descripción del sistema}
+En este capitulo comenzaremos analizando las estrategias de paralelización
+disponibles y justificaremos la selección de una de ellas. Esto nos permitirá
+establecer las distintas tareas que ejecutara el framework y como se dividirán
+los datos. Finalmente, una ves establecida la estructura del sistema, se tratara
+los detalles de la implementación.
 
 \label{descripcionSistema}
 
-FALTA: <INTRODUCCIÓN>
-
-\subsection{Discusión de las estrategias de paralelización}
+\section{Discusión de las estrategias de paralelización}
 
 Para aumentar el throughput del sistema se pueden aplicar cuatro enfoques distintos:
 
@@ -60,7 +62,7 @@ producto final, y no sera incluido en las explicaciones siguientes. Los detalles
 de los resultados que llevaron a tomar esta decisión serán explayados más
 adelante en la sección de resultados.
 
-\subsection{Tareas del sistema}
+\section{Tareas del sistema}
 
 El sistema ejecuta tareas estáticas y tareas dinámicas. Las tareas estáticas son
 aquellas que permanecen en ejecución desde el inicio del programa hasta su
@@ -135,7 +137,7 @@ cantidad de hilos de búsqueda.
 
 \end{figure}
 
-\subsection{Fragmentación del conjunto de datos}
+\section{Fragmentación del conjunto de datos}
 
 Para poder realizar el procesamiento paralelo, el conjunto de datos debe ser
 fragmentado, en el caso del framework propuesto la división se realizara en
