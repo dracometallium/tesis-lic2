@@ -91,7 +91,7 @@ caché L3, 256KiB de caché L2, 32Kib de caché L1 para datos, y 32 KiB de cach�
 para instrucciones. El equipo posee ademas con 16GiB de memoria RAM. La
 jerarquía de memoria se muestra en la figura \ref{topoMemoria}.
 
-\begin{figure}[!ht]
+\begin{figure}[h]
 
 	\includegraphics[width=\textwidth]{img/topo.pdf}
 	\caption{Jerarquía de memoria de la maquina de pruebas.}
@@ -137,7 +137,7 @@ y se utilizan 5 hilos de búsqueda, mientras que para el vídeo de 1280x720
 píxeles se alcanzo un máximo de 130 \emph{FPS} cuando se divide el cuadro en 24
 fragmentos y se utilizan 11 hilos de búsqueda.
 
-\begin{figure}[!h]
+\begin{figure}[h]
 
 	\includegraphics[width=\textwidth]{img/800x600_fps.pdf}
 	\caption{FPS alcanzados por el sistema para vídeo de 800x600 píxeles}
@@ -145,7 +145,7 @@ fragmentos y se utilizan 11 hilos de búsqueda.
 
 \end{figure}
 
-\begin{figure}[!h]
+\begin{figure}[h]
 
 	\includegraphics[width=\textwidth]{img/1280x720_fps.pdf}
 	\caption{FPS alcanzados por el sistema para vídeo de 1280x720 píxeles}
@@ -170,7 +170,7 @@ valores cercanos con divisores. En estos casos, un incremento del número
 de fragmentos aumenta el paralelismo, pero es acompañado de un incremento
 drástico del área a procesar.
 
-\begin{figure}[!h]
+\begin{figure}[h]
 
 	\includegraphics[width=\textwidth]{img/primos_area.pdf}
 	\caption{Área total a procesar para número de fragmentos primos y sus inmediatos}
@@ -186,7 +186,7 @@ inmediatos superior e inferior. Los valores para números primos e inmediatos
 inferiores a 24 fueron tomados de los experimentos anteriores. Los resultados
 pueden ser observados en la figura \ref{primosFPS}.
 
-\begin{figure}[!h]
+\begin{figure}[h]
 
 	\includegraphics[width=\textwidth]{img/primos_fps.pdf}
 	\caption{FPS totales para número de fragmentos primos y sus inmediatos}
@@ -242,7 +242,7 @@ cantidad de hilos de búsqueda es el doble de la cantidad de fragmentos por
 cuadro, la cantidad de fragmentos que se procesan concurrentemente es la
 cantidad contenida en dos cuadros.}.
 
-\begin{figure}[!h]
+\begin{figure}[h]
 
 	\includegraphics[width=\textwidth]{img/cache_fallos.pdf}
 	\caption{Fallos de caché por cuadro para distintas cantidades de
@@ -256,7 +256,7 @@ tiempos máximos de espera de los cuadros, para los vídeos de 800x600 y 1280x72
 píxeles de resolución (considerando que los \emph{FPS} son limitados al máximo
 encontrado en la primera etapa de los experimentos).
 
-\begin{figure}[!h]
+\begin{figure}[h]
 
 	\includegraphics[width=\textwidth]{img/800x600_turnArround.pdf}
 	\caption{Tiempos máximos de espera en centésimas de segundo para el
@@ -266,7 +266,7 @@ encontrado en la primera etapa de los experimentos).
 \end{figure}
 
 
-\begin{figure}[!h]
+\begin{figure}[h]
 
 	\includegraphics[width=\textwidth]{img/1280x720_turnArround.pdf}
 	\caption{Tiempos máximos de espera en centésimas de segundo para el
@@ -290,7 +290,7 @@ el tiempo de espera se reduce a $0.06$ segundos. Las figuras \ref{800tFPS} y
 cuadros, mostrando el mínimo retardo de cuadros para los diferentes \emph{FPS}
 que puede alcanzar el sistema en cada vídeo.
 
-\begin{figure}[!h]
+\begin{figure}[h]
 
 	\includegraphics[width=\textwidth]{img/800x600_tFPS.pdf}
 	\caption{Tiempos máximos de espera para vídeo de 800x600 píxeles para
@@ -299,7 +299,7 @@ que puede alcanzar el sistema en cada vídeo.
 
 \end{figure}
 
-\begin{figure}[!h]
+\begin{figure}[h]
 
 	\includegraphics[width=\textwidth]{img/1280x720_tFPS.pdf}
 	\caption{Tiempos máximos de espera para vídeo de 1280x720 píxeles para
@@ -321,7 +321,7 @@ determinar el punto en el cual la aplicación deja de escalar para un vídeo de
 1280x720 píxeles, aunque se alcanza un punto de rendimientos decrecientes luego
 de los 5 hilos de búsqueda.
 
-\begin{figure}[!h]
+\begin{figure}[h]
 
 	\includegraphics[width=\textwidth]{img/800x600_bestfps.pdf}
 	\caption{FPS máximos alcanzados para el vídeo de 800x600 píxeles para
@@ -331,7 +331,7 @@ de los 5 hilos de búsqueda.
 
 \end{figure}
 
-\begin{figure}[!h]
+\begin{figure}[h]
 
 	\includegraphics[width=\textwidth]{img/1280x720_bestfps.pdf}
 	\caption{FPS máximos alcanzados para el vídeo de 1280x720 píxeles para
@@ -356,7 +356,7 @@ crecimiento del \emph{speedup} es que la aplicación este limitada por memoria,
 provocando que el acceso a los datos sea cuello de botella, reduciendo el
 rendimiento cuando se utilizan mas de seis núcleos.
 
-\begin{figure}[!h]
+\begin{figure}[h]
 
 	\includegraphics[width=\textwidth]{img/800x600_speedup.pdf}
 	\caption{\emph{Speedup} para el vídeo de 800x600 píxeles}
@@ -364,7 +364,7 @@ rendimiento cuando se utilizan mas de seis núcleos.
 
 \end{figure}
 
-\begin{figure}[!h]
+\begin{figure}[h]
 
 	\includegraphics[width=\textwidth]{img/1280x720_speedup.pdf}
 	\caption{\emph{Speedup} para el vídeo de 1280$\times$720 píxeles}

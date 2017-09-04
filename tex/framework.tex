@@ -99,7 +99,7 @@ Según su funcionalidad, las tareas son clasificadas en cuatro tipos:
 
 \end{description}
 
-\begin{figure}[!h]
+\begin{figure}[h]
 
 	\centering
 
@@ -127,7 +127,7 @@ generación de tareas de fragmentación de cuadro). Por esto la cantidad de
 unidades de procesamiento aprovechables esta principalmente determinado por la
 cantidad de hilos de búsqueda.
 
-\begin{figure}[!h]
+\begin{figure}[h]
 
 	\includegraphics[width=\textwidth]{img/hilos.pdf}
 
@@ -159,7 +159,7 @@ compartir una zona igual al diámetro de un robot. En la figura
 \ref{areaCompartida} se muestran los casos donde el área compartida es menor al
 diámetro de un robot y donde el área compartida es del diámetro de un robot.
 
-\begin{figure}[!h]
+\begin{figure}[h]
 
 	\centering
 	\includegraphics[width=0.45\textwidth]{img/areaTooSmall.pdf}
@@ -200,7 +200,7 @@ cuadro se divide en franjas de igual ancho o altura que el cuadro original. Este
 tipo de división produce fragmentos con perímetros mayores, produciendo grandes
 áreas compartidas.
 
-\begin{figure}[!h]
+\begin{figure}[h]
 
 	\includegraphics[width=0.5\textwidth]{img/fragmentos1.pdf}
 	\includegraphics[width=0.5\textwidth]{img/fragmentos2.pdf}
@@ -263,7 +263,7 @@ con cada pila (lineas 45 a 48). Cuando se termina de procesar el fragmento con
 todas las pilas se borra el fragmento (linea 49) y se libera el hilo de
 ejecución.
 
-\begin{figure}[!h]
+\begin{figure}[h]
 
 	\centering
 
@@ -280,7 +280,7 @@ Dado que el procesamiento de los fragmentos tiene un tiempo variable, los hilos
 se liberan de forma irregular, lo que lleva a que el orden de creación de las
 tareas para los distintos cuadros no sea completamente determinista.
 
-\begin{figure}[!h]
+\begin{figure}[h]
 
 	\includegraphics[width=\textwidth]{img/hilosytareas.pdf}
 
