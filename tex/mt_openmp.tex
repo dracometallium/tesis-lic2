@@ -20,7 +20,7 @@ computo Barcelona, la \emph{NASA} y \emph{cOMPunity}, entre otros
 
 \emph{OpenMP} permite la creación de regiones paralelas, secciones criticas,
 tareas y puntos de sincronización, simplemente marcando un bloque de código
-con unas pocas directivas al compilador. Originalmente implementaba solo el
+con unas pocas directivas al compilador. Originalmente implementaba soló el
 modelo de \emph{fork and join}, pero a partir de la versión $3.0$ se agrego el
 modelo de tareas explicitas \cite{openmp08}. Ambos modelos fueron utilizados
 para la implementación del sistema.
@@ -63,7 +63,7 @@ tareas para esos hilos inmediatamente. Durante le ejecución de la región de
 trabajo compartido, se crean tareas que son colocadas en una cola de ejecución.
 Si un hilo de ejecución del conjunto esta libre, se le asigna una tarea de la
 cola de ejecución. Cuando un hilo termina de ejecutar una tarea, toma otra de la
-cola de tareas o espera. Solo se destruyen los hilos al terminar la ejecución de
+cola de tareas o espera. Soló se destruyen los hilos al terminar la ejecución de
 todas las tareas y se sale de la región de trabajo compartido.
 
 Dado que la creación de las tareas se puede hacer luego de la creación de los
@@ -85,11 +85,11 @@ variable global, y en caso de que esta no este definida, dependerá de la
 implementación). Cada hilo ejecutarán una tarea definida por el bloque inmediato
 a la directiva, implementando el modelo \emph{fork and join}.
 
-Si se desea que un bloque sea ejecutado solo por un hilo se pueden utilizar las
+Si se desea que un bloque sea ejecutado soló por un hilo se pueden utilizar las
 directivas \emph{single} y \emph{master}. Estas aseguraran que el bloque
-inmediato sea ejecutado solo por uno de los hilos del grupo. En el caso de la
+inmediato sea ejecutado soló por uno de los hilos del grupo. En el caso de la
 directiva \emph{single}, cualquiera de los hilos del grupo podrá ser elegido
-para ejecutar el bloque, mientras que en el caso de \emph{master}, solo el
+para ejecutar el bloque, mientras que en el caso de \emph{master}, soló el
 hilo principal del grupo lo ejecutarán.
 
 Si se desea que cada hilo ejecute una tarea con código distinto se debe utilizar
@@ -103,7 +103,7 @@ directiva es \emph{fork and join}.
 
 Para la creación de una región de trabajo compartido bajo el modelo de tareas, se
 utiliza la directiva \emph{parallel num\_threads(N)} para crear los $N$ hilos de
-ejecución, seguida de la directiva \emph{master} para que solo el hilo principal
+ejecución, seguida de la directiva \emph{master} para que soló el hilo principal
 ejecute la tarea que crea las primeras tareas de la región de trabajo
 compartido. Para la creación de cada tarea se debe utilizar la directiva
 \emph{task} seguida del bloque que contiene el código a ejecutar por la tarea.
@@ -115,7 +115,7 @@ Para definir secciones criticas se pueden utilizar las directivas \emph{critical
 [NOMBRE]} y \emph{atomic}. La primera permite definir un bloque de complejidad
 arbitraria como sección critica, e incluso permite definir bloques distintos
 como la misma sección critica si comparten el mismo nombre. La segunda directiva
-solo acepta bloques en los cuales se realiza una operación aritmética simple.
+soló acepta bloques en los cuales se realiza una operación aritmética simple.
 
 En la figura \ref{directivas} se muestra un código de ejemplo del uso de las
 directivas presentadas junto con un diagrama mostrando una posible secuencia

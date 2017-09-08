@@ -88,7 +88,7 @@ El equipo de pruebas cuenta un procesador Intel Xeon E5-2630. Este es un
 procesador de 6 núcleos con multithreading simultáneo de dos vías, una
 frecuencia básica de CPU de 2,30GHz y 2,8GHz en modo turbo, 15MiB de memoria
 caché L3, 256KiB de caché L2, 32Kib de caché L1 para datos, y 32 KiB de caché L1
-para instrucciones. El equipo posee ademas con 16GiB de memoria RAM. La
+para instrucciones. El equipo posee además con 16GiB de memoria RAM. La
 jerarquía de memoria se muestra en la figura \ref{topoMemoria}.
 
 \begin{figure}[h]
@@ -123,7 +123,7 @@ cual como máximo puede ejecutar 12 hilos en paralelo. Por este motivo el rango
 de la hilos de búsqueda sera inicialmente de 1 a 12 hilos, y en caso de que los
 experimentos demuestren que el \emph{speedup} no ha comenzado a decaer, se
 extenderá el rango hasta que esto suceda. El rango de cantidad de fragmentos
-esta limitado de 1 a 24.
+está limitado de 1 a 24.
 
 En las figuras \ref{800fps} y \ref{1280fps} se muestran las cantidades de
 \emph{FPS} alcanzados para un vídeo de 800x600 píxeles y 1280x720 píxeles
@@ -230,7 +230,7 @@ Se ejecutó el programa procesando cuadros de un vídeo de 1280x720 píxeles de
 resolución, y se midieron los fallos de caché en configuraciones de 1, 2, 3, 4,
 6 y 12 fragmentos y cantidad de hilos búsqueda de 1 a 11. Para obtener los
 fallos de caché de nivel 3 (es decir, cuando es necesario acceder a datos en la
-memoria RAM) se utilizó la herramienta \emph{perf}. Ésta es una aplicación que
+memoria RAM) se utilizó la herramienta \emph{perf}. Esta es una aplicación que
 permite acceder a los contadores de hardware del procesador que proveen datos
 muy precisos con un overhead despreciable.
 
@@ -312,7 +312,7 @@ Las figuras \ref{bestFPS800} y \ref{bestFPS1280} muestran el máximo rendimiento
 en cuadros por segundo obtenidos para cada configuración de hilos de búsqueda
 incluyendo el retardo de cuadro, para los vídeos de 800x600 y 1280x720 píxeles.
 Se puede apreciar en la figura que para el caso del vídeo de 800x600 píxeles el
-sistema escala solo hasta el uso de 5 hilos de búsqueda. En el caso del vídeo de
+sistema escala soló hasta el uso de 5 hilos de búsqueda. En el caso del vídeo de
 1280x720 píxeles, también muestra una reducción en el rendimiento cuando se
 utilizan 12 hilos de búsqueda. Como la plataforma experimental puede ejecutar
 hasta 12 hilos simultáneamente, los hilos de búsqueda deberán compartir recursos

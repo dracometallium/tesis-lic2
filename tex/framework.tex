@@ -31,7 +31,7 @@ Para aumentar el throughput del sistema se pueden aplicar cuatro enfoques distin
 		un objeto no aparezca completo en ninguna de las zonas. Esta
 		estrategia busca reducir el tiempo de procesamiento por cuadro
 		mediante el uso de múltiples unidades de procesamiento abocadas
-		al mismo cuadro. Ademas esta estrategia podría sacar provecho de
+		al mismo cuadro. Además esta estrategia podría sacar provecho de
 		una mayor localidad espacial.
 
 	\item	Ya que la búsqueda de cada tipo de objetos es independiente de
@@ -52,7 +52,7 @@ ya que cada plugin que se agregue o modifique deberá ser optimizado. El primer 
 segundo enfoque permiten agregar y modificar los plugins sin mayores
 dificultades, y en el caso en el cual un plugin no cumpla con las condiciones
 que permitan aplicar alguno de los enfoques, se puede limitar el paralelismo ya
-sea no dividiendo el cuadro o procesando solo uno por vez.
+sea no dividiendo el cuadro o procesando soló uno por vez.
 
 Si bien el tercer enfoque también permitiría agregar o modificar los plugins
 fácilmente, en las pruebas que se realizaron se comprobó que realizar las
@@ -82,9 +82,9 @@ Según su funcionalidad, las tareas son clasificadas en cuatro tipos:
 
 	\item[Generación de tareas de fragmentación de cuadro:] Esta tarea crea
 		una tarea de fragmentación de cuadro para cada cuadro en la
-		cola. Solo toma un cuadro de la cola si hay hilos de ejecución
-		para tareas de búsqueda libres. Ésta es una tarea estática, y
-		solo hay una en el sistema.
+		cola. Soló toma un cuadro de la cola si hay hilos de ejecución
+		para tareas de búsqueda libres. Esta es una tarea estática, y
+		soló hay una en el sistema.
 
 	\item[Fragmentación de cuadro:] Cada tarea de este tipo divide su cuadro
 		en una cantidad predefinida de fragmentos de igual (o similar)
@@ -186,7 +186,7 @@ por su simplicidad, se opto por trabajar con un teselado con rectángulos. En el
 caso de estos, para minimizar su perímetro y maximizar su área, se debe procurar
 que la relación entre su ancho y altura sea lo más cercana a uno. También, para
 balancear la carga uniformemente, todos los fragmentos serán de igual tamaño.
-El tiempo de procesamiento de un fragmento depende no solo de su área sino que
+El tiempo de procesamiento de un fragmento depende no soló de su área, sino que
 es influido por los elementos encontrados por los plugins, por lo cual
 fragmentos de igual tamaño pueden tener tiempos de procesamiento muy distintos.
 Sin embargo, dado que no poseemos más información antes del procesamiento,
@@ -342,17 +342,17 @@ Las clases del framework básico son las siguientes:
 
 	\item[Plugin:] Esta clase define una interfaz para los plugins que
 		realizaran las distintas partes del procesamiento de la imagen.
-		Solo se define el método \emph{process} que tiene como único
+		Soló se define el método \emph{process} que tiene como único
 		parámetro un puntero a un objeto de la clase \emph{Item}.
 
 	\item[PluginStack:] Esta es la clase que tomara el ítem y se encarga de
-		entregarlo a cada uno de los plugins. Tiene solo dos métodos,
+		entregarlo a cada uno de los plugins. Tiene soló dos métodos,
 		\emph{addPlugin}, para agregar un plugin, y \emph{process} que
 		tiene como parámetro un ítem, para procesarlo.
 
 	\item[ItemSwitch:] Esta es la clase encargada de implementar la tarea de
 		generación de tareas de fragmentación de cuadro. Para no crear
-		más tareas de las que puede procesar el sistema, solo se toma un
+		más tareas de las que puede procesar el sistema, soló se toma un
 		cuadro de la cola de cuadros a procesar si hay hilos de búsqueda
 		libres (o lo que es lo mismo, la cola de tareas esta vacía).
 		Cada tarea de fragmentación de cuadro divide el ítem utilizando

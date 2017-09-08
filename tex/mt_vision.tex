@@ -12,7 +12,7 @@ modelo que se quiere definir describe la posición y orientación de los robots 
 la pelota dentro de la cancha.
 
 En computación las imágenes suelen representarse como matrices de vectores de
-$N$ componentes. Para las imágenes de escala de grises solo se utiliza un
+$N$ componentes. Para las imágenes de escala de grises soló se utiliza un
 componente, mientras que para las imágenes a color se utilizan 3 o 4,
 dependiendo del espacio de colores. Los espacios de colores más comunes son
 \emph{RGB}, donde los componentes indican las cantidades de rojo, verde y
@@ -38,7 +38,7 @@ siguientes pasos \cite{digitalImageProcessing2ed,wikiCV}:
 \begin{description}
 
 	\item[Adquisición de la imagen:] Se trata de la digitalización de la
-		imagen a procesar. Ésta puede ser obtenida de uno o más
+		imagen a procesar. Esta puede ser obtenida de uno o más
 		sensores. Distintos sensores pueden capturar distintas bandas
 		del espectro electromagnético, e incluso puede tratarse de
 		imágenes obtenidas de otros tipos de señales desde sonido
@@ -67,7 +67,7 @@ siguientes pasos \cite{digitalImageProcessing2ed,wikiCV}:
 
 	\item[Extracción de características:] Consiste en el reconocimiento de
 		características de bajo nivel, como puntos de interés, bordes,
-		regiones y masas\footnote{En la bibliografía en ingles se
+		regiones y masas\footnote{En la bibliografía en inglés se
 		utiliza el termino \emph{blob}, que en su uso coloquial
 		describe algo carente de forma. En visión por computadora se
 		lo suele entender como una región continua de un mismo
@@ -75,7 +75,7 @@ siguientes pasos \cite{digitalImageProcessing2ed,wikiCV}:
 		reconocer las masas de colores de los parches y la pelota.
 
 	\item[Detección y Segmentación:] Se trata de separar la imagen en sus
-		partes constituyentes y seleccionar aquéllas de interés. Los
+		partes constituyentes y seleccionar aquellas de interés. Los
 		sistemas de visión global para fútbol de robots de la \emph{SSL}
 		utilizan las masas de color reconocidas en la etapa anterior
 		para encontrar los robots y la pelota.
@@ -85,7 +85,7 @@ siguientes pasos \cite{digitalImageProcessing2ed,wikiCV}:
 		anteriores. En el fútbol de robots de la \emph{SSL}, se toman
 		las posiciones, dentro de la imagen, de los robots y pelota
 		encontrados en la etapa anterior, y se calcula su posición
-		dentro de la cancha de acuerdo con la geometría de ésta.
+		dentro de la cancha de acuerdo con la geometría de esta.
 
 	\item[Toma de decisiones:] Muchas de las aplicaciones de visión por
 		computadora, en lugar de sólo entregar información, integran la
