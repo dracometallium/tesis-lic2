@@ -16,10 +16,72 @@ procesamiento.
 En una materia de sistemas paralelos podría utilizarse el sistema para que los
 alumnos experimenten como el varia el rendimiento bajo distintas cantidades de
 hilos de búsquedas y particiones en diferente hardware, introduciéndose de esta
-manera en las ventajas y limitaciones de los sistemas paralelos. Luego podría
-pedírsele a los alumnos que realicen predicciones sobre como se comportara el
-sistema bajo nuevas configuraciones o que busquen configuraciones que cumplas
-con requerimientos específicos de retardo máximo y \emph{FPS} mínimos.
+manera en las ventajas y limitaciones de los sistemas paralelos. Para este fin
+se podrían utilizar las preguntas presentadas a continuación. Algunos valores
+deberán ajustadas dependiendo de la plataforma experimental con la que cuenten
+los alumnos, en estos ejemplos se considerara que cuentan con la misma
+plataforma experimental que de este trabajo.
+
+\begin{enumerate}
+
+	\item{Utilizando el sistema para procesar el vídeo de 800x600 píxeles,
+		dividiéndolo el 4 fragmentos:
+
+\begin{enumerate}
+
+	\item{¿Cuantos cuadros por segundo se logran procesar si se utilizan 1 y
+		2 hilos de búsqueda?}
+
+	\item{¿Cuantos cuadros por segundo estima que se procesaran
+		aproximadamente si se utilizan 3, 4 y 16 hilos de búsqueda?}
+
+	\item{Realice el experimento de procesar el vídeo con 3, 4 y 16 hilos de
+		búsqueda ¿Que tan precisa fueron sus predicciones realizadas en
+		el inciso anterior?}
+
+	\item{¿Cual espera que sea el comportamiento del sistema si se utilizan
+		128 hilos de búsqueda? ¿Y si se utilizan 1024?}
+
+	\item{¿Que explicaciones posibles existen para la reducción del
+		\emph{speedup}?}
+
+	\item{Si se tiene una computadora con un procesador de 4 núcleos
+		¿Cuantos hilos de búsqueda recomendaría?}
+
+\end{enumerate}}
+
+	\item{Si se utilizan 4 hilos de búsqueda y se dividen los cuadros en 16,
+		17 y 18 partes para procesar el vídeo de 800x600 píxeles:
+
+\begin{enumerate}
+
+	\item{¿Cuantos cuadros por segundo procesa el sistema?}
+
+	\item{Limitándose a una cantidad de hilos de búsqueda menor a 17
+		¿Encuentra otros valores para los cuales el sistema tenga mayor
+		rendimiento tanto si se utiliza un hilo menos o un hilo más?}
+
+\end{enumerate}}
+
+	\item{Utilizando el sistema para procesar el vídeo de 800x600 píxeles:
+
+\begin{enumerate}
+
+	\item{Si se utilizan 12 hilos de búsqueda ¿En cuantos fragmentos deberán
+		dividirse los cuadros para que la cantidad de cuadros por
+		segundo procesados sea mayor a 180?}
+
+	\item{Si se utilizan 12 hilos de búsqueda ¿En cuantos fragmentos deberán
+		dividirse los cuadros para que el retardo del cuadro sea menor a
+		6 centésimas de segundo?}
+
+	\item{Si se divide el cuadro en 15 fragmentos ¿Cuantos hilos de búsqueda
+		se deberán usar para que la cantidad de cuadros por segundo
+		procesados sea mayor a 180?}
+
+\end{enumerate}}
+
+\end{enumerate}
 
 Los plugins del sistema pueden ser modificados tanto en materias de visión por
 computadora como en las de sistemas paralelos, pero con enfoques distintos. En
