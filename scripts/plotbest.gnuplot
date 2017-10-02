@@ -32,11 +32,12 @@ set yrange [0:*]
 set ytics 0, 1
 
 set output '/dev/null'
-plot arch using 1:($3/base)
+base=floor(base/10)
+plot arch using 1:((floor($3/10)*1.0)/base)
 maxy=(GPVAL_DATA_Y_MAX)
 
 set output dir.resolution.'_speedup.pdf'
 set ylabel "Speedup"
-plot arch using 1:($3/base) with boxes ls 1 title '',\
- arch using 1:(($3/base)-maxy/20):(sprintf('%.2fx', ($3/base)))\
+plot arch using 1:((floor($3/10)*1.0)/base) with boxes ls 1 title '',\
+ arch using 1:(((floor($3/10)*1.0)/base)-maxy/20):(sprintf('%.2fx', ((floor($3/10)*1.0)/base)))\
  with labels font ',8' textcolor '#FFFFAA' title ''
