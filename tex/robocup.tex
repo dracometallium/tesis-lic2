@@ -41,7 +41,7 @@ ambiente y robots, hasta robots humanoides con visión local:
 		y son agentes independientes. Al igual que la liga pequeña, se
 		mueven sobre ruedas y tienen un ``pie'' para patear la pelota.
 
-	\item[Plataforma estándar:] Esta liga introduce modelo de robot
+	\item[Plataforma estándar:] Esta liga introduce un modelo de robot
 		estándar sobre el cual todos los equipos deben ejecutar su
 		software. En la actualidad se utiliza el robot \emph{NAO} de
 		\emph{SoftBank Robotics}, un robot humanoide. La visión es
@@ -53,10 +53,10 @@ ambiente y robots, hasta robots humanoides con visión local:
 
 \end{description}
 
-Dado a la simplicidad del sistema de visión global de la \emph{SSL} y la
-necesidad de que este sistema responda en tiempos acotados, consideramos que es
-útil para introducir a los alumnos a los temas de visión por computadora y
-aplicaciones paralelas.
+Debido a la simplicidad del sistema de visión global de la \emph{SSL} y la
+necesidad de que este sistema responda en tiempos acotados, consideramos que el
+sistema resulta útil para introducir a los alumnos a los temas de visión por
+computadora y aplicaciones paralelas.
 
 Un partido de la \emph{SSL} enfrenta a dos equipos de seis robots, que deben
 tener un tamaño menor que un cilindro de 9$cm$ de radio y 15$cm$ de alto
@@ -68,7 +68,7 @@ de ruedas omnidireccionales.
 Cada equipo cuenta con una computadora fuera del campo de juego, a la cual se
 delega la toma de decisiones y planeamiento del movimiento de los robots. Por
 su parte la capacidad de procesamiento de los robots se limita a aquella
-necesaria para ejecutar las ordenes de movimiento de la computadora de su
+necesaria para ejecutar las órdenes de movimiento de la computadora de su
 equipo. Estas computadoras perciben el ambiente a través de un sistema de
 visión global centralizado compartido. Se utiliza un conjunto de cámaras,
 montadas sobre distintas áreas del campo de juego y conectadas a una
@@ -134,17 +134,13 @@ Los parámetros de calidad de este tipo de sistema son, normalmente:
 
 \end{itemize}
 
-Originalmente el tamaño de la cancha era de 4,9$m\times$3,4$m$, lo que
-permitía que todo el campo de juego fuera observado con una sola cámara. Luego
-se optó por dos tipos de canchas en los partidos de la \emph{SSL}: las canchas
-de tamaño simple, con un tamaño de 6,05$m\times$4,05$m$ para las cuales se
-utilizan dos cámaras, una sobre cada media cancha, y las de tamaño doble, con
-un tamaño de 8,09$m\times$6,05$m$, que utilizan cuatro cámaras, una por cada
-mitad de cada media cancha. Desde el año 2015, las canchas de tamaño doble son
-las utilizadas de forma predeterminada \cite{sslrules2015}. Con este cambio se
-espera permitir la exploración de nuevas tácticas por parte de los equipos, ya
-que una mayor área de juego permite a los robots movimientos de mayor amplitud
-y variedad. En la figura \ref{cancha} se muestran los tamaños de las canchas y
+Originalmente el tamaño de la cancha era de 4,9$m\times$3,4$m$, lo que permitía
+que todo el campo de juego fuera observado con una sola cámara. Luego se optó
+por dos tipos de canchas en los partidos de la \emph{SSL}: las canchas de tamaño
+simple, con un tamaño de 6,05$m\times$4,05$m$ para las cuales se utilizan dos
+cámaras, una sobre cada media cancha, y las de tamaño doble, con un tamaño de
+8,09$m\times$6,05$m$, que utilizan cuatro cámaras, una por cada mitad de cada
+media cancha. En la figura \ref{cancha} se muestran los tamaños de las canchas y
 la distribución de las cámaras.
 
 \begin{figure}[h]
@@ -170,6 +166,11 @@ la distribución de las cámaras.
 	\label{cancha}
 
 \end{figure}
+
+Desde el año 2015, las canchas de tamaño doble son las utilizadas de forma
+predeterminada \cite{sslrules2015}. Con este cambio se espera permitir la
+exploración de nuevas tácticas por parte de los equipos, ya que una mayor área
+de juego permite a los robots movimientos de mayor amplitud y variedad.
 
 Sin embargo, como consecuencia, en las canchas de tamaño doble, el sistema de
 visión debe procesar cuatro veces más información que en las canchas

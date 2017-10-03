@@ -45,13 +45,14 @@ principales:
 En la implementación de la solución específica para el fútbol de robots de la
 \emph{SSL}, se crean dos hilos de procesamiento de cuadros, uno para la búsqueda
 de los robots y el otro para la búsqueda de la pelota. Las primeras etapas de
-procesamiento son iguales en ambos. Los primeros plugins son los de conversión
-de color, segmentación de color y morfología. El hilo de procesamiento que busca
-la pelota continúa con el plugin de búsqueda de pelota, mientras que aquél
-encargado de la búsqueda de robots continúa con los plugins de detección de
-regiones principales y detección de regiones secundarias. Ambos terminan con el
-plugin de difusión. En la figura \ref{pilasPlugins} se muestran ambas pilas y
-los plugins que las componen.
+procesamiento son iguales en ambos. Los primeros plugins son los de
+\emph{conversión de color}, \emph{segmentación de color} y \emph{morfología}. El
+hilo de procesamiento que busca la pelota continúa con el plugin de
+\emph{búsqueda de pelota}, mientras que aquél encargado de la búsqueda de robots
+continúa con los plugins de \emph{detección de regiones principales} y
+\emph{detección de regiones secundarias}. Ambos terminan con el plugin de
+\emph{difusión}. En la figura \ref{pilasPlugins} se muestran ambas pilas y los
+plugins que las componen.
 
 \begin{figure}[h]
 
@@ -89,10 +90,9 @@ visión por computadora que implementan:
 \end{description}
 
 El tiempo de generación de cuadros es fijo (o a demanda), mientras que el de
-procesamiento es variable, pudiendo variar entre mayor que el tiempo de
-generación o menor a este. Por ello, cuando se genera un nuevo cuadro, éste se
-coloca en un buffer. Si la capacidad de procesamiento es insuficiente, y no
-hay más espacio en el buffer para almacenar un nuevo cuadro, se descarta el
-cuadro más viejo. Esta estrategia da mayor prioridad a la información más
-actual.
+procesamiento es variable, pudiendo ser mayor o menor que el tiempo de
+generación. Por ello, cuando se genera un nuevo cuadro, éste se coloca en un
+buffer. Si la capacidad de procesamiento es insuficiente, y no hay más espacio
+en el buffer para almacenar un nuevo cuadro, se descarta el cuadro más viejo.
+Esta estrategia da mayor prioridad a la información más actual.
 

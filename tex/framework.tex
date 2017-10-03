@@ -1,31 +1,33 @@
 % vim: set spell spelllang=es syntax=tex :
 
-En este capitulo comenzaremos analizando las estrategias de paralelización
+En este capítulo comenzaremos analizando las estrategias de paralelización
 disponibles y justificaremos la selección de una de ellas. Esto nos permitirá
 establecer las distintas tareas que ejecutara el framework y como se dividirán
-los datos. Finalmente, una ves establecida la estructura del sistema, se
-trataran los detalles de la implementación.
+los datos. Finalmente, una vez establecida la estructura del sistema, se
+tratarán los detalles de la implementación.
 
 \label{descripcionSistema}
 
 \section{Discusión de las estrategias de paralelización}
 
-Para aumentar el throughput del sistema se pueden aplicar cuatro enfoques distintos:
+Para aumentar el throughput del sistema se pueden aplicar uno o más de los
+siguientes cuatro enfoques:
 
 \begin{itemize}
 
 	\item	Dado que en un vídeo ya decodificado el procesamiento de cada
 		cuadro es independiente del procesamiento de los demás, y dada
-		la disponibilidad de recursos de computo, se pueden procesar
+		la disponibilidad de recursos de cómputo, se pueden procesar
 		múltiples cuadros al mismo tiempo sin que esto genere
 		diferencias en la información obtenida (salvo por el orden).
 		Esto permitiría aumentar la cantidad de cuadros por segundo
 		obtenidos, aunque el tiempo de procesamiento de cada uno se
 		mantenga igual.
 
-	\item	Para realizar la búsqueda de los objetos, el cuadro puede ser
-		dividido. Esto permitirá realizar la búsqueda en cada zona en
-		paralelo. Para el correcto funcionamiento, las zonas deberán
+	\item	Cada cuadro puede ser dividido en regiones o zonas. Esto
+		permitirá realizar la búsqueda de objetos en cada zona, en
+		paralelo.
+		Para el correcto funcionamiento, las zonas deberán
 		tener partes en común cuyos tamaños dependerán del tamaño de los
 		objetos (en este caso, los robots), ya que no debe suceder que
 		un objeto no aparezca completo en ninguna de las zonas. Esta
@@ -55,12 +57,12 @@ que permitan aplicar alguno de los enfoques, se puede limitar el paralelismo ya
 sea no dividiendo el cuadro o procesando soló uno por vez.
 
 Si bien el tercer enfoque también permitiría agregar o modificar los plugins
-fácilmente, en las pruebas que se realizaron se comprobó que realizar las
-búsquedas por cada tipo de objeto en paralelo sobre cada fragmento tenia un
-efecto adverso. Por este motivo, el tercer enfoque no fue aplicado sobre el
-producto final, y no sera incluido en las explicaciones siguientes. Los detalles
-de los resultados que llevaron a tomar esta decisión serán explayados más
-adelante en la sección de resultados.
+fácilmente, en las pruebas efectuadas se comprobó que realizar las búsquedas por
+cada tipo de objeto en paralelo sobre cada fragmento tenía un efecto adverso.
+Por este motivo, el tercer enfoque no fue aplicado sobre el producto final, y no
+será incluido en las explicaciones siguientes. Los detalles de los resultados
+que llevaron a tomar esta decisión serán explayados más adelante en la sección
+de resultados.
 
 \section{Tareas del sistema}
 
@@ -312,9 +314,9 @@ Las clases del framework básico son las siguientes:
 		razón de la delegación de la destrucción se debe a que la
 		destrucción un objeto es lenta (y aun mayor en el caso de los
 		cuadros del sistema final), y el control de acceso al buffer se
-		realiza a través del uso de de secciones criticas, por lo que es
+		realiza a través del uso de de secciones críticas, por lo que es
 		importante reducir el tiempo que cada hilo pasa dentro de la
-		sección critica, para no impedirle el acceso a otros hilos que
+		sección crítica, para no impedirle el acceso a otros hilos que
 		pueden estar esperando entrar a ellas.
 
 	\item[Input:] Se trata de una clase que funciona como definición de la
@@ -463,7 +465,7 @@ unificada que utiliza el sistema final.
 
 	\centering
 
-	\includegraphics[height=0.25\textheight]{img/pilasUnificadas.pdf}
+	\includegraphics[height=0.45\textheight]{img/pilasUnificadas.pdf}
 
 	\caption{Pila de búsqueda unificada utilizada por el sistema final.}
 

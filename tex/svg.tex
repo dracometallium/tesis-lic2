@@ -16,7 +16,11 @@ uso educativo.
 		procesamiento están fuertemente acoplados, formando parte del
 		mismo hilo de ejecución. Esto impide hacer uso de este sistema
 		con el fin de incorporar la temática de procesamiento paralelo
-		en el procesamiento de imágenes.
+		en el procesamiento de imágenes. Ademas limita su escalabilidad,
+		ya que sin importar el sistema en el cual sea utilizado, nunca
+		utilizara más de dos unidades de procesamiento (una para el hilo
+		de ejecución de interfaz de usuario y otra para el hilo de
+		ejecución para la captura y procesamiento).
 
 	\item 	En segundo lugar, para aumentar la eficiencia del sistema, los
 		plugins están altamente optimizados, aumentando la complejidad
