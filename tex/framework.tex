@@ -33,8 +33,8 @@ siguientes cuatro enfoques:
 		un objeto no aparezca completo en ninguna de las zonas. Esta
 		estrategia busca reducir el tiempo de procesamiento por cuadro
 		mediante el uso de múltiples unidades de procesamiento abocadas
-		al mismo cuadro. Además esta estrategia podría sacar provecho de
-		una mayor localidad espacial.
+		al mismo cuadro. Además, esta estrategia podría sacar provecho
+		de una mayor localidad espacial.
 
 	\item	Ya que la búsqueda de cada tipo de objetos es independiente de
 		la búsqueda de los demás tipos, se pueden realizar múltiples
@@ -79,24 +79,24 @@ Según su funcionalidad, las tareas son clasificadas en cuatro tipos:
 
 	\item[Generación de cuadros:] Es la tarea encargada de la generación o
 		captura de los cuadros y colocarlos en la cola de cuadros a
-		procesar. Esta es una tarea estática, y sólo hay una en el
+		procesar. Ésta es una tarea estática, y sólo hay una en el
 		sistema.
 
 	\item[Generación de tareas de fragmentación de cuadro:] Esta tarea crea
 		una tarea de fragmentación de cuadro para cada cuadro en la
 		cola. Soló toma un cuadro de la cola si hay hilos de ejecución
-		para tareas de búsqueda libres. Esta es una tarea estática, y
+		para tareas de búsqueda libres. Ésta es una tarea estática, y
 		soló hay una en el sistema.
 
 	\item[Fragmentación de cuadro:] Cada tarea de este tipo divide su cuadro
 		en una cantidad predefinida de fragmentos de igual (o similar)
 		tamaño. Luego, por cada fragmento, se crea una tarea de
-		procesamiento de fragmento. Estas son tareas de búsqueda, y
+		procesamiento de fragmento. Éstas son tareas de búsqueda, y
 		puede haber múltiples en el sistema.
 
 	\item[Procesamiento de fragmento:] Cada una de estas tareas toma su
 		fragmento asociado y lo procesa utilizando cada una de las pilas
-		de plugins. Estas son tareas de búsqueda, y puede haber
+		de plugins. Éstas son tareas de búsqueda, y puede haber
 		múltiples en el sistema.
 
 \end{description}
@@ -126,7 +126,7 @@ hilos de ejecución.
 La cantidad de hilos de ejecución del sistema es igual a la cantidad de hilos de
 búsqueda más los dos hilos para tareas estáticas (generación de cuadros y
 generación de tareas de fragmentación de cuadro). Por esto la cantidad de
-unidades de procesamiento aprovechables esta principalmente determinado por la
+unidades de procesamiento aprovechables está principalmente determinado por la
 cantidad de hilos de búsqueda.
 
 \begin{figure}[h]
@@ -192,7 +192,7 @@ El tiempo de procesamiento de un fragmento depende no soló de su área, sino qu
 es influido por los elementos encontrados por los plugins, por lo cual
 fragmentos de igual tamaño pueden tener tiempos de procesamiento muy distintos.
 Sin embargo, dado que no poseemos más información antes del procesamiento,
-consideramos que esta es la mejor heurística con la que contamos. Aquellos que
+consideramos que ésta es la mejor heurística con la que contamos. Aquellos que
 se encuentren en los bordes inferior y derecho pueden que sean más chicos.
 
 En la figura \ref{fragmentos} se muestran como se divide un cuadro de 800x600
@@ -301,16 +301,16 @@ Las clases del framework básico son las siguientes:
 		sistema de visión global para el fútbol de robots, los cuadros
 		son subclase de la clase \emph{Item}.
 
-	\item[RingBuffer:] Este es el buffer donde se guardan los ítems
+	\item[RingBuffer:] Éste es el buffer donde se guardan los ítems
 		generados mientras esperan ser procesados. El buffer guarda sólo
 		punteros a objetos de la clase \emph{Item} y no tiene mecanismos
 		de control que permitan acceder la estructura desde múltiples
 		hilos al mismo tiempo de forma segura. Cuando se solicita un
 		ítem, se devuelve el puntero al más antiguo o \textbf{NULL} en
-		caso de que la estructura este vacía. Cuando se intenta agregar
-		un nuevo ítem pero la estructura esta llena, se coloca este en
+		caso de que la estructura esté vacía. Cuando se intenta agregar
+		un nuevo ítem pero la estructura está llena, se coloca éste en
 		el espacio del ítem más viejo en la estructura y se retorna el
-		puntero de este al llamador, delegándole su destrucción. La
+		puntero de éste al llamador, delegándole su destrucción. La
 		razón de la delegación de la destrucción se debe a que la
 		destrucción un objeto es lenta (y aun mayor en el caso de los
 		cuadros del sistema final), y el control de acceso al buffer se
@@ -332,7 +332,7 @@ Las clases del framework básico son las siguientes:
 	\item[ItemSlicer:] Es la clase que define la interfaz de las clases
 		encargadas de dividir los ítems. Se definen tres métodos. El
 		primero es \emph{slice} que recibe como parámetro un ítem y la
-		cantidad de partes en la que este debe ser dividido y retorna un
+		cantidad de partes en la que éste debe ser dividido y retorna un
 		arreglo de ítems. Algunos plugins pueden agregar información a
 		los fragmentos de los ítems, con el fin de ser utilizada por
 		plugins posteriores dentro de la misma pila, es por esto que
@@ -347,16 +347,16 @@ Las clases del framework básico son las siguientes:
 		Soló se define el método \emph{process} que tiene como único
 		parámetro un puntero a un objeto de la clase \emph{Item}.
 
-	\item[PluginStack:] Esta es la clase que tomara el ítem y se encarga de
+	\item[PluginStack:] Ésta es la clase que tomara el ítem y se encarga de
 		entregarlo a cada uno de los plugins. Tiene soló dos métodos,
 		\emph{addPlugin}, para agregar un plugin, y \emph{process} que
 		tiene como parámetro un ítem, para procesarlo.
 
-	\item[ItemSwitch:] Esta es la clase encargada de implementar la tarea de
+	\item[ItemSwitch:] Ésta es la clase encargada de implementar la tarea de
 		generación de tareas de fragmentación de cuadro. Para no crear
 		más tareas de las que puede procesar el sistema, soló se toma un
 		cuadro de la cola de cuadros a procesar si hay hilos de búsqueda
-		libres (o lo que es lo mismo, la cola de tareas esta vacía).
+		libres (o lo que es lo mismo, la cola de tareas está vacía).
 		Cada tarea de fragmentación de cuadro divide el ítem utilizando
 		\emph{ItemSlicer} y crea una nueva tarea de procesamiento de
 		cuadros por cada fragmento.
@@ -402,7 +402,7 @@ cuales fueron tomadas y modificadas del sistema de visión presentado en
 		los cuadros (para evitar los retardos de la lectura de disco y
 		decodificación), y que tiene dos modos de controlar la
 		frecuencia de la generación de los cuadros. Se puede adelantar
-		la creación de cuadros si la cola de cuadros a procesar esta
+		la creación de cuadros si la cola de cuadros a procesar está
 		vacía, o fijar la frecuencia de su creación a un valor
 		especifico. Esta clase es útil para comprobar la capacidad
 		máxima del sistema, ya que permite simular una cámara con la

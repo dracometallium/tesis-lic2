@@ -84,7 +84,7 @@ representativas de ejecuciones más largas.
 
 \label{plataformaExperimental}
 
-El equipo de pruebas cuenta un procesador Intel Xeon E5-2630. Este es un
+El equipo de pruebas cuenta un procesador Intel Xeon E5-2630. Éste es un
 procesador de 6 núcleos con multithreading simultáneo de dos vías, una
 frecuencia básica de CPU de 2,30GHz y 2,8GHz en modo turbo, 15MiB de memoria
 caché L3, 256KiB de caché L2, 32Kib de caché L1 para datos, y 32 KiB de caché L1
@@ -110,12 +110,12 @@ distintas pilas de plugins en tareas separadas. En la segunda implementación el
 framework fue modificado para que una sola tarea ejecutarán todas las pilas de
 plugins sobre un mismo fragmento. Para la tercera implementación se trabajo
 sobre el mismo framework que la segunda, pero se unieron las pilas de búsquedas
-de robots y la de búsqueda de pelota. Para comprobar cual de estas era la más
-efectiva se realizaron las pruebas con cada una de estas para la configuración
+de robots y la de búsqueda de pelota. Para comprobar cual de éstas era la más
+efectiva se realizaron las pruebas con cada una de éstas para la configuración
 de 11 hilos de búsqueda y 10 fragmentos con el vídeo de 800x600 píxeles de
 resolución. La primera implementación proceso 70 \emph{FPS}, la segunda 152
 \emph{FPS} y la tercera 192 \emph{FPS}. Como esta última fue la que produjo
-resultados más satisfactorios, sera sobre los resultados de esta que
+resultados más satisfactorios, sera sobre los resultados de ésta que
 trabajaremos a continuación.
 
 El sistema posee 6 núcleos con multithreading simultaneo de dos vías, por lo
@@ -230,7 +230,7 @@ Se ejecutó el programa procesando cuadros de un vídeo de 1280x720 píxeles de
 resolución, y se midieron los fallos de caché en configuraciones de 1, 2, 3, 4,
 6 y 12 fragmentos y cantidad de hilos búsqueda de 1 a 11. Para obtener los
 fallos de caché de nivel 3 (es decir, cuando es necesario acceder a datos en la
-memoria RAM) se utilizó la herramienta \emph{perf}. Esta es una aplicación que
+memoria RAM) se utilizó la herramienta \emph{perf}. Ésta es una aplicación que
 permite acceder a los contadores de hardware del procesador que proveen datos
 muy precisos con un overhead despreciable.
 
@@ -352,7 +352,7 @@ experimental. Existen dos posibles causas para la reducción del crecimiento del
 \emph{speedup}. La primera es que con seis hilos de búsqueda se logre suficiente
 paralelismo a nivel de instrucción, alcanzando un alto uso de las unidades
 funcionales de cada núcleo. La segunda posible causa del decremento del
-crecimiento del \emph{speedup} es que la aplicación este limitada por memoria,
+crecimiento del \emph{speedup} es que la aplicación esté limitada por memoria,
 provocando que el acceso a los datos sea cuello de botella, reduciendo el
 rendimiento cuando se utilizan más de seis núcleos.
 

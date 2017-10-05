@@ -8,7 +8,7 @@
 definición de paralelismo de alto nivel para sistemas de memoria compartida en
 \emph{C}, \emph{C++} y \emph{Fortran} \cite{ompWeb}. Es una API abierta,
 publicada y definida por el consorcio \emph{OpenMP Architecture Review Board}
-(o \emph{OpenMP ARB}). El consorcio esta compuesto por representantes de las
+(o \emph{OpenMP ARB}). El consorcio está compuesto por representantes de las
 industrias del hardware y software, sus miembros permanentes son \emph{AMD},
 \emph{ARM}, \emph{CRAY}, \emph{Fujitsu}, \emph{HPE}, \emph{IBM}, \emph{Intel},
 \emph{Micron}, \emph{NEC}, \emph{NVIDIA}, \emph{Oracle}, \emph{Red Hat}, y
@@ -60,7 +60,7 @@ el de tareas. En este modelo cuando se encuentra una región de trabajo
 compartido, se crea un conjunto de $N$ hilos de ejecución, pero no se crean
 tareas para esos hilos inmediatamente. Durante le ejecución de la región de
 trabajo compartido, se crean tareas que son colocadas en una cola de ejecución.
-Si un hilo de ejecución del conjunto esta libré, se le asigna una tarea de la
+Si un hilo de ejecución del conjunto está libré, se le asigna una tarea de la
 cola de ejecución. Cuando un hilo termina de ejecutar una tarea, toma otra de la
 cola de tareas o espera. Soló se destruyen los hilos al terminar la ejecución de
 todas las tareas y se sale de la región de trabajo compartido.
@@ -77,7 +77,7 @@ de directivas al compilador, en esta sección mencionaremos aquellas utilizadas
 por el sistema propuesto. En \emph{C} y \emph{C++} todas las directivas toman la
 forma de \textbf{\#pragma omp DIRECTIVA [OPCIONES]}.
 
-La directiva más utilizada es \emph{parallel [num\_threads(N)]}, esta define una
+La directiva más utilizada es \emph{parallel [num\_threads(N)]}, ésta define una
 región de trabajo paralelo y crea $N-1$ hilos de ejecución (si no se incluye
 \emph{num\_threads(N)}, la cantidad de hilos se establece por medio de una
 variable global, y en caso de que esta no este definida, dependerá de la
@@ -85,7 +85,7 @@ implementación). Cada hilo ejecutará una tarea definida por el bloque inmediat
 a la directiva, implementando el modelo \emph{fork and join}.
 
 Si se desea que un bloque sea ejecutado soló por un hilo se pueden utilizar las
-directivas \emph{single} y \emph{master}. Estas aseguraran que el bloque
+directivas \emph{single} y \emph{master}. Éstas aseguraran que el bloque
 inmediato sea ejecutado soló por uno de los hilos del grupo. En el caso de la
 directiva \emph{single}, cualquiera de los hilos del grupo podrá ser elegido
 para ejecutar el bloque, mientras que en el caso de \emph{master}, soló el
@@ -95,7 +95,7 @@ Si se desea que cada hilo ejecute una tarea con código distinto se debe utiliza
 la directiva \emph{parallel sections num\_threads(N)}. El bloque inmediato debe
 contener a su vez bloques precedidos por la directiva \emph{section}. Al igual
 que \emph{parallel}, esta directiva define una región de trabajo paralelo de $N$
-hilos, pero el código de cada tarea esta definido por los bloques inmediatos a
+hilos, pero el código de cada tarea está definido por los bloques inmediatos a
 las directivas \emph{section}. En caso de que se creen más hilos que las tareas
 definidas, los hilos sobrantes no ejecutarán. El modelo implementado por esta
 directiva es \emph{fork and join}.
