@@ -29,7 +29,7 @@ GARBAGE=*.aux *.bbl *.blg *.log *.pdf *.toc *.lof img/*.tdat
 all: $(NAME).pdf
 
 $(NAME).pdf: $(PDF) $(TEX) $(BIB) $(INCTEX)
-	rm *.lof
+	rm -f *.lof
 	pdflatex $(TEX)
 	bibtex $(AUX)
 	pdflatex $(TEX)
