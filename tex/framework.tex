@@ -73,7 +73,7 @@ aquellas que permanecen en ejecución desde el inicio del programa hasta su
 finalización. Las tareas dinámicas son creadas para procesar un cuadro o
 fragmento específico y una vez que terminan de procesar el cuadro o fragmento
 finalizan. Como las tareas dinámicas son aquellas que realizan el procesamiento
-para la búsqueda de los objetos, a las llamamos ``tareas de búsqueda''.
+para la búsqueda de los objetos, las llamamos ``tareas de búsqueda''.
 
 Según su funcionalidad, las tareas son clasificadas en cuatro tipos:
 
@@ -195,7 +195,9 @@ es influido por los elementos encontrados por los plugins, por lo cual
 fragmentos de igual tamaño pueden tener tiempos de procesamiento muy distintos.
 Sin embargo, dado que no poseemos más información antes del procesamiento,
 consideramos que ésta es la mejor heurística con la que contamos. Aquellos que
-se encuentren en los bordes inferior y derecho pueden que sean más chicos.
+se encuentren en los bordes inferior y derecho pueden que sean más chicos, ya
+que las dimensiones del cuadro pueden no ser divisibles por el numero de
+columnas o filas en las cuales se dividirá.
 
 En la figura \ref{fragmentos} se muestran como se divide un cuadro de 800x600
 píxeles con un área compartida de 50 píxeles en 1, 2, 5 y 8 fragmentos. Cuando

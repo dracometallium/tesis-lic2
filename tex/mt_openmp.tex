@@ -102,9 +102,9 @@ directiva es \emph{fork and join}.
 
 Para la creación de una región de trabajo compartido bajo el modelo de tareas, se
 utiliza la directiva \emph{parallel num\_threads(N)} para crear los $N$ hilos de
-ejecución, seguida de la directiva \emph{master} para que soló el hilo principal
-ejecute la tarea que crea las primeras tareas de la región de trabajo
-compartido. Para la creación de cada tarea se debe utilizar la directiva
+ejecución, seguida de la directiva \emph{master} o \emph{single} para que soló
+el hilo principal ejecute la tarea que crea las primeras tareas de la región de
+trabajo compartido. Para la creación de cada tarea se debe utilizar la directiva
 \emph{task} seguida del bloque que contiene el código a ejecutar por la tarea.
 
 Si un hilo necesita esperar la finalización de las tareas que creó, antes de
