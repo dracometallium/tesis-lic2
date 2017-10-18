@@ -27,11 +27,11 @@ Como la obtención del retardo máximo depende del conocimiento previo de los
 busca la cantidad de \emph{FPS} soportados por el sistema para esa
 configuración. Para esto, el programa procesa tantos cuadros del vídeo como
 pueda en un cierto intervalo de tiempo. En la segunda parte se limita la
-cantidad de cuadros por segundo (según el valor de \emph{FPS} encontrado en la
-primera parte del experimento) y se registra el tiempo de espera máximo. Dado
-que se trata de un sistema de tiempo real, es importante determinar las cotas
-inferiores del rendimiento. Por esto, se repitió cada experimento 10 veces,
-registrando sólo el peor valor obtenido para cada variable en cada
+cantidad de cuadros por segundo (según el valor máximo de \emph{FPS} encontrado
+en la primera parte del experimento) y se registra el tiempo de espera máximo.
+Dado que se trata de un sistema de tiempo real, es importante determinar las
+cotas inferiores del rendimiento. Por esto, se repitió cada experimento 10
+veces, registrando sólo el peor valor obtenido para cada variable en cada
 configuración.
 
 Dada la gran cantidad de experimentos, se buscó el tiempo mínimo de ejecución
@@ -88,8 +88,8 @@ El equipo de pruebas cuenta un procesador Intel Xeon E5-2630. Éste es un
 procesador de 6 núcleos con multithreading simultáneo de dos vías, una
 frecuencia básica de CPU de 2,30GHz y 2,8GHz en modo turbo, 15MiB de memoria
 caché L3, 256KiB de caché L2, 32Kib de caché L1 para datos, y 32 KiB de caché L1
-para instrucciones. El equipo posee además con 16GiB de memoria RAM. La
-jerarquía de memoria se muestra en la figura \ref{topoMemoria}.
+para instrucciones. El equipo posee además 16GiB de memoria RAM. La jerarquía de
+memoria se muestra en la figura \ref{topoMemoria}.
 
 \begin{figure}[h]
 
@@ -132,10 +132,10 @@ El número de hilos de búsqueda indica la cantidad de hilos que ejecutan las
 tareas de búsqueda. Adicionalmente el sistema ejecuta dos hilos más para las
 tareas estáticas, uno para la generación de cuadros y otro para la tarea de
 generación de tareas de búsqueda. En el caso de del vídeo de 800x600 píxeles se
-llego a un máximo de 194 \emph{FPS} cuando se divide el cuadro en 15 fragmentos
+llego a un máximo de 196 \emph{FPS} cuando se divide el cuadro en 12 fragmentos
 y se utilizan 5 hilos de búsqueda, mientras que para el vídeo de 1280x720
 píxeles se alcanzo un máximo de 130 \emph{FPS} cuando se divide el cuadro en 24
-fragmentos y se utilizan 11 hilos de búsqueda.
+fragmentos y se utilizan 10 hilos de búsqueda.
 
 \begin{figure}[h]
 
