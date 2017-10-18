@@ -215,18 +215,17 @@ menor cantidad de hilos búsqueda pero una mayor cantidad de fragmentos. La
 memoria caché se comparte entre los cuadros que están siendo procesados en
 paralelo. Cuanto más cuadros se procesen en paralelo, mayor será la competencia
 por la memoria caché. La cantidad de cuadros que se procesan en paralelo está en
-relación con el número de fragmentos y la cantidad de hilos de búsqueda para.
-Considerando que la cantidad de hilos de búsqueda es mayor
-que la cantidad de fragmentos, si se disminuye la cantidad de fragmentos,
-manteniendo la cantidad de hilos de búsqueda, se
-incrementa la cantidad de cuadros a procesar en paralelo. Esto tiene como efecto
-que los cuadros compitan por la caché y reduce las posibilidades de que los
-fragmentos entren completamente en las cachés de nivel más bajo. Por esto se
-propuso la hipótesis de que el retardo se produce debido a un aumento en los
-fallos de caché.
+relación con el número de fragmentos y la cantidad de hilos de búsqueda.
+Considerando que la cantidad de hilos de búsqueda es mayor que la cantidad de
+fragmentos, si se disminuye la cantidad de fragmentos, manteniendo la cantidad
+de hilos de búsqueda, se incrementa la cantidad de cuadros a procesar en
+paralelo. Esto tiene como efecto que los cuadros compitan por la caché y reduce
+las posibilidades de que los fragmentos entren completamente en las cachés de
+nivel más bajo. Por esto se propuso la hipótesis de que el retardo se produce
+debido a un aumento en los fallos de caché.
 
 Para comprobar que la hipótesis es correcta se diseñó el siguiente experimento.
-Se ejecutó el programa procesando cuadros de un vídeo de 1280x720 píxeles de
+Se ejecutó el programa procesando cuadros del vídeo de 1280x720 píxeles de
 resolución, y se midieron los fallos de caché en configuraciones de 1, 2, 3, 4,
 6 y 12 fragmentos y cantidad de hilos búsqueda de 1 a 11. Para obtener los
 fallos de caché de nivel 3 (es decir, cuando es necesario acceder a datos en la
@@ -281,11 +280,11 @@ mínimo. Dependiendo de si se desea minimizar el tiempo de espera de los cuadros
 maximizar la cantidad de cuadros procesados, o encontrar un balance especifico,
 se deberá elegir una cantidad de fragmentos y hilos de búsqueda apropiada. Por
 ejemplo, en el caso del vídeo de 1280x720 píxeles de resolución, dividir la
-imagen en 24 fragmentos y utilizar 11 hilos de búsqueda permite procesar 130
+imagen en 24 fragmentos y utilizar 10 hilos de búsqueda permite procesar 130
 cuadros por segundo en el equipo de prueba, sin embargo el tiempo de espera es
-de $0.11$ segundos. Si el cuadro se divide en 21 fragmentos y se utilizan 11
-hilos de búsqueda, la cantidad de cuadros por segundo procesados cae a 117, pero
-el tiempo de espera se reduce a $0.06$ segundos. Las figuras \ref{800tFPS} y
+de $0.28$ segundos. Si el cuadro se divide en 24 fragmentos y se utilizan 12
+hilos de búsqueda, la cantidad de cuadros por segundo procesados cae a 128, pero
+el tiempo de espera se reduce a $0.09$ segundos. Las figuras \ref{800tFPS} y
 \ref{1280tFPS} sintetizan la relación entre los \emph{FPS} y el retardo de
 cuadros, mostrando el mínimo retardo de cuadros para los diferentes \emph{FPS}
 que puede alcanzar el sistema en cada vídeo.
@@ -343,8 +342,8 @@ de los 5 hilos de búsqueda.
 \end{figure}
 
 El \emph{speedup} del rendimiento (sobre los FPS) máximo alcanzado por el
-sistema para el vídeo de 800$\times$600 píxeles es de $3.9\times$, mientras que
-para el vídeo 1280$\times$720 es de $5.37\times$. Las curvas de \emph{speedup}
+sistema para el vídeo de 800$\times$600 píxeles es de $3.38\times$, mientras que
+para el vídeo 1280$\times$720 es de $5.00\times$. Las curvas de \emph{speedup}
 son mostradas en las figuras \ref{speedUp800} y \ref{speedUp1280}. Se puede
 observar que en ambos casos el crecimiento es pronunciado hasta 6 núcleos, lo
 cual corresponde con la cantidad de núcleos físicos de la plataforma
