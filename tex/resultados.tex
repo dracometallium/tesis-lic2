@@ -345,15 +345,17 @@ El \emph{speedup} del rendimiento (sobre los FPS) máximo alcanzado por el
 sistema para el vídeo de 800$\times$600 píxeles es de $3.38\times$, mientras que
 para el vídeo 1280$\times$720 es de $5.00\times$. Las curvas de \emph{speedup}
 son mostradas en las figuras \ref{speedUp800} y \ref{speedUp1280}. Se puede
-observar que en ambos casos el crecimiento es pronunciado hasta 6 núcleos, lo
-cual corresponde con la cantidad de núcleos físicos de la plataforma
-experimental. Existen dos posibles causas para la reducción del crecimiento del
-\emph{speedup}. La primera es que con seis hilos de búsqueda se logre suficiente
-paralelismo a nivel de instrucción, alcanzando un alto uso de las unidades
-funcionales de cada núcleo. La segunda posible causa del decremento del
-crecimiento del \emph{speedup} es que la aplicación esté limitada por memoria,
-provocando que el acceso a los datos sea cuello de botella, reduciendo el
-rendimiento cuando se utilizan más de seis núcleos.
+observar que en ambos casos el crecimiento es pronunciado hasta 5 hilos de
+búsqueda, los cuales sumados a los hilos de ejecución para tareas estáticas
+superan la cantidad de núcleos físicos de la plataforma experimental. Existen
+dos posibles causas para la reducción del crecimiento del \emph{speedup}. La
+primera es que con los cinco hilos de búsqueda más los dos hilos de ejecución
+para tareas estáticas se logre suficiente paralelismo a nivel de instrucción,
+alcanzando un alto uso de las unidades funcionales de cada núcleo. La segunda
+posible causa del decremento del crecimiento del \emph{speedup} es que la
+aplicación esté limitada por memoria, provocando que el acceso a los datos sea
+cuello de botella, reduciendo el rendimiento cuando se utilizan más de seis
+núcleos.
 
 \begin{figure}[h]
 

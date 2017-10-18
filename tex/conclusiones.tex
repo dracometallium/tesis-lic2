@@ -22,12 +22,12 @@ plugins para facilitar su modificación en un ambiente educativo. Se detallaron
 las tareas que ejecuta el sistema para implementar las estrategias de
 paralelización. Se estudió el comportamiento del sistema en términos de
 \emph{FPS} y de retardo en el procesamiento de los cuadros para diferentes
-configuraciones del sistema en distintas resoluciones de vídeo.
+configuraciones del sistema con vídeos de distintas resoluciones.
 
 En un servidor con un procesador Intel Xeon E5-2630 (6 núcleos y multithreading
 simultáneo) el software es capas de procesar un vídeo de 800x600 píxeles de
 resolución a una taza de 196 cuadros por segundo y un vídeo de 1280x720 píxeles
-resolución a una taza de 135 cuadros por segundo.
+resolución a una taza de 130 cuadros por segundo.
 
 Se pudo comprobar como un número primo de fragmentos afectaba de forma negativa
 el desempeño del sistema, y como un bajo número de estos obliga a los hilos a
@@ -50,11 +50,11 @@ modificaciones en el código. Seria deseable una interfaz gráfica que permita
 modificar estos datos interactivamente. Seria útil también mostrar gráficamente
 la detección de los objetos.
 
-La taza decrecimiento del \emph{speedup} se vio disminuida a partir de los seis
+La taza decrecimiento del \emph{speedup} se vio disminuida a partir de los cinco
 hilos de búsqueda, para analizar si la causa se debe a que los accesos a memoria
-crean un cuello de botella o si se se debe a que con seis hilos se alcanza un
-alto paralelismo a nivel de instrucción se podría analizar la cantidad de
-instrucciones por ciclo.
+crean un cuello de botella o si se se debe a que con cinco hilos de búsqueda se
+alcanza un alto paralelismo a nivel de instrucción se podría analizar la
+cantidad de instrucciones por ciclo.
 
 Como trabajo futuro se planea hacer una interfaz de usuario gráfica para
 configurar el sistema. Además, se cree conveniente implementar soluciones
