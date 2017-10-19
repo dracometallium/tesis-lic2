@@ -20,7 +20,7 @@
 	printf("Tarea 1\n");
 #pragma omp task
 	printf("Tarea 2\n");
-#pragma omp tast wait
+#pragma omp task wait
 #pragma omp task
 	printf("Tarea 3\n");
 }
