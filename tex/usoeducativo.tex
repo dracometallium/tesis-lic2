@@ -5,22 +5,12 @@
 \label{usoEducativo}
 
 El sistema puede ser utilizado como herramienta educativa en varios niveles, y
-en materias de visión por computadora como materias de sistemas paralelos.
+tanto en materias de visión por computadora como en materias de sistemas
+paralelos.
 
-El uso más sencillo que se le puede dar al sistema es simplemente como sistema
-de visión global para torneos de fútbol de robots. Dado que ya existe el sistema
-utilizado por la \emph{SSL} (llamado \emph{SSL-Vision}), el nuevo sistema sólo
-sera útil cuando se necesite un balance especifico de \emph{FPS} y retardo de
-procesamiento.
-
-En una materia de sistemas paralelos podría utilizarse el sistema para que los
-alumnos experimenten como el varia el rendimiento bajo distintas cantidades de
-hilos de búsquedas y particiones en diferente hardware, introduciéndose de esta
-manera en las ventajas y limitaciones de los sistemas paralelos. Para este fin
-se podrían utilizar las preguntas presentadas a continuación. Algunos valores
-deberán ajustadas dependiendo de la plataforma experimental con la que cuenten
-los alumnos, en estos ejemplos se considerara que cuentan con la misma
-plataforma experimental que de este trabajo.
+En una materia de sistemas paralelos el sistema puede cumplir varios objetivos.
+Una vez introducidos los conceptos de \emph{speedup} y eficiencia el sistema
+puede ser utilizado para que los alumnos puedan practicar su calculo.
 
 \begin{enumerate}
 
@@ -31,6 +21,31 @@ plataforma experimental que de este trabajo.
 
 	\item{¿Cuantos cuadros por segundo se logran procesar si se utilizan 1 y
 		2 hilos de búsqueda?}
+
+	\item{Calcule el \emph{speedup} y la \emph{eficiencia} cuando se
+		utilizan 2 hilos de búsqueda.}
+
+\end{enumerate}}
+
+\end{enumerate}
+
+Con el fin de reforzar el concepto de eficiencia linea y no lineal, se puede
+solicitar a los alumnos que realicen una predicción sobre el comportamiento del
+sistema utilizando la información obtenida en los puntos anteriores. Luego de
+contrastar las predicciones con los resultados reales el alumno podrían intentar
+encontrar explicaciones posibles para la reducción del \emph{speedup} utilizando
+sus conocimientos de arquitectura de computadoras. En las siguientes preguntas
+algunos valores deberán ajustadas dependiendo de la plataforma experimental con
+la que cuenten los alumnos, en estos ejemplos se considerara que cuentan con la
+misma plataforma experimental que de este trabajo.
+
+\begin{enumerate}
+
+	\item{[...]
+
+\begin{enumerate}
+
+	\setcounter{enumii}{2}
 
 	\item{¿Cuantos cuadros por segundo estima que se procesaran
 		aproximadamente si se utilizan 3, 4 y 16 hilos de búsqueda?}
@@ -50,6 +65,24 @@ plataforma experimental que de este trabajo.
 
 \end{enumerate}}
 
+\end{enumerate}
+
+Como se pudo verificar en este trabajo, la fragmentación de los datos tiene un
+impacto crucial en la eficiencia de los programas paralelos. Para que los
+alumnos experimenten con este concepto el sistema desarrollado es ideal, ya que
+permite experimentar con distintas cantidad de hilos y cantidad de fragmentos.
+Para que los alumnos puedan fortalecer este concepto proponemos como practica
+que los estudiantes ejecuten el programa dividiendo el cuadro en 16, 17 y 18, y
+luego busquen otras cantidades de divisiones donde se produzca una caída de los
+\emph{FPS} con respecto a las cantidades de fragmentos inmediatas. Con esto se
+espera que los alumnos puedan concluir que las cantidades de divisiones cuyos
+valores son primos son perjudiciales y de esta manera incorporar la idea de que
+la distribución de los datos es importante.
+
+\begin{enumerate}
+	
+	\setcounter{enumi}{1}
+
 	\item{Si se utilizan 4 hilos de búsqueda y se dividen los cuadros en 16,
 		17 y 18 partes para procesar el vídeo de 800x600 píxeles:
 
@@ -62,6 +95,21 @@ plataforma experimental que de este trabajo.
 		rendimiento tanto si se utiliza un hilo menos o un hilo más?}
 
 \end{enumerate}}
+
+
+\end{enumerate}
+
+Una vez que los alumnos tienen incorporados los conceptos de \emph{speedup},
+eficiencia, y la importancia de la distribución de los datos, proponemos que
+experimenten con distintas configuraciones de ejecución con el fin de que el
+sistema cumpla con requerimientos específicos de tiempo de procesamiento y
+\emph{FPS}. Con ésto se espera que los estudiantes incorporen la noción de que
+distintas aplicaciones pueden tener distintos requerimientos específicos que
+deben ser tenidos en cuenta al momento de configurar una aplicación.
+
+\begin{enumerate}
+
+	\setcounter{enumi}{2}
 
 	\item{Utilizando el sistema para procesar el vídeo de 800x600 píxeles:
 
@@ -82,6 +130,8 @@ plataforma experimental que de este trabajo.
 \end{enumerate}}
 
 \end{enumerate}
+
+%WIP
 
 Los plugins del sistema pueden ser modificados tanto en materias de visión por
 computadora como en las de sistemas paralelos, pero con enfoques distintos. En
