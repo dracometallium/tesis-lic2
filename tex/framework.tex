@@ -56,7 +56,7 @@ ya que cada plugin que se agregue o modifique deberá ser optimizado. El primer 
 segundo enfoque permiten agregar y modificar los plugins sin mayores
 dificultades, y en el caso en el cual un plugin no cumpla con las condiciones
 que permitan aplicar alguno de los enfoques, se puede limitar el paralelismo ya
-sea no dividiendo el cuadro o procesando soló uno por vez.
+sea no dividiendo el cuadro o procesando sólo uno por vez.
 
 Si bien el tercer enfoque también permitiría agregar o modificar los plugins
 fácilmente, en las pruebas efectuadas se comprobó que realizar las búsquedas por
@@ -86,9 +86,9 @@ Según su funcionalidad, las tareas son clasificadas en cuatro tipos:
 
 	\item[Generación de tareas de fragmentación de cuadro:] Esta tarea crea
 		una tarea de fragmentación de cuadro para cada cuadro en la
-		cola. Soló toma un cuadro de la cola si hay hilos de ejecución
+		cola. Sólo toma un cuadro de la cola si hay hilos de ejecución
 		para tareas de búsqueda libres. Ésta es una tarea estática, y
-		soló hay una en el sistema.
+		sólo hay una en el sistema.
 
 	\item[Fragmentación de cuadro:] Cada tarea de este tipo divide su cuadro
 		en una cantidad predefinida de fragmentos de igual (o similar)
@@ -190,7 +190,7 @@ por su simplicidad, se opto por trabajar con un teselado con rectángulos. En el
 caso de estos, para minimizar su perímetro y maximizar su área, se debe procurar
 que la relación entre su ancho y altura sea lo más cercana a uno. También, para
 balancear la carga uniformemente, todos los fragmentos serán de igual tamaño.
-El tiempo de procesamiento de un fragmento depende no soló de su área, sino que
+El tiempo de procesamiento de un fragmento depende no sólo de su área, sino que
 es influido por los elementos encontrados por los plugins, por lo cual
 fragmentos de igual tamaño pueden tener tiempos de procesamiento muy distintos.
 Sin embargo, dado que no poseemos más información antes del procesamiento,
@@ -348,17 +348,17 @@ Las clases del framework básico son las siguientes:
 
 	\item[Plugin:] Esta clase define una interfaz para los plugins que
 		realizaran las distintas partes del procesamiento de la imagen.
-		Soló se define el método \emph{process} que tiene como único
+		Sólo se define el método \emph{process} que tiene como único
 		parámetro un puntero a un objeto de la clase \emph{Item}.
 
 	\item[PluginStack:] Ésta es la clase que tomara el ítem y se encarga de
-		entregarlo a cada uno de los plugins. Tiene soló dos métodos,
+		entregarlo a cada uno de los plugins. Tiene sólo dos métodos,
 		\emph{addPlugin}, para agregar un plugin, y \emph{process} que
 		tiene como parámetro un ítem, para procesarlo.
 
 	\item[ItemSwitch:] Ésta es la clase encargada de implementar la tarea de
 		generación de tareas de fragmentación de cuadro. Para no crear
-		más tareas de las que puede procesar el sistema, soló se toma un
+		más tareas de las que puede procesar el sistema, sólo se toma un
 		cuadro de la cola de cuadros a procesar si hay hilos de búsqueda
 		libres (o lo que es lo mismo, la cola de tareas está vacía).
 		Cada tarea de fragmentación de cuadro divide el ítem utilizando
