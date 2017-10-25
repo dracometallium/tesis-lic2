@@ -1,5 +1,7 @@
 NAME=tesis
 TEX=$(NAME).tex
+PRESENTACION=presentacion.tex
+PRESENTACION_PDF=$(PRESENTACION:.tex=.pdf)
 PROPUESTA=propuesta.tex
 BIB=biblio.bib
 AUX=$(TEX:.tex=.aux)
@@ -28,7 +30,9 @@ PDF=$(FIGURAS_PDF) $(DATOS_PDF) $(DATOS_PDF_P2) $(PRIMOS_PDF) $(CACHE_PDF)\
     $(CODIGO_PDF) $(BEST_PDF) $(SPEEDUP_PDF) $(LOGOS_PDF)
 GARBAGE=*.aux *.bbl *.blg *.log *.pdf *.toc *.lof img/*.tdat
 
-all: $(NAME).pdf
+all: tesis presentacion
+
+tesis: $(NAME.pdf)
 
 $(NAME).pdf: $(PDF) $(TEX) $(BIB) $(INCTEX)
 	rm -f *.lof
@@ -42,6 +46,14 @@ propuesta:
 	bibtex $(PROPUESTA:.tex=.aux)
 	pdflatex $(PROPUESTA)
 	pdflatex $(PROPUESTA)
+
+presentacion: $(PRESENTACION_PDF)
+
+$(PRESENTACION_PDF): $(PDF) $(PRESENTACION) $(BIB) $(INCTEX)
+	pdflatex $(PRESENTACION)
+	#bibtex $(PRESENTACION:.tex=.aux)
+	pdflatex $(PRESENTACION)
+	pdflatex $(PRESENTACION)
 
 $(FIGURAS_PDF): %.pdf : %.svg
 	inkscape $^ -z -A $@
