@@ -24,13 +24,13 @@ El sistema procesa cuadros de vídeo y reporta la posición y orientación de lo
 robots y la posición de la pelota en cada uno de ellos. En este trabajo se
 presenta un nuevo sistema de visión global por computadora alternativo al
 utilizado actualmente por la \emph{RoboCup} para la \emph{SSL}, que puede ser
-utilizado como herramienta educativa en una asignatura de visión por Computadora
-y permite explorar distintas estrategias de paralelización. Se tomo como base el
-trabajo realizado en \cite{torres2014} y se le aplicaron conjuntamente dos
-estrategias de paralelización. Una de ellas explota el paralelismo dentro de
-cada cuadro, dividiendo los cuadros en fragmentos que son procesados de forma
-independiente. La otra estrategia se basa en el procesamiento simultáneo de
-diferentes cuadros del vídeo.
+utilizado como herramienta educativa en asignaturas de visión por Computadora y
+sistemas paralelos, y permite explorar distintas estrategias de paralelización.
+Se tomo como base el trabajo realizado en \cite{torres2014} y se le aplicaron
+conjuntamente dos estrategias de paralelización. Una de ellas explota el
+paralelismo dentro de cada cuadro, dividiendo los cuadros en fragmentos que son
+procesados de forma independiente. La otra estrategia se basa en el
+procesamiento simultáneo de diferentes cuadros del vídeo.
 
 Se realizó una implementación en OpenMP para C++, basada en plugins para
 facilitar su modificación en un ambiente educativo. En un servidor con un
