@@ -24,6 +24,17 @@
 
 \beamertemplatenavigationsymbolsempty
 
+\setbeamertemplate{background canvas}{
+	\raisebox{-0.99\paperheight}[0pt][0pt]{
+	\makebox[\paperwidth]{
+		\null
+		\hspace{0.9\paperwidth}
+		\hspace{-2em}
+		\includegraphics[width=0.1\paperwidth]{logos/uncoma.pdf}
+		}
+	}
+}
+
 \begin{document}
 
 \begin{frame}
@@ -36,22 +47,13 @@ Autores:
 \begin{itemize}
 
 	\item Rodrigo Cañibano (rcanibano@fi.uncoma.edu.ar)
-	
+
 	\item Javier Balladini (javier.balladini@fi.uncoma.edu.ar)
 
 	\item Eduardo Grosclaude (eduardo.grosclaude@fi.uncoma.edu.ar)
 
 \end{itemize}
-
-\mbox{
 	
-	\null\hspace{-0.1\paperwidth}
-	\includegraphics[width=0.1\paperwidth]{logos/fai.pdf}
-	\hspace{0.8\paperwidth}
-	\includegraphics[width=0.1\paperwidth]{logos/uncoma.pdf}
-	
-}
-
 \end{frame}
 
 \begin{frame}
@@ -136,7 +138,7 @@ Pero:
 
 	\item Para la \emph{RoboCup} el \emph{SVG} es un problema ya
 		solucionado: \emph{SSL-VISION}
-	
+
 	\item \emph{SSL-VISION} plugins muy avanzados para su uso como
 		herramienta educativa.
 
@@ -174,7 +176,7 @@ Desarrollar un \emph{SVG} paralelo para fútbol de robots con fines educativos:
 \begin{itemize}
 
 	\item Paralelismo dentro del cuadro.
-		
+
 \begin{itemize}
 
 	\item Procesar distintas partes del cuadro en paralelo.
@@ -200,7 +202,7 @@ Desarrollar un \emph{SVG} paralelo para fútbol de robots con fines educativos:
 \begin{figure}[h]
 
 	\centering
-	
+
 	\includegraphics[width=0.45\textwidth]{img/areaTooSmall.pdf}~
 	\includegraphics[width=0.45\textwidth]{img/areaPerfect.pdf}
 
@@ -327,7 +329,7 @@ Variables:
 
 
 \begin{itemize}
-	
+
 	\item Se puede experimentar con distintas estrategias de división.
 
 	\item Tanto en cantidad de partes.
@@ -336,7 +338,7 @@ Variables:
 
 	\item El modificar y agregar plugins. Posiblemente adaptándolo a otro
 		dominio.
-	
+
 \end{itemize}
 
 \end{frame}
@@ -358,7 +360,7 @@ Variables:
 Trabajos futuros:
 
 \begin{itemize}
-	
+
 	\item Agregar una interfaz gráfica que permita visualizar los resultados
 		de los plugins.
 
