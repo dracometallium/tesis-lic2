@@ -4,6 +4,7 @@ PROPUESTA=propuesta.tex
 BIB=biblio.bib
 AUX=$(TEX:.tex=.aux)
 INCTEX:=$(wildcard tex/*.tex)
+LOGOS:=$(wildcard logos/*.svg)
 FIGURAS:=$(wildcard img/*.svg)
 RES:=$(wildcard img/*.res)
 BRES=$(RES:.res=.bres)
@@ -20,10 +21,11 @@ tFPS_PDF=$(DATOS:.dat=_tFPS.pdf)
 DATOS_PDF_P2=$(turnArround_PDF) $(tFPS_PDF)
 BEST_PDF=$(DATOS:.dat=_bestfps.pdf)
 SPEEDUP_PDF=$(DATOS:.dat=_speedup.pdf)
+LOGOS_PDF=$(LOGOS:.svg=.pdf)
 FIGURAS_PDF=$(FIGURAS:.svg=.pdf)
 CODIGO_PDF=$(CODIGO:.cpp=.pdf)
 PDF=$(FIGURAS_PDF) $(DATOS_PDF) $(DATOS_PDF_P2) $(PRIMOS_PDF) $(CACHE_PDF)\
-    $(CODIGO_PDF) $(BEST_PDF) $(SPEEDUP_PDF)
+    $(CODIGO_PDF) $(BEST_PDF) $(SPEEDUP_PDF) $(LOGOS_PDF)
 GARBAGE=*.aux *.bbl *.blg *.log *.pdf *.toc *.lof img/*.tdat
 
 all: $(NAME).pdf
@@ -42,6 +44,9 @@ propuesta:
 	pdflatex $(PROPUESTA)
 
 $(FIGURAS_PDF): %.pdf : %.svg
+	inkscape $^ -z -A $@
+
+$(LOGOS_PDF): %.pdf : %.svg
 	inkscape $^ -z -A $@
 
 $(turnArround_PDF): %_turnArround.pdf : %_fps.pdf
