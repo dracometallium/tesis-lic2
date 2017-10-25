@@ -28,7 +28,7 @@ FIGURAS_PDF=$(FIGURAS:.svg=.pdf)
 CODIGO_PDF=$(CODIGO:.cpp=.pdf)
 PDF=$(FIGURAS_PDF) $(DATOS_PDF) $(DATOS_PDF_P2) $(PRIMOS_PDF) $(CACHE_PDF)\
     $(CODIGO_PDF) $(BEST_PDF) $(SPEEDUP_PDF) $(LOGOS_PDF)
-GARBAGE=*.aux *.bbl *.blg *.log *.pdf *.toc *.lof img/*.tdat
+GARBAGE=*.aux *.bbl *.blg *.log *.pdf *.toc *.lof img/*.tdat *.nav
 
 all: tesis presentacion
 
@@ -42,6 +42,7 @@ $(NAME).pdf: $(PDF) $(TEX) $(BIB) $(INCTEX)
 	pdflatex $(TEX)
 
 propuesta:
+	rm -f *.lof
 	pdflatex $(PROPUESTA)
 	bibtex $(PROPUESTA:.tex=.aux)
 	pdflatex $(PROPUESTA)
@@ -50,6 +51,7 @@ propuesta:
 presentacion: $(PRESENTACION_PDF)
 
 $(PRESENTACION_PDF): $(PDF) $(PRESENTACION) $(BIB) $(INCTEX)
+	rm -f *.lof
 	pdflatex $(PRESENTACION)
 	#bibtex $(PRESENTACION:.tex=.aux)
 	pdflatex $(PRESENTACION)
