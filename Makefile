@@ -32,7 +32,7 @@ GARBAGE=*.aux *.bbl *.blg *.log *.pdf *.toc *.lof img/*.tdat *.nav
 
 all: tesis presentacion
 
-tesis: $(NAME.pdf)
+tesis: $(NAME).pdf
 
 $(NAME).pdf: $(PDF) $(TEX) $(BIB) $(INCTEX)
 	rm -f *.lof
@@ -50,7 +50,7 @@ propuesta:
 
 presentacion: $(PRESENTACION_PDF)
 
-$(PRESENTACION_PDF): $(PDF) $(PRESENTACION) $(BIB) $(INCTEX)
+$(PRESENTACION_PDF): $(PDF) $(PRESENTACION) $(BIB)
 	rm -f *.lof
 	pdflatex $(PRESENTACION)
 	#bibtex $(PRESENTACION:.tex=.aux)
