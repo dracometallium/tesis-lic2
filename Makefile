@@ -28,7 +28,7 @@ FIGURAS_PDF=$(FIGURAS:.svg=.pdf)
 CODIGO_PDF=$(CODIGO:.cpp=.pdf)
 PDF=$(FIGURAS_PDF) $(DATOS_PDF) $(DATOS_PDF_P2) $(PRIMOS_PDF) $(CACHE_PDF)\
     $(CODIGO_PDF) $(BEST_PDF) $(SPEEDUP_PDF) $(LOGOS_PDF)
-GARBAGE=*.aux *.bbl *.blg *.log *.pdf *.toc *.lof img/*.tdat *.nav
+GARBAGE=*.aux *.bbl *.blg *.log *.pdf *.toc *.lof img/*.tdat *.nav *.out *.snm
 
 all: tesis presentacion
 
