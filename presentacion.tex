@@ -227,6 +227,8 @@ Desarrollar un \emph{SVG} paralelo para fútbol de robots con fines educativos:
 
 \frametitle{Consideraciones para la fragmentación del cuadro}
 
+\framesubtitle{Área compartida}
+
 \begin{figure}[h]
 
 	\centering
@@ -241,6 +243,8 @@ Desarrollar un \emph{SVG} paralelo para fútbol de robots con fines educativos:
 \begin{frame}
 
 \frametitle{Consideraciones para la fragmentación del cuadro}
+
+\framesubtitle{Minimización del área total}
 
 \begin{figure}[h]
 
@@ -258,15 +262,33 @@ Desarrollar un \emph{SVG} paralelo para fútbol de robots con fines educativos:
 
 \frametitle{Arquitectura del sistema}
 
+\framesubtitle{Tareas del sistema}
+
 \begin{itemize}
 
 	\item Cada tarea estática tiene un hilo de ejecución.
 
-	\item Existe un pool de hilos de ejecución para las tareas dinámicas.
+	\item Existe un pool de hilos de ejecución para las tareas de búsqueda.
 
 \end{itemize}
 
 \includegraphics[width=\textwidth]{img/hilos.pdf}
+
+\end{frame}
+
+\begin{frame}
+
+\frametitle{Arquitectura del sistema}
+
+\framesubtitle{Flujo de los datos}
+
+\begin{figure}[h]
+
+	\centering
+
+	\includegraphics[height=0.95\textheight]{img/framework.pdf}
+
+\end{figure}
 
 \end{frame}
 
@@ -329,6 +351,14 @@ Variables:
 
 \begin{frame}
 
+\frametitle{Resultados: \emph{FPS} vídeo 1280x720px}
+
+\includegraphics[width=\textwidth]{img/1280x720_fps.pdf}
+
+\end{frame}
+
+\begin{frame}
+
 \frametitle{Resultados: Fallos de cache por cuadro}
 
 \includegraphics[width=\textwidth]{img/cache_fallos.pdf}
@@ -337,9 +367,21 @@ Variables:
 
 \begin{frame}
 
-\frametitle{Resultados: Escalabilidad \emph{FPS}}
+\frametitle{Resultados}
+
+\framesubtitle{FPS máximos}
 
 \includegraphics[width=\textwidth]{img/1280x720_bestfps.pdf}
+
+\end{frame}
+
+\begin{frame}
+
+\frametitle{Resultados}
+
+\framesubtitle{Speedup}
+
+\includegraphics[width=\textwidth]{img/1280x720_speedup.pdf}
 
 \end{frame}
 
@@ -403,7 +445,8 @@ Variables:
 	\item Se desarrollo un sistema de visión global para fútbol de robots
 		que puede ser utilizado como herramienta educativa.
 
-	\item Se analizaron los comportamientos bajo distintas configuraciones.
+	\item Se analizaron los comportamientos bajo distintas configuraciones,
+		y se comprobó su desempeño.
 
 \end{itemize}
 
