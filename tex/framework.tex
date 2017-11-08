@@ -2,7 +2,7 @@
 
 En este capítulo comenzaremos analizando las estrategias de paralelización
 disponibles y justificaremos la selección de una de ellas. Esto nos permitirá
-establecer las distintas tareas que ejecutara el framework y como se dividirán
+establecer las distintas tareas que ejecutará el framework y cómo se dividirán
 los datos. Finalmente, una vez establecida la estructura del sistema, se
 tratarán los detalles de la implementación.
 
@@ -122,7 +122,7 @@ de ejecución (del conjunto) está libre, toma una nueva tarea de búsqueda para
 ejecutar. Como estos hilos de ejecución son los que ejecutan las tareas de
 búsqueda, nos referiremos a ellos como ``hilos de búsqueda''. En la figura
 \ref{tareasFramework} se muestran un diagrama de las tareas del framework, y en
-la figura \ref{hilosFramework} se muestra como las tareas son asignadas a los
+la figura \ref{hilosFramework} se muestra cómo las tareas son asignadas a los
 hilos de ejecución.
 
 La cantidad de hilos de ejecución del sistema es igual a la cantidad de hilos de
@@ -144,10 +144,10 @@ cantidad de hilos de búsqueda.
 \section{Fragmentación del conjunto de datos}
 
 Para poder realizar el procesamiento paralelo, el conjunto de datos debe ser
-fragmentado, en el caso del framework propuesto la división se realizara en
+fragmentado; en el caso del framework propuesto la división se realizará en
 dos niveles. Dado que el conjunto de datos es un vídeo, la primera
 fragmentación consta de la separación en cuadros. Como cada cuadro es una
-captura del ambiente completo en un instante de tiempo especifico distinto al de
+captura del ambiente completo en un instante de tiempo específico distinto al de
 los demás cuadros, se pueden procesar de forma independiente. La segunda
 fragmentación de los datos se realiza dentro de cada cuadro. Ya que fragmentos
 de un mismo cuadro contienen información distinta del ambiente sobre el mismo
@@ -186,17 +186,18 @@ tiene un ancho fijo (el diámetro de un robot), para encontrar el área comparti
 mínima se debe minimizar el perímetro del fragmento.
 
 Por la manera que las imágenes se representan comúnmente en una computadora y
-por su simplicidad, se opto por trabajar con un teselado con rectángulos. En el
-caso de estos, para minimizar su perímetro y maximizar su área, se debe procurar
-que la relación entre su ancho y altura sea lo más cercana a uno. También, para
-balancear la carga uniformemente, todos los fragmentos serán de igual tamaño.
+por su simplicidad, se optó por trabajar con un teselado con rectángulos. En el
+caso de éstos, para minimizar su perímetro y maximizar su área, se debe procurar
+que la relación entre su ancho y altura sea lo más cercana posible a uno.
+También, para balancear la carga uniformemente, todos los fragmentos serán de
+igual tamaño.
 El tiempo de procesamiento de un fragmento depende no sólo de su área, sino que
 es influido por los elementos encontrados por los plugins, por lo cual
 fragmentos de igual tamaño pueden tener tiempos de procesamiento muy distintos.
 Sin embargo, dado que no poseemos más información antes del procesamiento,
 consideramos que ésta es la mejor heurística con la que contamos. Aquellos que
 se encuentren en los bordes inferior y derecho pueden que sean más chicos, ya
-que las dimensiones del cuadro pueden no ser divisibles por el numero de
+que las dimensiones del cuadro pueden no ser divisibles por el número de
 columnas o filas en las cuales se dividirá.
 
 En la figura \ref{fragmentos} se muestran como se divide un cuadro de 800x600
@@ -222,10 +223,10 @@ tipo de división produce fragmentos con perímetros mayores, produciendo grande
 
 \label{implementacionFramework}
 
-Como primera etapa se implemento un famework base que simula el procesamiento de
+Como primera etapa se implementó un framework base que simula el procesamiento de
 ítems prototipo vacíos y establece las clases base a ser extendidas. Esto
 permite explicar el flujo de la información así como la estructura base del
-sistema sin preocuparse por la implementación especifica para el sistema de
+sistema sin preocuparse por la implementación específica para el sistema de
 visión global para el fútbol de robots.
 
 El framework fue implementado en \emph{C++} con \emph{OpenMP} y está basado en
@@ -240,32 +241,32 @@ sistema paralelo.
 
 En la figura \ref{codigo} se muestra el fragmento de código (en pseudocódigo)
 que ejecuta y crea las tareas principales del framework. En la función principal
-(\emph{main}, linea 1 a 19) se crean las tareas de generación de cuadros (lineas
-6 y 7) y generación de tareas de fragmentación de cuadros (lineas 8 a 10)
+(\emph{main}, linea 1 a 19) se crean las tareas de generación de cuadros (líneas
+6 y 7) y generación de tareas de fragmentación de cuadros (líneas 8 a 10)
 utilizando el modelo de \emph{fork and join}. El control de la finalización del
 programa se realiza a través de una variable compartida \emph{continuar}.
 
 La tarea de generación de tareas de fragmentación de cuadros se implementa en la
-función \emph{generaciónDeTareasDeFragmentaciónDeCuadros} (lineas 23 a 58). La
+función \emph{generaciónDeTareasDeFragmentaciónDeCuadros} (líneas 23 a 58). La
 función comienza estableciendo una región de trabajo compartido bajo el modelo
-de tareas, se crean $N+1$ hilos de ejecución (linea 25), $N$ hilos para las
+de tareas. Se crean $N+1$ hilos de ejecución (linea 25), $N$ hilos para las
 tareas de búsqueda y uno adicional para la tarea de generación de tarea de
 fragmentación de cuadros. La tarea de generación de tareas de fragmentación de
 cuadros implementa una espera ocupada sobre la cola de cuadros a procesar. La
 finalización de la tarea es controlada por la variable \emph{continuar}.
 
 Cuando hay hilos de búsqueda libres y cuadros en la cola de cuadros, se toma un
-cuadro de la cola de cuadros (lineas 29 a 32), y se crea una tarea de
-fragmentación de cuadro con una copia privada del puntero al cuadro (lineas 33 a
+cuadro de la cola de cuadros (líneas 29 a 32), y se crea una tarea de
+fragmentación de cuadro con una copia privada del puntero al cuadro (líneas 33 a
 36).
 
-Cada tarea de fragmentación de cuadro (lineas 37 a 53), comienza fragmentando el
-cuadro. Por cada fragmento crea una tarea de procesamiento de fragmento (lineas
+Cada tarea de fragmentación de cuadro (líneas 37 a 53), comienza fragmentando el
+cuadro. Por cada fragmento crea una tarea de procesamiento de fragmento (líneas
 40 a 43). Cuando la tarea de fragmentación de cuadro finaliza, libera al hilo de
 ejecución.
 
-Cada tarea de procesamiento de fragmento (lineas 44 a 52) procesa el fragmento
-con cada pila (lineas 45 a 48). Cuando se termina de procesar el fragmento con
+Cada tarea de procesamiento de fragmento (líneas 44 a 52) procesa el fragmento
+con cada pila (líneas 45 a 48). Cuando se termina de procesar el fragmento con
 todas las pilas se borra el fragmento (linea 49) y se libera el hilo de
 ejecución.
 
@@ -417,11 +418,11 @@ cuales fueron tomadas y modificadas del sistema de visión presentado en
 
 	\item[FrameSlicer:] Subclase de \emph{ItemSlicer}. Cada cuadro es
 		dividido en rectángulos del mismo tamaño (excepto por los
-		cuadros en los bordes inferiores y derechos, que pueden ser
-		más pequeños). Cada sub cuadro incluye un área solapada con
+		cuadros en los bordes inferiores y derechos, que posiblemente
+		sean más pequeños). Cada sub cuadro incluye un área solapada con
 		los cuadros adyacentes para asegurar que todos los objetos
-		(robots y pelota) se encuentren completamente en por lo menos
-		un sub cuadro.
+		(robots y pelota) se encuentren completamente en por lo menos un
+		sub cuadro.
 
 	\item[Subclases de \emph{Plugin}:] \emph{PluginBlur},
 		\emph{PluginColorConversions}, \emph{PluginColorSegmentation},
@@ -460,7 +461,7 @@ morfología), mientras que los plugins propios de cada pila (para la búsqueda d
 la pelota: plugin de búsqueda de pelota. Para la búsqueda de los robots: plugins
 de detección de regiones principales y detección de regiones secundarias) no
 modifican el cuadro, permitiendo unir ambas pilas en una sola y realizar el pre
-procesamiento una vez por cuadro. El plugin de difusión se ejecutara dos veces,
+procesamiento una vez por cuadro. El plugin de difusión se ejecutará dos veces,
 una para enviar los datos de la pelota y otra para enviar los datos de los
 robots. En la figura \ref{pilasUnificadas} se muestra la pila de búsqueda
 unificada que utiliza el sistema final.
