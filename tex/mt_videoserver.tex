@@ -52,7 +52,9 @@ hilo de procesamiento que busca la pelota continúa con el plugin de
 continúa con los plugins de \emph{detección de regiones principales} y
 \emph{detección de regiones secundarias}. Ambos terminan con el plugin de
 \emph{difusión}. En la figura \ref{pilasPlugins} se muestran ambas pilas y los
-plugins que las componen.
+plugins que las componen. Como ambas pilas ejecutan los primeros tres plugins
+sobre el mismo cuadro, se plantea la posibilidad de ejecutarlos una sola vez por
+cuadro.
 
 \begin{figure}[h]
 

@@ -52,11 +52,12 @@ siguientes cuatro enfoques:
 \end{itemize}
 
 Lamentablemente este último enfoque dificulta su uso como herramienta didáctica,
-ya que cada plugin que se agregue o modifique deberá ser optimizado. El primer y
-segundo enfoque permiten agregar y modificar los plugins sin mayores
-dificultades, y en el caso en el cual un plugin no cumpla con las condiciones
-que permitan aplicar alguno de los enfoques, se puede limitar el paralelismo ya
-sea no dividiendo el cuadro o procesando sólo uno por vez.
+ya que cada plugin que se agregue o modifique deberá ser optimizado, y la
+optimización puede tener impacto negativo en la legibilidad y portabilidad del
+código. El primer y segundo enfoque permiten agregar y modificar los plugins sin
+mayores dificultades, y en el caso en el cual un plugin no cumpla con las
+condiciones que permitan aplicar alguno de los enfoques, se puede limitar el
+paralelismo ya sea no dividiendo el cuadro o procesando sólo uno por vez.
 
 Si bien el tercer enfoque también permitiría agregar o modificar los plugins
 fácilmente, en las pruebas efectuadas se comprobó que realizar las búsquedas por
@@ -151,7 +152,7 @@ captura del ambiente completo en un instante de tiempo específico distinto al d
 los demás cuadros, se pueden procesar de forma independiente. La segunda
 fragmentación de los datos se realiza dentro de cada cuadro. Ya que fragmentos
 de un mismo cuadro contienen información distinta del ambiente sobre el mismo
-instante, los fragmentos son dependientes entre si. Es por eso que se deben
+instante, los fragmentos son dependientes entre sí. Es por eso que se deben
 tener consideraciones especiales para la división del cuadro.
 
 Si el cuadro se divide en partes sin zonas solapadas puede suceder que los
@@ -191,13 +192,14 @@ caso de éstos, para minimizar su perímetro y maximizar su área, se debe procu
 que la relación entre su ancho y altura sea lo más cercana posible a uno.
 También, para balancear la carga uniformemente, todos los fragmentos serán de
 igual tamaño.
+
 El tiempo de procesamiento de un fragmento depende no sólo de su área, sino que
 es influido por los elementos encontrados por los plugins, por lo cual
 fragmentos de igual tamaño pueden tener tiempos de procesamiento muy distintos.
 Sin embargo, dado que no poseemos más información antes del procesamiento,
 consideramos que ésta es la mejor heurística con la que contamos. Aquellos que
-se encuentren en los bordes inferior y derecho pueden que sean más chicos, ya
-que las dimensiones del cuadro pueden no ser divisibles por el número de
+se encuentren en los bordes inferior y derecho posiblemente serán más pequeños,
+ya que las dimensiones del cuadro pueden no ser divisibles por el número de
 columnas o filas en las cuales se dividirá.
 
 En la figura \ref{fragmentos} se muestran como se divide un cuadro de 800x600
@@ -231,17 +233,17 @@ visión global para el fútbol de robots.
 
 El framework fue implementado en \emph{C++} con \emph{OpenMP} y está basado en
 plugins para facilitar su modificación en un ambiente educativo. La elección del
-lenguaje se debe principalmente a su eficiencia y paradigma. Dado que el sistema
-debe procesar los cuadros en tiempos acotados, la eficiencia es crucial,
-mientras que el paradigma orientado a objetos permite establecer fácilmente la
-interfaz de los plugins. El uso de \emph{OpenMP} permite la creación y control
-de hilos de ejecución y tareas de forma sencilla. Se utilizaron los plugins
-implementados en \cite{torres2014}, modificándolos para permitir su uso en un
-sistema paralelo.
+lenguaje se debe principalmente a su eficiencia e implementación del paradigma
+orientado a objetos. Dado que el sistema debe procesar los cuadros en tiempos
+acotados, la eficiencia es crucial, mientras que el paradigma orientado a
+objetos permite establecer fácilmente la interfaz de los plugins. El uso de
+\emph{OpenMP} permite la creación y control de hilos de ejecución y tareas de
+forma sencilla.  Se utilizaron los plugins implementados en \cite{torres2014},
+modificándolos para permitir su uso en un sistema paralelo.
 
 En la figura \ref{codigo} se muestra el fragmento de código (en pseudocódigo)
 que ejecuta y crea las tareas principales del framework. En la función principal
-(\emph{main}, linea 1 a 19) se crean las tareas de generación de cuadros (líneas
+(\emph{main}, línea 1 a 19) se crean las tareas de generación de cuadros (líneas
 6 y 7) y generación de tareas de fragmentación de cuadros (líneas 8 a 10)
 utilizando el modelo de \emph{fork and join}. El control de la finalización del
 programa se realiza a través de una variable compartida \emph{continuar}.
@@ -249,7 +251,7 @@ programa se realiza a través de una variable compartida \emph{continuar}.
 La tarea de generación de tareas de fragmentación de cuadros se implementa en la
 función \emph{generaciónDeTareasDeFragmentaciónDeCuadros} (líneas 23 a 58). La
 función comienza estableciendo una región de trabajo compartido bajo el modelo
-de tareas. Se crean $N+1$ hilos de ejecución (linea 25), $N$ hilos para las
+de tareas. Se crean $N+1$ hilos de ejecución (línea 25), $N$ hilos para las
 tareas de búsqueda y uno adicional para la tarea de generación de tarea de
 fragmentación de cuadros. La tarea de generación de tareas de fragmentación de
 cuadros implementa una espera ocupada sobre la cola de cuadros a procesar. La
@@ -267,7 +269,7 @@ ejecución.
 
 Cada tarea de procesamiento de fragmento (líneas 44 a 52) procesa el fragmento
 con cada pila (líneas 45 a 48). Cuando se termina de procesar el fragmento con
-todas las pilas se borra el fragmento (linea 49) y se libera el hilo de
+todas las pilas se borra el fragmento (línea 49) y se libera el hilo de
 ejecución.
 
 \begin{figure}[h]
@@ -302,7 +304,7 @@ Las clases del framework básico son las siguientes:
 \begin{description}
 
 	\item[Item:] Esta clase define un tipo prototipo de los ítems que serán
-		tratados por el sistema. En la implementación especifica para el
+		tratados por el sistema. En la implementación específica para el
 		sistema de visión global para el fútbol de robots, los cuadros
 		son subclase de la clase \emph{Item}.
 
@@ -327,7 +329,7 @@ Las clases del framework básico son las siguientes:
 	\item[Input:] Se trata de una clase que funciona como definición de la
 		interfaz de las clases que generan los ítems. Sus métodos
 		principales son \emph{run} y \emph{generate}. El método
-		\emph{generate} debe ser re implementado por las clases hijas
+		\emph{generate} debe ser reimplementado por las clases hijas
 		para generar el tipo de ítem especifico del sistema. El método
 		\emph{run} es el encargado de generar los ítems llamando a
 		\emph{generate} y colocarlos en el \emph{RingBuffer}. Este
@@ -348,12 +350,12 @@ Las clases del framework básico son las siguientes:
 		fragmento de ítem y lo elimina.
 
 	\item[Plugin:] Esta clase define una interfaz para los plugins que
-		realizaran las distintas partes del procesamiento de la imagen.
+		realizarán las distintas partes del procesamiento de la imagen.
 		Sólo se define el método \emph{process} que tiene como único
 		parámetro un puntero a un objeto de la clase \emph{Item}.
 
-	\item[PluginStack:] Ésta es la clase que tomara el ítem y se encarga de
-		entregarlo a cada uno de los plugins. Tiene sólo dos métodos,
+	\item[PluginStack:] Ésta es la clase que tomará el ítem y se encargará
+		de entregarlo a cada uno de los plugins. Tiene sólo dos métodos,
 		\emph{addPlugin}, para agregar un plugin, y \emph{process} que
 		tiene como parámetro un ítem, para procesarlo.
 
@@ -419,10 +421,10 @@ cuales fueron tomadas y modificadas del sistema de visión presentado en
 	\item[FrameSlicer:] Subclase de \emph{ItemSlicer}. Cada cuadro es
 		dividido en rectángulos del mismo tamaño (excepto por los
 		cuadros en los bordes inferiores y derechos, que posiblemente
-		sean más pequeños). Cada sub cuadro incluye un área solapada con
+		sean más pequeños). Cada subcuadro incluye un área solapada con
 		los cuadros adyacentes para asegurar que todos los objetos
 		(robots y pelota) se encuentren completamente en por lo menos un
-		sub cuadro.
+		subcuadro.
 
 	\item[Subclases de \emph{Plugin}:] \emph{PluginBlur},
 		\emph{PluginColorConversions}, \emph{PluginColorSegmentation},
@@ -455,15 +457,15 @@ fútbol de robots.
 
 Conceptualmente, la implementación para fútbol de robots tiene dos pilas, una
 para búsqueda de robots y la otra para búsqueda de la pelota. Sin embargo, para
-ambas pilas los primeros tres plugins realizan la misma tarea de pre
-procesamiento (plugins de conversión de color, segmentación de color y
+ambas pilas los primeros tres plugins realizan la misma tarea de
+preprocesamiento (plugins de conversión de color, segmentación de color y
 morfología), mientras que los plugins propios de cada pila (para la búsqueda de
 la pelota: plugin de búsqueda de pelota. Para la búsqueda de los robots: plugins
 de detección de regiones principales y detección de regiones secundarias) no
-modifican el cuadro, permitiendo unir ambas pilas en una sola y realizar el pre
-procesamiento una vez por cuadro. El plugin de difusión se ejecutará dos veces,
-una para enviar los datos de la pelota y otra para enviar los datos de los
-robots. En la figura \ref{pilasUnificadas} se muestra la pila de búsqueda
+modifican el cuadro, permitiendo unir ambas pilas en una sola y realizar el
+preprocesamiento una vez por cuadro. El plugin de difusión se ejecutará dos
+veces, una para enviar los datos de la pelota y otra para enviar los datos de
+los robots. En la figura \ref{pilasUnificadas} se muestra la pila de búsqueda
 unificada que utiliza el sistema final.
 
 \begin{figure}[h]

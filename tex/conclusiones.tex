@@ -25,17 +25,17 @@ paralelización. Se estudió el comportamiento del sistema en términos de
 configuraciones del sistema con vídeos de distintas resoluciones.
 
 En un servidor con un procesador Intel Xeon E5-2630 (6 núcleos y multithreading
-simultáneo) el software es capas de procesar un vídeo de 800x600 píxeles de
+simultáneo) el software es capaz de procesar un vídeo de 800x600 píxeles de
 resolución a una taza de 196 cuadros por segundo y un vídeo de 1280x720 píxeles
 resolución a una taza de 130 cuadros por segundo.
 
 Se pudo comprobar como un número primo de fragmentos afectaba de forma negativa
-el desempeño del sistema, y como un bajo número de estos obliga a los hilos a
+el desempeño del sistema, y cómo un bajo número de estos obliga a los hilos a
 competir por los recursos de caché.
 
 El framework final es adaptable a distintos dominios y su arquitectura basada en
 plugins permite modificarlos y agregar nuevos fácilmente. Finalmente,
-modificando las variables de cantidad de fragmentos e hilos de búsqueda el
+modificando las variables de cantidad de fragmentos e hilos de búsqueda, el
 sistema puede adaptarse a un amplio rango de configuraciones de hardware.
 
 \section{Trabajos futuros}
@@ -51,10 +51,10 @@ modificar estos datos interactivamente. Seria útil también mostrar gráficamen
 la detección de los objetos.
 
 La taza decrecimiento del \emph{speedup} se vio disminuida a partir de los cinco
-hilos de búsqueda, para analizar si la causa se debe a que los accesos a memoria
-crean un cuello de botella o si se se debe a que con cinco hilos de búsqueda se
-alcanza un alto paralelismo a nivel de instrucción se podría analizar la
-cantidad de instrucciones por ciclo.
+hilos de búsqueda. Posibles causas son que los accesos a memoria crean un cuello
+de botella, o que con cinco hilos de búsqueda se alcanza un alto paralelismo a
+nivel de instrucción. Para investigar estas alternativas podría analizarse la
+cantidad de instrucciones por ciclo en cada caso.
 
 Como trabajo futuro se planea hacer una interfaz de usuario gráfica para
 configurar el sistema. Además, se cree conveniente implementar soluciones

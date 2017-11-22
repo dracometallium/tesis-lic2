@@ -49,18 +49,18 @@ de los objetivos de tolerancia.
 La programación del framework propone un enfoque multi-hilo con el propósito de
 mejorar la escalabilidad en microprocesadores multi-core. Utiliza dos hilos de
 búsqueda de objetos: uno para encontrar la pelota y otro para encontrar los
-robots; un hilo de captura de cuadros de vídeo (desde un vídeo pre grabado o una
-captura desde una cámara), y finalmente uno para la interfaz de usuario. Su
-grado de paralelismo es mejor que el de \emph{SSL-Vision}; pero aún así, al
-organizar el cómputo en tan solo cuatro hilos en total, su diseño está acoplado
-a una arquitectura de, a lo sumo, cuatro núcleos. Por lo tanto, no resulta capaz
-de aprovechar plenamente las capacidades de plataformas de hardware con mayores
-recursos.
+robots; un hilo de captura de cuadros de vídeo (desde un vídeo grabado
+previamente o una captura desde una cámara), y finalmente uno para la interfaz
+de usuario. Su grado de paralelismo es mejor que el de \emph{SSL-Vision}; pero
+aún así, al organizar el cómputo en tan solo cuatro hilos en total, su diseño
+está acoplado a una arquitectura de, a lo sumo, cuatro núcleos. Por lo tanto, no
+resulta capaz de aprovechar plenamente las capacidades de plataformas de
+hardware con mayores recursos.
 
 Bajo las condiciones para las que fue diseñado este framework, el
 desaprovechamiento de los recursos de hardware no es un problema, ya que, sobre
 el hardware utilizado para las pruebas, el sistema puede procesar un vídeo de
-352$\times$228 píxeles a una tasa de 60 cuadros por segundo. Sin embargo, en las
+352$\times$228 píxeles a una taza de 60 cuadros por segundo. Sin embargo, en las
 competencias actuales se utilizan cuatro cámaras como origen de los datos de
 vídeo, en lugar de la cámara única para la cual el sistema fue pensado.
 

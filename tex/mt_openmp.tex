@@ -1,6 +1,6 @@
 % vim: set spell spelllang=es syntax=tex :
 
-\section{OpenMP: Open Multi-Procesing}
+\section{OpenMP: Open Multi-Processing}
 
 \label{mt_openmp}
 
@@ -25,7 +25,7 @@ modelo de \emph{fork and join}, pero a partir de la versión 3.0 se agregó el
 modelo de tareas explícitas \cite{openmp08}. Ambos modelos fueron utilizados
 para la implementación del sistema.
 
-El modelo de \emph{fok and join} fue propuesto por primera vez en
+El modelo de \emph{fork and join} fue propuesto por primera vez en
 \cite{conway1963}. En este modelo, la ejecución del programa está a cargo de un
 solo hilo al comienzo y durante sus secciones secuenciales. El hilo inicial es
 llamado hilo principal. Cuando se encuentra una región de trabajo compartido (o
@@ -58,9 +58,9 @@ encuentre otra región de trabajo compartido.
 El segundo modelo implementado en \emph{OpenMP} a partir de la versión 3.0 es
 el de tareas. En este modelo cuando se encuentra una región de trabajo
 compartido, se crea un conjunto de $N$ hilos de ejecución, pero no se crean
-tareas para esos hilos inmediatamente. Durante le ejecución de la región de
+tareas para esos hilos inmediatamente. Durante la ejecución de la región de
 trabajo compartido, se crean tareas que son colocadas en una cola de ejecución.
-Si un hilo de ejecución del conjunto está libré, se le asigna una tarea de la
+Si un hilo de ejecución del conjunto está libre, se le asigna una tarea de la
 cola de ejecución. Cuando un hilo termina de ejecutar una tarea, toma otra de la
 cola de tareas o espera. Sólo se destruyen los hilos al terminar la ejecución de
 todas las tareas y se sale de la región de trabajo compartido.
@@ -77,44 +77,58 @@ de directivas al compilador, en esta sección mencionaremos aquellas utilizadas
 por el sistema propuesto. En \emph{C} y \emph{C++} todas las directivas toman la
 forma de \textbf{\#pragma omp DIRECTIVA [OPCIONES]}.
 
-La directiva más utilizada es \emph{parallel [num\_threads(N)]}, ésta define una
-región de trabajo paralelo y crea $N-1$ hilos de ejecución (si no se incluye
-\emph{num\_threads(N)}, la cantidad de hilos se establece por medio de una
-variable global, y en caso de que esta no este definida, dependerá de la
-implementación). Cada hilo ejecutará una tarea definida por el bloque inmediato
-a la directiva, implementando el modelo \emph{fork and join}.
+\begin{itemize}
 
-Si se desea que un bloque sea ejecutado sólo por un hilo se pueden utilizar las
-directivas \emph{single} y \emph{master}. Éstas aseguraran que el bloque
-inmediato sea ejecutado sólo por uno de los hilos del grupo. En el caso de la
-directiva \emph{single}, cualquiera de los hilos del grupo podrá ser elegido
-para ejecutar el bloque, mientras que en el caso de \emph{master}, sólo el
-hilo principal del grupo lo ejecutarán.
+	\item	La directiva más utilizada es \emph{parallel [num\_threads(N)]},
+		ésta define una región de trabajo paralelo y crea $N-1$ hilos de
+		ejecución (si no se incluye \emph{num\_threads(N)}, la cantidad
+		de hilos se establece por medio de una variable global, y en
+		caso de que ésta no esté definida, dependerá de la
+		implementación). Cada hilo ejecutará una tarea definida por el
+		bloque inmediato a la directiva, implementando el modelo
+		\emph{fork and join}.
 
-Si se desea que cada hilo ejecute una tarea con código distinto se debe utilizar
-la directiva \emph{parallel sections num\_threads(N)}. El bloque inmediato debe
-contener a su vez bloques precedidos por la directiva \emph{section}. Al igual
-que \emph{parallel}, esta directiva define una región de trabajo paralelo de $N$
-hilos, pero el código de cada tarea está definido por los bloques inmediatos a
-las directivas \emph{section}. En caso de que se creen más hilos que las tareas
-definidas, los hilos sobrantes no ejecutarán. El modelo implementado por esta
-directiva es \emph{fork and join}.
+	\item	Si se desea que un bloque sea ejecutado sólo por un hilo se pueden
+		utilizar las directivas \emph{single} y \emph{master}. Éstas
+		asegurarán que el bloque inmediato sea ejecutado sólo por uno de
+		los hilos del grupo. En el caso de la directiva \emph{single},
+		cualquiera de los hilos del grupo podrá ser elegido para
+		ejecutar el bloque, mientras que en el caso de \emph{master},
+		sólo el hilo principal del grupo lo ejecutará.
 
-Para la creación de una región de trabajo compartido bajo el modelo de tareas, se
-utiliza la directiva \emph{parallel num\_threads(N)} para crear los $N$ hilos de
-ejecución, seguida de la directiva \emph{master} o \emph{single} para que sólo
-el hilo principal ejecute la tarea que crea las primeras tareas de la región de
-trabajo compartido. Para la creación de cada tarea se debe utilizar la directiva
-\emph{task} seguida del bloque que contiene el código a ejecutar por la tarea.
+	\item	Para la creación de una región de trabajo compartido bajo el
+		modelo de tareas, se utiliza la directiva \emph{parallel
+		num\_threads(N)} para crear los $N$ hilos de ejecución, seguida
+		de la directiva \emph{master} o \emph{single} para que sólo el
+		hilo principal ejecute la tarea que crea las primeras tareas de
+		la región de trabajo compartido. Para la creación de cada tarea
+		se debe utilizar la directiva \emph{task} seguida del bloque que
+		contiene el código a ejecutar por la tarea.
 
-Si un hilo necesita esperar la finalización de las tareas que creó, antes de
-continuar su ejecución, puede utilizar la directiva \emph{taskwait}.
+		Si un hilo necesita esperar la finalización de las tareas que
+		creó, antes de continuar su ejecución, puede utilizar la
+		directiva \emph{taskwait}.
 
-Para definir secciones críticas se pueden utilizar las directivas \emph{critical
-[NOMBRE]} y \emph{atomic}. La primera permite definir un bloque de complejidad
-arbitraria como sección crítica, e incluso permite definir bloques distintos
-como la misma sección crítica si comparten el mismo nombre. La segunda directiva
-sólo acepta bloques en los cuales se realiza una operación aritmética simple.
+	\item	Si se desea que cada hilo ejecute una tarea con código distinto se
+		debe utilizar la directiva \emph{parallel sections
+		num\_threads(N)}. El bloque inmediato debe contener a su vez
+		bloques precedidos por la directiva \emph{section}. Al igual que
+		\emph{parallel}, esta directiva define una región de trabajo
+		paralelo de $N$ hilos, pero el código de cada tarea está
+		definido por los bloques inmediatos a las directivas
+		\emph{section}. En caso de que se creen más hilos que las tareas
+		definidas, los hilos sobrantes no ejecutarán. El modelo
+		implementado por esta directiva es \emph{fork and join}.
+
+	\item	Para definir secciones críticas se pueden utilizar las directivas
+		\emph{critical [NOMBRE]} y \emph{atomic}. La primera permite
+		definir un bloque de complejidad arbitraria como sección
+		crítica, e incluso permite definir bloques distintos como la
+		misma sección crítica si comparten el mismo nombre. La segunda
+		directiva sólo acepta bloques en los cuales se realiza una
+		operación aritmética simple.
+
+\end{itemize}
 
 En la figura \ref{directivas} se muestra un código de ejemplo del uso de las
 directivas presentadas junto con un diagrama mostrando una posible secuencia
