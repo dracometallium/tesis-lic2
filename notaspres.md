@@ -43,13 +43,13 @@ sobre la cancha.
 Este diagrama resume la estructura física del sistema de visión global. La
 cámara captura un video de la cancha y envía los cuadros al sistema de visión
 global, este detecta la posición de los robots y pelota y envía esos datos a
-cada una de las computadoras de los equipos. Con esa información estas
+cada una de las computadoras de los equipos. Con esa información estás
 desarrollan estrategias y envían ordenes de movimiento a los robots de su
 equipo.
 
 ---
 
-Actualmente existen dos tamaños de cancha,  las canchas de tamaño simple son de
+Actualmente existen dos tamaños de cancha, las canchas de tamaño simple son de
 4m * 6m, y las de tamaño doble son de 6m * 8m. Para capturar toda la cancha, en
 las de tamaño simple se utilizan 2 cámaras, cada una sobre media cancha, y en
 las de tamaño grande se utilizan 4 cámaras, dos por cada media cancha.
@@ -63,3 +63,25 @@ de información que debe procesarse en cada cuadro, y es esperable que en el
 futuro las canchas sigan aumentando su tamaño.
 
 ---
+
+Como el problema es de tiempo real y en un ambiente real, pero controlado y con
+parámetros bien definidos, consideramos que es ideal para la introducción a la
+visión por computadora.
+
+Pero la RoboCup ya tiene su propio sistema de visión global llamado
+_SSL-VISION_. Este es un sistema basado en plugins que ejecuta utilizando solo
+dos hilos de ejecución, uno para la captura y procesamiento de los cuadros, y el
+otro para la interfaz de usuario.
+
+Para que el software pueda cumplir con los requerimientos de tiempos mínimos
+utilizando un solo hilo para la captura y procesamiento, los plugins tienen
+optimizaciones avanzadas que pueden dificultar su uso como herramienta
+educativa.
+
+Ademas, el software no es escalable, aunque el tamaño de las canchas siga
+aumentando.
+
+---
+
+Con esos problemas en mente nos propusimos como objetivo la creación de un nuevo
+sistema de visión global paralelo con fines educativos.
