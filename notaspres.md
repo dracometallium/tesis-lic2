@@ -84,4 +84,13 @@ aumentando.
 ---
 
 Con esos problemas en mente nos propusimos como objetivo la creación de un nuevo
-sistema de visión global paralelo con fines educativos.
+sistema de visión global paralelo con fines educativos. El sistema debe cumplir
+los siguientes objetivos:
+
+- Plugins más sencillos para facilitar su uso educativo, aunque se deba
+  sacrificar eficiencia
+- Que sea escalable.
+- Que sea un framework orientado al desarrollo de aplicaciones paralelas, que
+  permita explorar distintas técnicas de paralelismo.
+
+---
