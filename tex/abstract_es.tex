@@ -21,23 +21,42 @@ llamada \emph{SSL} por sus siglas en inglés).
 
 \emph{SSL} utiliza un sistema de visión global compartido por los dos equipos.
 El sistema procesa cuadros de vídeo y reporta la posición y orientación de los
-robots y la posición de la pelota en cada uno de ellos. En este trabajo se
-presenta un nuevo sistema de visión global por computadora alternativo al
-utilizado actualmente por la \emph{RoboCup} para la \emph{SSL}, que puede ser
-utilizado como herramienta educativa en asignaturas de visión por Computadora y
-sistemas paralelos, y permite explorar distintas estrategias de paralelización.
-Se tomo como base el trabajo realizado en \cite{torres2014} y se le aplicaron
-conjuntamente dos estrategias de paralelización. Una de ellas explota el
-paralelismo dentro de cada cuadro, dividiendo los cuadros en fragmentos que son
-procesados de forma independiente. La otra estrategia se basa en el
-procesamiento simultáneo de diferentes cuadros del vídeo.
+robots y la posición de la pelota en cada uno de ellos. El objetivo de este
+trabajo es proponer un nuevo sistema de visión global por computadora,
+alternativo al utilizado actualmente por la \emph{RoboCup} para la \emph{SSL},
+que puede ser aplicado como herramienta educativa para la enseñanza de visión
+por computadora y programación paralela sobre máquinas de memoria compartida
+basadas en procesadores de propósito general. Se aplican conjuntamente dos
+estrategias de paralelización. Una de ellas explota el paralelismo dentro de
+cada cuadro, dividiendo los cuadros en fragmentos que son procesados de forma
+independiente. La otra estrategia se basa en el procesamiento simultáneo de
+diferentes cuadros del vídeo.
 
-Se realizó una implementación en OpenMP para C++, basada en plugins para
-facilitar su modificación en un ambiente educativo. En un servidor con un
-procesador Intel Xeon E5-2630 (6 núcleos y multithreading simultáneo) el
-sistema logra una mejora máxima de 5,0x en los FPS procesados mientras el
-retardo por cuadro se redujo a menos del 20\%, con respecto a la ejecución del
-sistema utilizando un único núcleo (de los 6 disponibles).
+Un sistema puede ser considerado para uso educativo en temas de visión por
+computadora, si el algoritmo que permite la identificación de los objetos de la
+escena presenta una clara separación conceptual y fue implementado de forma
+simple para permitir su posterior modificación (aún cuando esto implique una
+pérdida de rendimiento de la aplicación). Considerando un sistema preexistente
+de estas características, se desarrolló uno nuevo capaz de aumentar el
+rendimiento mediante el uso eficiente de múltiples unidades de procesamiento y
+jerarquía de memoria. El sistema aplica conjuntamente dos estrategias de
+paralelización. Una de las estrategias explota el paralelismo dentro de cada
+cuadro, dividiendo los cuadros en fragmentos que son procesados de forma
+independiente. La otra estrategia se basa en el procesamiento simultáneo de
+diferentes cuadros del video.
+
+Se realizó una implementación utilizando el modelo de programación de memoria
+compartida OpenMP para C++. Con el fin de sintonizar la aplicación para extraer
+el máximo rendimiento de una determinada plataforma hardware, el sistema cuenta
+con diferentes parámetros que permiten modificar el comportamiento de sus
+estrategias de paralelización. En un servidor con un procesador Intel Xeon
+E5-2630 (6 núcleos y multithreading simultáneo) el sistema logra una mejora
+máxima de $5x$ en la cantidad de cuadros por segundo procesados, mientras que el
+retardo por cuadro se redujo aproximadamente un 20\%, con respecto a la
+ejecución del sistema utilizando un único núcleo (de los 6 disponibles). La
+posibilidad de modificar el comportamiento de las estrategias de paralelización
+es útil para que el estudiante realice experimentación y analice los resultados
+buscando explicaciones al impacto en el rendimiento del sistema.
 
 \vfill
 \pagebreak
