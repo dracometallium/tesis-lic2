@@ -5,8 +5,8 @@
 \label{metodologiaExperimental}
 
 Para comprobar el funcionamiento del nuevo framework se grabo un vídeo a partir
-del cual se crearon dos, uno con una resolución de 800x600 píxeles y otro con
-una resolución de 1280x720 píxeles.
+del cual se crearon dos, uno con una resolución de 800$\times$600 píxeles y otro
+con una resolución de 1280$\times$720 píxeles.
 
 Se configuraron diferentes experimentos haciendo variar la cantidad de partes en
 las que fueron divididos los cuadros entre 1 y 24, la cantidad de hilos de
@@ -132,10 +132,10 @@ El número de hilos de búsqueda indica la cantidad de hilos que ejecutan las
 tareas de búsqueda. Adicionalmente el sistema ejecuta dos hilos más para las
 tareas estáticas, uno para la generación de cuadros y otro para la tarea de
 generación de tareas de búsqueda. En el caso de del vídeo de 800x600 píxeles se
-llego a un máximo de 196 \emph{FPS} cuando se divide el cuadro en 12 fragmentos
+llego a un máximo de 196 \emph{FPS} cuando se divide el cuadro en 15 fragmentos
 y se utilizan 5 hilos de búsqueda, mientras que para el vídeo de 1280x720
 píxeles se alcanzo un máximo de 130 \emph{FPS} cuando se divide el cuadro en 24
-fragmentos y se utilizan 10 hilos de búsqueda.
+fragmentos y se utilizan 11 hilos de búsqueda.
 
 \begin{figure}[h]
 
@@ -280,9 +280,9 @@ mínimo. Dependiendo de si se desea minimizar el tiempo de espera de los cuadros
 maximizar la cantidad de cuadros procesados, o encontrar un balance especifico,
 se deberá elegir una cantidad de fragmentos y hilos de búsqueda apropiada. Por
 ejemplo, en el caso del vídeo de 1280x720 píxeles de resolución, dividir la
-imagen en 24 fragmentos y utilizar 10 hilos de búsqueda permite procesar 130
+imagen en 24 fragmentos y utilizar 11 hilos de búsqueda permite procesar 130
 cuadros por segundo en el equipo de prueba, sin embargo el tiempo de espera es
-de $0.28$ segundos. Si el cuadro se divide en 24 fragmentos y se utilizan 12
+de $0.11$ segundos. Si el cuadro se divide en 24 fragmentos y se utilizan 12
 hilos de búsqueda, la cantidad de cuadros por segundo procesados cae a 128, pero
 el tiempo de espera se reduce a $0.09$ segundos. Las figuras \ref{800tFPS} y
 \ref{1280tFPS} sintetizan la relación entre los \emph{FPS} y el retardo de
@@ -342,8 +342,8 @@ de los 5 hilos de búsqueda.
 \end{figure}
 
 El \emph{speedup} del rendimiento (sobre los FPS) máximo alcanzado por el
-sistema para el vídeo de 800$\times$600 píxeles es de $3.38\times$, mientras que
-para el vídeo 1280$\times$720 es de $5.00\times$. Las curvas de \emph{speedup}
+sistema para el vídeo de 800$\times$600 píxeles es de $3.92\times$, mientras que
+para el vídeo 1280$\times$720 es de $5.42\times$. Las curvas de \emph{speedup}
 son mostradas en las figuras \ref{speedUp800} y \ref{speedUp1280}. Se puede
 observar que en ambos casos el crecimiento es pronunciado hasta 5 hilos de
 búsqueda, los cuales sumados a los hilos de ejecución para tareas estáticas
@@ -360,7 +360,7 @@ núcleos.
 \begin{figure}[h]
 
 	\includegraphics[width=\textwidth]{img/800x600_speedup.pdf}
-	\caption{\emph{Speedup} para el vídeo de 800x600 píxeles}
+	\caption{\emph{Speedup} para el vídeo de 800$\times$600 píxeles}
 	\label{speedUp800}
 
 \end{figure}
