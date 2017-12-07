@@ -23,29 +23,25 @@ llegamos y que posibles trabajos futuros vemos disponibles.
 
 ---
 
-Nos vamos a enfocar en la liga de tamaño pequeño de la RoboCup. En esta liga los
-robots tienen la forma de cilindros de 9 centímetros de radio y 15 de alto, se
-mueven sobre ruedas omnidireccionales, y tienen un _'pie'_ para propulsar la
-pelota. Cada equipo esta formado por seis robots, que para para identificarlos y
-detectar su orientación tienen un conjunto de 5 parches en su parte superior, el
-parche central indica el equipo del robot.
-
-Cada equipo cuenta con una computadora que controla el movimiento de los robots
-y planea las estrategias, los robots por su parte solo tienen el poder de
-procesamiento necesario como para ejecutar las ordenes de movimiento. La
-información de la posición y orientación de los robots y pelota es recibida
-desde un sistema de visión global que ejecuta en una maquina independiente a
-cada equipo y que captura el ambiente desde un conjunto de cámaras colocadas
-sobre la cancha.
+Nos vamos a enforcar en la liga de tamaño pequeño de la RoboCup. En esta liga se
+enfrentan dos equipos de seis robots cilíndricos que se mueven sobre un conjunto
+de ruedas omnidireccionales y con autonomía reducida. Cada equipo tiene su
+propia computadora encargada de realizar el planeamiento de los robots, y estas
+a su vez perciben el ambiente a través de un sistema de visión global
+compartido.
 
 ---
 
-Este diagrama resume la estructura física del sistema de visión global. La
-cámara captura un video de la cancha y envía los cuadros al sistema de visión
-global, este detecta la posición de los robots y pelota y envía esos datos a
-cada una de las computadoras de los equipos. Con esa información estás
-desarrollan estrategias y envían ordenes de movimiento a los robots de su
-equipo.
+Para poder identificar y detectar la orientación de cada robot estos tienen un
+conjunto de 5 parches en su parte superior, el parche central indica el equipo
+del robot, y la pelota es de un color liso que no es utilizado por los parches.
+
+Sobre las cachas un conjunto de cámaras capturan un video del ambiente y envían
+los cuadros a la computadora donde se ejecuta el sistema de visión global. Cada
+cuadro es procesado y se detecta la posición de los robots y pelota, luego
+envían esos datos a cada una de las computadoras de los equipos. Con esa
+información cada equipo desarrolla estrategias de juego y envían ordenes de
+movimiento a los robots de su equipo.
 
 ---
 
@@ -88,9 +84,70 @@ sistema de visión global paralelo con fines educativos. El sistema debe cumplir
 los siguientes objetivos:
 
 - Plugins más sencillos para facilitar su uso educativo, aunque se deba
-  sacrificar eficiencia
+  sacrificar eficiencia.
 - Que sea escalable.
 - Que sea un framework orientado al desarrollo de aplicaciones paralelas, que
   permita explorar distintas técnicas de paralelismo.
 
 ---
+
+Analizando el problema encontramos dos oportunidades de paralelismo. En primer
+lugar, dado que los cuadros son independientes entre si, se pueden analizar en
+paralelo, esto no produciría cambios en la información, salvo por el orden. Por
+otro lado, se puede dividir el cuadro y procesar cada parte de forma
+independiente. En este caso hay que tener consideraciones especiales.
+
+---
+
+Para poder identificar a un robot, todos los parches deben ser observables
+dentro del mismo fragmento del cuadro. Por esto se debe establecer un área
+compartida entre fragmentos adjuntos. Como se puede apreciar en la imagen, el
+ancho mínimo de esta franja debe ser el ancho de un robot.
+
+---
+
+Esta área compartida trae otro problema, el área total de los fragmentos sera
+mayor que el área del cuadro original, lo que implica un incremento en los
+píxeles a analizar.
+
+Para reducir el área total se debe reducir el perímetro de los fragmentos. Dado
+que se trabaja con el teselado de rectángulos, para que estos tengan el
+perímetro mínimo se debe intentar que la relación entre su ancho y alto sean lo
+más cercana a uno posible.
+
+Otra condición que impuso es que los fragmentos sean todos de igual tamaño, para
+poder distribuir la carga de forma uniforme. Esto no siempre sera verdad, ya que
+el tiempo de procesamiento de un cuadro no depende solo de su área, sino también
+de los elementos encontrados en el, pero dado que esta información no se puede
+obtener antes de procesar el cuadro, la heurística del tamaño nos parece la más
+acertada.
+
+En este punto ya se puede notar una particularidad, dada estas restricciones, si
+un cuadro se divide en una cantidad de fragmentos prima, la imagen se dividirá
+en franjas, aumentando bruscamente el área compartida.
+
+---
+
+En el sistema existen dos tipos de tareas, las tareas a las que llamamos
+estáticas, las cuales existen durante toda la ejecución del programa, son
+únicas, y tienen un hilo de ejecución propio. Por otro lado las tareas a las que
+llamamos de "tareas de búsqueda" (ya que son estas las que realmente realizan la
+búsqueda de los robots y pelota) son tareas creadas para el procesamiento de un
+cuadro o fragmento especifico, toman hilos de ejecución de un pool de hilos
+compartido, y puede haber múltiples del mismo tipo.
+
+Las tareas estáticas son la generación de cuadros (ya sea de una cámara o un
+video) y la generación de tareas de fragmentación de cuadros.
+
+Las tareas de búsqueda son la fragmentación del cuadro y el procesamiento del
+fragmento.
+
+---
+
+Sirve esta?
+
+Agrego la pila?
+
+---
+
+
