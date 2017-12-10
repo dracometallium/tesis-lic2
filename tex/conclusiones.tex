@@ -17,21 +17,31 @@ cuadros en fragmentos que son procesados de forma independiente. La otra
 estrategia se basa en el procesamiento simultáneo de diferentes cuadros del
 vídeo (independientes unos de otros).
 
-Se realizó una implementación en \emph{OpenMP} para \emph{C++}, basada en
-plugins para facilitar su modificación en un ambiente educativo. Se detallaron
-las tareas que ejecuta el sistema para implementar las estrategias de
-paralelización. Se estudió el comportamiento del sistema en términos de
-\emph{FPS} y de retardo en el procesamiento de los cuadros para diferentes
-configuraciones del sistema con vídeos de distintas resoluciones.
+Se realizó una implementación utilizando el modelo de programación de memoria
+compartida \emph{OpenMP} para \emph{C++}, basada en plugins para facilitar su
+modificación en un ambiente educativo. Con el fin de sintonizar la aplicación
+para extraer el máximo rendimiento de una determinada plataforma hardware, el
+sistema cuenta con diferentes parámetros que permiten modificar el
+comportamiento de sus estrategias de paralelización. La posibilidad de modificar
+el comportamiento de las estrategias de paralelización es útil para que el
+estudiante realice experimentación y analice los resultados buscando
+explicaciones al impacto en el rendimiento del sistema.
 
-En un servidor con un procesador Intel Xeon E5-2630 (6 núcleos y multithreading
-simultáneo) el software es capaz de procesar un vídeo de 800x600 píxeles de
-resolución a una taza de 196 cuadros por segundo y un vídeo de 1280x720 píxeles
-resolución a una taza de 130 cuadros por segundo.
+Se estudió el comportamiento del sistema en términos de \emph{FPS} y de retardo
+en el procesamiento de los cuadros para diferentes configuraciones del sistema
+con vídeos de distintas resoluciones. En un servidor con un procesador Intel
+Xeon E5-2630 (6 núcleos y multithreading simultáneo) el software es capaz de
+procesar un vídeo de 800x600 píxeles de resolución a una taza de 196 cuadros por
+segundo y un retardo de procesamiento del cuadro de 23$ms$; y, un vídeo de
+1280x720 píxeles resolución a una taza de 130 cuadros por segundo y un retardo
+de procesamiento del cuadro de 48$ms$. Logrando una mejora máxima de 5,42$x$ en
+los cuadros procesados por segundo y una reducción del retardo mayor al 19\%,
+con respecto a la ejecución del sistema utilizando un único núcleo (de los 6
+disponibles).
 
-Se pudo comprobar como un número primo de fragmentos afectaba de forma negativa
-el desempeño del sistema, y cómo un bajo número de estos obliga a los hilos a
-competir por los recursos de caché.
+Se pudo comprobar como dividir el cuadro en un número primo de fragmentos
+afectaba de forma negativa el desempeño del sistema, y cómo un bajo número de
+fragmentos obliga a los hilos a competir por los recursos de caché.
 
 El framework final es adaptable a distintos dominios y su arquitectura basada en
 plugins permite modificarlos y agregar nuevos fácilmente. Finalmente,
