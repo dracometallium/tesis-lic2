@@ -4,6 +4,7 @@ arch=$1
 dir=$(dirname $1)
 base=$(basename -s .res $arch)
 rFile=${dir}/${base}.dat
+echo -n > $rFile
 tFile=$(mktemp)
 
 for t in $(seq 1 12); do
