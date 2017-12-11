@@ -10,17 +10,17 @@ paralelos.
 
 En una materia de sistemas paralelos el sistema puede cumplir varios objetivos.
 Una vez introducidos los conceptos de \emph{speedup} y eficiencia el sistema
-puede ser utilizado para que los alumnos puedan practicar su calculo.
+puede ser utilizado para que los alumnos puedan practicar su cálculo.
 
 \begin{enumerate}
 
 	\item{Utilizando el sistema para procesar el video de 800x600 píxeles,
-		dividiéndolo el 4 fragmentos:
+		dividiéndolo en 4 fragmentos:
 
 \begin{enumerate}
 
-	\item{¿Cuantos cuadros por segundo se logran procesar si se utilizan 1 y
-		2 hilos de búsqueda?}
+	\item{¿Cuantos cuadros por segundo se logran procesar si se utilizan 1
+		hasta 12 hilos de búsqueda?}
 
 	\item{Calcule el \emph{speedup} y la \emph{eficiencia} cuando se
 		utilizan 2 hilos de búsqueda.}
@@ -29,15 +29,12 @@ puede ser utilizado para que los alumnos puedan practicar su calculo.
 
 \end{enumerate}
 
-Con el fin de reforzar el concepto de eficiencia línea y no líneal, se puede
-solicitar a los alumnos que realicen una predicción sobre el comportamiento del
-sistema utilizando la información obtenida en los puntos anteriores. Luego de
-contrastar las predicciones con los resultados reales el alumno podrían intentar
-encontrar explicaciones posibles para la reducción del \emph{speedup} utilizando
-sus conocimientos de arquitectura de computadoras. En las siguientes preguntas
-algunos valores deberán ajustarse dependiendo de la plataforma experimental con
-la que cuenten los alumnos, en estos ejemplos se considerara que cuentan con la
-misma plataforma experimental que la utilizada en este trabajo.
+Con el fin de reforzar el concepto de \emph{speedup} lineal y no lineal, se
+puede solicitar a los alumnos que comparen la curva de \emph{speedup} del
+sistema contra la curva del \emph{speedup} ideal. Luego de contrastar las
+curvas, el alumno, utilizando sus conocimientos de arquitectura de computadoras
+paralelas, podría intentar encontrar las causas de la reducción del crecimiento
+del rendimiento a medida que el sistema escala.
 
 \begin{enumerate}
 
@@ -47,18 +44,12 @@ misma plataforma experimental que la utilizada en este trabajo.
 
 	\setcounter{enumii}{2}
 
-	\item{¿Cuantos cuadros por segundo estima que se procesaran
-		aproximadamente si se utilizan 3, 4 y 16 hilos de búsqueda?}
-
-	\item{Realice el experimento de procesar el video con 3, 4 y 16 hilos de
-		búsqueda ¿Que tan precisa fueron sus predicciones realizadas en
-		el inciso anterior?}
+	\item{Compare los resultados obtenidos en el inciso anterior con el
+		\emph{speedup} ideal ¿Que explicaciones posibles existen para la
+		reducción del rendimiento?}
 
 	\item{¿Cual espera que sea el comportamiento del sistema si se utilizan
 		128 hilos de búsqueda? ¿Y si se utilizan 1024?}
-
-	\item{¿Que explicaciones posibles existen para la reducción del
-		\emph{speedup}?}
 
 	\item{Si se tiene una computadora con un procesador de 4 núcleos
 		¿Cuantos hilos de búsqueda recomendaría?}
@@ -71,7 +62,7 @@ Como se pudo verificar en este trabajo, la fragmentación de los datos tiene un
 impacto crucial en la eficiencia de los programas paralelos. Para que los
 alumnos experimenten con este concepto el sistema desarrollado es ideal, ya que
 permite experimentar con distintas cantidad de hilos y cantidad de fragmentos.
-Para que los alumnos puedan fortalecer este concepto proponemos como practica
+Para que los alumnos puedan fortalecer este concepto proponemos como práctica
 que los estudiantes ejecuten el programa dividiendo el cuadro en 16, 17 y 18
 partes, y luego busquen otras cantidades de divisiones donde se produzca una
 caída de los \emph{FPS} con respecto a las cantidades de fragmentos inmediatas.
@@ -132,7 +123,7 @@ deben ser tenidos en cuenta al momento de configurarla.
 \end{enumerate}
 
 Finalmente si se desea utilizar el sistema con la finalidad de que los alumnos
-realicen practica de programación de sistemas paralelos, se puede plantear como
+realicen práctica de programación de sistemas paralelos, se puede plantear como
 ejercicio la optimización del pluguin de \emph{segmentación de color} utilizando
 instrucciones escalares.
 
@@ -146,7 +137,7 @@ instrucciones escalares.
 \end{enumerate}
 
 Para las materias de visión por computadora se puede hacer uso de la facilidad
-de extinción del sistema. Los alumnos pueden usar el sistema como base para la
+de extensión del sistema. Los alumnos pueden usar el sistema como base para la
 la implementación de nuevos mecanismos para detectar los robots, pelota, o
 nuevos objetos, esto implicaría la creación de nuevos plugins y pilas de
 plugins.
