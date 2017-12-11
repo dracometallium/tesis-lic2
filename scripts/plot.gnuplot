@@ -26,22 +26,16 @@ set palette defined (0 'white', 300 '#0000ff')
 set cbrange [ * : * ]
 
 set output dir.resolution.'_turnArround.pdf'
-plot arch using 2:1:($5*100) with image title '', \
- arch using 2:1:(sprintf('%.0f', ($5 * 100))) with labels font ',9' title ''
+plot arch using 2:1:($4*100) with image title '', \
+ arch using 2:1:(sprintf('%.0f', ($4 * 100))) with labels font ',9' title ''
 
 set linetype 1 lw 1 lc rgb "#D02720"  pointtype 7 ps 0.5
-set linetype 2 lw 1 lc rgb "#1FD9B2" pointtype 11 ps 0.75
-set linetype 3 lw 1 lc rgb "#3ADE58" pointtype 8 ps 0.75
-set linetype 4 lw 1 lc rgb "gray" pointtype 0
-set grid xtics ytics lw 1 lc rgb 'gray'
 
 set xrange [*:*]
 set yrange [*:*]
-set cbrange [ 0.0001 : * ]
 set ytics autofreq
 set xtics autofreq
 set ytics in scale 1
-set logscale y 2
 
 arch=dir.resolution.".tdat"
 
