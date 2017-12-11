@@ -4,20 +4,20 @@
 
 \label{metodologiaExperimental}
 
-Para comprobar el funcionamiento del nuevo framework se grabo un vídeo a partir
+Para comprobar el funcionamiento del nuevo framework se grabo un video a partir
 del cual se crearon dos, uno con una resolución de 800$\times$600 píxeles y otro
 con una resolución de 1280$\times$720 píxeles.
 
 Se configuraron diferentes experimentos haciendo variar la cantidad de partes en
 las que fueron divididos los cuadros entre 1 y 24, la cantidad de hilos de
-ejecución para tareas de búsqueda entre 1 y 12, con ambos vídeos. Para comparar
+ejecución para tareas de búsqueda entre 1 y 12, con ambos videos. Para comparar
 los resultados de las diferentes configuraciones se midieron los \emph{FPS}
 soportados por el sistema y el tiempo de espera máximo (obtenido a los
 \emph{FPS} soportados por el sistema bajo la misma configuración).
 
 Se configuraron diferentes experimentos haciendo variar la cantidad de partes en
 las que fueron divididos los cuadros y la cantidad de hilos de búsqueda, para
-ambos vídeos. Para comparar los resultados de las diferentes configuraciones se
+ambos videos. Para comparar los resultados de las diferentes configuraciones se
 midieron los \emph{FPS} soportados por el sistema y el tiempo de espera máximo
 (obtenido a los \emph{FPS} soportados por el sistema bajo la misma
 configuración).
@@ -25,7 +25,7 @@ configuración).
 Como la obtención del retardo máximo depende del conocimiento previo de los
 \emph{FPS}, cada experimento se dividió en dos partes. En la primera parte se
 busca la cantidad de \emph{FPS} soportados por el sistema para esa
-configuración. Para esto, el programa procesa tantos cuadros del vídeo como
+configuración. Para esto, el programa procesa tantos cuadros del video como
 pueda en un cierto intervalo de tiempo. En la segunda parte se limita la
 cantidad de cuadros por segundo (según el valor máximo de \emph{FPS} encontrado
 en la primera parte del experimento) y se registra el tiempo de espera máximo.
@@ -37,14 +37,14 @@ configuración.
 Dada la gran cantidad de experimentos, se buscó el tiempo mínimo de ejecución
 necesario para que éstos fueran representativos de una ejecución prolongada. Se
 realizaron tres ejecuciones de 6 minutos cada una con una misma configuración:
-11 hilos y 10 fragmentos procesando el vídeo de 800x600 píxeles de resolución.
+11 hilos y 10 fragmentos procesando el video de 800x600 píxeles de resolución.
 El primer minuto no se contabilizó, con el fin de permitir que la ejecución se
-estabilizara. Dado que los 6 minutos de vídeo no caben en la memoria RAM del
+estabilizara. Dado que los 6 minutos de video no caben en la memoria RAM del
 equipo de pruebas, el sistema fue modificado para reintroducir en la lista de
 cuadros a procesar aquellos cuadros ya procesados. Los resultados se compararon
 con ejecuciones utilizando la misma configuración, es decir: utilizando el mismo
 framework modificado para reutilizar los cuadros, utilizando 11 hilos, y
-dividiendo el vídeo de 800x600 píxeles de resolución en 10 fragmentos, pero
+dividiendo el video de 800x600 píxeles de resolución en 10 fragmentos, pero
 ejecutando de 11 a 20 segundos, y contabilizando sólo los últimos 10 segundos.
 El uso del framework modificado para este experimento en particular tiene un
 rendimiento menor al framework original, por lo que los resultados son distintos
@@ -112,7 +112,7 @@ plugins sobre un mismo fragmento. Para la tercera implementación se trabajo
 sobre el mismo framework que la segunda, pero se unieron las pilas de búsquedas
 de robots y la de búsqueda de pelota. Para comprobar cual de éstas era la más
 efectiva se realizaron las pruebas con cada una de éstas para la configuración
-de 11 hilos de búsqueda y 10 fragmentos con el vídeo de 800x600 píxeles de
+de 11 hilos de búsqueda y 10 fragmentos con el video de 800x600 píxeles de
 resolución. La primera implementación proceso 70 \emph{FPS}, la segunda 152
 \emph{FPS} y la tercera 192 \emph{FPS}. Como esta última fue la que produjo
 resultados más satisfactorios, sera sobre los resultados de ésta que
@@ -126,21 +126,21 @@ extenderá el rango hasta que esto suceda. El rango de cantidad de fragmentos
 está limitado de 1 a 24.
 
 En las figuras \ref{800fps} y \ref{1280fps} se muestran las cantidades de
-\emph{FPS} alcanzados para un vídeo de 800x600 píxeles y 1280x720 píxeles
+\emph{FPS} alcanzados para un video de 800x600 píxeles y 1280x720 píxeles
 respectivamente, para distintas cantidades de hilos de búsqueda y fragmentos.
 El número de hilos de búsqueda indica la cantidad de hilos que ejecutan las
 tareas de búsqueda. Adicionalmente el sistema ejecuta dos hilos más para las
 tareas estáticas, uno para la generación de cuadros y otro para la tarea de
-generación de tareas de búsqueda. En el caso de del vídeo de 800x600 píxeles se
+generación de tareas de búsqueda. En el caso de del video de 800x600 píxeles se
 llego a un máximo de 196 \emph{FPS} cuando se divide el cuadro en 15 fragmentos
-y se utilizan 5 hilos de búsqueda, mientras que para el vídeo de 1280x720
+y se utilizan 5 hilos de búsqueda, mientras que para el video de 1280x720
 píxeles se alcanzo un máximo de 130 \emph{FPS} cuando se divide el cuadro en 24
 fragmentos y se utilizan 11 hilos de búsqueda.
 
 \begin{figure}[h]
 
 	\includegraphics[width=\textwidth]{img/800x600_fps.pdf}
-	\caption{FPS alcanzados por el sistema para vídeo de 800x600 píxeles}
+	\caption{FPS alcanzados por el sistema para video de 800x600 píxeles}
 	\label{800fps}
 
 \end{figure}
@@ -148,13 +148,13 @@ fragmentos y se utilizan 11 hilos de búsqueda.
 \begin{figure}[h]
 
 	\includegraphics[width=\textwidth]{img/1280x720_fps.pdf}
-	\caption{FPS alcanzados por el sistema para vídeo de 1280x720 píxeles}
+	\caption{FPS alcanzados por el sistema para video de 1280x720 píxeles}
 	\label{1280fps}
 
 \end{figure}
 
 En las figuras \ref{800fps} y \ref{1280fps} se pueden observar dos patrones que
-ocurren en ambos vídeos. El primero es que si los cuadros se dividen en 7, 11,
+ocurren en ambos videos. El primero es que si los cuadros se dividen en 7, 11,
 17, 19 y 23 fragmentos, se produce una notable reducción en la cantidad de
 cuadros por segundo con respecto a las divisiones adyacentes.
 
@@ -162,7 +162,7 @@ Esto se produce porque cuando los cuadros se dividen en un número primo de
 fragmentos, el área total a procesar se incrementa de forma significativa con
 respecto a los valores circundantes. En la figura \ref{primosArea} se muestra la
 fluctuación de la suma del área de los fragmentos en divisiones de 1 hasta 100
-fragmentos para un vídeo de 1280x720 píxeles de resolución, resaltando los
+fragmentos para un video de 1280x720 píxeles de resolución, resaltando los
 resultados para valores primos y para los valores inmediatamente inferiores y
 superiores. Como puede observarse, a partir de 7 fragmentos el área total se
 incrementa de forma significativa cuando el número es primo con respecto a los
@@ -179,7 +179,7 @@ drástico del área a procesar.
 \end{figure}
 
 Para comprobar como esta variación de volumen de datos afecta la cantidad de
-cuadros por segundo procesados, se realizaron nuevas pruebas sobre el vídeo de
+cuadros por segundo procesados, se realizaron nuevas pruebas sobre el video de
 1280x720 píxeles de resolución, con 11 hilos de búsqueda y variando la cantidad
 de fragmentos entre los números primos mayores a 24 y menores a 100, y sus
 inmediatos superior e inferior. Los valores para números primos e inmediatos
@@ -225,7 +225,7 @@ nivel más bajo. Por esto se propuso la hipótesis de que el retardo se produce
 debido a un aumento en los fallos de caché.
 
 Para comprobar que la hipótesis es correcta se diseñó el siguiente experimento.
-Se ejecutó el programa procesando cuadros del vídeo de 1280x720 píxeles de
+Se ejecutó el programa procesando cuadros del video de 1280x720 píxeles de
 resolución, y se midieron los fallos de caché en configuraciones de 1, 2, 3, 4,
 6 y 12 fragmentos y cantidad de hilos búsqueda de 1 a 11. Para obtener los
 fallos de caché de nivel 3 (es decir, cuando es necesario acceder a datos en la
@@ -251,7 +251,7 @@ cantidad contenida en dos cuadros.}.
 \end{figure}
 
 En las figuras \ref{800turnArround} y \ref{1280turnArround} se muestran los
-tiempos máximos de espera de los cuadros, para los vídeos de 800x600 y 1280x720
+tiempos máximos de espera de los cuadros, para los videos de 800x600 y 1280x720
 píxeles de resolución (considerando que los \emph{FPS} son limitados al máximo
 encontrado en la primera etapa de los experimentos).
 
@@ -259,7 +259,7 @@ encontrado en la primera etapa de los experimentos).
 
 	\includegraphics[width=\textwidth]{img/800x600_turnArround.pdf}
 	\caption{Tiempos máximos de espera en centésimas de segundo para el
-	vídeo de 800x600 píxeles}
+	video de 800x600 píxeles}
 	\label{800turnArround}
 
 \end{figure}
@@ -269,7 +269,7 @@ encontrado en la primera etapa de los experimentos).
 
 	\includegraphics[width=\textwidth]{img/1280x720_turnArround.pdf}
 	\caption{Tiempos máximos de espera en centésimas de segundo para el
-	vídeo de 1280x720 píxeles}
+	video de 1280x720 píxeles}
 	\label{1280turnArround}
 
 \end{figure}
@@ -279,7 +279,7 @@ cantidad de cuadros por segundos procesados implicara el tiempo de espera
 mínimo. Dependiendo de si se desea minimizar el tiempo de espera de los cuadros,
 maximizar la cantidad de cuadros procesados, o encontrar un balance especifico,
 se deberá elegir una cantidad de fragmentos y hilos de búsqueda apropiada. Por
-ejemplo, en el caso del vídeo de 1280x720 píxeles de resolución, dividir la
+ejemplo, en el caso del video de 1280x720 píxeles de resolución, dividir la
 imagen en 24 fragmentos y utilizar 11 hilos de búsqueda permite procesar 130
 cuadros por segundo en el equipo de prueba, sin embargo el tiempo de espera es
 de $0.11$ segundos. Si el cuadro se divide en 24 fragmentos y se utilizan 12
@@ -287,12 +287,12 @@ hilos de búsqueda, la cantidad de cuadros por segundo procesados cae a 128, per
 el tiempo de espera se reduce a $0.09$ segundos. Las figuras \ref{800tFPS} y
 \ref{1280tFPS} sintetizan la relación entre los \emph{FPS} y el retardo de
 cuadros, mostrando el mínimo retardo de cuadros para los diferentes \emph{FPS}
-que puede alcanzar el sistema en cada vídeo.
+que puede alcanzar el sistema en cada video.
 
 \begin{figure}[h]
 
 	\includegraphics[width=\textwidth]{img/800x600_tFPS.pdf}
-	\caption{Tiempos máximos de espera para vídeo de 800x600 píxeles para
+	\caption{Tiempos máximos de espera para video de 800x600 píxeles para
 	los FPS soportados por el sistema}
 	\label{800tFPS}
 
@@ -301,7 +301,7 @@ que puede alcanzar el sistema en cada vídeo.
 \begin{figure}[h]
 
 	\includegraphics[width=\textwidth]{img/1280x720_tFPS.pdf}
-	\caption{Tiempos máximos de espera para vídeo de 1280x720 píxeles para
+	\caption{Tiempos máximos de espera para video de 1280x720 píxeles para
 	los FPS soportados por el sistema}
 	\label{1280tFPS}
 
@@ -309,21 +309,21 @@ que puede alcanzar el sistema en cada vídeo.
 
 Las figuras \ref{bestFPS800} y \ref{bestFPS1280} muestran el máximo rendimiento
 en cuadros por segundo obtenidos para cada configuración de hilos de búsqueda
-incluyendo el retardo de cuadro, para los vídeos de 800x600 y 1280x720 píxeles.
-Se puede apreciar en la figura que para el caso del vídeo de 800x600 píxeles el
-sistema escala sólo hasta el uso de 5 hilos de búsqueda. En el caso del vídeo de
+incluyendo el retardo de cuadro, para los videos de 800x600 y 1280x720 píxeles.
+Se puede apreciar en la figura que para el caso del video de 800x600 píxeles el
+sistema escala sólo hasta el uso de 5 hilos de búsqueda. En el caso del video de
 1280x720 píxeles, también muestra una reducción en el rendimiento cuando se
 utilizan 12 hilos de búsqueda. Como la plataforma experimental puede ejecutar
 hasta 12 hilos simultáneamente, los hilos de búsqueda deberán compartir recursos
 con los hilos dedicados a las tareas estáticas. Por lo cual no podemos
-determinar el punto en el cual la aplicación deja de escalar para un vídeo de
+determinar el punto en el cual la aplicación deja de escalar para un video de
 1280x720 píxeles, aunque se alcanza un punto de rendimientos decrecientes luego
 de los 5 hilos de búsqueda.
 
 \begin{figure}[h]
 
 	\includegraphics[width=\textwidth]{img/800x600_bestfps.pdf}
-	\caption{FPS máximos alcanzados para el vídeo de 800x600 píxeles para
+	\caption{FPS máximos alcanzados para el video de 800x600 píxeles para
 	distintas configuraciones de cantidad de hilos de búsqueda. Se incluye
 	el retardo de cuadro bajo la configuración y la cantidad de fragmentos
 	en la que fue dividido.} \label{bestFPS800}
@@ -333,7 +333,7 @@ de los 5 hilos de búsqueda.
 \begin{figure}[h]
 
 	\includegraphics[width=\textwidth]{img/1280x720_bestfps.pdf}
-	\caption{FPS máximos alcanzados para el vídeo de 1280x720 píxeles para
+	\caption{FPS máximos alcanzados para el video de 1280x720 píxeles para
 	distintas configuraciones de cantidad de hilos de búsqueda. Se incluye
 	el retardo de cuadro bajo la configuración y la cantidad de fragmentos
 	en la que fue dividido.}
@@ -342,8 +342,8 @@ de los 5 hilos de búsqueda.
 \end{figure}
 
 El \emph{speedup} del rendimiento (sobre los FPS) máximo alcanzado por el
-sistema para el vídeo de 800$\times$600 píxeles es de $3.92\times$, mientras que
-para el vídeo 1280$\times$720 es de $5.42\times$. Las curvas de \emph{speedup}
+sistema para el video de 800$\times$600 píxeles es de $3.92\times$, mientras que
+para el video 1280$\times$720 es de $5.42\times$. Las curvas de \emph{speedup}
 son mostradas en las figuras \ref{speedUp800} y \ref{speedUp1280}. Se puede
 observar que en ambos casos el crecimiento es pronunciado hasta 5 hilos de
 búsqueda, los cuales sumados a los hilos de ejecución para tareas estáticas
@@ -360,7 +360,7 @@ núcleos.
 \begin{figure}[h]
 
 	\includegraphics[width=\textwidth]{img/800x600_speedup.pdf}
-	\caption{\emph{Speedup} para el vídeo de 800$\times$600 píxeles}
+	\caption{\emph{Speedup} para el video de 800$\times$600 píxeles}
 	\label{speedUp800}
 
 \end{figure}
@@ -368,7 +368,7 @@ núcleos.
 \begin{figure}[h]
 
 	\includegraphics[width=\textwidth]{img/1280x720_speedup.pdf}
-	\caption{\emph{Speedup} para el vídeo de 1280$\times$720 píxeles}
+	\caption{\emph{Speedup} para el video de 1280$\times$720 píxeles}
 	\label{speedUp1280}
 
 \end{figure}

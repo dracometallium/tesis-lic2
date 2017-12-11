@@ -15,7 +15,7 @@ siguientes cuatro enfoques:
 
 \begin{itemize}
 
-	\item	Dado que en un vídeo ya decodificado el procesamiento de cada
+	\item	Dado que en un video ya decodificado el procesamiento de cada
 		cuadro es independiente del procesamiento de los demás, y dada
 		la disponibilidad de recursos de cómputo, se pueden procesar
 		múltiples cuadros al mismo tiempo sin que esto genere
@@ -146,7 +146,7 @@ cantidad de hilos de búsqueda.
 
 Para poder realizar el procesamiento paralelo, el conjunto de datos debe ser
 fragmentado; en el caso del framework propuesto la división se realizará en
-dos niveles. Dado que el conjunto de datos es un vídeo, la primera
+dos niveles. Dado que el conjunto de datos es un video, la primera
 fragmentación consta de la separación en cuadros. Como cada cuadro es una
 captura del ambiente completo en un instante de tiempo específico distinto al de
 los demás cuadros, se pueden procesar de forma independiente. La segunda
@@ -400,8 +400,8 @@ cuales fueron tomadas y modificadas del sistema de visión presentado en
 
 	\item[CaptureFromFile:] Subclase de \emph{Input}. Es la clase encargada
 		de crear el flujo de objetos \emph{Frame}, tomando cada cuadro
-		desde un archivo de vídeo. También debe respetar la taza de
-		cuadros por segundo del vídeo.
+		desde un archivo de video. También debe respetar la taza de
+		cuadros por segundo del video.
 
 	\item[FastCaptureFromFile:] Subclase de \emph{Input}. Muy similar a
 		\emph{CaptureFromFile}, con las diferencias de que carga los

@@ -8,14 +8,14 @@ En este trabajo se ha presentado un nuevo sistema de visión global por
 computadora para el fútbol de robots de la \emph{SSL}, que puede ser utilizado
 como herramienta educativa en asignaturas de visión por Computadora y sistemas
 paralelos, y permite explorar distintas estrategias de paralelización. El
-sistema procesa cuadros de vídeo y reporta la posición y orientación de los
+sistema procesa cuadros de video y reporta la posición y orientación de los
 robots y la posición de la pelota en cada uno de ellos.
 
 Se describieron dos estrategias de paralelización que son aplicadas en conjunto.
 Una de ellas explota el paralelismo dentro de cada cuadro, dividiendo los
 cuadros en fragmentos que son procesados de forma independiente. La otra
 estrategia se basa en el procesamiento simultáneo de diferentes cuadros del
-vídeo (independientes unos de otros).
+video (independientes unos de otros).
 
 Se realizó una implementación utilizando el modelo de programación de memoria
 compartida \emph{OpenMP} para \emph{C++}, basada en plugins para facilitar su
@@ -29,13 +29,13 @@ explicaciones al impacto en el rendimiento del sistema.
 
 Se estudió el comportamiento del sistema en términos de \emph{FPS} y de retardo
 en el procesamiento de los cuadros para diferentes configuraciones del sistema
-con vídeos de distintas resoluciones. En un servidor con un procesador Intel
+con videos de distintas resoluciones. En un servidor con un procesador Intel
 Xeon E5-2630 (6 núcleos y multithreading simultáneo) el software es capaz de
-procesar un vídeo de 800x600 píxeles de resolución a una taza de 196 cuadros por
-segundo y un retardo de procesamiento del cuadro de 318$ms$; y, un vídeo de
+procesar un video de 800x600 píxeles de resolución a una taza de 196 cuadros por
+segundo y un retardo de procesamiento del cuadro de 318$ms$; y, un video de
 1280x720 píxeles resolución a una taza de 130 cuadros por segundo y un retardo
-de procesamiento del cuadro de 113$ms$. Logrando una mejora máxima de 5,42$x$ en
-los cuadros procesados por segundo, con respecto a la ejecución del sistema
+de procesamiento del cuadro de 113$ms$. Se logro una mejora de 5,42$x$ en los
+cuadros procesados por segundo, con respecto a la ejecución del sistema
 utilizando un único núcleo (de los 6 disponibles).
 
 Se pudo comprobar como dividir el cuadro en un número primo de fragmentos
