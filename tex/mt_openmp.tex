@@ -27,15 +27,16 @@ para la implementación del sistema.
 
 El modelo de \emph{fork and join} fue propuesto por primera vez en
 \cite{conway1963}. En este modelo, la ejecución del programa está a cargo de un
-solo hilo al comienzo y durante sus secciones secuenciales. El hilo inicial es
-llamado hilo principal. Cuando se encuentra una región de trabajo compartido (o
-\emph{worksharing region}) de $N$ tareas, el hilo principal crea $N-1$ nuevos
-hilos. Cada hilo (incluido el hilo principal) ejecuta una de las $N$ tareas.
-Esta etapa es llamada \emph{fork}. El hilo principal no continúa la ejecución
-secuencial hasta que no han finalizado todas las tareas paralelas. A esta
-sincronización se la llama \emph{join}. La figura \ref{conway} muestra un
-ejemplo en el cual se crean dos tareas paralelas. El modelo de \emph{fork and
-join} puede aplicarse tanto para paralelismo de tareas como de datos.
+solo hilo al comienzo de la ejecución y durante sus secciones secuenciales. El
+hilo inicial es llamado hilo principal. Cuando se encuentra una región de
+trabajo compartido (o \emph{worksharing region}) de $N$ tareas, el hilo
+principal crea $N-1$ nuevos hilos. Cada hilo (incluido el hilo principal)
+ejecuta una de las $N$ tareas.  Esta etapa es llamada \emph{fork}. El hilo
+principal no continúa la ejecución secuencial hasta que no han finalizado todas
+las tareas paralelas. A esta sincronización se la llama \emph{join}. La figura
+\ref{conway} muestra un ejemplo en el cual se crean dos tareas paralelas. El
+modelo de \emph{fork and join} puede aplicarse tanto para paralelismo de tareas
+como de datos.
 
 \begin{figure}[h]
 

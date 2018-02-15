@@ -61,14 +61,14 @@ del rendimiento a medida que el sistema escala.
 Como se pudo verificar en este trabajo, la fragmentación de los datos tiene un
 impacto crucial en la eficiencia de los programas paralelos. Para que los
 alumnos experimenten con este concepto el sistema desarrollado es ideal, ya que
-permite experimentar con distintas cantidad de hilos y cantidad de fragmentos.
-Para que los alumnos puedan fortalecer este concepto proponemos como práctica
-que los estudiantes ejecuten el programa dividiendo el cuadro en 16, 17 y 18
-partes, y luego busquen otras cantidades de divisiones donde se produzca una
-caída de los \emph{FPS} con respecto a las cantidades de fragmentos inmediatas.
-Con esto se espera que los alumnos puedan concluir que las cantidades de
-divisiones cuyos valores son primos son perjudiciales y de esta manera
-reforzar la idea de que la distribución de los datos es importante.
+permite experimentar con distintas cantidad de hilos y fragmentos. Para que los
+alumnos puedan fortalecer este concepto proponemos como práctica que los
+estudiantes ejecuten el programa dividiendo el cuadro en 16, 17 y 18 partes, y
+luego busquen otras cantidades de divisiones donde se produzca una caída de los
+\emph{FPS} con respecto a las cantidades de fragmentos inmediatas Con esto se
+espera que los alumnos puedan concluir que las cantidades de divisiones cuyos
+valores son primos son perjudiciales y de esta manera reforzar la idea de que la
+distribución de los datos es importante.
 
 \begin{enumerate}
 	
@@ -83,7 +83,7 @@ reforzar la idea de que la distribución de los datos es importante.
 
 	\item{Limitándose a una cantidad de fragmentos menor a 17 ¿Encuentra
 		otros valores para los cuales el sistema tenga mayor rendimiento
-		tanto si se utiliza un hilo menos o un hilo más?}
+		tanto si se utiliza un fragmento menos o un fragmento más?}
 
 \end{enumerate}}
 
@@ -125,7 +125,7 @@ deben ser tenidos en cuenta al momento de configurarla.
 Finalmente si se desea utilizar el sistema con la finalidad de que los alumnos
 realicen práctica de programación de sistemas paralelos, se puede plantear como
 ejercicio la optimización del pluguin de \emph{segmentación de color} utilizando
-instrucciones escalares.
+instrucciones vectoriales.
 
 \begin{enumerate}
 

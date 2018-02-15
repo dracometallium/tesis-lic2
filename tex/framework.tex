@@ -1,7 +1,7 @@
 % vim: set spell spelllang=es syntax=tex :
 
 En este capítulo comenzaremos analizando las estrategias de paralelización
-disponibles y justificaremos la selección de una de ellas. Esto nos permitirá
+disponibles y justificaremos la selección de las aplicadas. Esto nos permitirá
 establecer las distintas tareas que ejecutará el framework y cómo se dividirán
 los datos. Finalmente, una vez establecida la estructura del sistema, se
 tratarán los detalles de la implementación.
@@ -189,23 +189,25 @@ mínima se debe minimizar el perímetro del fragmento.
 Por la manera que las imágenes se representan comúnmente en una computadora y
 por su simplicidad, se optó por trabajar con un teselado con rectángulos. En el
 caso de éstos, para minimizar su perímetro y maximizar su área, se debe procurar
-que la relación entre su ancho y altura sea lo más cercana posible a uno.
+que la relación entre su ancho y alto sea lo más cercana posible a uno.
 También, para balancear la carga uniformemente, todos los fragmentos serán de
 igual tamaño.
 
 El tiempo de procesamiento de un fragmento depende no sólo de su área, sino que
 es influido por los elementos encontrados por los plugins, por lo cual
 fragmentos de igual tamaño pueden tener tiempos de procesamiento muy distintos.
-Sin embargo, dado que no poseemos más información antes del procesamiento,
-consideramos que ésta es la mejor heurística con la que contamos. Aquellos que
-se encuentren en los bordes inferior y derecho posiblemente serán más pequeños,
-ya que las dimensiones del cuadro pueden no ser divisibles por el número de
-columnas o filas en las cuales se dividirá.
+Esta información puede ser inferida utilizando la información de cuadros
+anteriores, sin embargo esto viola la independencia entre cuadros. Por esto, la
+heurística que se utiliza para distribuir la carga de procesamiento es que todos
+los fragmentos sean de igual tamaño. Aquellos que se encuentren en los bordes
+inferior y derecho posiblemente serán más pequeños, ya que las dimensiones del
+cuadro pueden no ser divisibles por el número de columnas o filas en las cuales
+se dividirá.
 
 En la figura \ref{fragmentos} se muestran como se divide un cuadro de 800x600
 píxeles con un área compartida de 50 píxeles en 1, 2, 5 y 8 fragmentos. Cuando
 el número de fragmentos es un número primo, como en el caso de 5 fragmentos, el
-cuadro se divide en franjas de igual ancho o altura que el cuadro original. Este
+cuadro se divide en franjas de igual ancho o alto que el cuadro original. Este
 tipo de división produce fragmentos con perímetros mayores, produciendo grandes
 áreas compartidas.
 
@@ -420,10 +422,10 @@ cuales fueron tomadas y modificadas del sistema de visión presentado en
 
 	\item[FrameSlicer:] Subclase de \emph{ItemSlicer}. Cada cuadro es
 		dividido en rectángulos del mismo tamaño (excepto por los
-		cuadros en los bordes inferiores y derechos, que posiblemente
-		sean más pequeños). Cada subcuadro incluye un área solapada con
-		los cuadros adyacentes para asegurar que todos los objetos
-		(robots y pelota) se encuentren completamente en por lo menos un
+		cuadros en los bordes inferior y derecho, que posiblemente sean
+		más pequeños). Cada subcuadro incluye un área solapada con los
+		cuadros adyacentes para asegurar que todos los objetos (robots y
+		pelota) se encuentren completamente en por lo menos un
 		subcuadro.
 
 	\item[Subclases de \emph{Plugin}:] \emph{PluginBlur},

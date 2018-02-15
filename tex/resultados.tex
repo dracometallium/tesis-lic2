@@ -120,10 +120,10 @@ trabajaremos a continuación.
 
 El sistema posee 6 núcleos con multithreading simultaneo de dos vías, por lo
 cual como máximo puede ejecutar 12 hilos en paralelo. Por este motivo el rango
-de la hilos de búsqueda sera inicialmente de 1 a 12 hilos, y en caso de que los
-experimentos demuestren que el \emph{speedup} no ha comenzado a decaer, se
-extenderá el rango hasta que esto suceda. El rango de cantidad de fragmentos
-está limitado de 1 a 24.
+de la cantidad de hilos de búsqueda sera inicialmente de 1 a 12 hilos, y en caso
+de que los experimentos demuestren que el \emph{speedup} no ha comenzado a
+decaer, se extenderá el rango hasta que esto suceda. El rango de cantidad de
+fragmentos está limitado de 1 a 24.
 
 En las figuras \ref{800fps} y \ref{1280fps} se muestran las cantidades de
 \emph{FPS} alcanzados para un video de 800x600 píxeles y 1280x720 píxeles
@@ -166,9 +166,9 @@ fragmentos para un video de 1280x720 píxeles de resolución, resaltando los
 resultados para valores primos y para los valores inmediatamente inferiores y
 superiores. Como puede observarse, a partir de 7 fragmentos el área total se
 incrementa de forma significativa cuando el número es primo con respecto a los
-valores cercanos con divisores. En estos casos, un incremento del número
-de fragmentos aumenta el paralelismo, pero es acompañado de un incremento
-drástico del área a procesar.
+valores cercanos no primos. En estos casos, un incremento del número de
+fragmentos aumenta el paralelismo, pero es acompañado de un incremento drástico
+del área a procesar.
 
 \begin{figure}[h]
 
@@ -216,7 +216,7 @@ memoria caché se comparte entre los cuadros que están siendo procesados en
 paralelo. Cuanto más cuadros se procesen en paralelo, mayor será la competencia
 por la memoria caché. La cantidad de cuadros que se procesan en paralelo está en
 relación con el número de fragmentos y la cantidad de hilos de búsqueda.
-Considerando que la cantidad de hilos de búsqueda es mayor que la cantidad de
+Considerando si la cantidad de hilos de búsqueda es mayor que la cantidad de
 fragmentos, si se disminuye la cantidad de fragmentos, manteniendo la cantidad
 de hilos de búsqueda, se incrementa la cantidad de cuadros a procesar en
 paralelo. Esto tiene como efecto que los cuadros compitan por la caché y reduce
@@ -346,7 +346,7 @@ sistema para el video de 800$\times$600 píxeles es de $3.92\times$, mientras qu
 para el video 1280$\times$720 es de $5.42\times$. Las curvas de \emph{speedup}
 son mostradas en las figuras \ref{speedUp800} y \ref{speedUp1280}. Se puede
 observar que en ambos casos el crecimiento es pronunciado hasta 5 hilos de
-búsqueda, los cuales sumados a los hilos de ejecución para tareas estáticas
+búsqueda los cuales, sumados a los hilos de ejecución para tareas estáticas
 superan la cantidad de núcleos físicos de la plataforma experimental. Existen
 dos posibles causas para la reducción del crecimiento del \emph{speedup}. La
 primera es que con los cinco hilos de búsqueda más los dos hilos de ejecución

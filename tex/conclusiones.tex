@@ -66,6 +66,10 @@ de botella, o que con cinco hilos de búsqueda se alcanza un alto paralelismo a
 nivel de instrucción. Para investigar estas hipótesis podría analizarse la
 cantidad de instrucciones por ciclo en cada caso.
 
+Para poder acelerar la búsqueda de los objetos y poder distribuir la carga mas
+uniformemente se podría agregar al sistema una base datos de últimas posiciones
+conocidas de los objetos. Esto disminuiría la independencia entre los cuadros,
+pero tiene el potencial de disminuir drásticamente los tiempos de búsqueda.
 Además, se cree conveniente implementar soluciones paralelas optimizadas de los
 plugins.
 

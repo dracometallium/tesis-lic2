@@ -16,22 +16,22 @@ teams play a simplified version of football. Its aim is to provide a platform
 where the advances on multiple fields like artificial intelligence, computer
 vision, and robotics can be put to a test. The \emph{RoboCup} has five leagues
 ranging from simulated robots on a virtual field, up to humanoid robots with
-local vision. Its most ancient league is the \emph{Small Size League}, also
-called the \emph{SSL}.
+local vision. Its oldest league is the \emph{Small Size League}, also called the
+\emph{SSL}.
 
-On the \emph{SSL} games, the global vision system is shared by both teams. The
+On a \emph{SSL} game, the global vision system is shared by both teams. The
 system process the video frames and reports the robots' and ball's position and
 orientation. We propose an alternative global vision system to that used by the
 \emph{RoboCup} for the \emph{SSL} games, that can be used as a learning tool for
 computer vision and shared memory parallel programming courses.
 
 For a global vision system to be useful as a learning tool, its detection
-algorithms must show a clear conceptual division and be implemented simply so it
+algorithms must have a clear conceptual division and be implemented simply so it
 can be easily modified (even if it implies a performance loss). Using a base
 system, we develop a new system able to efficiently use multiple processing
-units and its memory hierarchy. Two parallelization strategies where apply.
-The first one applies parallelism inside a frame, dividing the frames into
-fragments that are processed independently. The other strategy is based on the
+units and its memory hierarchy. Two parallelization strategies where apply. The
+first one applies parallelism inside a frame, dividing the frames into fragments
+that are processed independently. The other strategy is based on the
 simultaneous precessing of different frames.
 
 The system was implemented using \emph{OpenMP} shared memory programming model
@@ -39,10 +39,10 @@ for \emph{C++}. The application's parallelization strategies' parameters can be
 tuned to obtain maximum performance for a specific hardware platform. On a
 server with an Intel Xeon E5-2630 processor (with 6 processing units and
 simultaneous multithreading), we achieve an improvement of 5.42$x$ \emph{FPS},
-in comparison to the run using only one processing unit (from the 6 available).
-The parallelization strategies can be modified, this can be used to led students
-experiment and analyze its results to explain its impact on the system
-performance.
+in comparison to an execution using only one processing unit (from the 6
+available). The parallelization strategies can be modified, this can be used to
+let students experiment and analyze its results to explain its impact on the
+system performance.
 
 \vfill
 \pagebreak
