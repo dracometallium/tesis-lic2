@@ -4,22 +4,35 @@
 
 \label{usoEducativo}
 
-El sistema puede ser utilizado como herramienta educativa en varios niveles, y
+El sistema puede ser utilizado como herramienta educativa de varias maneras, y
 tanto en materias de visión por computadora como en materias de sistemas
 paralelos.
 
+En este capitulo sugeriremos un conjunto de actividades en las cuales el
+sistema propuesto en esta tesis puede ser utilizado como herramienta educativa.
+
+\subsection{Actividad sugerida 1}
+
 En una materia de sistemas paralelos el sistema puede cumplir varios objetivos.
 Una vez introducidos los conceptos de \emph{speedup} y eficiencia el sistema
-puede ser utilizado para que los alumnos puedan practicar su cálculo.
+puede ser utilizado para como plataforma para la realización de ejercicios
+prácticos de cálculo de dichas magnitudes.
 
-\begin{enumerate}
+\begin{description}
+
+	\item{Conocimientos previos}: Introducción al concepto de
+		\emph{speedup}, Arquitectura de computadoras paralelas.
+
+	\item{Objetivos}: Reforzar conceptos de \emph{speedup} y eficiencia.
+
+	\item{Consigna}: \begin{enumerate}
 
 	\item{Utilizando el sistema para procesar el video de 800x600 píxeles,
 		dividiéndolo en 4 fragmentos:
 
 \begin{enumerate}
 
-	\item{¿Cuantos cuadros por segundo se logran procesar si se utilizan 1
+	\item{¿Cuántos cuadros por segundo se logran procesar si se utilizan 1
 		hasta 12 hilos de búsqueda?}
 
 	\item{Calcule el \emph{speedup} y la \emph{eficiencia} cuando se
@@ -29,14 +42,27 @@ puede ser utilizado para que los alumnos puedan practicar su cálculo.
 
 \end{enumerate}
 
+\end{description}
+
+\subsection{Actividad sugerida 2}
+
 Con el fin de reforzar el concepto de \emph{speedup} lineal y no lineal, se
 puede solicitar a los alumnos que comparen la curva de \emph{speedup} del
 sistema contra la curva del \emph{speedup} ideal. Luego de contrastar las
 curvas, el alumno, utilizando sus conocimientos de arquitectura de computadoras
 paralelas, podría intentar encontrar las causas de la reducción del crecimiento
-del rendimiento a medida que el sistema escala.
+del rendimiento a medida que el sistema escala. Esta actividad se debe plantear
+a continuación de la actividad 1.
 
-\begin{enumerate}
+\begin{description}
+
+	\item{Conocimientos previos}: Introducción al concepto de
+		\emph{speedup}, eficiencia real e ideal, Arquitectura de
+		computadoras paralelas.
+
+	\item{Objetivos}: Reforzar diferencias entre eficiencia real e ideal.
+
+	\item{Consigna}: \begin{enumerate}
 
 	\item{[...]
 
@@ -45,18 +71,22 @@ del rendimiento a medida que el sistema escala.
 	\setcounter{enumii}{2}
 
 	\item{Compare los resultados obtenidos en el inciso anterior con el
-		\emph{speedup} ideal ¿Que explicaciones posibles existen para la
+		\emph{speedup} ideal ¿Qué explicaciones posibles existen para la
 		reducción del rendimiento?}
 
-	\item{¿Cual espera que sea el comportamiento del sistema si se utilizan
+	\item{¿Cuál espera que sea el comportamiento del sistema si se utilizan
 		128 hilos de búsqueda? ¿Y si se utilizan 1024?}
 
 	\item{Si se tiene una computadora con un procesador de 4 núcleos
-		¿Cuantos hilos de búsqueda recomendaría?}
+		¿Cuántos hilos de búsqueda recomendaría?}
 
 \end{enumerate}}
 
 \end{enumerate}
+
+\end{description}
+
+\subsection{Actividad sugerida 3}
 
 Como se pudo verificar en este trabajo, la fragmentación de los datos tiene un
 impacto crucial en la eficiencia de los programas paralelos. Para que los
@@ -70,16 +100,22 @@ espera que los alumnos puedan concluir que las cantidades de divisiones cuyos
 valores son primos son perjudiciales y de esta manera reforzar la idea de que la
 distribución de los datos es importante.
 
-\begin{enumerate}
-	
-	\setcounter{enumi}{1}
+\begin{description}
+
+	\item{Conocimientos previos}: Introducción al concepto de
+		\emph{speedup}, eficiencia real e ideal, Arquitectura de
+		computadoras paralelas.
+
+	\item{Objetivos}: Reforzar diferencias entre eficiencia real e ideal.
+
+	\item{Consigna}: \begin{enumerate}
 
 	\item{Si se utilizan 4 hilos de búsqueda y se dividen los cuadros en 16,
 		17 y 18 partes para procesar el video de 1280x720 píxeles:
 
 \begin{enumerate}
 
-	\item{¿Cuantos cuadros por segundo procesa el sistema?}
+	\item{¿Cuántos cuadros por segundo procesa el sistema?}
 
 	\item{Limitándose a una cantidad de fragmentos menor a 17 ¿Encuentra
 		otros valores para los cuales el sistema tenga mayor rendimiento
@@ -87,8 +123,9 @@ distribución de los datos es importante.
 
 \end{enumerate}}
 
-
 \end{enumerate}
+
+\end{description}
 
 Una vez que los alumnos tienen incorporados los conceptos de \emph{speedup},
 eficiencia, y la importancia de la distribución de los datos, proponemos que
@@ -114,7 +151,7 @@ deben ser tenidos en cuenta al momento de configurarla.
 		dividirse los cuadros para que el retardo del cuadro sea menor a
 		6 centésimas de segundo?}
 
-	\item{Si se divide el cuadro en 15 fragmentos ¿Cuantos hilos de búsqueda
+	\item{Si se divide el cuadro en 15 fragmentos ¿Cuántos hilos de búsqueda
 		se deberán usar para que la cantidad de cuadros por segundo
 		procesados sea mayor a 180?}
 
@@ -132,7 +169,7 @@ instrucciones vectoriales.
 	\setcounter{enumi}{3}
 
 	\item{Modifique el plaguin de \emph{segmentacion de color} utilizando
-	instrucciones vectoriales ¿Cual es la mejora obtenida?}
+	instrucciones vectoriales ¿Cuál es la mejora obtenida?}
 
 \end{enumerate}
 
