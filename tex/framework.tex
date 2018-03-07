@@ -104,7 +104,7 @@ Según su funcionalidad, las tareas son clasificadas en cuatro tipos:
 
 \end{description}
 
-\begin{figure}[h]
+\begin{figure}[!htb]
 
 	\centering
 
@@ -132,7 +132,7 @@ generación de tareas de fragmentación de cuadro). Por esto la cantidad de
 unidades de procesamiento aprovechables está principalmente determinado por la
 cantidad de hilos de búsqueda.
 
-\begin{figure}[h]
+\begin{figure}[!htb]
 
 	\includegraphics[width=\textwidth]{img/hilos.pdf}
 
@@ -164,7 +164,7 @@ compartir una zona igual al diámetro de un robot. En la figura
 \ref{areaCompartida} se muestran los casos donde el área compartida es menor al
 diámetro de un robot y donde el área compartida es del diámetro de un robot.
 
-\begin{figure}[h]
+\begin{figure}[!htb]
 
 	\centering
 	\includegraphics[width=0.45\textwidth]{img/areaTooSmall.pdf}
@@ -211,7 +211,7 @@ cuadro se divide en franjas de igual ancho o alto que el cuadro original. Este
 tipo de división produce fragmentos con perímetros mayores, produciendo grandes
 áreas compartidas.
 
-\begin{figure}[h]
+\begin{figure}[!htb]
 
 	\includegraphics[width=0.5\textwidth]{img/fragmentos1.pdf}
 	\includegraphics[width=0.5\textwidth]{img/fragmentos2.pdf}
@@ -274,7 +274,7 @@ con cada pila (líneas 45 a 48). Cuando se termina de procesar el fragmento con
 todas las pilas se borra el fragmento (línea 49) y se libera el hilo de
 ejecución.
 
-\begin{figure}[h]
+\begin{figure}[!htb]
 
 	\centering
 
@@ -291,7 +291,7 @@ Dado que el procesamiento de los fragmentos tiene un tiempo variable, los hilos
 se liberan de forma irregular, lo que lleva a que el orden de creación de las
 tareas para los distintos cuadros no sea completamente determinista.
 
-\begin{figure}[h]
+\begin{figure}[!htb]
 
 	\includegraphics[width=\textwidth]{img/hilosytareas.pdf}
 
@@ -375,7 +375,7 @@ Las clases del framework básico son las siguientes:
 En la figura \ref{clasesFramework} se muestra el diagrama de clases del
 framework base.
 
-\begin{figure}[h]
+\begin{figure}[!htb]
 
 	\includegraphics[width=\textwidth]{img/clasesFramework.pdf}
 
@@ -446,7 +446,7 @@ En la figura \ref{clasesFrameworkRobots} se muestra el diagrama de clases del
 framework extendido para ser utilizado como sistema de visión global para
 fútbol de robots.
 
-\begin{figure}[h]
+\begin{figure}[!htb]
 
 	\includegraphics[width=\textwidth]{img/clasesFrameworkRobots.pdf}
 
@@ -470,7 +470,7 @@ veces, una para enviar los datos de la pelota y otra para enviar los datos de
 los robots. En la figura \ref{pilasUnificadas} se muestra la pila de búsqueda
 unificada que utiliza el sistema final.
 
-\begin{figure}[h]
+\begin{figure}[!htb]
 
 	\centering
 
