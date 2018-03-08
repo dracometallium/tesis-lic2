@@ -4,24 +4,27 @@
 
 \label{usoEducativo}
 
-El sistema puede ser utilizado como herramienta educativa de varias maneras, y
-tanto en materias de visión por computadora como en materias de sistemas
-paralelos.
+En este capitulo sugeriremos un conjunto de actividades en las cuales el sistema
+propuesto en esta tesis puede ser utilizado como herramienta educativa tanto en
+materias de visión por computadora como en materias de sistemas paralelos.
 
-En este capitulo sugeriremos un conjunto de actividades en las cuales el
-sistema propuesto en esta tesis puede ser utilizado como herramienta educativa.
-
-\subsection{Actividad sugerida 1}
+\subsection{Actividades para una materia de sistemas paralelos}
 
 En una materia de sistemas paralelos el sistema puede cumplir varios objetivos.
-Una vez introducidos los conceptos de \emph{speedup} y eficiencia el sistema
+Comenzando con el calculo de \emph{speedup} y eficiencia, hasta la aplicación de
+paradigmas de programación específicos con el fin de mejorar su rendimiento.
+
+\subsubsection{Actividad sugerida 1}
+
+Una vez introducidos los conceptos de \emph{speedup} y eficiencia, el sistema
 puede ser utilizado para como plataforma para la realización de ejercicios
 prácticos de cálculo de dichas magnitudes.
 
 \begin{description}
 
-	\item{Conocimientos previos}: Introducción al concepto de
-		\emph{speedup}, Arquitectura de computadoras paralelas.
+	\item{Conocimientos previos}: Introducción a los conceptos de
+		\emph{speedup} y eficiencia, Arquitectura de computadoras
+		paralelas.
 
 	\item{Objetivos}: Reforzar conceptos de \emph{speedup} y eficiencia.
 
@@ -44,15 +47,14 @@ prácticos de cálculo de dichas magnitudes.
 
 \end{description}
 
-\subsection{Actividad sugerida 2}
+\subsubsection{Actividad sugerida 2}
 
-Con el fin de reforzar el concepto de \emph{speedup} lineal y no lineal, se
-puede solicitar a los alumnos que comparen la curva de \emph{speedup} del
-sistema contra la curva del \emph{speedup} ideal. Luego de contrastar las
-curvas, el alumno, utilizando sus conocimientos de arquitectura de computadoras
-paralelas, podría intentar encontrar las causas de la reducción del crecimiento
-del rendimiento a medida que el sistema escala. Esta actividad se debe plantear
-a continuación de la actividad 1.
+Luego de la actividad sugerida 1, y con el fin de reforzar el concepto de
+\emph{speedup} lineal y no lineal, se puede solicitar a los alumnos que comparen
+la curva de \emph{speedup} del sistema contra la curva del \emph{speedup} ideal.
+Luego de contrastar las curvas, el alumno, utilizando sus conocimientos de
+arquitectura de computadoras paralelas, podría intentar encontrar las causas de
+la reducción del crecimiento del rendimiento a medida que el sistema escala.
 
 \begin{description}
 
@@ -86,7 +88,7 @@ a continuación de la actividad 1.
 
 \end{description}
 
-\subsection{Actividad sugerida 3}
+\subsubsection{Actividad sugerida 3}
 
 Como se pudo verificar en este trabajo, la fragmentación de los datos tiene un
 impacto crucial en la eficiencia de los programas paralelos. Para que los
@@ -94,21 +96,23 @@ alumnos experimenten con este concepto el sistema desarrollado es ideal, ya que
 permite experimentar con distintas cantidad de hilos y fragmentos. Para que los
 alumnos puedan fortalecer este concepto proponemos como práctica que los
 estudiantes ejecuten el programa dividiendo el cuadro en 16, 17 y 18 partes, y
-luego busquen otras cantidades de divisiones donde se produzca una caída de los
-\emph{FPS} con respecto a las cantidades de fragmentos inmediatas Con esto se
+luego busquen otras cantidades de fragmentos donde se produzca una caída de los
+\emph{FPS} con respecto a las cantidades de fragmentos inmediatas. Con esto se
 espera que los alumnos puedan concluir que las cantidades de divisiones cuyos
 valores son primos son perjudiciales y de esta manera reforzar la idea de que la
 distribución de los datos es importante.
 
 \begin{description}
 
-	\item{Conocimientos previos}: Introducción al concepto de
-		\emph{speedup}, eficiencia real e ideal, Arquitectura de
+	\item{Conocimientos previos}: Distribución de datos en arquitectura de
 		computadoras paralelas.
 
-	\item{Objetivos}: Reforzar diferencias entre eficiencia real e ideal.
+	\item{Objetivos}: Enfatizar la importancia de la correcta distribución
+		de los datos en arquitecturas paralelas.
 
 	\item{Consigna}: \begin{enumerate}
+	
+	\setcounter{enumi}{1}
 
 	\item{Si se utilizan 4 hilos de búsqueda y se dividen los cuadros en 16,
 		17 y 18 partes para procesar el video de 1280x720 píxeles:
@@ -127,15 +131,24 @@ distribución de los datos es importante.
 
 \end{description}
 
+\subsubsection{Actividad sugerida 4}
+
 Una vez que los alumnos tienen incorporados los conceptos de \emph{speedup},
 eficiencia, y la importancia de la distribución de los datos, proponemos que
 experimenten con distintas configuraciones de ejecución con el fin de que el
 sistema cumpla con requerimientos específicos de tiempo de procesamiento y
-\emph{FPS}. Con ésto se espera que los estudiantes incorporen la noción de que
+\emph{FPS}. Con esto se espera que los estudiantes incorporen la noción de que
 distintas aplicaciones pueden tener distintos requerimientos específicos que
 deben ser tenidos en cuenta al momento de configurarla.
 
-\begin{enumerate}
+\begin{description}
+
+	\item{Conocimientos previos}: Arquitectura de computadoras paralelas.
+
+	\item{Objetivos}: Establecer requerimientos y configurar una aplicación
+		acorde a ellos.
+
+	\item{Consigna}: \begin{enumerate}
 
 	\setcounter{enumi}{2}
 
@@ -159,27 +172,56 @@ deben ser tenidos en cuenta al momento de configurarla.
 
 \end{enumerate}
 
+\end{description}
+
+\subsubsection{Actividad sugerida 5}
+
 Finalmente si se desea utilizar el sistema con la finalidad de que los alumnos
 realicen práctica de programación de sistemas paralelos, se puede plantear como
-ejercicio la optimización del pluguin de \emph{segmentación de color} utilizando
+ejercicio la optimización del plugin de \emph{segmentación de color} utilizando
 instrucciones vectoriales.
 
-\begin{enumerate}
+\begin{description}
+
+	\item{Conocimientos previos}: Instrucciones vectoriales, Arquitectura de
+		computadoras paralelas.
+
+	\item{Objetivos}: Desarrollar competencias practicas de programación
+		utilizando el paradigma de paralelismo de datos.
+
+	\item{Consigna}: \begin{enumerate}
 
 	\setcounter{enumi}{3}
 
-	\item{Modifique el plaguin de \emph{segmentacion de color} utilizando
+	\item{Modifique el plugin de \emph{segmentación de color} utilizando
 	instrucciones vectoriales ¿Cuál es la mejora obtenida?}
 
 \end{enumerate}
 
-Para las materias de visión por computadora se puede hacer uso de la facilidad
-de extensión del sistema. Los alumnos pueden usar el sistema como base para la
-la implementación de nuevos mecanismos para detectar los robots, pelota, o
-nuevos objetos, esto implicaría la creación de nuevos plugins y pilas de
-plugins.
+\end{description}
 
-\begin{enumerate}
+\subsection{Actividades para una materia de visión por computadora}
+
+Para las materias de visión por computadora se puede hacer uso de la facilidad
+de extensión del sistema. Ya sea extendiendo el dominio del sistema o
+redefiniéndolo completamente.
+
+\subsubsection{Actividad sugerida 1}
+
+Los alumnos pueden usar el sistema como base para la la implementación de nuevos
+mecanismos para detectar los robots, pelota, o nuevos objetos, esto implicaría
+la creación de nuevos plugins y pilas de plugins.
+
+\begin{description}
+
+	\item{Conocimientos previos}: Detección y Segmentación.
+
+	\item{Objetivos}: Obtener habilidades practicas en el diseño e
+		implementación de plugins para de aplicaciones de visión por
+		computadora. Fortalecer los conceptos de detección y
+		segmentación.
+
+	\item{Consigna}: \begin{enumerate}
 
 	\item{Para incrementar la detección de infracciones en los partidos de
 		la \emph{SSL} se desea agregar un referí a la cancha. Éste es un
@@ -190,17 +232,36 @@ plugins.
 
 \end{enumerate}
 
+\end{description}
+
+\subsubsection{Actividad sugerida 2}
+
 También se puede plantear como trabajo adaptar el framework para un dominio
 distinto.
 
-\begin{enumerate}
+\begin{description}
+
+	\item{Conocimientos previos}: Etapas de un sistema de visión por
+		computadora.
+
+	\item{Objetivos}: Obtener habilidades practicas en el diseño e
+		implementación de aplicaciones de visión por computadora.
+		Consolidar conceptos de todas las etapas de los sistemas de
+		visión por computadora.
+
+	\item{Consigna}: \begin{enumerate}
+
+	\setcounter{enumi}{1}
 
 	\item{Utilizando como base el framework, implemente un sistema capaz de
-		detectar la presencia un marcador de realidad aumentada, su
-		poción y orientación con respecto a la cámara, y lo remplace por
-		el logo de la \texttt{Universidad Nacional del Comahue} (con la
-		orientación correspondiente). El video resultante debe tener un
-		retardo menor a un segundo. Puede diseñar su propio marcador de
-		realidad aumentada, aunque se recomienda utilizar uno estándar.}
+		detectar la presencia de un marcador de realidad aumentada, su
+		posición y orientación con respecto a la cámara, y lo reemplace
+		por el logo de la \texttt{Universidad Nacional del Comahue} (con
+		la orientación correspondiente). El video resultante debe tener
+		un retardo menor a un segundo.  Puede diseñar su propio marcador
+		de realidad aumentada, aunque se recomienda utilizar uno
+		estándar.}
 
 \end{enumerate}
+
+\end{description}
