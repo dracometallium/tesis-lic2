@@ -19,10 +19,14 @@ ambiente y robots, hasta robots humanoides con visión local:
 		software independiente y con visión local. El sistema de
 		simulación tiene información precisa de la posición y
 		orientación de todos los robots y la pelota en la cancha
-		virtual, pero la información entregada a los agentes de software
-		es con ruido y los ejes de coordenadas no se corresponden a un
-		punto fijo de la cancha, sino que son relativos a la posición y
-		orientación de cada robot.
+		virtual.
+
+		Para simular la visión local de un robot, la información
+		entregada a los agentes de software no tiene como eje de
+		coordenadas algún punto fijo de la cancha, sino que se centra en
+		cada uno de los robots y su alineación se corresponde con la
+		orientación de cada robot. Ademas, para simular los problemas de
+		un ambiente real, se le agrega ruido a la información entregada.
 
 		Está compuesta de dos sub-ligas, la liga simulada
 		bidimensional y la liga simulada tridimensional.
@@ -46,8 +50,9 @@ ambiente y robots, hasta robots humanoides con visión local:
 	\item[Plataforma estándar:] Esta liga introduce un modelo de robot
 		estándar sobre el cual todos los equipos deben ejecutar su
 		software. En la actualidad se utiliza el robot \emph{NAO} de
-		\emph{SoftBank Robotics}, un robot humanoide.  La visión es
-		local y cada robot es autónomo, pero pueden comunicarse.
+		\emph{SoftBank Robotics} \cite{robotics2017nao}, un robot
+		humanoide. La visión es local y cada robot es autónomo, pero
+		pueden comunicarse.
 
 	\item[Liga humanoide:] En esta liga los robots intentan simular
 		características humanas, no sólo en su forma, sino también en
