@@ -4,17 +4,17 @@
 
 \label{mt_modelosparalelos}
 
-Existen varias formas de clasificar los modelos computacionales, pero en esta
+Existen varias formas de clasificar los modelos computacionales, en esta
 sección nos enfocaremos en dos clasificaciones que son de particular interés
-para este trabajo. Por un lado la clasificación de Flynn, que compara la
-relación entre los flujos de datos y los de instrucciones, y por otro el modelo
-de memoria compartida o distribuida que analiza la forma en las unidades de
-procesamiento tienen acceso a la memoria.
+para éste trabajo: la clasificación de Flynn, que compara la relación entre los
+flujos de datos y los de instrucciones, y la clasificación según los modelos de
+memoria compartida y distribuida que analiza la forma en las unidades de
+procesamiento comparten datos.
 
 \subsection{Taxonomía de Flynn}
 
-La taxonomía de Flynn\cite{flynnstaxonomy1972} propone describir la estructura
-general de una computadora según la magnitud de interacción de los flujos de
+La taxonomía de Flynn \cite{flynnstaxonomy1972} propone describir la estructura
+general de una arquitectura según la magnitud de interacción de los flujos de
 datos e instrucciones, esto permite definir cuatro clases distintas:
 
 \begin{description}
@@ -66,4 +66,43 @@ datos e instrucciones, esto permite definir cuatro clases distintas:
 
 \subsection{Memoria compartida y memoria distribuida}
 
-bla bla bla
+Una característica importante de los sistemas \emph{MIMD} es la manera en la
+cual las unidades de procesamiento pueden acceder a los datos de las demás,
+dependiendo de si todas las unidades de procesamiento comparten el mismo espacio
+de direcciones o existe un espacio de direcciones asociado a cada conjunto de
+unidades de procesamiento \cite{introToPC2002, anIntroToPP2011}:
+
+\begin{description}
+
+	\item[Memoria compartida:] Solo hay un espacio de memoria para todas las
+		unidades. Los hilos de ejecución pueden utilizar memoria
+		compartida, permitiendo comunicación implícita.También admiten
+		comunicación por paso de mensajes. El espacio de memoria puede
+		estar dividido en distintos bancos de memoria asociados a
+		distintos conjuntos de unidades de procesamiento. Si el tiempo
+		de acceso a los bancos de memoria es independiente de la unidad
+		de procesamiento que realiza el acceso, la arquitectura es
+		clasificada como \emph{acceso a memoria uniforme}, abreviado
+		como \emph{UMA} (del Inglés \emph{Uniform Memory Access}). Si el
+		tiempo de acceso depende de la unidad de procesamiento y el
+		banco al que se quiere acceder, la arquitectura es clasificada
+		como \emph{acceso a memoria no uniforme}, abreviado como
+		\emph{NUMA} (del Inglés \emph{Non Uniform Memory Access}). Las
+		computadoras multiprocesador de escritorio actuales son sistemas
+		de memoria compartida \emph{UMA}.
+
+	\item[Memoria distribuida:] Cada unidad de procesamiento tiene su propio
+		banco de memoria y su propio espacio de direcciones. La
+		comunicación entre los hilos ejecutando en distintas unidades de
+		procesamiento se realiza a través de paso de mensajes, por lo
+		que toda la comunicación es explicita y controlada por el
+		programador. El acceso a la memoria local es mucho más rápido
+		que el acceso a los datos de otra unidad de procesamiento, y
+		dependiendo de la red de comunicación puede variar entre
+		distintos nodos.
+
+	\item[Sistemas híbridos:] Son sistemas de memoria distribuida donde
+		cada unidad de procesamiento es en realidad un sistema de
+		memoria compartida.
+
+\end{description}
