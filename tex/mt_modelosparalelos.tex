@@ -1,0 +1,69 @@
+% vim: set spell spelllang=es syntax=tex :
+
+\section{Clasificación de los modelos de computo paralelos}
+
+\label{mt_modelosparalelos}
+
+Existen varias formas de clasificar los modelos computacionales, pero en esta
+sección nos enfocaremos en dos clasificaciones que son de particular interés
+para este trabajo. Por un lado la clasificación de Flynn, que compara la
+relación entre los flujos de datos y los de instrucciones, y por otro el modelo
+de memoria compartida o distribuida que analiza la forma en las unidades de
+procesamiento tienen acceso a la memoria.
+
+\subsection{Taxonomía de Flynn}
+
+La taxonomía de Flynn\cite{flynnstaxonomy1972} propone describir la estructura
+general de una computadora según la magnitud de interacción de los flujos de
+datos e instrucciones, esto permite definir cuatro clases distintas:
+
+\begin{description}
+
+	\item[Single Instruction stream/Single Data stream (\emph{SISD}):] En
+		este modelo solo hay un flujo de instrucciones que opera sobre
+		un único flujo de datos. Éste modelo se corresponde con la
+		arquitectura de Von Neumann.
+
+	\item[Single Instruction stream/Multiple Data stream (\emph{SIMD}):] En
+		este modelo solo hay un flujo de instrucciones que opera sobre
+		varios flujos de datos al mismo tiempo. Para la ejecución de los
+		flujos de instrucciones, las computadoras que implementan este
+		modelo tienen varias unidades de procesamiento que comparten la
+		misma unidad de control. En un ciclo de instrucción, todas las
+		unidades de procesamiento ejecutan la misma instrucción sobre
+		distintos elementos de datos. Algunas implementaciones de este
+		modelo agregan un bit de actividad asociado a cada unidad de
+		procesamiento que indica si debe ejecutar la instrucción o no
+		operar. Esta extensión permite implementar estructuras
+		condicionales con facilidad pero reduciendo la performance
+		\cite{introToPC2002}. Éste modelo es el utilizado en las placas
+		aceleradoras modernas.
+
+	\item[Multiple Instruction stream/Single Data stream (\emph{MISD}):] En
+		este modelo múltiples flujos de instrucciones operan sobre un
+		único flujo de datos. Si todas las unidades de procesamiento
+		ejecutan el mismo conjunto de instrucciones, este modelo puede
+		ser utilizado con el fin de aumentar la redundancia. Los
+		sistemas de vuelo críticos del transbordador espacial STS
+		implementaron este modelo con éste propósito
+		\cite{spaceShuttlePCS1984}. Una alteración de este modelo consta
+		en que solo la primera unidad de procesamiento lea del conjunto
+		de datos, mientras que el resto de las unidades tienen como
+		datos de entrada los producidos por las anteriores. Las
+		\emph{tuberías} de los sistemas \emph{UNIX} pueden verse como
+		una implementación de ésta extinción del modelo \emph{MISD}.
+
+	\item[Multiple Instruction stream/Multiple Data stream (\emph{MIMD}):] En
+		este modelo múltiples flujos de instrucciones que operan sobre
+		múltiples flujos de datos. Al igual que las computadoras
+		\emph{SIMD}, tienen múltiples unidades de procesamiento, pero
+		cada una con su propia unidad de control, incrementando el costo
+		y consumo energético \cite{introToPC2002}. Los sistemas
+		multiprocesador de las computadoras de escritorio convencionales
+		implementan este modelo.
+
+\end{description}
+
+\subsection{Memoria compartida y memoria distribuida}
+
+bla bla bla
