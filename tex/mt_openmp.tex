@@ -31,12 +31,15 @@ solo hilo al comienzo de la ejecución y durante sus secciones secuenciales. El
 hilo inicial es llamado hilo principal. Cuando se encuentra una región de
 trabajo compartido (o \emph{worksharing region}) de $N$ tareas, el hilo
 principal crea $N-1$ nuevos hilos. Cada hilo (incluido el hilo principal)
-ejecuta una de las $N$ tareas.  Esta etapa es llamada \emph{fork}. El hilo
+ejecuta una de las $N$ tareas. Esta etapa es llamada \emph{fork}. El hilo
 principal no continúa la ejecución secuencial hasta que no han finalizado todas
 las tareas paralelas. A esta sincronización se la llama \emph{join}. La figura
-\ref{conway} muestra un ejemplo en el cual se crean dos tareas paralelas. El
-modelo de \emph{fork and join} puede aplicarse tanto para paralelismo de tareas
-como de datos.
+\ref{conway} muestra un ejemplo en el cual se crean dos tareas paralelas.
+\emph{OpenMP} extiende el modelo permitiendo que la cantidad de hilos sea menor
+que la cantidad de tareas, cuando esto sucede, las tareas sin hilo asignado son
+colocadas en una cola. Cuando un hilo termina de ejecutar una tarea, si hay
+tareas esperando en la cola, toma una y la ejecuta. El modelo de \emph{fork and
+join} puede aplicarse tanto para paralelismo de tareas como de datos.
 
 \begin{figure}[!htb]
 
@@ -56,20 +59,18 @@ implementaciones de \emph{OpenMP} suelen no destruir los hilos creados durante
 el \emph{fork}, sino que se mantienen inactivos para ser reutilizados cuando se
 encuentre otra región de trabajo compartido.
 
-El segundo modelo implementado en \emph{OpenMP} a partir de la versión 3.0 es
-el de tareas. En este modelo cuando se encuentra una región de trabajo
-compartido, se crea un conjunto de $N$ hilos de ejecución, pero no se crean
-tareas para esos hilos inmediatamente. Durante la ejecución de la región de
-trabajo compartido, se crean tareas que son colocadas en una cola de ejecución.
-Si un hilo de ejecución del conjunto está libre, se le asigna una tarea de la
-cola de ejecución. Cuando un hilo termina de ejecutar una tarea, toma otra de la
-cola de tareas o espera. Sólo se destruyen los hilos al terminar la ejecución de
-todas las tareas y se sale de la región de trabajo compartido.
-
-Dado que la creación de las tareas se puede hacer luego de la creación de los
-hilos de ejecución, este modelo permite distribuir en el tiempo la creación de
-las tareas dentro de en una región compartida. También permite que una tarea
-cree nuevas tareas dentro de la misma región.
+El segundo modelo implementado en \emph{OpenMP} a partir de la versión 3.0 es el
+de tareas. En este modelo permite la creación de nuevas tareas explícitas dentro
+de una región de trabajo compartido. Cuando se encuentra un área de trabajo
+compartido, se crean una o más tareas implícitas y $N$ hilos de ejecución. Al
+igual que el modelo de \emph{fork and join} extendido, la cantidad de hilos
+puede ser menor que la cantidad de tareas, pero también puede ser mayor. Durante
+la ejecución una tarea, ésta puede crear nuevas tareas explícitas a través de la
+directiva \emph{task}. Si hay hilos de ejecución libres, la nueva tarea sera
+asignada a uno de ellos, sino es colocada en una cola. Cuando un hilo termina de
+ejecutar una tarea, toma otra de la cola de tareas o espera. Sólo se destruyen
+los hilos al terminar la ejecución de todas las tareas y salir de la región de
+trabajo compartido.
 
 \subsubsection{Directivas de OpenMP}
 
@@ -102,11 +103,13 @@ forma de \textbf{\#pragma omp DIRECTIVA [OPCIONES]}.
 		num\_threads(N)} para crear los $N$ hilos de ejecución, seguida
 		de la directiva \emph{master} o \emph{single} para que sólo el
 		hilo principal ejecute la tarea que crea las primeras tareas de
-		la región de trabajo compartido. Para la creación de cada tarea
-		se debe utilizar la directiva \emph{task} seguida del bloque que
-		contiene el código a ejecutar por la tarea.
+		la región de trabajo compartido.
+	
+	\item	Para la creación de cada tarea se debe utilizar la directiva
+		\emph{task} seguida del bloque que contiene el código a ejecutar
+		por la tarea.
 
-		Si un hilo necesita esperar la finalización de las tareas que
+	\item	Si un hilo necesita esperar la finalización de las tareas que
 		creó, antes de continuar su ejecución, puede utilizar la
 		directiva \emph{taskwait}.
 
@@ -127,7 +130,8 @@ forma de \textbf{\#pragma omp DIRECTIVA [OPCIONES]}.
 		crítica, e incluso permite definir bloques distintos como la
 		misma sección crítica si comparten el mismo nombre. La segunda
 		directiva sólo acepta bloques en los cuales se realiza una
-		operación aritmética simple.
+		operación aritmética simple, y resulta en una implementación
+		más eficiente.
 
 \end{itemize}
 
