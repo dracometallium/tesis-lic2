@@ -90,7 +90,18 @@ unidades de procesamiento \cite{introToPC2002, anIntroToPP2011}:
 		uniforme}, abreviado como \emph{NUMA} (del Inglés \emph{Non
 		Uniform Memory Access}). Las computadoras multiprocesador de
 		escritorio actuales son sistemas de memoria compartida
-		\emph{UMA}.
+		\emph{UMA}. En la figura \ref{memCompartida} se muestra la
+		arquitectura de memoria compartida.
+
+\begin{figure}[!htb]
+
+	\centering
+	\includegraphics[width=0.9\textwidth]{img/memCompartida.pdf}
+	\caption{Arquitectura de una maquina de memoria compartida.}
+
+	\label{memCompartida}
+
+\end{figure}
 
 	\item[Memoria distribuida:] Cada unidad de procesamiento tiene su propio
 		banco de memoria y su propio espacio de direcciones. La
@@ -100,10 +111,35 @@ unidades de procesamiento \cite{introToPC2002, anIntroToPP2011}:
 		programador. El acceso a la memoria local es mucho más rápido
 		que el acceso a los datos de otra unidad de procesamiento, y
 		dependiendo de la red de comunicación puede variar entre
-		distintos nodos.
+		distintos nodos. En la figura \ref{memDistribuida} se puede ver
+		las conexión entre memorias y unidades de procesamiento en un
+		sistema de memoria distribuida.
+
+\begin{figure}[!htb]
+
+	\centering
+	\includegraphics[width=0.9\textwidth]{img/memDistribuida.pdf}
+	\caption{Arquitectura de una maquina de memoria distribuida.}
+
+	\label{memDistribuida}
+
+\end{figure}
+
 
 	\item[Sistemas híbridos:] Son sistemas de memoria distribuida donde
 		cada unidad de procesamiento es en realidad un sistema de
-		memoria compartida.
+		memoria compartida. En la figura \ref{memHibrida} se muestra las
+		distintas conexiones entre los bancos de memorias y las unidades
+		de procesamiento.
+
+\begin{figure}[!htb]
+
+	\centering
+	\includegraphics[width=0.9\textwidth]{img/memHibrida.pdf}
+	\caption{Arquitectura de una maquina de memoria híbrida.}
+
+	\label{memHibrida}
+
+\end{figure}
 
 \end{description}

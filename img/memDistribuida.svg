@@ -1,0 +1,437 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="44.979168cm"
+   height="18.424456cm"
+   viewBox="-121 -622 889.88198 361.68007"
+   id="svg3355"
+   version="1.1"
+   sodipodi:docname="memDistribuida.svg"
+   inkscape:version="0.92.1 r15371">
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1918"
+     inkscape:window-height="1061"
+     id="namedview540"
+     showgrid="true"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:zoom="0.7300917"
+     inkscape:cx="803.62648"
+     inkscape:cy="302.75061"
+     inkscape:window-x="0"
+     inkscape:window-y="17"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="svg3355">
+    <inkscape:grid
+       type="xygrid"
+       id="grid1474"
+       spacingx="26.172999"
+       spacingy="25.969428"
+       originx="-364.18561"
+       originy="-831.87497" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata3536">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs3357" />
+  <g
+     transform="translate(287.903,314.0166)"
+     id="g1858">
+    <rect
+       id="rect1828"
+       ry="0"
+       rx="0"
+       height="233.46214"
+       width="259.63513"
+       y="-936.2926"
+       x="-119.95258"
+       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:2.09485364;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <g
+       id="g1838">
+      <rect
+         style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:2.09383988;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         x="-92.590622"
+         y="-780.15942"
+         width="208.19453"
+         height="51.156548"
+         rx="0"
+         ry="0"
+         id="rect1830" />
+      <g
+         transform="translate(-613.51084,-258.50933)"
+         id="g1836"
+         style="stroke-width:2.09383988;stroke-miterlimit:4;stroke-dasharray:none">
+        <text
+           font-size="18.0622"
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:18.06216049px;font-family:serif;-inkscape-font-specification:'serif, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:2.09383988;stroke-miterlimit:4;stroke-dasharray:none"
+           x="624.92047"
+           y="-489.3382"
+           id="text1834">
+          <tspan
+             y="-489.3382"
+             x="624.92047"
+             id="tspan1832"
+             sodipodi:role="line">memoria</tspan>
+        </text>
+      </g>
+    </g>
+    <g
+       id="g1848">
+      <rect
+         id="rect1840"
+         ry="0"
+         rx="0"
+         height="76.484634"
+         width="207.34962"
+         y="-910.17944"
+         x="-91.745728"
+         style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:2.09383988;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <text
+         id="text1846"
+         y="-878.24298"
+         x="12.140747"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:18.06216049px;font-family:serif;-inkscape-font-specification:'serif, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:2.09383988;stroke-miterlimit:4;stroke-dasharray:none"
+         font-size="18.0622">
+        <tspan
+           sodipodi:role="line"
+           id="tspan1892"
+           x="12.140748"
+           y="-878.24298">Unidad de</tspan>
+        <tspan
+           sodipodi:role="line"
+           id="tspan1894"
+           x="12.140743"
+           y="-855.66528">procesamiento 1</tspan>
+      </text>
+    </g>
+    <g
+       id="g1856"
+       transform="translate(-5.0000052e-6,-54.983964)">
+      <line
+         style="fill:none;stroke:#000000;stroke-width:7.85189962;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         x1="10.911923"
+         y1="-769.51544"
+         x2="10.911923"
+         y2="-738.72693"
+         id="line1850" />
+      <polygon
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:5;stroke-opacity:1"
+         points="40,-320.59 50,-325.59 40,-305.59 30,-325.59 "
+         id="polygon1852"
+         transform="translate(-29.088075,-418.13695)" />
+      <polygon
+         transform="rotate(180,25.45596,-543.46943)"
+         id="polygon1854"
+         points="30,-325.59 40,-320.59 50,-325.59 40,-305.59 "
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:5;stroke-opacity:1" />
+    </g>
+  </g>
+  <g
+     id="g1826"
+     transform="translate(1.013279e-5,314.0166)">
+    <rect
+       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:2.09485364;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       x="-119.95258"
+       y="-936.2926"
+       width="259.63513"
+       height="233.46214"
+       rx="0"
+       ry="0"
+       id="rect1698" />
+    <g
+       id="g1787">
+      <rect
+         id="rect1565"
+         ry="0"
+         rx="0"
+         height="51.156548"
+         width="208.19453"
+         y="-780.15942"
+         x="-92.590622"
+         style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:2.09383988;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <g
+         style="stroke-width:2.09383988;stroke-miterlimit:4;stroke-dasharray:none"
+         id="g1569"
+         transform="translate(-613.51084,-258.50933)">
+        <text
+           id="text1514"
+           y="-489.3382"
+           x="624.92047"
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:18.06216049px;font-family:serif;-inkscape-font-specification:'serif, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:2.09383988;stroke-miterlimit:4;stroke-dasharray:none"
+           font-size="18.0622">
+          <tspan
+             sodipodi:role="line"
+             id="tspan1526"
+             x="624.92047"
+             y="-489.3382">memoria</tspan>
+        </text>
+      </g>
+    </g>
+    <g
+       id="g1781">
+      <rect
+         style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:2.09383988;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         x="-91.745728"
+         y="-910.17944"
+         width="207.34962"
+         height="76.484634"
+         rx="0"
+         ry="0"
+         id="rect586" />
+      <text
+         font-size="18.0622"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:18.06216049px;font-family:serif;-inkscape-font-specification:'serif, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:2.09383988;stroke-miterlimit:4;stroke-dasharray:none"
+         x="12.140747"
+         y="-878.24298"
+         id="text590">
+        <tspan
+           y="-878.24298"
+           x="12.140748"
+           id="tspan617"
+           sodipodi:role="line">Unidad de</tspan>
+        <tspan
+           y="-855.66528"
+           x="12.140743"
+           id="tspan619"
+           sodipodi:role="line">procesamiento 0</tspan>
+      </text>
+    </g>
+    <g
+       transform="translate(-5.0000052e-6,-54.983964)"
+       id="g1757">
+      <line
+         id="line1518"
+         y2="-738.72693"
+         x2="10.911923"
+         y1="-769.51544"
+         x1="10.911923"
+         style="fill:none;stroke:#000000;stroke-width:7.85189962;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <polygon
+         transform="translate(-29.088075,-418.13695)"
+         id="polygon1520"
+         points="40,-305.59 30,-325.59 40,-320.59 50,-325.59 "
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:5;stroke-opacity:1" />
+      <polygon
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:5;stroke-opacity:1"
+         points="50,-325.59 40,-305.59 30,-325.59 40,-320.59 "
+         id="polygon1522"
+         transform="rotate(180,25.45596,-543.46943)" />
+    </g>
+  </g>
+  <text
+     font-size="18.0622"
+     style="font-style:normal;font-weight:700;font-size:18.06220055px;font-family:serif;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none"
+     x="468.82544"
+     y="-504.12057"
+     id="text3376">
+    <tspan
+       x="468.82544"
+       y="-504.12057"
+       id="tspan3378">...</tspan>
+  </text>
+  <g
+     id="g3319">
+    <rect
+       id="rect3442"
+       ry="0"
+       rx="0"
+       height="50.426208"
+       width="811.36298"
+       y="-310.40009"
+       x="-66.417633"
+       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:2.33129144;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <text
+       id="text3444"
+       y="-278.09177"
+       x="339.20651"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:18.06216049px;font-family:serif;-inkscape-font-specification:'serif, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none"
+       font-size="18.0622">
+      <tspan
+         sodipodi:role="line"
+         id="tspan1503"
+         x="339.20651"
+         y="-278.09177">red de interconexión</tspan>
+    </text>
+  </g>
+  <g
+     transform="translate(234.9936,240.37944)"
+     id="g1493">
+    <line
+       id="line1487"
+       y2="-565.78577"
+       x2="62.774384"
+       y1="-625.1958"
+       x1="62.774384"
+       style="fill:none;stroke:#000000;stroke-width:5;stroke-opacity:1" />
+    <polygon
+       transform="translate(22.774385,-245.19578)"
+       id="polygon1489"
+       points="40,-320.59 50,-325.59 40,-305.59 30,-325.59 "
+       style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:5;stroke-opacity:1" />
+    <polygon
+       style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:5;stroke-opacity:1"
+       points="50,-325.59 40,-305.59 30,-325.59 40,-320.59 "
+       id="polygon1491"
+       transform="rotate(180,51.38719,-470.08534)" />
+  </g>
+  <g
+     id="g1890"
+     transform="translate(628.15198,314.0166)">
+    <rect
+       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:2.09485364;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       x="-119.95258"
+       y="-936.2926"
+       width="259.63513"
+       height="233.46214"
+       rx="0"
+       ry="0"
+       id="rect1860" />
+    <g
+       id="g1870">
+      <rect
+         id="rect1862"
+         ry="0"
+         rx="0"
+         height="51.156548"
+         width="208.19453"
+         y="-780.15942"
+         x="-92.590622"
+         style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:2.09383988;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <g
+         style="stroke-width:2.09383988;stroke-miterlimit:4;stroke-dasharray:none"
+         id="g1868"
+         transform="translate(-613.51084,-258.50933)">
+        <text
+           id="text1866"
+           y="-489.3382"
+           x="624.92047"
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:18.06216049px;font-family:serif;-inkscape-font-specification:'serif, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:2.09383988;stroke-miterlimit:4;stroke-dasharray:none"
+           font-size="18.0622">
+          <tspan
+             sodipodi:role="line"
+             id="tspan1864"
+             x="624.92047"
+             y="-489.3382">memoria</tspan>
+        </text>
+      </g>
+    </g>
+    <g
+       id="g1880">
+      <rect
+         style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:2.09383988;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         x="-91.745728"
+         y="-910.17944"
+         width="207.34962"
+         height="76.484634"
+         rx="0"
+         ry="0"
+         id="rect1872" />
+      <text
+         font-size="18.0622"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:18.06216049px;font-family:serif;-inkscape-font-specification:'serif, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:2.09383988;stroke-miterlimit:4;stroke-dasharray:none"
+         x="12.140747"
+         y="-878.24298"
+         id="text1878">
+        <tspan
+           sodipodi:role="line"
+           id="tspan1896"
+           x="12.140748"
+           y="-878.24298">Unidad de</tspan>
+        <tspan
+           sodipodi:role="line"
+           id="tspan1898"
+           x="12.140742"
+           y="-855.66528">procesamiento N</tspan>
+      </text>
+    </g>
+    <g
+       transform="translate(-5.0000052e-6,-54.983964)"
+       id="g1888">
+      <line
+         id="line1882"
+         y2="-738.72693"
+         x2="10.911923"
+         y1="-769.51544"
+         x1="10.911923"
+         style="fill:none;stroke:#000000;stroke-width:7.85189962;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <polygon
+         transform="translate(-29.088075,-418.13695)"
+         id="polygon1884"
+         points="40,-305.59 30,-325.59 40,-320.59 50,-325.59 "
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:5;stroke-opacity:1" />
+      <polygon
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:5;stroke-opacity:1"
+         points="50,-325.59 40,-305.59 30,-325.59 40,-320.59 "
+         id="polygon1886"
+         transform="rotate(180,25.45596,-543.46943)" />
+    </g>
+  </g>
+  <g
+     id="g1501"
+     transform="translate(575.24258,240.37944)">
+    <line
+       style="fill:none;stroke:#000000;stroke-width:5;stroke-opacity:1"
+       x1="62.774384"
+       y1="-625.1958"
+       x2="62.774384"
+       y2="-565.78577"
+       id="line1495" />
+    <polygon
+       style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:5;stroke-opacity:1"
+       points="40,-305.59 30,-325.59 40,-320.59 50,-325.59 "
+       id="polygon1497"
+       transform="translate(22.774385,-245.19578)" />
+    <polygon
+       transform="rotate(180,51.38719,-470.08534)"
+       id="polygon1499"
+       points="30,-325.59 40,-320.59 50,-325.59 40,-305.59 "
+       style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:5;stroke-opacity:1" />
+  </g>
+  <g
+     id="g569"
+     transform="translate(-52.90939,241.82835)">
+    <line
+       style="fill:none;stroke:#000000;stroke-width:5;stroke-opacity:1"
+       x1="62.774384"
+       y1="-625.1958"
+       x2="62.774384"
+       y2="-565.78577"
+       id="line563" />
+    <polygon
+       style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:5;stroke-opacity:1"
+       points="40,-305.59 30,-325.59 40,-320.59 50,-325.59 "
+       id="polygon565"
+       transform="translate(22.774385,-245.19578)" />
+    <polygon
+       transform="rotate(180,51.38719,-470.08534)"
+       id="polygon567"
+       points="30,-325.59 40,-320.59 50,-325.59 40,-305.59 "
+       style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:5;stroke-opacity:1" />
+  </g>
+</svg>
