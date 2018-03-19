@@ -26,18 +26,18 @@ datos e instrucciones, esto permite definir cuatro clases distintas:
 
 	\item[Single Instruction stream/Multiple Data stream (\emph{SIMD}):] En
 		este modelo solo hay un flujo de instrucciones que opera sobre
-		varios flujos de datos al mismo tiempo. Para la ejecución de los
-		flujos de instrucciones, las computadoras que implementan este
-		modelo tienen varias unidades de procesamiento que comparten la
-		misma unidad de control. En un ciclo de instrucción, todas las
-		unidades de procesamiento ejecutan la misma instrucción sobre
-		distintos elementos de datos. Algunas implementaciones de este
-		modelo agregan un bit de actividad asociado a cada unidad de
-		procesamiento que indica si debe ejecutar la instrucción o no
-		operar. Esta extensión permite implementar estructuras
-		condicionales con facilidad pero reduciendo la performance
-		\cite{introToPC2002}. Éste modelo es el utilizado en las placas
-		aceleradoras modernas.
+		varios flujos de datos al mismo tiempo. Para poder ejecutar los
+		distintos flujos de instrucciones, las computadoras que
+		implementan este modelo tienen varias unidades de procesamiento
+		que comparten la misma unidad de control. En un ciclo de
+		instrucción, todas las unidades de procesamiento ejecutan la
+		misma instrucción sobre distintos elementos de datos. Algunas
+		implementaciones de este modelo agregan un bit de actividad
+		asociado a cada unidad de procesamiento que indica si debe
+		ejecutar la instrucción o no operar. Esta extensión permite
+		implementar estructuras condicionales con facilidad pero
+		reduciendo la performance \cite{introToPC2002}. Éste modelo es
+		el utilizado en las placas aceleradoras modernas.
 
 	\item[Multiple Instruction stream/Single Data stream (\emph{MISD}):] En
 		este modelo múltiples flujos de instrucciones operan sobre un
@@ -75,21 +75,22 @@ unidades de procesamiento \cite{introToPC2002, anIntroToPP2011}:
 \begin{description}
 
 	\item[Memoria compartida:] Solo hay un espacio de memoria para todas las
-		unidades. Los hilos de ejecución pueden utilizar memoria
-		compartida, permitiendo comunicación implícita.También admiten
-		comunicación por paso de mensajes. El espacio de memoria puede
-		estar dividido en distintos bancos de memoria asociados a
-		distintos conjuntos de unidades de procesamiento. Si el tiempo
-		de acceso a los bancos de memoria es independiente de la unidad
-		de procesamiento que realiza el acceso, la arquitectura es
-		clasificada como \emph{acceso a memoria uniforme}, abreviado
-		como \emph{UMA} (del Inglés \emph{Uniform Memory Access}). Si el
-		tiempo de acceso depende de la unidad de procesamiento y el
-		banco al que se quiere acceder, la arquitectura es clasificada
-		como \emph{acceso a memoria no uniforme}, abreviado como
-		\emph{NUMA} (del Inglés \emph{Non Uniform Memory Access}). Las
-		computadoras multiprocesador de escritorio actuales son sistemas
-		de memoria compartida \emph{UMA}.
+		unidades. Para la comunicación los hilos de ejecución pueden
+		utilizar memoria compartida, permitiendo comunicación
+		implícita. También admiten comunicación por paso de mensajes. El
+		espacio de memoria puede estar dividido en distintos bancos de
+		memoria asociados a distintos conjuntos de unidades de
+		procesamiento. Si el tiempo de acceso a los bancos de memoria es
+		independiente de la unidad de procesamiento que realiza el
+		acceso, la arquitectura es clasificada como de \emph{acceso a
+		memoria uniforme}, abreviado como \emph{UMA} (del Inglés
+		\emph{Uniform Memory Access}). Si el tiempo de acceso depende de
+		la unidad de procesamiento y el banco al que se quiere acceder,
+		la arquitectura es clasificada como de \emph{acceso a memoria no
+		uniforme}, abreviado como \emph{NUMA} (del Inglés \emph{Non
+		Uniform Memory Access}). Las computadoras multiprocesador de
+		escritorio actuales son sistemas de memoria compartida
+		\emph{UMA}.
 
 	\item[Memoria distribuida:] Cada unidad de procesamiento tiene su propio
 		banco de memoria y su propio espacio de direcciones. La
