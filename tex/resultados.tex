@@ -102,7 +102,8 @@ memoria se muestra en la figura \ref{topoMemoria}.
 \begin{figure}[!htb]
 
 	\includegraphics[width=\textwidth]{img/topo.pdf}
-	\caption{Jerarquía de memoria de la máquina de pruebas.}
+	\caption{Jerarquía de memoria de la máquina de pruebas. Imagen obtenida
+	con la herramienta \emph{lstopo}.}
 
 	\label{topoMemoria}
 
@@ -116,14 +117,14 @@ Durante el desarrollo de la aplicación se probaron tres distintas
 implementaciones. En la primera implementación, el framework ejecutaba las
 distintas pilas de plugins en tareas separadas. En la segunda implementación el
 framework fue modificado para que una sola tarea ejecutarán todas las pilas de
-plugins sobre un mismo fragmento. Para la tercera implementación se trabajo
-sobre el mismo framework que la segunda, pero se unieron las pilas de búsquedas
-de robots y la de búsqueda de pelota. Para comprobar cual de éstas era la más
-efectiva se realizaron las pruebas con cada una de éstas para la configuración
-de 11 hilos de búsqueda y 10 fragmentos con el video de 800x600 píxeles de
-resolución. La primera implementación proceso 70 \emph{FPS}, la segunda 152
-\emph{FPS} y la tercera 192 \emph{FPS}. Como esta última fue la que produjo
-resultados más satisfactorios, sera sobre los resultados de ésta que
+plugins sobre un mismo fragmento en serie. Para la tercera implementación se
+trabajo sobre el mismo framework que la segunda, pero se unieron las pilas de
+búsquedas de robots y la de búsqueda de pelota. Para comprobar cual de éstas era
+la más efectiva se realizaron las pruebas con cada una de éstas para la
+configuración de 11 hilos de búsqueda y 10 fragmentos con el video de 800x600
+píxeles de resolución. La primera implementación proceso 70 \emph{FPS}, la
+segunda 152 \emph{FPS} y la tercera 192 \emph{FPS}. Como esta última fue la que
+produjo resultados más satisfactorios, sera sobre los resultados de ésta que
 trabajaremos a continuación.
 
 El sistema posee 6 núcleos con multithreading simultaneo de dos vías, por lo
@@ -221,16 +222,16 @@ El segundo patrón que se puede observar en las figuras \ref{800fps} y
 hilos de búsqueda es alta, el sistema tiene menor \emph{FPS} que utilizar una
 menor cantidad de hilos búsqueda pero una mayor cantidad de fragmentos. La
 memoria caché se comparte entre los cuadros que están siendo procesados en
-paralelo. Cuanto más cuadros se procesen en paralelo, mayor será la competencia
-por la memoria caché. La cantidad de cuadros que se procesan en paralelo está en
-relación con el número de fragmentos y la cantidad de hilos de búsqueda.
-Considerando si la cantidad de hilos de búsqueda es mayor que la cantidad de
-fragmentos, si se disminuye la cantidad de fragmentos, manteniendo la cantidad
-de hilos de búsqueda, se incrementa la cantidad de cuadros a procesar en
-paralelo. Esto tiene como efecto que los cuadros compitan por la caché y reduce
-las posibilidades de que los fragmentos entren completamente en las cachés de
-nivel más bajo. Por esto se propuso la hipótesis de que el retardo se produce
-debido a un aumento en los fallos de caché.
+paralelo, y cuantos más cuadros se procesen en paralelo, mayor será la competencia
+por ella. La cantidad de cuadros que se procesan en paralelo está en relación
+con el número de fragmentos y la cantidad de hilos de búsqueda. Cuando la
+cantidad de hilos de búsqueda es mayor que la cantidad de fragmentos, si se
+disminuye la cantidad de fragmentos, manteniendo la cantidad de hilos de
+búsqueda, se incrementa la cantidad de cuadros a procesar en paralelo. Esto
+tiene como efecto que los cuadros compitan por la caché y reduce las
+posibilidades de que los fragmentos entren completamente en las cachés de nivel
+más bajo. Por esto se propuso la hipótesis de que el retardo se produce debido a
+un aumento en los fallos de caché.
 
 Para comprobar que la hipótesis es correcta se diseñó el siguiente experimento.
 Se ejecutó el programa procesando cuadros del video de 1280x720 píxeles de
@@ -316,14 +317,14 @@ que puede alcanzar el sistema en cada video.
 \end{figure}
 
 Las figuras \ref{bestFPS800} y \ref{bestFPS1280} muestran el máximo rendimiento
-en cuadros por segundo obtenidos para cada configuración de hilos de búsqueda
-incluyendo el retardo de cuadro, para los videos de 800x600 y 1280x720 píxeles.
-Se puede apreciar en la figura que para el caso del video de 800x600 píxeles el
-sistema escala sólo hasta el uso de 5 hilos de búsqueda. En el caso del video de
-1280x720 píxeles, también muestra una reducción en el rendimiento cuando se
-utilizan 12 hilos de búsqueda. Como la plataforma experimental puede ejecutar
-hasta 12 hilos simultáneamente, los hilos de búsqueda deberán compartir recursos
-con los hilos dedicados a las tareas estáticas. Por lo cual no podemos
+en cuadros por segundo obtenidos, incluyendo el retado de cuadro, para cada
+configuración de hilos de búsqueda, para los videos de 800x600 y 1280x720
+píxeles. Se puede apreciar en la figura que para el caso del video de 800x600
+píxeles el sistema escala sólo hasta el uso de 5 hilos de búsqueda. En el caso
+del video de 1280x720 píxeles, también muestra una reducción en el rendimiento
+cuando se utilizan 12 hilos de búsqueda. Como la plataforma experimental puede
+ejecutar hasta 12 hilos simultáneamente, los hilos de búsqueda deberán compartir
+recursos con los hilos dedicados a las tareas estáticas. Por lo cual no podemos
 determinar el punto en el cual la aplicación deja de escalar para un video de
 1280x720 píxeles, aunque se alcanza un punto de rendimientos decrecientes luego
 de los 5 hilos de búsqueda.
@@ -354,7 +355,7 @@ sistema para el video de 800$\times$600 píxeles es de $3.92\times$, mientras qu
 para el video 1280$\times$720 es de $5.42\times$. Las curvas de \emph{speedup}
 son mostradas en las figuras \ref{speedUp800} y \ref{speedUp1280}. Se puede
 observar que en ambos casos el crecimiento es pronunciado hasta 5 hilos de
-búsqueda los cuales, sumados a los hilos de ejecución para tareas estáticas
+búsqueda, los cuales, sumados a los hilos de ejecución para tareas estáticas
 superan la cantidad de núcleos físicos de la plataforma experimental. Existen
 dos posibles causas para la reducción del crecimiento del \emph{speedup}. La
 primera es que con los cinco hilos de búsqueda más los dos hilos de ejecución
