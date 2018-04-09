@@ -16,6 +16,9 @@ set style line 1 lc rgb "#2222DD"
 set boxwidth 0.75
 set grid
 
+set palette defined (0 '#2222DD', 1 '#AA2222')
+unset colorbox
+
 set output '/dev/null'
 plot arch using 1:(floor($3/10))
 maxy=floor((GPVAL_DATA_Y_MAX+50)/50)*50
@@ -38,6 +41,6 @@ maxy=(GPVAL_DATA_Y_MAX)
 
 set output dir.resolution.'_speedup.pdf'
 set ylabel "Speedup"
-plot arch using 1:((floor($3/10)*1.0)/base) with boxes ls 1 title '',\
+plot arch using 1:((floor($3/10)*1.0)/base):(($1<7)?0:1) with boxes ls 1 palette z title '',\
  arch using 1:(((floor($3/10)*1.0)/base)-maxy/20):(sprintf('%.2fx', ((floor($3/10)*1.0)/base)))\
  with labels font ',8' textcolor '#FFFFAA' title ''

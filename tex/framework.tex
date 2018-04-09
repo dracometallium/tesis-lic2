@@ -65,7 +65,7 @@ cada tipo de objeto en paralelo sobre cada fragmento tenía un efecto adverso.
 Por este motivo, el tercer enfoque no fue aplicado sobre el producto final, y no
 será incluido en las explicaciones siguientes. Los detalles de los resultados
 que llevaron a tomar esta decisión serán explayados más adelante en la sección
-de resultados.
+\ref{resultados}.
 
 \section{Tareas del sistema}
 
@@ -226,10 +226,10 @@ tipo de división produce fragmentos con perímetros mayores, produciendo grande
 \label{implementacionFramework}
 
 Como primera etapa se implementó un framework base que simula el procesamiento de
-ítems prototipo vacíos y establece las clases base a ser extendidas. Esto
-permite explicar el flujo de la información así como la estructura base del
-sistema sin preocuparse por la implementación específica para el sistema de
-visión global para el fútbol de robots.
+ítems genericos y establece las clases base a ser extendidas. Esto permite
+explicar el flujo de la información así como la estructura base del sistema sin
+preocuparse por la implementación específica para el sistema de visión global
+para el fútbol de robots.
 
 El framework fue implementado en \emph{C++} con \emph{OpenMP} y está basado en
 plugins para facilitar su modificación en un ambiente educativo. La elección del
@@ -238,7 +238,7 @@ orientado a objetos. Dado que el sistema debe procesar los cuadros en tiempos
 acotados, la eficiencia es crucial, mientras que el paradigma orientado a
 objetos permite establecer fácilmente la interfaz de los plugins. El uso de
 \emph{OpenMP} permite la creación y control de hilos de ejecución y tareas de
-forma sencilla.  Se utilizaron los plugins implementados en \cite{torres2014},
+forma sencilla. Se utilizaron los plugins implementados en \cite{torres2014},
 modificándolos para permitir su uso en un sistema paralelo.
 
 En la figura \ref{codigo} se muestra el fragmento de código (en pseudocódigo)
@@ -260,7 +260,12 @@ finalización de la tarea es controlada por la variable \emph{continuar}.
 Cuando hay hilos de búsqueda libres y cuadros en la cola de cuadros, se toma un
 cuadro de la cola de cuadros (líneas 29 a 32), y se crea una tarea de
 fragmentación de cuadro con una copia privada del puntero al cuadro (líneas 33 a
-36).
+36). El sistema limita la cantidad de tareas creadas ya que de no hacerlo si la
+cantidad de cuadros procesados por segundo es menor que la cantidad de cuadros
+generados por segundo, la lista de tareas en espera crecería ilimitadamente, y
+dado que la especificación de \emph{OpenMP} no define en que orden deben
+retirarse las tareas de la lista, si la implementación utiliza una cola, el
+tiempo de procesamiento de cuadro podría crecer ilimitadamente.
 
 Cada tarea de fragmentación de cuadro (líneas 37 a 53), comienza fragmentando el
 cuadro. Por cada fragmento crea una tarea de procesamiento de fragmento (líneas
@@ -319,9 +324,9 @@ Las clases del framework básico son las siguientes:
 		el espacio del ítem más viejo en la estructura y se retorna el
 		puntero de éste al llamador, delegándole su destrucción. La
 		razón de la delegación de la destrucción se debe a que la
-		destrucción un objeto es lenta (y aun mayor en el caso de los
+		destrucción de un objeto es lenta (y aun mayor en el caso de los
 		cuadros del sistema final), y el control de acceso al buffer se
-		realiza a través del uso de de secciones críticas, por lo que es
+		realiza a través del uso de secciones críticas, por lo que es
 		importante reducir el tiempo que cada hilo pasa dentro de la
 		sección crítica, para no impedirle el acceso a otros hilos que
 		pueden estar esperando entrar a ellas.
@@ -363,10 +368,10 @@ Las clases del framework básico son las siguientes:
 		generación de tareas de fragmentación de cuadro. Para no crear
 		más tareas de las que puede procesar el sistema, sólo se toma un
 		cuadro de la cola de cuadros a procesar si hay hilos de búsqueda
-		libres (o lo que es lo mismo, la cola de tareas está vacía).
-		Cada tarea de fragmentación de cuadro divide el ítem utilizando
-		\emph{ItemSlicer} y crea una nueva tarea de procesamiento de
-		cuadros por cada fragmento.
+		libres (o lo que es lo mismo, la lista de tareas en espera está
+		vacía). Cada tarea de fragmentación de cuadro divide el ítem
+		utilizando \emph{ItemSlicer} y crea una nueva tarea de
+		procesamiento de cuadros por cada fragmento.
 
 \end{description}
 

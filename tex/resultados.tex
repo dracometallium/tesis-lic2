@@ -116,20 +116,20 @@ memoria se muestra en la figura \ref{topoMemoria}.
 Durante el desarrollo de la aplicación se probaron tres distintas
 implementaciones. En la primera implementación, el framework ejecutaba las
 distintas pilas de plugins en tareas separadas. En la segunda implementación el
-framework fue modificado para que una sola tarea ejecutarán todas las pilas de
+framework fue modificado para que una sola tarea ejecutara todas las pilas de
 plugins sobre un mismo fragmento en serie. Para la tercera implementación se
 trabajo sobre el mismo framework que la segunda, pero se unieron las pilas de
 búsquedas de robots y la de búsqueda de pelota. Para comprobar cual de éstas era
 la más efectiva se realizaron las pruebas con cada una de éstas para la
 configuración de 11 hilos de búsqueda y 10 fragmentos con el video de 800x600
-píxeles de resolución. La primera implementación proceso 70 \emph{FPS}, la
+píxeles de resolución. La primera implementación procesó 70 \emph{FPS}, la
 segunda 152 \emph{FPS} y la tercera 192 \emph{FPS}. Como esta última fue la que
-produjo resultados más satisfactorios, sera sobre los resultados de ésta que
+produjo resultados más satisfactorios, será sobre los resultados de ésta que
 trabajaremos a continuación.
 
 El sistema posee 6 núcleos con multithreading simultaneo de dos vías, por lo
 cual como máximo puede ejecutar 12 hilos en paralelo. Por este motivo el rango
-de la cantidad de hilos de búsqueda sera inicialmente de 1 a 12 hilos, y en caso
+de la cantidad de hilos de búsqueda será inicialmente de 1 a 12 hilos, y en caso
 de que los experimentos demuestren que el \emph{speedup} no ha comenzado a
 decaer, se extenderá el rango hasta que esto suceda. El rango de cantidad de
 fragmentos está limitado de 1 a 24.
@@ -143,7 +143,7 @@ tareas estáticas, uno para la generación de cuadros y otro para la tarea de
 generación de tareas de búsqueda. En el caso de del video de 800x600 píxeles se
 llego a un máximo de 196 \emph{FPS} cuando se divide el cuadro en 15 fragmentos
 y se utilizan 5 hilos de búsqueda, mientras que para el video de 1280x720
-píxeles se alcanzo un máximo de 130 \emph{FPS} cuando se divide el cuadro en 24
+píxeles se alcanzó un máximo de 130 \emph{FPS} cuando se divide el cuadro en 24
 fragmentos y se utilizan 11 hilos de búsqueda.
 
 \begin{figure}[!htb]
@@ -283,11 +283,11 @@ encontrado en la primera etapa de los experimentos).
 
 \end{figure}
 
-Estos dos últimas figuras nos permiten apreciar que no siempre una mayor
-cantidad de cuadros por segundos procesados implicara el tiempo de espera
+Estas dos últimas figuras nos permiten apreciar que no siempre una mayor
+cantidad de cuadros por segundos procesados implicará el tiempo de espera
 mínimo. Dependiendo de si se desea minimizar el tiempo de espera de los cuadros,
-maximizar la cantidad de cuadros procesados, o encontrar un balance especifico,
-se deberá elegir una cantidad de fragmentos y hilos de búsqueda apropiada. Por
+maximizar la cantidad de cuadros procesados, o encontrar un balance especificó,
+se deberá elegir una cantidad de fragmentos e hilos de búsqueda apropiada. Por
 ejemplo, en el caso del video de 1280x720 píxeles de resolución, dividir la
 imagen en 24 fragmentos y utilizar 11 hilos de búsqueda permite procesar 130
 cuadros por segundo en el equipo de prueba, sin embargo el tiempo de espera es
@@ -353,23 +353,34 @@ de los 5 hilos de búsqueda.
 El \emph{speedup} del rendimiento (sobre los FPS) máximo alcanzado por el
 sistema para el video de 800$\times$600 píxeles es de $3.92\times$, mientras que
 para el video 1280$\times$720 es de $5.42\times$. Las curvas de \emph{speedup}
-son mostradas en las figuras \ref{speedUp800} y \ref{speedUp1280}. Se puede
-observar que en ambos casos el crecimiento es pronunciado hasta 5 hilos de
-búsqueda, los cuales, sumados a los hilos de ejecución para tareas estáticas
-superan la cantidad de núcleos físicos de la plataforma experimental. Existen
-dos posibles causas para la reducción del crecimiento del \emph{speedup}. La
-primera es que con los cinco hilos de búsqueda más los dos hilos de ejecución
-para tareas estáticas se logre suficiente paralelismo a nivel de instrucción,
-alcanzando un alto uso de las unidades funcionales de cada núcleo. La segunda
-posible causa del decremento del crecimiento del \emph{speedup} es que la
-aplicación esté limitada por memoria, provocando que el acceso a los datos sea
-cuello de botella, reduciendo el rendimiento cuando se utilizan más de seis
-núcleos.
+son mostradas en las figuras \ref{speedUp800} y \ref{speedUp1280}. Dado que la
+plataforma cuenta con 6 núcleos con multithreading simultáneo de dos vías, si se
+ejecutan 6 hilos o menos, podrán ejecutarse en núcleos distintos, si se ejecutan
+más de 7, algunos de los núcleos deberán ejecutar más de un hilo. Para
+distinguir estas dos situaciones, en las figuras \ref{speedUp800} y
+\ref{speedUp1280}, se resaltan en rojo las columnas donde por lo menos uno de
+los núcleos se vera forzado a ejecutar dos hilos de búsqueda distintos.
+
+Para el video de 800$\times$600 píxeles el \emph{speedup} es muy inferior al
+\emph{speedup} lineal máximo de $6\times$ utilizando los seis núcleos. El
+rendimiento máximo es alcanzando cuando se ejecutan 5 hilos de búsqueda, los
+cuales sumados a los dos hilos para tareas estáticas superan la cantidad de
+unidades de procesamiento, pero es menor que la cantidad máxima de hilos en
+ejecución soportados por la plataforma. Existen dos posibles causas para la
+limitación del \emph{speedup}. La primera es que con los cinco hilos de búsqueda
+más los dos hilos de ejecución para tareas estáticas se logre suficiente
+paralelismo a nivel de instrucción, alcanzando un alto uso de las unidades
+funcionales de cada núcleo. La segunda posible explicación de la limitación del
+\emph{speedup} es que la aplicación esté limitada por memoria, es decir, que el
+acceso a los datos es un cuello de botella, reduciendo el rendimiento cuando se
+utilizan más de seis núcleos.
 
 \begin{figure}[!htb]
 
 	\includegraphics[width=\textwidth]{img/800x600_speedup.pdf}
-	\caption{\emph{Speedup} para el video de 800$\times$600 píxeles}
+	\caption{\emph{Speedup} para el video de 800$\times$600 píxeles. Los
+	valores en rojo indican que algunos núcleos se ven obligados a ejecutar
+	más de un hijo de búsqueda.}
 	\label{speedUp800}
 
 \end{figure}
@@ -377,7 +388,10 @@ núcleos.
 \begin{figure}[!htb]
 
 	\includegraphics[width=\textwidth]{img/1280x720_speedup.pdf}
-	\caption{\emph{Speedup} para el video de 1280$\times$720 píxeles}
+	\caption{\emph{Speedup} para el video de 1280$\times$720 píxeles. Los
+	valores en rojo indican que algunos núcleos se ven obligados a ejecutar
+	más de un hijo de búsqueda.}
+
 	\label{speedUp1280}
 
 \end{figure}

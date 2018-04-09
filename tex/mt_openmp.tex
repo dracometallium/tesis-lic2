@@ -37,9 +37,10 @@ las tareas paralelas. A esta sincronización se la llama \emph{join}. La figura
 \ref{conway} muestra un ejemplo en el cual se crean dos tareas paralelas.
 \emph{OpenMP} extiende el modelo permitiendo que la cantidad de hilos sea menor
 que la cantidad de tareas, cuando esto sucede, las tareas sin hilo asignado son
-colocadas en una cola. Cuando un hilo termina de ejecutar una tarea, si hay
-tareas esperando en la cola, toma una y la ejecuta. El modelo de \emph{fork and
-join} puede aplicarse tanto para paralelismo de tareas como de datos.
+colocadas en una lista de tareas en espera. Cuando un hilo termina de ejecutar
+una tarea, si hay tareas esperando en la lista de tareas en espera, toma una y
+la ejecuta. El modelo de \emph{fork and join} puede aplicarse tanto para
+paralelismo de tareas como de datos.
 
 \begin{figure}[!htb]
 
@@ -67,10 +68,10 @@ igual que el modelo de \emph{fork and join} extendido, la cantidad de hilos
 puede ser menor que la cantidad de tareas, pero también puede ser mayor. Durante
 la ejecución una tarea, ésta puede crear nuevas tareas explícitas a través de la
 directiva \emph{task}. Si hay hilos de ejecución libres, la nueva tarea sera
-asignada a uno de ellos, sino es colocada en una cola. Cuando un hilo termina de
-ejecutar una tarea, toma otra de la cola de tareas o espera. Sólo se destruyen
-los hilos al terminar la ejecución de todas las tareas y salir de la región de
-trabajo compartido.
+asignada a uno de ellos, sino es colocada en una lista de tareas en espera.
+Cuando un hilo termina de ejecutar una tarea, toma otra de la lista de tareas en
+espera de tareas o espera. Sólo se destruyen los hilos al terminar la ejecución
+de todas las tareas y salir de la región de trabajo compartido.
 
 \subsubsection{Directivas de OpenMP}
 
