@@ -41,6 +41,8 @@ maxy=(GPVAL_DATA_Y_MAX)
 
 set output dir.resolution.'_speedup.pdf'
 set ylabel "Speedup"
+set label "■ Hilos de búsqueda\ncompartiendo unidades\nde procesamiento" at\
+ 0.5,(floor(maxy - 1)+1.75) tc rgb "#AA2222" 
 plot arch using 1:((floor($3/10)*1.0)/base):(($1<7)?0:1) with boxes ls 1 palette z title '',\
  arch using 1:(((floor($3/10)*1.0)/base)-maxy/20):(sprintf('%.2fx', ((floor($3/10)*1.0)/base)))\
  with labels font ',8' textcolor '#FFFFAA' title ''

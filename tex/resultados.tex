@@ -358,8 +358,8 @@ plataforma cuenta con 6 núcleos con multithreading simultáneo de dos vías, si
 ejecutan 6 hilos o menos, podrán ejecutarse en núcleos distintos, si se ejecutan
 más de 7, algunos de los núcleos deberán ejecutar más de un hilo. Para
 distinguir estas dos situaciones, en las figuras \ref{speedUp800} y
-\ref{speedUp1280}, se resaltan en rojo las columnas donde por lo menos uno de
-los núcleos se vera forzado a ejecutar dos hilos de búsqueda distintos.
+\ref{speedUp1280}, se resaltan las columnas donde por lo menos uno de los
+núcleos se vera forzado a ejecutar dos hilos de búsqueda distintos.
 
 Para el video de 800$\times$600 píxeles el \emph{speedup} es muy inferior al
 \emph{speedup} lineal máximo de $6\times$ utilizando los seis núcleos. El
@@ -379,7 +379,7 @@ utilizan más de seis núcleos.
 
 	\includegraphics[width=\textwidth]{img/800x600_speedup.pdf}
 	\caption{\emph{Speedup} para el video de 800$\times$600 píxeles. Los
-	valores en rojo indican que algunos núcleos se ven obligados a ejecutar
+	valores resaltados indican que algunos núcleos se ven obligados a ejecutar
 	más de un hijo de búsqueda.}
 	\label{speedUp800}
 
@@ -389,7 +389,7 @@ utilizan más de seis núcleos.
 
 	\includegraphics[width=\textwidth]{img/1280x720_speedup.pdf}
 	\caption{\emph{Speedup} para el video de 1280$\times$720 píxeles. Los
-	valores en rojo indican que algunos núcleos se ven obligados a ejecutar
+	valores resaltados indican que algunos núcleos se ven obligados a ejecutar
 	más de un hijo de búsqueda.}
 
 	\label{speedUp1280}
