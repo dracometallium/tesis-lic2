@@ -18,7 +18,7 @@ uso educativo.
 		con el fin de incorporar la temática de procesamiento paralelo
 		en el procesamiento de imágenes. Ademas limita su escalabilidad,
 		ya que sin importar el sistema en el cual sea utilizado, nunca
-		utilizara más de dos unidades de procesamiento (una para el hilo
+		utilizará más de dos unidades de procesamiento (una para el hilo
 		de ejecución de interfaz de usuario y otra para el hilo de
 		ejecución para la captura y procesamiento).
 
@@ -50,7 +50,7 @@ La programación del framework propone un enfoque multi-hilo con el propósito d
 mejorar la escalabilidad en microprocesadores multi-core. Utiliza dos hilos de
 búsqueda de objetos: uno para encontrar la pelota y otro para encontrar los
 robots; un hilo de captura de cuadros de video (desde un vídeo grabado
-previamente o una captura desde una cámara), y finalmente uno para la interfaz
+previamente o una captura desde una cámara), y finalmente otro para la interfaz
 de usuario. Su grado de paralelismo es mejor que el de \emph{SSL-Vision}; pero
 aún así, al organizar el cómputo en tan solo cuatro hilos en total, su diseño
 está acoplado a una arquitectura de, a lo sumo, cuatro núcleos. Por lo tanto, no

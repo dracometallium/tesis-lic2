@@ -9,12 +9,12 @@ definición de paralelismo de alto nivel para sistemas \emph{MIMD} de memoria
 compartida en \emph{C}, \emph{C++} y \emph{Fortran} \cite{ompWeb}. Es una API
 abierta, publicada y definida por el consorcio \emph{OpenMP Architecture Review
 Board} (o \emph{OpenMP ARB}). El consorcio está compuesto por representantes de
-las industrias del hardware y software, sus miembros permanentes son \emph{AMD},
+las industrias del hardware y software. Sus miembros permanentes son \emph{AMD},
 \emph{ARM}, \emph{CRAY}, \emph{Fujitsu}, \emph{HPE}, \emph{IBM}, \emph{Intel},
 \emph{Micron}, \emph{NEC}, \emph{NVIDIA}, \emph{Oracle}, \emph{Red Hat}, y
-\emph{Texas Instruments}, sus miembros temporales incluyen al centro de cómputo
-Barcelona, la \emph{NASA} y \emph{cOMPunity}, entre otros \cite{ompWeb}. La
-primera publicación de \emph{OpenMP} fue su versión para \emph{Fortran} en
+\emph{Texas Instruments} y, sus miembros temporales incluyen al centro de
+cómputo Barcelona, la \emph{NASA} y \emph{cOMPunity}, entre otros \cite{ompWeb}.
+La primera publicación de \emph{OpenMP} fue su versión para \emph{Fortran} en
 octubre de 1997, las especificaciones para \emph{C} y \emph{C++} fueron
 publicadas en octubre de 1998.
 
@@ -61,8 +61,8 @@ el \emph{fork}, sino que se mantienen inactivos para ser reutilizados cuando se
 encuentre otra región de trabajo compartido.
 
 El segundo modelo implementado en \emph{OpenMP} a partir de la versión 3.0 es el
-de tareas. En este modelo permite la creación de nuevas tareas explícitas dentro
-de una región de trabajo compartido. Cuando se encuentra un área de trabajo
+de tareas. Este modelo permite la creación de nuevas tareas explícitas dentro de
+una región de trabajo compartido. Cuando se encuentra un área de trabajo
 compartido, se crean una o más tareas implícitas y $N$ hilos de ejecución. Al
 igual que el modelo de \emph{fork and join} extendido, la cantidad de hilos
 puede ser menor que la cantidad de tareas, pero también puede ser mayor. Durante
@@ -76,7 +76,7 @@ de todas las tareas y salir de la región de trabajo compartido.
 \subsubsection{Directivas de OpenMP}
 
 El control de la creación de hilos y tareas en \emph{OpenMP} se realiza a través
-de directivas al compilador, en esta sección mencionaremos aquellas utilizadas
+de directivas al compilador. En esta sección mencionaremos aquellas utilizadas
 por el sistema propuesto. En \emph{C} y \emph{C++} todas las directivas toman la
 forma de \textbf{\#pragma omp DIRECTIVA [OPCIONES]}.
 

@@ -1,21 +1,21 @@
 % vim: set spell spelllang=es syntax=tex :
 
-\section{Clasificación de los modelos de computo paralelos}
+\section{Clasificación de los modelos de cómputo paralelos}
 
 \label{mt_modelosparalelos}
 
 Existen varias formas de clasificar los modelos computacionales, en esta
-sección nos enfocaremos en dos clasificaciones que son de particular interés
-para éste trabajo: la clasificación de Flynn, que compara la relación entre los
-flujos de datos y los de instrucciones, y la clasificación según los modelos de
-memoria compartida y distribuida que analiza la forma en las unidades de
+sección nos enfocaremos en aquellas dos que son de particular interés para éste
+trabajo: la clasificación de Flynn, que compara la relación entre los flujos de
+datos y los de instrucciones, y la clasificación según los modelos de memoria
+compartida y distribuida, que analiza la forma en la que las unidades de
 procesamiento comparten datos.
 
 \subsection{Taxonomía de Flynn}
 
 La taxonomía de Flynn \cite{flynnstaxonomy1972} propone describir la estructura
 general de una arquitectura según la magnitud de interacción de los flujos de
-datos e instrucciones, esto permite definir cuatro clases distintas:
+datos e instrucciones. Esto permite definir cuatro clases distintas:
 
 \begin{description}
 
@@ -46,21 +46,22 @@ datos e instrucciones, esto permite definir cuatro clases distintas:
 		ser utilizado con el fin de aumentar la redundancia. Los
 		sistemas de vuelo críticos del transbordador espacial STS
 		implementaron este modelo con éste propósito
-		\cite{spaceShuttlePCS1984}. Una alteración del modelo consta en
-		que solo la primera unidad de procesamiento lea del conjunto de
-		datos, mientras que el resto de las unidades tienen como datos
-		de entrada los producidos por la anteriores. Las \emph{tuberías}
-		de los sistemas \emph{UNIX} pueden verse como una implementación
-		de la extinción del modelo \emph{MISD}.
+		\cite{spaceShuttlePCS1984}. En una alteración del modelo solo la
+		primera unidad de procesamiento lee del conjunto de datos,
+		mientras que el resto de las unidades tienen como datos de
+		entrada los producidos por la inmediatamente anterior. Las
+		\emph{tuberías} de los sistemas \emph{UNIX} pueden verse como
+		una implementación de la extinción del modelo \emph{MISD}.
 
 	\item[Multiple Instruction stream/Multiple Data stream (\emph{MIMD}):] En
-		este modelo múltiples flujos de instrucciones que operan sobre
+		este modelo múltiples flujos de instrucciones operan sobre
 		múltiples flujos de datos. Al igual que las computadoras
-		\emph{SIMD}, tienen múltiples unidades de procesamiento, pero
-		cada una con su propia unidad de control, incrementando el costo
-		y consumo energético \cite{introToPC2002}. Los sistemas
-		multiprocesador de las computadoras de escritorio convencionales
-		implementan este modelo.
+		\emph{SIMD}, las \emph{MIMD}, tienen múltiples unidades de
+		procesamiento, cada una con su propia unidad de control.
+		Lo que incrementa el costo y consumo energético
+		\cite{introToPC2002}. Los sistemas multiprocesador de las
+		computadoras de escritorio convencionales implementan este
+		modelo.
 
 \end{description}
 
@@ -69,7 +70,7 @@ datos e instrucciones, esto permite definir cuatro clases distintas:
 Una característica importante de los sistemas \emph{MIMD} es la manera en la
 cual las unidades de procesamiento pueden acceder a los datos de las demás,
 dependiendo de si todas las unidades de procesamiento comparten el mismo espacio
-de direcciones o existe un espacio de direcciones asociado a cada conjunto de
+de direcciones o si existe un espacio de direcciones asociado a cada conjunto de
 unidades de procesamiento \cite{introToPC2002, anIntroToPP2011}:
 
 \begin{description}
