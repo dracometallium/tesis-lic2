@@ -24,7 +24,7 @@ maxy=floor((GPVAL_DATA_Y_MAX+50)/50)*50
 
 set output dir.resolution.'_bestfps.pdf'
 set title ""
-set ylabel "Cuadros por segundo\n(retado en milisegundos)"
+set ylabel "Cuadros por segundo\n(retardo en milisegundos)"
 plot arch using 1:(floor($3/10)) with boxes ls 1 title '', \
  arch using 1:((floor($3/10))-maxy/20):\
  (sprintf('%.0f fps\n%.0f ms\n%d frg.', ($3/10.0), ($4*1000.0), $2))\
