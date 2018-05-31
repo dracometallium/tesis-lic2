@@ -226,7 +226,7 @@ tipo de división produce fragmentos con perímetros mayores, produciendo grande
 \label{implementacionFramework}
 
 Como primera etapa se implementó un framework base que simula el procesamiento de
-ítems genericos y establece las clases base a ser extendidas. Esto permite
+ítems genéricos y establece las clases base a ser extendidas. Esto permite
 explicar el flujo de la información así como la estructura base del sistema sin
 preocuparse por la implementación específica para el sistema de visión global
 para el fútbol de robots.
@@ -324,7 +324,7 @@ Las clases del framework básico son las siguientes:
 		el espacio del ítem más viejo en la estructura y se retorna el
 		puntero de éste al llamador, delegándole su destrucción. La
 		razón de la delegación de la destrucción se debe a que la
-		destrucción de un objeto es lenta (y aun mayor en el caso de los
+		destrucción de un objeto es lenta (y aún mayor en el caso de los
 		cuadros del sistema final), y el control de acceso al buffer se
 		realiza a través del uso de secciones críticas, por lo que es
 		importante reducir el tiempo que cada hilo pasa dentro de la
@@ -421,7 +421,7 @@ cuales fueron tomadas y modificadas del sistema de visión presentado en
 		velocidad de captura que se desee, y los distintos modos
 		permiten testear la carga máxima en cuadros por segundo
 		soportada por el sistema, así como los tiempos de espera bajo
-		una cantidad de cuadros por segundo especifica.
+		una cantidad de cuadros por segundo específica.
 
 	\item[FrameSlicer:] Subclase de \emph{ItemSlicer}. Cada cuadro es
 		dividido en rectángulos del mismo tamaño (excepto por los

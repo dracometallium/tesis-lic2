@@ -12,7 +12,7 @@ que se propongan nuevos experimentos, se muestran los resultados de éstos
 
 \label{metodologiaExperimental}
 
-Para comprobar el funcionamiento del nuevo framework se grabo un video a partir
+Para comprobar el funcionamiento del nuevo framework se grabó un video a partir
 del cual se crearon dos, uno con una resolución de 800$\times$600 píxeles y otro
 con una resolución de 1280$\times$720 píxeles.
 
@@ -119,7 +119,7 @@ implementaciones. En la primera implementación, el framework ejecutaba las
 distintas pilas de plugins en tareas separadas. En la segunda implementación el
 framework fue modificado para que una sola tarea ejecutara todas las pilas de
 plugins sobre un mismo fragmento en serie. Para la tercera implementación se
-trabajo sobre el mismo framework que la segunda, pero se unieron las pilas de
+trabajó sobre el mismo framework que la segunda, pero se unieron las pilas de
 búsquedas de robots y la de búsqueda de pelota. Para comprobar cual de éstas era
 la más efectiva se realizaron las pruebas con cada una de éstas para la
 configuración de 11 hilos de búsqueda y 10 fragmentos con el video de 800x600
@@ -128,7 +128,7 @@ segunda 152 \emph{FPS} y la tercera 192 \emph{FPS}. Como esta última fue la que
 produjo resultados más satisfactorios, será sobre los resultados de ésta que
 trabajaremos a continuación.
 
-El sistema posee 6 núcleos con multithreading simultaneo de dos vías, por lo
+El sistema posee 6 núcleos con multithreading simultáneo de dos vías, por lo
 cual como máximo puede ejecutar 12 hilos en paralelo. Por este motivo el rango
 de la cantidad de hilos de búsqueda será inicialmente de 1 a 12 hilos, y en caso
 de que los experimentos demuestren que el \emph{speedup} no ha comenzado a
@@ -142,7 +142,7 @@ El número de hilos de búsqueda indica la cantidad de hilos que ejecutan las
 tareas de búsqueda. Adicionalmente el sistema ejecuta dos hilos más para las
 tareas estáticas, uno para la generación de cuadros y otro para la tarea de
 generación de tareas de búsqueda. En el caso de del video de 800x600 píxeles se
-llego a un máximo de 196 \emph{FPS} cuando se divide el cuadro en 15 fragmentos
+llegó a un máximo de 196 \emph{FPS} cuando se divide el cuadro en 15 fragmentos
 y se utilizan 5 hilos de búsqueda, mientras que para el video de 1280x720
 píxeles se alcanzó un máximo de 130 \emph{FPS} cuando se divide el cuadro en 24
 fragmentos y se utilizan 11 hilos de búsqueda.
@@ -287,7 +287,7 @@ encontrado en la primera etapa de los experimentos).
 Estas dos últimas figuras nos permiten apreciar que no siempre una mayor
 cantidad de cuadros por segundos procesados implicará el tiempo de espera
 mínimo. Dependiendo de si se desea minimizar el tiempo de espera de los cuadros,
-maximizar la cantidad de cuadros procesados, o encontrar un balance especificó,
+maximizar la cantidad de cuadros procesados, o encontrar un balance específico,
 se deberá elegir una cantidad de fragmentos e hilos de búsqueda apropiada. Por
 ejemplo, en el caso del video de 1280x720 píxeles de resolución, dividir la
 imagen en 24 fragmentos y utilizar 11 hilos de búsqueda permite procesar 130
@@ -296,7 +296,7 @@ de $0.11$ segundos. Si el cuadro se divide en 24 fragmentos y se utilizan 12
 hilos de búsqueda, la cantidad de cuadros por segundo procesados cae a 128, pero
 el tiempo de espera se reduce a $0.09$ segundos. Las figuras \ref{800tFPS} y
 \ref{1280tFPS} sintetizan la relación entre los \emph{FPS} y el retardo de
-cuadros, mostrando el mínimo retardo de cuadros para los diferentes \emph{FPS}
+cuadro, mostrando el mínimo retardo de cuadro para los diferentes \emph{FPS}
 que puede alcanzar el sistema en cada video.
 
 \begin{figure}[!htb]
@@ -360,11 +360,11 @@ ejecutan 6 hilos o menos, podrán ejecutarse en núcleos distintos, si se ejecut
 más de 7, algunos de los núcleos deberán ejecutar más de un hilo. Para
 distinguir estas dos situaciones, en las figuras \ref{speedUp800} y
 \ref{speedUp1280}, se resaltan las columnas donde por lo menos uno de los
-núcleos se vera forzado a ejecutar dos hilos de búsqueda distintos.
+núcleos se verá forzado a ejecutar dos hilos de búsqueda distintos.
 
 Para el video de 800$\times$600 píxeles el \emph{speedup} es muy inferior al
 \emph{speedup} lineal máximo de $6\times$ utilizando los seis núcleos. El
-rendimiento máximo es alcanzando cuando se ejecutan 5 hilos de búsqueda, los
+rendimiento máximo es alcanzado cuando se ejecutan 5 hilos de búsqueda, los
 cuales sumados a los dos hilos para tareas estáticas superan la cantidad de
 unidades de procesamiento, pero es menor que la cantidad máxima de hilos en
 ejecución soportados por la plataforma. Existen dos posibles causas para la
