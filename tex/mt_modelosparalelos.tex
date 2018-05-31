@@ -20,12 +20,12 @@ datos e instrucciones. Esto permite definir cuatro clases distintas:
 \begin{description}
 
 	\item[Single Instruction stream/Single Data stream (\emph{SISD}):] En
-		este modelo solo hay un flujo de instrucciones que opera sobre
+		este modelo sólo hay un flujo de instrucciones que opera sobre
 		un único flujo de datos. Éste modelo se corresponde con la
 		arquitectura de Von Neumann.
 
 	\item[Single Instruction stream/Multiple Data stream (\emph{SIMD}):] En
-		este modelo solo hay un flujo de instrucciones que opera sobre
+		este modelo sólo hay un flujo de instrucciones que opera sobre
 		varios flujos de datos al mismo tiempo. Para poder ejecutar los
 		distintos flujos de instrucciones, las computadoras que
 		implementan este modelo tienen varias unidades de procesamiento
@@ -46,7 +46,7 @@ datos e instrucciones. Esto permite definir cuatro clases distintas:
 		ser utilizado con el fin de aumentar la redundancia. Los
 		sistemas de vuelo críticos del transbordador espacial STS
 		implementaron este modelo con éste propósito
-		\cite{spaceShuttlePCS1984}. En una alteración del modelo solo la
+		\cite{spaceShuttlePCS1984}. En una alteración del modelo sólo la
 		primera unidad de procesamiento lee del conjunto de datos,
 		mientras que el resto de las unidades tienen como datos de
 		entrada los producidos por la inmediatamente anterior. Las
@@ -75,7 +75,7 @@ unidades de procesamiento \cite{introToPC2002, anIntroToPP2011}:
 
 \begin{description}
 
-	\item[Memoria compartida:] Solo hay un espacio de memoria para todas las
+	\item[Memoria compartida:] Sólo hay un espacio de memoria para todas las
 		unidades. Para la comunicación los hilos de ejecución pueden
 		utilizar memoria compartida, permitiendo comunicación
 		implícita. También admiten comunicación por paso de mensajes. El
@@ -98,7 +98,7 @@ unidades de procesamiento \cite{introToPC2002, anIntroToPP2011}:
 
 	\centering
 	\includegraphics[width=0.9\textwidth]{img/memCompartida.pdf}
-	\caption{Arquitectura de una maquina de memoria compartida.}
+	\caption{Arquitectura de una máquina de memoria compartida.}
 
 	\label{memCompartida}
 
@@ -120,7 +120,7 @@ unidades de procesamiento \cite{introToPC2002, anIntroToPP2011}:
 
 	\centering
 	\includegraphics[width=0.9\textwidth]{img/memDistribuida.pdf}
-	\caption{Arquitectura de una maquina de memoria distribuida.}
+	\caption{Arquitectura de una máquina de memoria distribuida.}
 
 	\label{memDistribuida}
 
@@ -129,7 +129,7 @@ unidades de procesamiento \cite{introToPC2002, anIntroToPP2011}:
 
 	\item[Sistemas híbridos:] Son sistemas de memoria distribuida donde
 		cada unidad de procesamiento es en realidad un sistema de
-		memoria compartida. En la figura \ref{memHibrida} se muestra las
+		memoria compartida. En la figura \ref{memHibrida} se muestran las
 		distintas conexiones entre los bancos de memorias y las unidades
 		de procesamiento.
 
@@ -137,7 +137,7 @@ unidades de procesamiento \cite{introToPC2002, anIntroToPP2011}:
 
 	\centering
 	\includegraphics[width=0.9\textwidth]{img/memHibrida.pdf}
-	\caption{Arquitectura de una maquina de memoria híbrida.}
+	\caption{Arquitectura de una máquina de memoria híbrida.}
 
 	\label{memHibrida}
 

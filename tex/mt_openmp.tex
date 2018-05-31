@@ -57,7 +57,7 @@ paralelismo de tareas como de datos.
 
 Dado que la creación de hilos suele ser una operación costosa, la mayoría de las
 implementaciones de \emph{OpenMP} suelen no destruir los hilos creados durante
-el \emph{fork}, sino que se mantienen inactivos para ser reutilizados cuando se
+el \emph{fork}, si no que se mantienen inactivos para ser reutilizados cuando se
 encuentre otra región de trabajo compartido.
 
 El segundo modelo implementado en \emph{OpenMP} a partir de la versión 3.0 es el
@@ -67,7 +67,7 @@ compartido, se crean una o más tareas implícitas y $N$ hilos de ejecución. Al
 igual que el modelo de \emph{fork and join} extendido, la cantidad de hilos
 puede ser menor que la cantidad de tareas, pero también puede ser mayor. Durante
 la ejecución una tarea, ésta puede crear nuevas tareas explícitas a través de la
-directiva \emph{task}. Si hay hilos de ejecución libres, la nueva tarea sera
+directiva \emph{task}. Si hay hilos de ejecución libres, la nueva tarea será
 asignada a uno de ellos, sino es colocada en una lista de tareas en espera.
 Cuando un hilo termina de ejecutar una tarea, toma otra de la lista de tareas en
 espera de tareas o espera. Sólo se destruyen los hilos al terminar la ejecución

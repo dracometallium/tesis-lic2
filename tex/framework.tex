@@ -129,7 +129,7 @@ hilos de ejecución.
 La cantidad de hilos de ejecución del sistema es igual a la cantidad de hilos de
 búsqueda más los dos hilos para tareas estáticas (generación de cuadros y
 generación de tareas de fragmentación de cuadro). Por esto la cantidad de
-unidades de procesamiento aprovechables está principalmente determinado por la
+unidades de procesamiento aprovechables está principalmente determinada por la
 cantidad de hilos de búsqueda.
 
 \begin{figure}[!htb]
@@ -283,7 +283,7 @@ ejecución.
 
 	\includegraphics[width=0.5\textheight]{img/itemSwitch.pdf}
 
-	\caption{Pseudo código del sistema}
+	\caption{Pseudocódigo del sistema}
 
 	\label{codigo}
 
@@ -335,7 +335,7 @@ Las clases del framework básico son las siguientes:
 		interfaz de las clases que generan los ítems. Sus métodos
 		principales son \emph{run} y \emph{generate}. El método
 		\emph{generate} debe ser reimplementado por las clases hijas
-		para generar el tipo de ítem especifico del sistema. El método
+		para generar el tipo de ítem específico del sistema. El método
 		\emph{run} es el encargado de generar los ítems llamando a
 		\emph{generate} y colocarlos en el \emph{RingBuffer}. Este
 		último método puede ser redefinido si la aplicación así lo
@@ -416,7 +416,7 @@ cuales fueron tomadas y modificadas del sistema de visión presentado en
 		frecuencia de la generación de los cuadros. Se puede adelantar
 		la creación de cuadros si la cola de cuadros a procesar está
 		vacía, o fijar la frecuencia de su creación a un valor
-		especifico. Esta clase es útil para comprobar la capacidad
+		específico. Esta clase es útil para comprobar la capacidad
 		máxima del sistema, ya que permite simular una cámara con la
 		velocidad de captura que se desee, y los distintos modos
 		permiten testear la carga máxima en cuadros por segundo
