@@ -161,8 +161,12 @@ ya que para encontrar los robots, el plugin de detección de robots debe detecta
 todos los parches que lo identifican, por lo cual todos deben estar dentro del
 mismo fragmento. Para asegurar esto, cada par de fragmentos adyacentes deben
 compartir una zona igual al diámetro de un robot. En la figura
-\ref{areaCompartida} se muestran los casos donde el área compartida es menor al
-diámetro de un robot y donde el área compartida es del diámetro de un robot.
+\ref{areaCompartida} se muestran dos elecciones del área compartida. A la
+izquierda el área compartida es demasiado pequeña, si el robot se encuentra
+entre dos fragmentos, puede que sus parches no sean completamente visibles desde
+ninguno de ellos. A la derecha el área compartida es del ancho de los robots, en
+este caso todos los parches son visibles completamente desde por lo menos un
+fragmento.
 
 \begin{figure}[!htb]
 
@@ -170,11 +174,8 @@ diámetro de un robot y donde el área compartida es del diámetro de un robot.
 	\includegraphics[width=0.45\textwidth]{img/areaTooSmall.pdf}
 	\includegraphics[width=0.45\textwidth]{img/areaPerfect.pdf}
 
-	\caption{Izquierda: si el área compartida es demasiado pequeña y si el
-	robot se encuentra entre dos fragmentos, puede que sus parches no sean
-	completamente visibles desde ninguno de ellos. Derecha: si el área
-	compartida es del ancho de los robots, entonces todos los parches son
-	visibles completamente desde por lo menos un fragmento.}
+	\caption{Visibilidad de los parches para distintos tamaños del área
+	compartida.}
 
 	\label{areaCompartida}
 
@@ -203,11 +204,11 @@ cuadro pueden no ser divisibles por el número de columnas o filas en las cuales
 se dividirá.
 
 En la figura \ref{fragmentos} se muestran como se divide un cuadro de 800x600
-píxeles con un área compartida de 50 píxeles en 1, 2, 5 y 8 fragmentos. Cuando
-el número de fragmentos es un número primo, como en el caso de 5 fragmentos, el
-cuadro se divide en franjas de igual ancho o alto que el cuadro original. Este
-tipo de división produce fragmentos con perímetros mayores, produciendo grandes
-áreas compartidas.
+píxeles con un área compartida de 50 píxeles en 1\textbf{(a)}, 2\textbf{(b)},
+5\textbf{(c)} y 8\textbf{(d)} fragmentos. Cuando el número de fragmentos es un
+número primo, como en el caso de 5 fragmentos, el cuadro se divide en franjas de
+igual ancho o alto que el cuadro original. Este tipo de división produce
+fragmentos con perímetros mayores, produciendo grandes áreas compartidas.
 
 \begin{figure}[!htb]
 
@@ -215,8 +216,7 @@ tipo de división produce fragmentos con perímetros mayores, produciendo grande
 	\includegraphics[width=0.5\textwidth]{img/fragmentos2.pdf}
 	\includegraphics[width=0.5\textwidth]{img/fragmentos5.pdf}
 	\includegraphics[width=0.5\textwidth]{img/fragmentos8.pdf}
-	\caption{Resultado de dividir un cuadro de 800x600 píxeles con un área
-	compartida de 50 píxeles en 1(a), 2(b), 5(c) y 8(d) fragmentos.}
+	\caption{Resultado de dividir un cuadro de 800x600 píxeles.}
 	\label{fragmentos}
 
 \end{figure}
@@ -283,7 +283,7 @@ ejecución.
 
 	\includegraphics[width=0.5\textheight]{img/itemSwitch.pdf}
 
-	\caption{Pseudocódigo del sistema}
+	\caption{Pseudocódigo del sistema.}
 
 	\label{codigo}
 
@@ -298,7 +298,7 @@ tareas para los distintos cuadros no sea completamente determinista.
 
 	\includegraphics[width=\textwidth]{img/hilosytareas.pdf}
 
-	\caption{Asignación de las tareas a los hilos de búsqueda}
+	\caption{Asignación de las tareas a los hilos de búsqueda.}
 
 	\label{hilosytareas}
 

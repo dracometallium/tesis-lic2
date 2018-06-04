@@ -98,13 +98,13 @@ procesador de 6 núcleos con multithreading simultáneo de dos vías, una
 frecuencia básica de CPU de 2,30GHz y 2,8GHz en modo turbo, 15MiB de memoria
 caché L3, 256KiB de caché L2, 32Kib de caché L1 para datos, y 32 KiB de caché L1
 para instrucciones. El equipo posee además 16GiB de memoria RAM. La jerarquía de
-memoria se muestra en la figura \ref{topoMemoria}.
+memoria se muestra en la figura \ref{topoMemoria}, la imagen fue obtenida con la
+herramienta \emph{lstopo}.
 
 \begin{figure}[!htb]
 
 	\includegraphics[width=\textwidth]{img/topo.pdf}
-	\caption{Jerarquía de memoria de la máquina de pruebas. Imagen obtenida
-	con la herramienta \emph{lstopo}.}
+	\caption{Jerarquía de memoria de la máquina de pruebas.}
 
 	\label{topoMemoria}
 
@@ -318,25 +318,25 @@ que puede alcanzar el sistema en cada video.
 \end{figure}
 
 Las figuras \ref{bestFPS800} y \ref{bestFPS1280} muestran el máximo rendimiento
-en cuadros por segundo obtenidos, incluyendo el retardo de cuadro, para cada
-configuración de hilos de búsqueda, para los videos de 800x600 y 1280x720
-píxeles. Se puede apreciar en la figura que para el caso del video de 800x600
-píxeles el sistema escala sólo hasta el uso de 5 hilos de búsqueda. En el caso
-del video de 1280x720 píxeles, también muestra una reducción en el rendimiento
-cuando se utilizan 12 hilos de búsqueda. Como la plataforma experimental puede
-ejecutar hasta 12 hilos simultáneamente, los hilos de búsqueda deberán compartir
-recursos con los hilos dedicados a las tareas estáticas. Por lo cual no podemos
-determinar el punto en el cual la aplicación deja de escalar para un video de
-1280x720 píxeles, aunque se alcanza un punto de rendimientos decrecientes luego
-de los 5 hilos de búsqueda.
+en cuadros por segundo obtenidos, incluyendo el retardo de cuadro y la cantidad
+de fragmentos en la que fue dividido, para cada configuración de hilos de
+búsqueda, para los videos de 800x600 y 1280x720 píxeles. Se puede apreciar en la
+figura que para el caso del video de 800x600 píxeles el sistema escala sólo
+hasta el uso de 5 hilos de búsqueda. En el caso del video de 1280x720 píxeles,
+también muestra una reducción en el rendimiento cuando se utilizan 12 hilos de
+búsqueda. Como la plataforma experimental puede ejecutar hasta 12 hilos
+simultáneamente, los hilos de búsqueda deberán compartir recursos con los hilos
+dedicados a las tareas estáticas. Por lo cual no podemos determinar el punto en
+el cual la aplicación deja de escalar para un video de 1280x720 píxeles, aunque
+se alcanza un punto de rendimientos decrecientes luego de los 5 hilos de
+búsqueda.
 
 \begin{figure}[!htb]
 
 	\includegraphics[width=\textwidth]{img/800x600_bestfps.pdf}
 	\caption{FPS máximos alcanzados para el video de 800x600 píxeles para
-	distintas configuraciones de cantidad de hilos de búsqueda. Se incluye
-	el retardo de cuadro bajo la configuración y la cantidad de fragmentos
-	en la que fue dividido.} \label{bestFPS800}
+	distintas configuraciones de cantidad de hilos de búsqueda.}
+	\label{bestFPS800}
 
 \end{figure}
 
@@ -344,9 +344,7 @@ de los 5 hilos de búsqueda.
 
 	\includegraphics[width=\textwidth]{img/1280x720_bestfps.pdf}
 	\caption{FPS máximos alcanzados para el video de 1280x720 píxeles para
-	distintas configuraciones de cantidad de hilos de búsqueda. Se incluye
-	el retardo de cuadro bajo la configuración y la cantidad de fragmentos
-	en la que fue dividido.}
+	distintas configuraciones de cantidad de hilos de búsqueda.}
 	\label{bestFPS1280}
 
 \end{figure}
@@ -379,9 +377,7 @@ utilizan más de seis núcleos.
 \begin{figure}[!htb]
 
 	\includegraphics[width=\textwidth]{img/800x600_speedup.pdf}
-	\caption{\emph{Speedup} para el video de 800$\times$600 píxeles. Los
-	valores resaltados indican que algunos núcleos se ven obligados a ejecutar
-	más de un hijo de búsqueda.}
+	\caption{\emph{Speedup} para el video de 800$\times$600 píxeles.}
 	\label{speedUp800}
 
 \end{figure}
@@ -389,9 +385,7 @@ utilizan más de seis núcleos.
 \begin{figure}[!htb]
 
 	\includegraphics[width=\textwidth]{img/1280x720_speedup.pdf}
-	\caption{\emph{Speedup} para el video de 1280$\times$720 píxeles. Los
-	valores resaltados indican que algunos núcleos se ven obligados a ejecutar
-	más de un hijo de búsqueda.}
+	\caption{\emph{Speedup} para el video de 1280$\times$720 píxeles.}
 
 	\label{speedUp1280}
 
