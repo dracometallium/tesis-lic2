@@ -239,7 +239,13 @@ acotados, la eficiencia es crucial, mientras que el paradigma orientado a
 objetos permite establecer fácilmente la interfaz de los plugins. El uso de
 \emph{OpenMP} permite la creación y control de hilos de ejecución y tareas de
 forma sencilla. Se utilizaron los plugins implementados en \cite{torres2014},
-modificándolos para permitir su uso en un sistema paralelo.
+modificándolos para permitir su uso en un sistema paralelo. En el sistema
+original cada instancia de los plugins debe procesar todo el cuadro, y cada
+cuadro tiene asociado un conjunto de datos utilizado por los plugins de una
+misma pila para comunicarse. Los plugins del nuevo sistema utilizan estructuras
+proveidas por \emph{OpenCV} para procesar solo la parte del cuadro que se
+corresponde con el fragmento que se esta procesando, y guardan un conjunto de
+datos por cada fragmento del cuadro.
 
 En la figura \ref{codigo} se muestra el fragmento de código (en pseudocódigo)
 que ejecuta y crea las tareas principales del framework. En la función principal
@@ -421,7 +427,7 @@ cuales fueron tomadas y modificadas del sistema de visión presentado en
 		velocidad de captura que se desee, y los distintos modos
 		permiten testear la carga máxima en cuadros por segundo
 		soportada por el sistema, así como los tiempos de espera bajo
-		una cantidad de cuadros por segundo específica.
+		una cantidad específica de cuadros por segundo.
 
 	\item[FrameSlicer:] Subclase de \emph{ItemSlicer}. Cada cuadro es
 		dividido en rectángulos del mismo tamaño (excepto por los

@@ -86,7 +86,7 @@ visión global centralizado compartido. Se utiliza un conjunto de cámaras,
 montadas sobre distintas áreas del campo de juego y conectadas a una
 computadora donde se ejecuta el sistema de visión. El sistema detecta la
 posición y orientación de cada uno de los robots y la posición de la pelota, y
-reporta esta información a las computadoras que controlan los equipos.
+reporta toda esta información a las computadoras que controlan ambos equipos.
 
 Para que el sistema de visión pueda identificar a cada robot, cada uno tiene
 sobre su parte superior cinco parches de colores. El parche que se encuentra en
@@ -189,5 +189,7 @@ información impacta negativamente en el rendimiento debido a que se reducen los
 cuadros por segundo procesados y se incrementa el tiempo de espera del cuadro.
 
 Como se utilizan computadoras de escritorio convencionales para la ejecución
-del sistema de visión global es sensato asumir que se trata de un sistema de
-memoria compartida de múltiples núcleos.
+del sistema de visión global, es sensato asumir que se trata de un sistema de
+memoria compartida de acceso uniforme y que cuenta con múltiples núcleos. Es
+decir, que todos los núcleos comparten el mismo espacio de memoria, y que el
+tiempo de acceso es uniforme para todos ellos.
