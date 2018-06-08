@@ -36,13 +36,16 @@ simultaneous precessing of different frames.
 
 The system was implemented using \emph{OpenMP} shared memory programming model
 for \emph{C++}. The application's parallelization strategies' parameters can be
-tuned to obtain maximum performance for a specific hardware platform. On a
-server with an Intel Xeon E5-2630 processor (with 6 processing units and
-simultaneous multithreading), we achieve an improvement of 5.42$x$ \emph{FPS},
-in comparison to an execution using only one processing unit (from the 6
-available). The parallelization strategies can be modified, this can be used to
-let students experiment and analyze its results to explain its impact on the
-system performance.
+tuned to obtain maximum performance for a specific hardware platform. The system
+was tested on a server server with an Intel Xeon E5-2630 processor (with 6
+processing units and simultaneous multithreading). Maximum frames per second and
+maximum frame precessing delay was recorded using different video sizes, number
+of fragments, and number of threads.
+
+In conclusion, we achieve an improvement of 5.42$x$ \emph{FPS}, in comparison to
+an execution using only one processing unit. The parallelization strategies can
+be modified, this can be used to let students experiment and analyze its results
+to explain its impact on the system performance.
 
 \vfill
 \pagebreak
