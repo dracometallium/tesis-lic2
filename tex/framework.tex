@@ -242,10 +242,10 @@ forma sencilla. Se utilizaron los plugins implementados en \cite{torres2014},
 modificándolos para permitir su uso en un sistema paralelo. En el sistema
 original cada instancia de los plugins debe procesar todo el cuadro, y cada
 cuadro tiene asociado un conjunto de datos utilizado por los plugins de una
-misma pila para comunicarse. Los plugins del nuevo sistema utilizan estructuras
-proveidas por \emph{OpenCV} para procesar solo la parte del cuadro que se
-corresponde con el fragmento que se esta procesando, y guardan un conjunto de
-datos por cada fragmento del cuadro.
+misma pila para comunicarse. Los plugins del sistema derivado utilizan
+estructuras proveidas por \emph{OpenCV} para procesar solo la parte del cuadro
+que se corresponde con el fragmento que se esta procesando, y guardan un
+conjunto de datos por cada fragmento del cuadro.
 
 En la figura \ref{codigo} se muestra el fragmento de código (en pseudocódigo)
 que ejecuta y crea las tareas principales del framework. En la función principal

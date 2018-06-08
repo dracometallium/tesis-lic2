@@ -29,16 +29,18 @@ principales:
 		hilo de captura está desacoplado de los hilos procesamiento de
 		cuadros.
 
-	\item[Hilos de procesamiento de cuadros:] estos hilos están formados por
-		una pila de plugins que procesarán cada cuadro en forma
-		secuencial. Normalmente, por cada tipo de objeto a reconocer,
-		hay un hilo de este tipo dedicado a su detección. La diferencia
-		entre ellos está en los plugins que componen la pila y en su
-		orden. Existen mecanismos de control para asegurar que, si un
-		cuadro es procesado por un hilo de procesamiento, entonces
-		también será procesado por el resto de los hilos de
-		procesamiento, asegurando al mismo tiempo que cada cuadro será
-		procesado sólo una vez por cada hilo.
+	\item[Hilos de procesamiento de cuadros:] cada uno de estos hilos tiene
+		una pila de plugins creada con el objetivo de reconocer un tipo
+		específico de objeto en un cuadro. En el caso del fútbol de
+		robots habrá uno de estos hilos con una pila de plugins diseñada
+		para encontrar los robots, y otro con una pila de plugins creada
+		con el fin de encontrar la pelota. Para reconocer los objetos,
+		el cuadro es procesado por cada uno de los plugins de la pila en
+		forma secuencial y en un orden especifico. Existen mecanismos de
+		control para asegurar que una vez que un cuadro haya sido procesado por
+		uno de los hilos de procesamiento, será procesado por los
+		restantes. Además, se asegura que ningún cuadro sea procesado
+		dos veces por el mismo hilo de procesamiento.
 
 \end{description}
 

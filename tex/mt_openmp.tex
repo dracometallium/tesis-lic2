@@ -55,7 +55,8 @@ paralelismo de tareas como de datos.
 
 \end{figure}
 
-Dado que la creación de hilos suele ser una operación costosa, la mayoría de las
+Dado que la creación de hilos suele ser una operación costosa en tiempo de CPU
+en comparación al utilizado por una sola tarea, la mayoría de las
 implementaciones de \emph{OpenMP} suelen no destruir los hilos creados durante
 el \emph{fork}, si no que se mantienen inactivos para ser reutilizados cuando se
 encuentre otra región de trabajo compartido.
