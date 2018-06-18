@@ -1,10 +1,14 @@
 <!-- vim: set spell spelllang=es syntax=markdown : -->
 
+Pag. 1
+
 Mi nombre es RC, el trabajo mi tesis se titula "_Un sistema paralelo de visíon
 global para fútbol de robots orientado al uso educativo_". Mi tutor de tesis es
 Javier Balladini, y conté con la codirección de Eduardo Grosclaude.
 
 ---
+
+Pag. 2
 
 En esta presentación voy a comenzar contándoles un poco que es un sistema de
 visión global para fútbol de robots (en especifico para la liga de tamaño
@@ -23,6 +27,8 @@ llegamos y que posibles trabajos futuros vemos disponibles.
 
 ---
 
+Pag. 3
+
 Nos vamos a enforcar en la liga de tamaño pequeño de la RoboCup. En esta liga se
 enfrentan dos equipos de seis robots cilíndricos que se mueven sobre un conjunto
 de ruedas omnidireccionales y con autonomía reducida. Cada equipo tiene su
@@ -32,7 +38,9 @@ compartido.
 
 ---
 
-Para poder identificar y detectar la orientación de cada robot estos tienen un
+Pag. 4
+
+Para poder identificar y detectar la orientación de cada robot, estos tienen un
 conjunto de 5 parches en su parte superior, el parche central indica el equipo
 del robot, y la pelota es de un color liso que no es utilizado por los parches.
 
@@ -41,9 +49,11 @@ los cuadros a la computadora donde se ejecuta el sistema de visión global. Cada
 cuadro es procesado y se detecta la posición de los robots y pelota, luego
 envían esos datos a cada una de las computadoras de los equipos. Con esa
 información cada equipo desarrolla estrategias de juego y envían ordenes de
-movimiento a los robots de su equipo.
+movimiento a los robots de su equipo a través de una red inalámbrica.
 
 ---
+
+Pag. 5
 
 Actualmente existen dos tamaños de cancha, las canchas de tamaño simple son de
 4m * 6m, y las de tamaño doble son de 6m * 8m. Para capturar toda la cancha, en
@@ -60,9 +70,11 @@ futuro las canchas sigan aumentando su tamaño.
 
 ---
 
-Como el problema es de tiempo real y en un ambiente real, pero controlado y con
-parámetros bien definidos, consideramos que es ideal para la introducción a la
-visión por computadora.
+Pag. 6
+
+Como el problema es de tiempo y ambiente real, pero controlado y con parámetros
+bien definidos, consideramos que es ideal para la introducción a la visión por
+computadora.
 
 Pero la RoboCup ya tiene su propio sistema de visión global llamado
 _SSL-VISION_. Este es un sistema basado en plugins que ejecuta utilizando solo
@@ -79,6 +91,10 @@ aumentando.
 
 ---
 
+Pag. 7
+
+NOTA: Falta mencionar el sistema de Guille.
+
 Con esos problemas en mente nos propusimos como objetivo la creación de un nuevo
 sistema de visión global paralelo con fines educativos. El sistema debe cumplir
 los siguientes objetivos:
@@ -91,6 +107,8 @@ los siguientes objetivos:
 
 ---
 
+Pag. 8
+
 Analizando el problema encontramos dos oportunidades de paralelismo. En primer
 lugar, dado que los cuadros son independientes entre si, se pueden analizar en
 paralelo, esto no produciría cambios en la información, salvo por el orden. Por
@@ -99,12 +117,16 @@ independiente. En este caso hay que tener consideraciones especiales.
 
 ---
 
+Pag. 9
+
 Para poder identificar a un robot, todos los parches deben ser observables
 dentro del mismo fragmento del cuadro. Por esto se debe establecer un área
 compartida entre fragmentos adjuntos. Como se puede apreciar en la imagen, el
 ancho mínimo de esta franja debe ser el ancho de un robot.
 
 ---
+
+Pag. 10
 
 Esta área compartida trae otro problema, el área total de los fragmentos sera
 mayor que el área del cuadro original, lo que implica un incremento en los
@@ -115,7 +137,7 @@ que se trabaja con el teselado de rectángulos, para que estos tengan el
 perímetro mínimo se debe intentar que la relación entre su ancho y alto sean lo
 más cercana a uno posible.
 
-Otra condición que impuso es que los fragmentos sean todos de igual tamaño, para
+Otra condición que se impuso es que los fragmentos sean todos de igual tamaño, para
 poder distribuir la carga de forma uniforme. Esto no siempre sera verdad, ya que
 el tiempo de procesamiento de un cuadro no depende solo de su área, sino también
 de los elementos encontrados en el, pero dado que esta información no se puede
@@ -128,13 +150,16 @@ en franjas, aumentando bruscamente el área compartida.
 
 ---
 
+Pag. 11
+
 En el sistema existen dos tipos de tareas, las tareas a las que llamamos
 estáticas, las cuales existen durante toda la ejecución del programa, son
 únicas, y tienen un hilo de ejecución propio. Por otro lado las tareas a las que
 llamamos de "tareas de búsqueda" (ya que son estas las que realmente realizan la
 búsqueda de los robots y pelota) son tareas creadas para el procesamiento de un
 cuadro o fragmento especifico, toman hilos de ejecución de un pool de hilos
-compartido, y puede haber múltiples del mismo tipo.
+compartido, y puede haber múltiples del mismo tipo, cada una procesando un
+cuadro o fragmento distinto.
 
 Las tareas estáticas son la generación de cuadros (ya sea de una cámara o un
 video) y la generación de tareas de fragmentación de cuadros.
@@ -144,10 +169,19 @@ fragmento.
 
 ---
 
+Pag. 12
+
+El flujo de la información en el sistema es el siguiente: El hilo de captura
+genera los cuadros y los coloca en un buffer de cuadros. Esta es una cola que
+permite al sistema soportar las fluctuaciones del tiempo de procesamiento de los
+cuadros sin retrasar su producción.
+
 Sirve esta?
 
 Agrego la pila?
 
 ---
+
+Pag. 13
 
 
