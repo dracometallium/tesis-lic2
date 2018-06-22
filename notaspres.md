@@ -171,17 +171,25 @@ fragmento.
 
 Pag. 12
 
-El flujo de la información en el sistema es el siguiente: El hilo de captura
-genera los cuadros y los coloca en un buffer de cuadros. Esta es una cola que
-permite al sistema soportar las fluctuaciones del tiempo de procesamiento de los
-cuadros sin retrasar su producción.
-
-Sirve esta?
-
-Agrego la pila?
+Los cuadros generados son colocados en un buffer de cuadros, de donde la tarea
+de generación de tareas de fractura de cuadros los toma. Esta, como su nombre lo
+indica, genera una tarea de fractura para cada uno de los cuadros. Cada una de
+estas últimas tareas dividen el cuadro en fragmentos y crean una tarea de
+procesamiento de fragmento para cada uno de ellos.
 
 ---
 
 Pag. 13
+
+Cada fragmento sera procesado por una o más pilas de búsqueda de objetos. En el
+caso del fútbol de robots el sistema originalmente utilizaba dos pilas, una para
+la pelota y otra para los robots.
+
+---
+
+Pag. 14
+
+Pero los resultados experimentales demostraron que el sistema tenia mejor
+rendimiento utilizando una sola pila que realice ambas tareas.
 
 
