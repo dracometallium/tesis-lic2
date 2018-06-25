@@ -185,11 +185,28 @@ Cada fragmento sera procesado por una o más pilas de búsqueda de objetos. En e
 caso del fútbol de robots el sistema originalmente utilizaba dos pilas, una para
 la pelota y otra para los robots.
 
+En ambas pilas los primeros tres plugins realizan un preprocesamiento de la
+imagen, mientras que los restantes no modifican la imagen original. Esto abre la
+posibilidad de unificar ambas pilas.
+
 ---
 
 Pag. 14
 
-Pero los resultados experimentales demostraron que el sistema tenia mejor
-rendimiento utilizando una sola pila que realice ambas tareas.
+Si bien esto reduce la paralelización dentro de un cuadro, en las
+experimentaciones realizadas se pudo comprobar que tenia un efecto positivo.
 
+---
+
+Pag. 15
+
+El rendimiento del sistema se utilizo midiendo dos variables: Cuadros por
+segundo (o FPS), y el retardo de cuadro (tiempo entre que el cuadro es creado y
+la finalización de su procesamiento).
+
+Para obtener los FPS máximos se configura la tarea de generación de cuadros para
+que los genere a demanda, y una vez que se obtuvo la cantidad de FPS máxima
+soportada por el sistema para una configuración determinada, se fijan la
+cantidad de cuadros por segundo a la cantidad máxima obtenida y se vuelve a
+ejecutar el sistema, esta vez midiendo el retardo del cuadro.
 
