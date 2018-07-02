@@ -12,8 +12,6 @@
 
 \usepackage{url}
 
-\usepackage{lineno} \linenumbers
-
 \usepackage{babelbib}
 
 \setlength{\parskip}{1.5mm}
@@ -42,6 +40,16 @@
 
 \date{}
 
+\defbeamertemplate{footline}{centered page number}
+{%
+    \hspace*{\fill}%
+    \usebeamercolor[fg]{page number in head/foot}%
+    \usebeamerfont{page number in head/foot}%
+    \insertpagenumber\,/\,\insertpresentationendpage%
+    \hspace*{\fill}\vskip2pt%
+}
+\setbeamertemplate{footline}[centered page number]
+
 \begin{document}
 
 \begin{frame}
@@ -66,33 +74,13 @@
 
 \begin{itemize}
 
-\item Introducción:
+\item Introducción.
 
-\begin{itemize}
+\item Descripción del sistema.
 
-	\item ¿Que es un sistema de visión global para fútbol de robots?
+\item Experimentación y resultados.
 
-	\item ¿Por que un sistema con fines educación?
-
-	\item ¿Por que paralelo?
-
-\end{itemize}
-
-\item Descripción del sistema:
-
-\begin{itemize}
-
-	\item Oportunidades de paralelismo.
-
-	\item División de los datos.
-
-	\item Arquitectura del sistema.
-
-	\item Experimentación y resultados.
-
-	\item Uso educativo.
-
-\end{itemize}
+\item Uso educativo.
 
 \item Conclusiones y trabajos futuros
 
@@ -262,6 +250,22 @@ Desarrollar un \emph{SVG} paralelo para fútbol de robots con fines educativos:
 
 \frametitle{Arquitectura del sistema}
 
+\framesubtitle{Flujo de los datos}
+
+\begin{figure}[h]
+
+	\centering
+
+	\includegraphics[height=0.95\textheight]{img/framework.pdf}
+
+\end{figure}
+
+\end{frame}
+
+\begin{frame}
+
+\frametitle{Arquitectura del sistema}
+
 \framesubtitle{Tareas del sistema}
 
 \begin{itemize}
@@ -273,22 +277,6 @@ Desarrollar un \emph{SVG} paralelo para fútbol de robots con fines educativos:
 \end{itemize}
 
 \includegraphics[width=\textwidth]{img/hilos.pdf}
-
-\end{frame}
-
-\begin{frame}
-
-\frametitle{Arquitectura del sistema}
-
-\framesubtitle{Flujo de los datos}
-
-\begin{figure}[h]
-
-	\centering
-
-	\includegraphics[height=0.95\textheight]{img/framework.pdf}
-
-\end{figure}
 
 \end{frame}
 
