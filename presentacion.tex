@@ -74,15 +74,29 @@
 
 \begin{itemize}
 
-\item Fútbol de robots.
+\item Descripción del problema y objetivo.
 
 \item Descripción del sistema.
 
 \item Experimentación y resultados.
 
-\item Uso educativo.
+\item Propuesta educativa.
 
 \item Conclusiones y trabajos futuros.
+
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}
+
+\frametitle{Motivación}
+
+\begin{itemize}
+
+\item Visión por computadora.
+
+\item Programación paralela.
 
 \end{itemize}
 
@@ -140,17 +154,12 @@
 
 \begin{frame}
 
-\frametitle{Maquinas de memoria compartida y distribuida}
+\frametitle{Maquinas de memoria compartida de acceso uniforme}
 
 \begin{figure}[h]
 
 	\centering
-	\includegraphics[height=0.33\textheight]{img/memCompartida.pdf}
-
-	~
-
-	\centering
-	\includegraphics[height=0.33\textheight]{img/memDistribuida.pdf}
+	\includegraphics[width=0.9\textwidth]{img/memCompartida.pdf}
 
 \end{figure}
 
@@ -173,11 +182,15 @@ Pero:
 	\item Para la \emph{RoboCup} el \emph{SVG} es un problema ya
 		solucionado: \emph{SSL-VISION}
 
-	\item \emph{SSL-VISION}: plugins muy avanzados para su uso como
-		herramienta educativa.
+	\begin{itemize}
+		
+		\item Plugins muy avanzados para su uso como herramienta
+			educativa.
 
-	\item El sistema actual no es escalable, pero el tamaño de la cancha
-		sigue aumentando.
+		\item El sistema actual no es escalable, pero el tamaño de la
+			cancha sigue aumentando.
+
+	\end{itemize}
 
 \end{itemize}
 
@@ -198,6 +211,34 @@ Desarrollar un \emph{SVG} paralelo para fútbol de robots con fines educativos:
 	\item Con un framework orientado al desarrollo de aplicaciones
 		paralelas, que permita explorar distintas técnicas de
 		paralelismo.
+
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}
+
+\frametitle{Metodología}
+
+Desarrollar un sistema:
+
+\begin{itemize}
+
+	\item Modelo de paralelismo de memoria compartida utilizando
+		\emph{OpenMP}.
+	
+	\item Se tomaron los plugins del sistema desarrollado por G. Torres.
+
+	\item Criterios de calidad:
+
+\begin{itemize}
+
+	\item \emph{FPS}: Cuadros por segundo.
+
+	\item Retardo de cuadro: Tiempo entre la creación de un cuadro y la
+		finalización de su procesamiento.
+
+\end{itemize}
 
 \end{itemize}
 
@@ -409,7 +450,7 @@ Plataforma experimental:
 
 \begin{frame}
 
-\frametitle{Resultados: \emph{FPS} números primos}
+\frametitle{Resultados: \emph{FPS} para número primo de fragmentos}
 
 \includegraphics[width=\textwidth]{img/primos_fps.pdf}
 
@@ -417,7 +458,7 @@ Plataforma experimental:
 
 \begin{frame}
 
-\frametitle{Resultados: área números primos}
+\frametitle{Resultados: área total para número primo de fragmentos}
 
 \includegraphics[width=\textwidth]{img/primos_area.pdf}
 
@@ -443,7 +484,7 @@ Plataforma experimental:
 
 \frametitle{Resultados}
 
-\framesubtitle{FPS máximos}
+\framesubtitle{FPS máximos, video 1280x720px}
 
 \includegraphics[width=\textwidth]{img/1280x720_bestfps.pdf}
 
@@ -453,7 +494,7 @@ Plataforma experimental:
 
 \frametitle{Resultados}
 
-\framesubtitle{Speedup}
+\framesubtitle{Speedup, video 1280x720px}
 
 \includegraphics[width=\textwidth]{img/1280x720_speedup.pdf}
 
@@ -469,7 +510,7 @@ Plataforma experimental:
 
 \begin{frame}
 
-\frametitle{Retardo de cuadro por cada \emph{FPS}}
+\frametitle{Retardo de cuadro por cada \emph{FPS}, video 1280x720px}
 
 \includegraphics[width=\textwidth]{img/1280x720_tFPS.pdf}
 
@@ -483,7 +524,7 @@ Plataforma experimental:
 
 \begin{itemize}
 
-	\item El sistema puede ser utilizado como practica para calcular el
+	\item El sistema puede ser utilizado como práctica para calcular el
 		\emph{speedup} y eficiencia.
 	
 	\item Permite visualizar la importancia de la correcta fragmentación de
@@ -528,7 +569,10 @@ Plataforma experimental:
 		que puede ser utilizado como herramienta educativa.
 
 	\item Se analizaron los comportamientos bajo distintas configuraciones,
-		y se comprobó su desempeño.
+		y se comprobó su desempeño y escalabilidad.
+
+	\item Se propusieron trabajos prácticos para materias de visión por
+		computadora y programación paralela.
 
 \end{itemize}
 
@@ -547,9 +591,33 @@ Trabajos futuros:
 
 \begin{frame}
 
+	\frametitle{Trabajos derivados}
+
+\begin{itemize}
+
+	\item{Rodrigo Cañibano, Eduardo Grosclaude, Javier Balladini. ``Un
+		sistema de visión global paralelo para fútbol de robots con
+		fines educativos''. XXII Congreso Argentino de Ciencias de la
+		Computación (CACIC 2016). Octubre 2016.}
+
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}
+
 	\frametitle{¡Muchas Gracias!}
 
 \end{frame}
+
+\begin{frame}
+
+	\includegraphics[width=0.9\textwidth]{img/screen.png}
+
+\end{frame}
+
+\setcounter{page}{34}
 
 \bibliographystyle{babplain}
 
