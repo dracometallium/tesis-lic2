@@ -123,6 +123,25 @@ los siguientes objetivos:
 
 ---
 
+Pag. 14
+
+Cada fragmento sera procesado por una o más pilas de búsqueda de objetos. En el
+caso del fútbol de robots el sistema originalmente utilizaba dos pilas, una para
+la pelota y otra para los robots.
+
+En ambas pilas los primeros tres plugins realizan un preprocesamiento de la
+imagen, mientras que los restantes no modifican la imagen original. Esto abre la
+posibilidad de unificar ambas pilas.
+
+---
+
+Pag. 15
+
+Si bien esto reduce la paralelización dentro de un cuadro, en las
+experimentaciones realizadas se pudo comprobar que tenia un efecto positivo.
+
+---
+
 Pag. 9
 
 Analizando el problema encontramos dos oportunidades de paralelismo. En primer
@@ -166,6 +185,16 @@ en franjas, aumentando bruscamente el área compartida.
 
 ---
 
+Pag. 13
+
+Los cuadros generados son colocados en un buffer de cuadros, de donde la tarea
+de generación de tareas de fractura de cuadros los toma. Esta, como su nombre lo
+indica, genera una tarea de fractura para cada uno de los cuadros. Cada una de
+estas últimas tareas dividen el cuadro en fragmentos y crean una tarea de
+procesamiento de fragmento para cada uno de ellos.
+
+---
+
 Pag. 12
 
 En el sistema existen dos tipos de tareas, las tareas a las que llamamos
@@ -182,35 +211,6 @@ video) y la generación de tareas de fragmentación de cuadros.
 
 Las tareas de búsqueda son la fragmentación del cuadro y el procesamiento del
 fragmento.
-
----
-
-Pag. 13
-
-Los cuadros generados son colocados en un buffer de cuadros, de donde la tarea
-de generación de tareas de fractura de cuadros los toma. Esta, como su nombre lo
-indica, genera una tarea de fractura para cada uno de los cuadros. Cada una de
-estas últimas tareas dividen el cuadro en fragmentos y crean una tarea de
-procesamiento de fragmento para cada uno de ellos.
-
----
-
-Pag. 14
-
-Cada fragmento sera procesado por una o más pilas de búsqueda de objetos. En el
-caso del fútbol de robots el sistema originalmente utilizaba dos pilas, una para
-la pelota y otra para los robots.
-
-En ambas pilas los primeros tres plugins realizan un preprocesamiento de la
-imagen, mientras que los restantes no modifican la imagen original. Esto abre la
-posibilidad de unificar ambas pilas.
-
----
-
-Pag. 15
-
-Si bien esto reduce la paralelización dentro de un cuadro, en las
-experimentaciones realizadas se pudo comprobar que tenia un efecto positivo.
 
 ---
 
