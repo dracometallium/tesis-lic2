@@ -70,7 +70,23 @@ futuro las canchas sigan aumentando su tamaño.
 
 ---
 
-Pag. 6
+Pag.6
+
+Normalmente los equipos donde se ejecuta el software de visión global es una
+computadora de escritorio de gama alta, aumenta la disponibilidad de equipos y
+permite ensamblar fácilmente toda la infraestructura.
+
+Esto es importante por que implica que las computadoras utilizadas son equipos
+multiprocesador de memoria compartida de acceso uniforme. Estos son los equipos
+donde todos los procesadores comparten un solo espacio de memoria, y el tiempo
+de acceso a cualquier posición de la memoria es igual para todos los
+procesadores.
+
+(digo algo de memoria compartida?)
+
+---
+
+Pag. 7
 
 Como el problema es de tiempo y ambiente real, pero controlado y con parámetros
 bien definidos, consideramos que es ideal para la introducción a la visión por
@@ -91,7 +107,7 @@ aumentando.
 
 ---
 
-Pag. 7
+Pag. 8
 
 NOTA: Falta mencionar el sistema de Guille.
 
@@ -107,7 +123,7 @@ los siguientes objetivos:
 
 ---
 
-Pag. 8
+Pag. 9
 
 Analizando el problema encontramos dos oportunidades de paralelismo. En primer
 lugar, dado que los cuadros son independientes entre si, se pueden analizar en
@@ -117,7 +133,7 @@ independiente. En este caso hay que tener consideraciones especiales.
 
 ---
 
-Pag. 9
+Pag. 10
 
 Para poder identificar a un robot, todos los parches deben ser observables
 dentro del mismo fragmento del cuadro. Por esto se debe establecer un área
@@ -126,7 +142,7 @@ ancho mínimo de esta franja debe ser el ancho de un robot.
 
 ---
 
-Pag. 10
+Pag. 11
 
 Esta área compartida trae otro problema, el área total de los fragmentos sera
 mayor que el área del cuadro original, lo que implica un incremento en los
@@ -150,7 +166,7 @@ en franjas, aumentando bruscamente el área compartida.
 
 ---
 
-Pag. 11
+Pag. 12
 
 En el sistema existen dos tipos de tareas, las tareas a las que llamamos
 estáticas, las cuales existen durante toda la ejecución del programa, son
@@ -169,7 +185,7 @@ fragmento.
 
 ---
 
-Pag. 12
+Pag. 13
 
 Los cuadros generados son colocados en un buffer de cuadros, de donde la tarea
 de generación de tareas de fractura de cuadros los toma. Esta, como su nombre lo
@@ -179,7 +195,7 @@ procesamiento de fragmento para cada uno de ellos.
 
 ---
 
-Pag. 13
+Pag. 14
 
 Cada fragmento sera procesado por una o más pilas de búsqueda de objetos. En el
 caso del fútbol de robots el sistema originalmente utilizaba dos pilas, una para
@@ -191,14 +207,14 @@ posibilidad de unificar ambas pilas.
 
 ---
 
-Pag. 14
+Pag. 15
 
 Si bien esto reduce la paralelización dentro de un cuadro, en las
 experimentaciones realizadas se pudo comprobar que tenia un efecto positivo.
 
 ---
 
-Pag. 15
+Pag. 16
 
 El rendimiento del sistema se utilizo midiendo dos variables: Cuadros por
 segundo (o FPS), y el retardo de cuadro (tiempo entre que el cuadro es creado y
