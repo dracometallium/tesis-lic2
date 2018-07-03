@@ -43,7 +43,7 @@
 \defbeamertemplate{footline}{centered page number}
 {%
     \hspace*{\fill}%
-    \usebeamercolor[fg]{page number in head/foot}%
+    \usebeamercolor[fg]{blue}%
     \usebeamerfont{page number in head/foot}%
     \insertpagenumber\,/\,\insertpresentationendpage%
     \hspace*{\fill}\vskip2pt%
@@ -74,7 +74,7 @@
 
 \begin{itemize}
 
-\item Introducción.
+\item Fútbol de robots.
 
 \item Descripción del sistema.
 
@@ -82,7 +82,7 @@
 
 \item Uso educativo.
 
-\item Conclusiones y trabajos futuros
+\item Conclusiones y trabajos futuros.
 
 \end{itemize}
 
@@ -140,6 +140,24 @@
 
 \begin{frame}
 
+\frametitle{Maquinas de memoria compartida y distribuida}
+
+\begin{figure}[h]
+
+	\centering
+	\includegraphics[height=0.33\textheight]{img/memCompartida.pdf}
+
+	~
+
+	\centering
+	\includegraphics[height=0.33\textheight]{img/memDistribuida.pdf}
+
+\end{figure}
+
+\end{frame}
+
+\begin{frame}
+
 \frametitle{Software de \emph{SVG} de la \emph{SSL}}
 
 \begin{itemize}
@@ -187,6 +205,38 @@ Desarrollar un \emph{SVG} paralelo para fútbol de robots con fines educativos:
 
 \begin{frame}
 
+\frametitle{Arquitectura del sistema}
+
+\framesubtitle{Pilas de procesamiento}
+
+\begin{figure}[h]
+
+	\centering
+
+	\includegraphics[height=0.95\textheight]{img/pilas.pdf}
+
+\end{figure}
+
+\end{frame}
+
+\begin{frame}
+
+\frametitle{Arquitectura del sistema}
+
+\framesubtitle{Pila unificada de procesamiento}
+
+\begin{figure}[h]
+
+	\centering
+
+	\includegraphics[height=0.95\textheight]{img/pilasUnificadas.pdf}
+
+\end{figure}
+
+\end{frame}
+
+\begin{frame}
+
 \frametitle{Oportunidades de paralelismo}
 
 \begin{itemize}
@@ -221,8 +271,9 @@ Desarrollar un \emph{SVG} paralelo para fútbol de robots con fines educativos:
 
 	\centering
 
-	\includegraphics[width=0.45\textwidth]{img/areaTooSmall.pdf}~
-	\includegraphics[width=0.45\textwidth]{img/areaPerfect.pdf}
+	\includegraphics[height=0.33\textheight]{img/areaTooSmall.pdf}
+
+	\includegraphics[height=0.33\textheight]{img/areaPerfect.pdf}
 
 \end{figure}
 
@@ -282,31 +333,16 @@ Desarrollar un \emph{SVG} paralelo para fútbol de robots con fines educativos:
 
 \begin{frame}
 
-\frametitle{Arquitectura del sistema}
+\frametitle{Implementación del sistema}
 
-\framesubtitle{Pilas de procesamiento}
+\framesubtitle{Open Multi-Processing: Directivas utilizadas}
 
-\begin{figure}[h]
-
-	\centering
-
-	\includegraphics[height=0.95\textheight]{img/pilas.pdf}
-
-\end{figure}
-
-\end{frame}
-
-\begin{frame}
-
-\frametitle{Arquitectura del sistema}
-
-\framesubtitle{Pila unificada de procesamiento}
-
-\begin{figure}[h]
+\begin{figure}[!htb]
 
 	\centering
 
-	\includegraphics[height=0.95\textheight]{img/pilasUnificadas.pdf}
+	\includegraphics[height=0.8\textheight]{img/directivasOMP.pdf}
+	\includegraphics[height=0.8\textheight]{img/codigoDirectivasOMP.pdf}
 
 \end{figure}
 
@@ -328,13 +364,13 @@ Variables:
 
 \begin{itemize}
 
-        \item Dos videos 800x600px y 1280x720px.
+	\item Dos videos 800x600px y 1280x720px.
 
-        \item Cantidad de hilos para tareas dinámicas.
+	\item Cantidad de hilos para tareas dinámicas.
 
 	\begin{itemize}
 
-        \item de 1 a 12.
+	\item de 1 a 12.
 
 	\end{itemize}
 
@@ -342,7 +378,7 @@ Variables:
 
 	\begin{itemize}
 
-        	\item de 1 a 24.
+	\item de 1 a 24.
 
 	\end{itemize}
 
